@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dust and Redemption: A Western Tale</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Courier+Prime&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <div id="main-menu" class="screen active">
+            <div class="menu-background"></div>
+            <div class="menu-content">
+                <h1 class="game-title">Dust and Redemption</h1>
+                <p class="game-subtitle">A Western Tale of Four Souls</p>
+                <div class="menu-buttons">
+                    <button class="menu-button" onclick="game.startNewGame()">New Journey</button>
+                    <button class="menu-button" onclick="game.loadGame()">Continue</button>
+                    <button class="menu-button" onclick="game.showCredits()">Credits</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="background-layer"></div>
+            
+            <div class="character-portraits">
+                <div class="portrait" id="portrait-1"></div>
+                <div class="portrait" id="portrait-2"></div>
+                <div class="portrait" id="portrait-3"></div>
+                <div class="portrait" id="portrait-4"></div>
+            </div>
+
+            <div class="story-container">
+                <div class="chapter-header">
+                    <span id="chapter-number">Chapter 1</span>
+                    <span id="chapter-title">The Gathering Storm</span>
+                </div>
+                
+                <div class="text-box">
+                    <div class="speaker-name" id="speaker-name"></div>
+                    <div class="story-text" id="story-text"></div>
+                </div>
+
+                <div class="choices-container" id="choices-container"></div>
+            </div>
+
+            <div class="game-controls">
+                <button class="control-button" onclick="game.toggleMenu()">Menu</button>
+                <button class="control-button" onclick="game.quickSave()">Save</button>
+                <button class="control-button" onclick="game.toggleHistory()">History</button>
+            </div>
+        </div>
+
+        <div id="loading-screen" class="screen">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/characters.js"></script>
+    <script src="js/story-data-init.js"></script>
+    <!-- Load chapters in order -->
+    <script src="js/chapters/prologue.js"></script>
+    <script src="js/chapters/chapter1.js"></script>
+    <script src="js/chapters/chapter2.js"></script>
+    <script src="js/chapters/chapter3.js"></script>
+    <script src="js/chapters/chapter4.js"></script>
+    <script src="js/game-engine.js"></script>
+    <script src="js/scene-manager.js"></script>
+    <script src="js/save-system.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

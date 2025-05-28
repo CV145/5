@@ -1,0 +1,247 @@
+/* Dust particles animation */
+@keyframes dustFloat {
+    0% {
+        transform: translateX(-100px) translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(100vw) translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.dust-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: #DEB887;
+    border-radius: 50%;
+    opacity: 0;
+    animation: dustFloat 15s linear infinite;
+}
+
+/* Text effects */
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.typewriter-text {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 2s steps(40, end);
+}
+
+/* Scene transitions */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-out-down {
+    animation: fadeOutDown 0.8s ease-in forwards;
+}
+
+/* Western-style transitions */
+@keyframes saloonDoors {
+    0% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.saloon-transition {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-color);
+    transform-origin: center;
+    animation: saloonDoors 1s ease-in-out;
+}
+
+/* Character entrance effects */
+@keyframes characterSlideIn {
+    from {
+        transform: translateX(-100px) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.character-enter {
+    animation: characterSlideIn 0.6s ease-out;
+}
+
+/* Dramatic emphasis effects */
+@keyframes dramaticPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.dramatic-text {
+    animation: dramaticPulse 2s ease-in-out infinite;
+}
+
+/* Choice hover effects */
+@keyframes choiceGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    }
+}
+
+.choice-button:hover {
+    animation: choiceGlow 1.5s ease-in-out infinite;
+}
+
+/* Environmental effects */
+@keyframes tumbleWeed {
+    0% {
+        transform: translateX(-100px) rotate(0deg);
+    }
+    100% {
+        transform: translateX(calc(100vw + 100px)) rotate(720deg);
+    }
+}
+
+.tumbleweed {
+    position: absolute;
+    bottom: 10%;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #8B4513 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: tumbleWeed 20s linear infinite;
+}
+
+/* Lightning flash effect */
+@keyframes lightning {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.lightning-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    animation: lightning 0.2s ease-out;
+}
+
+/* Sunset effect */
+@keyframes sunsetGradient {
+    0% {
+        background: linear-gradient(to bottom, #87CEEB 0%, #FFA500 50%, #FF6347 100%);
+    }
+    50% {
+        background: linear-gradient(to bottom, #FF6347 0%, #8B0000 50%, #000000 100%);
+    }
+    100% {
+        background: linear-gradient(to bottom, #87CEEB 0%, #FFA500 50%, #FF6347 100%);
+    }
+}
+
+.sunset-transition {
+    animation: sunsetGradient 30s ease-in-out infinite;
+}
+
+/* Shake effect for dramatic moments */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
+}
+
+.shake-effect {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Campfire flicker effect */
+@keyframes fireFlicker {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    25% {
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
+    75% {
+        opacity: 1;
+        transform: scale(1.01);
+    }
+}
+
+.fire-light {
+    background: radial-gradient(circle, rgba(255, 140, 0, 0.6) 0%, transparent 70%);
+    animation: fireFlicker 2s ease-in-out infinite;
+}
