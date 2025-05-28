@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add some visual polish
     addDustParticles();
+    initializePortraits();
     
     // Enable auto-save
     if (game.saveSystem) {
@@ -25,6 +26,24 @@ function addDustParticles() {
         dust.style.animationDuration = (15 + Math.random() * 10) + 's';
         gameScreen.appendChild(dust);
     }
+}
+
+// Initialize character portraits with initials
+function initializePortraits() {
+    const portraitData = [
+        { id: 'portrait-1', initial: 'E', color: '#8B4513' },
+        { id: 'portrait-2', initial: 'M', color: '#CD853F' },
+        { id: 'portrait-3', initial: 'T', color: '#2F4F4F' },
+        { id: 'portrait-4', initial: 'J', color: '#4682B4' }
+    ];
+    
+    portraitData.forEach(data => {
+        const portrait = document.getElementById(data.id);
+        if (portrait) {
+            portrait.innerHTML = `<span class="portrait-initial">${data.initial}</span>`;
+            portrait.style.backgroundColor = data.color;
+        }
+    });
 }
 
 // Add keyboard shortcuts

@@ -240,9 +240,14 @@ class GameEngine {
         // Clear all highlights
         document.querySelectorAll('.portrait').forEach(p => p.classList.remove('speaking'));
 
+        // Skip if narrator
+        if (speakerName === 'Narrator') return;
+
         // Find and highlight the speaking character
         const character = Object.values(characters).find(char => 
-            char.name === speakerName || char.name.includes(speakerName)
+            char.name === speakerName || 
+            char.name.includes(speakerName) || 
+            speakerName.includes(char.name.split(' ')[0]) // Match first name
         );
 
         if (character) {
@@ -333,6 +338,7 @@ class GameEngine {
                 <button onclick="game.debugJumpTo('chapter2', 'start')" style="margin: 2px;">Chapter 2</button>
                 <button onclick="game.debugJumpTo('chapter3', 'start')" style="margin: 2px;">Chapter 3</button>
                 <button onclick="game.debugJumpTo('chapter4', 'start')" style="margin: 2px;">Chapter 4</button>
+                <button onclick="game.debugJumpTo('chapter5', 'start')" style="margin: 2px;">Chapter 5</button>
             </div>
             
             <div style="margin-bottom: 15px;">

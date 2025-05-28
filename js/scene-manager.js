@@ -67,7 +67,7 @@ class SceneManager {
     }
 
     getNextChapter() {
-        const chapters = ['prologue', 'chapter1', 'chapter2', 'chapter3', 'chapter4']; // Add more as we create them
+        const chapters = ['prologue', 'chapter1', 'chapter2', 'chapter3', 'chapter4', 'chapter5']; // Add more as we create them
         const currentIndex = chapters.indexOf(this.gameEngine.gameState.chapter);
         if (currentIndex !== -1 && currentIndex < chapters.length - 1) {
             return chapters[currentIndex + 1];
