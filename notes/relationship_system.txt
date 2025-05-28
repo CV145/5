@@ -1,0 +1,144 @@
+RELATIONSHIP SYSTEM - DUST AND REDEMPTION
+==========================================
+
+RELATIONSHIP MECHANICS:
+- Each character pair has Trust and Tension values (0-100)
+- Starting values are around 40-60 (neutral to slightly positive)
+- Player choices affect these values throughout the story
+- High trust unlocks special dialogue options and scenes
+- High tension can lock certain choices or create conflict
+
+CURRENT RELATIONSHIP VALUES (After Chapter 5):
+
+ELIJAH'S RELATIONSHIPS:
+
+Elijah ↔ Maria:
+Trust: 45-75 (varies by player choices)
+Tension: 10-30 (varies by player choices)
+- Key Moments: Bandit encounter, supporting her revelation about cartel
+- Potential for strong alliance or conflict depending on violence vs. peace choices
+
+Elijah ↔ Thomas:
+Trust: 50-80 (varies by player choices)
+Tension: 5-15 (generally low)
+- Key Moments: Saving each other in combat, sharing vulnerabilities
+- Generally positive relationship, Thomas respects Elijah's leadership
+
+Elijah ↔ Jacob:
+Trust: 60-90 (varies by player choices)
+Tension: 0-10 (very low)
+- Key Moments: Mentoring after first kill, guidance during crisis
+- Strong father-son dynamic, Jacob looks up to Elijah
+- Highest trust relationship in the party
+
+INTER-PARTY RELATIONSHIPS:
+
+Maria ↔ Thomas:
+Trust: 40-60
+Tension: 20-40
+- Professional respect but some friction
+- Both are pragmatic but approach problems differently
+
+Maria ↔ Jacob:
+Trust: 45-65
+Tension: 15-25
+- Protective dynamic, Maria sees his potential
+- Sometimes frustrated by his inexperience
+
+Thomas ↔ Jacob:
+Trust: 50-70
+Tension: 10-20
+- Mentor relationship in medical/practical matters
+- Thomas appreciates Jacob's optimism
+
+RELATIONSHIP AFFECTING CHOICES:
+
+Chapter 1 - Bandit Encounter:
+- Supporting Maria's bluff: +15 Maria trust
+- Showing strength vs. diplomacy affects Maria relationship
+- Saving Thomas in combat: +25 Thomas trust
+- Comforting Jacob after his first kill: +15 Jacob trust
+
+Chapter 2 - Morning Reflections:
+- Checking on Jacob (if he saved Elijah): +10 Jacob trust
+- Various dialogue choices adjust trust/tension
+
+Chapter 3 - Revelations:
+- Supporting Maria after her secret: +20 Maria trust, +15 Thomas trust, +15 Jacob trust
+- Feeling betrayed: +10 Maria tension
+- Choice of Elijah's confession affects how others view him
+
+Chapter 4 - Supernatural Crisis:
+- Unity choices: +10 all trust values
+- Protecting Jacob specifically: +20 Jacob trust
+- Various combat and strategy choices affect relationships
+
+Chapter 5 - The Binding:
+- Working together against supernatural threat generally increases all trust
+- Sacrifice/redemption choices can dramatically affect final relationships
+
+SPECIAL RELATIONSHIP UNLOCKS:
+
+High Elijah-Maria Trust (70+):
+- Unlocks romantic subplot potential
+- Special combat coordination options
+- Trust-based dialogue choices
+
+High Elijah-Jacob Trust (80+):
+- Father-son bonding scenes
+- Jacob seeks advice on major decisions
+- Protective instincts trigger special choices
+
+High Thomas Trust (60+):
+- Medical knowledge sharing
+- Strategic planning input
+- Sobriety/addiction support storylines
+
+FACTION RELATIONSHIPS (Post-Chapter 5):
+
+Valdez Cartel ↔ Party:
+- Initially hostile (hunting Maria)
+- Potential alliance against supernatural threats
+- Carlos Valdez: Could develop grudging respect
+
+Rivers Gang ↔ Party:
+- Initially hostile (hunting Jacob)
+- Samuel Rivers: Conflicted about Jacob
+- Potential for family reconciliation
+
+Perdition Townspeople ↔ Party:
+- Initially suspicious of strangers
+- Growing trust as party protects town
+- Gratitude after supernatural crisis resolved
+
+FUTURE RELATIONSHIP ARCS (Chapters 6-20):
+
+Romantic Developments:
+- Elijah/Maria: Potential romance based on trust levels
+- Slow burn, complicated by their respective traumas
+
+Family Dynamics:
+- Jacob/Samuel: Brother reconciliation arc
+- Elijah/Silas: Complex antagonist relationship (redeemable?)
+
+Mentor Relationships:
+- Elijah guiding Jacob into manhood
+- Thomas finding purpose in healing others
+- Maria learning to trust again
+
+Party Unity:
+- Evolution from strangers to chosen family
+- Shared trauma bonding
+- Individual growth within group dynamic
+
+RELATIONSHIP FLAGS (for future reference):
+
+supported_maria: Player supported Maria during cartel revelation
+felt_betrayed_maria: Player expressed feeling betrayed by Maria's secrets
+jacob_saved_elijah: Jacob saved Elijah's life in Chapter 1
+elijah_killed: Elijah killed someone in Chapter 1
+elijah_pacifist: Elijah avoided killing in Chapter 1
+forgave_silas: Player chose to forgive Silas in Chapter 5
+maria_forced_to_lead: Maria had to take control due to Elijah's passivity
+
+These flags should be referenced in future chapters to provide continuity and consequences for past choices.
