@@ -14,7 +14,7 @@ storyData.chapter2 = {
                     text: "Check on how Jacob is handling things",
                     next: "jacob_morning",
                     requires: {
-                        flags: { jacob_saved_elijah: true }
+                        flags: { 'jacob_saved_elijah_chapter1': true }
                     }
                 },
                 {
@@ -36,8 +36,8 @@ storyData.chapter2 = {
                 {
                     text: "\"You saved my life. That matters.\"",
                     next: "jacob_comfort",
-                    effects: {
-                        relationships: { jacob_elijah_trust: 10 }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 10);
                     }
                 },
                 {
@@ -60,8 +60,8 @@ storyData.chapter2 = {
                 {
                     text: "\"We stand. These people need protection.\"",
                     next: "decide_protect",
-                    effects: {
-                        flags: { protecting_town: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.protecting_town_c2', true);
                     }
                 },
                 {
@@ -72,14 +72,14 @@ storyData.chapter2 = {
                     text: "\"Yesterday showed we work well together.\"",
                     next: "team_reflection",
                     requires: {
-                        flags: { prepared_for_violence: true }
+                        flags: { 'chapter1_flags.prepared_for_violence': true }
                     }
                 },
                 {
                     text: "\"I should have acted faster yesterday.\"",
                     next: "regret_hesitation",
                     requires: {
-                        flags: { maria_forced_to_lead: true }
+                        flags: { 'maria_forced_to_lead': true }
                     }
                 }
             ]
@@ -138,8 +138,8 @@ storyData.chapter2 = {
             speaker: "Narrator",
             text: "Your willingness to accept the reality of violence has earned Maria's respect. She sees you as someone who understands the harsh truths of this land.",
             next: "common_ground",
-            effects: {
-                relationships: { maria_elijah_trust: 15 }
+            onLeave: function() {
+                updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 15);
             }
         },
         
@@ -159,8 +159,9 @@ storyData.chapter2 = {
             speaker: "Maria Vasquez",
             text: "\"But you're acknowledging it. That's something, I suppose. Just... don't freeze up again when lives are on the line.\"",
             next: "common_ground",
-            effects: {
-                relationships: { maria_elijah_tension: -10, maria_elijah_trust: 5 }
+            onLeave: function() {
+                updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') - 10);
+                updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 5);
             }
         },
         
@@ -183,14 +184,14 @@ storyData.chapter2 = {
                     text: "Reflect on the path of violence",
                     next: "violence_reflection",
                     requires: {
-                        flags: { elijah_accepts_violence: true }
+                        flags: { 'chapter1_flags.elijah_accepts_violence': true }
                     }
                 },
                 {
                     text: "Consider the cost of hesitation", 
                     next: "passivity_reflection",
                     requires: {
-                        flags: { chose_passivity: true }
+                        flags: { 'chapter1_flags.chose_passivity': true }
                     }
                 },
                 {

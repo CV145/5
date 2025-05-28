@@ -16,22 +16,22 @@ storyData.chapter1 = {
                 {
                     text: "Try to negotiate peacefully",
                     next: "negotiate_attempt",
-                    effects: {
-                        flags: { tried_negotiation: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.tried_negotiation', true);
                     }
                 },
                 {
                     text: "Prepare for a fight",
                     next: "prepare_fight_start",
-                    effects: {
-                        flags: { prepared_immediately: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.prepared_immediately', true);
                     }
                 },
                 {
                     text: "Let someone else take the lead",
                     next: "wait_and_see_start",
-                    effects: {
-                        flags: { deferred_leadership: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.deferred_leadership', true);
                     }
                 }
             ],
@@ -108,17 +108,17 @@ storyData.chapter1 = {
                 {
                     text: "\"I've seen enough violence for one lifetime.\"",
                     next: "reluctant_fighter",
-                    effects: {
-                        flags: { elijah_reluctant_violence: true },
-                        relationships: { maria_elijah_tension: 5 }
+                    onChoose: function() {
+                        updateStoryVariable('flags.elijah_reluctant_violence', true);
+                        updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') + 5);
                     }
                 },
                 {
                     text: "\"Sometimes violence is the only language they understand.\"",
                     next: "accept_violence",
-                    effects: {
-                        flags: { elijah_accepts_violence: true },
-                        relationships: { maria_elijah_trust: 10 }
+                    onChoose: function() {
+                        updateStoryVariable('flags.elijah_accepts_violence', true);
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 10);
                     }
                 }
             ]
@@ -143,15 +143,15 @@ storyData.chapter1 = {
                 {
                     text: "\"Sometimes the best action is no action.\"",
                     next: "passive_approach",
-                    effects: {
-                        flags: { chose_passivity: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chose_passivity', true);
                     }
                 },
                 {
                     text: "\"We can't just sit here forever.\"",
                     next: "forced_action",
-                    effects: {
-                        relationships: { jacob_elijah_trust: 5 }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 5);
                     }
                 }
             ]
@@ -164,16 +164,17 @@ storyData.chapter1 = {
                 {
                     text: "\"He's always watching. The question is, are you ready to meet Him?\"",
                     next: "bandit_threatened",
-                    effects: {
-                        flags: { stood_up_to_bandits: true },
-                        relationships: { maria_elijah_trust: 10, jacob_elijah_trust: 15 }
+                    onChoose: function() {
+                        updateStoryVariable('flags.stood_up_to_bandits', true);
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 10);
+                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 15);
                     }
                 },
                 {
                     text: "\"Take what you want. No one needs to die today.\"",
                     next: "bandit_greedy",
-                    effects: {
-                        flags: { tried_peaceful: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.tried_peaceful', true);
                     }
                 }
             ]
@@ -198,16 +199,16 @@ storyData.chapter1 = {
                 {
                     text: "\"We're ready for whatever comes.\"",
                     next: "standoff_prepared",
-                    effects: {
-                        flags: { showed_strength: true },
-                        relationships: { maria_elijah_trust: 15 }
+                    onChoose: function() {
+                        updateStoryVariable('flags.showed_strength', true);
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 15);
                     }
                 },
                 {
                     text: "\"We don't want trouble, but we're not defenseless.\"",
                     next: "measured_response",
-                    effects: {
-                        flags: { diplomatic_but_firm: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.diplomatic_but_firm', true);
                     }
                 }
             ]
@@ -226,16 +227,16 @@ storyData.chapter1 = {
                 {
                     text: "\"Enough games. What do you want?\"",
                     next: "assert_control_late",
-                    effects: {
-                        flags: { late_assertion: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.late_assertion', true);
                     }
                 },
                 {
                     text: "Continue to wait and see",
                     next: "full_passivity",
-                    effects: {
-                        flags: { completely_passive: true },
-                        relationships: { maria_elijah_tension: 10 }
+                    onChoose: function() {
+                        updateStoryVariable('flags.completely_passive', true);
+                        updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') + 10);
                     }
                 }
             ]
@@ -263,8 +264,8 @@ storyData.chapter1 = {
             speaker: "Narrator",
             text: "The moment of preparation proves crucial as the bandit leader shouts his demands.",
             next: "bandit_demands",
-            effects: {
-                flags: { prepared_for_violence: true }
+            onLeave: function() {
+                updateStoryVariable('flags.prepared_for_violence', true);
             }
         },
         
@@ -308,8 +309,8 @@ storyData.chapter1 = {
             speaker: "Narrator",
             text: "Your passive approach has cost valuable time. The bandits are more agitated now, making the situation more dangerous.",
             next: "maria_forced_response",
-            effects: {
-                flags: { bandits_agitated: true }
+            onLeave: function() {
+                updateStoryVariable('flags.bandits_agitated', true);
             }
         },
         
@@ -389,9 +390,9 @@ storyData.chapter1 = {
             speaker: "Maria Vasquez",
             text: "\"Like hell.\" Her gun comes up fast. \"Preacher may be useless, but I'm not going down without a fight.\"",
             next: "fight_begins",
-            effects: {
-                flags: { maria_forced_to_lead: true },
-                relationships: { maria_elijah_tension: 20 }
+            onLeave: function() {
+                updateStoryVariable('flags.maria_forced_to_lead', true);
+                updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') + 20);
             }
         },
 
@@ -426,8 +427,9 @@ storyData.chapter1 = {
                 {
                     text: "Play along with her bluff",
                     next: "support_bluff",
-                    effects: {
-                        relationships: { maria_elijah_trust: 15, maria_thomas_trust: 10 }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 15);
+                        updateStoryVariable('relationships.maria.thomas.trust', getStoryVariable('relationships.maria.thomas.trust') + 10);
                     }
                 },
                 {
@@ -522,8 +524,9 @@ storyData.chapter1 = {
             speaker: "Narrator",
             text: "With that threat hanging in the air like smoke, the bandits wheel their horses and ride off, leaving only dust and the promise of future trouble.",
             next: "aftermath_peaceful",
-            effects: {
-                flags: { bandits_retreated: true, made_enemies: true }
+            onLeave: function() {
+                updateStoryVariable('flags.bandits_retreated', true);
+                updateStoryVariable('flags.made_enemies', true);
             }
         },
         
@@ -543,8 +546,8 @@ storyData.chapter1 = {
             speaker: "Narrator",
             text: "The bandits leave, but their laughter carries on the wind—a promise that this isn't over.",
             next: "aftermath_peaceful",
-            effects: {
-                flags: { bandits_warned: true }
+            onLeave: function() {
+                updateStoryVariable('flags.bandits_warned', true);
             }
         },
         
@@ -561,23 +564,23 @@ storyData.chapter1 = {
                 {
                     text: "Shoot to save Thomas",
                     next: "elijah_shoots",
-                    effects: {
-                        flags: { elijah_killed: true },
-                        relationships: { thomas_elijah_trust: 25 }
+                    onChoose: function() {
+                        updateStoryVariable('flags.elijah_killed_in_chapter1', true);
+                        updateStoryVariable('relationships.elijah.thomas.trust', getStoryVariable('relationships.elijah.thomas.trust') + 25);
                     }
                 },
                 {
                     text: "Try to tackle the bandit",
                     next: "elijah_tackles",
-                    effects: {
-                        flags: { elijah_pacifist: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.elijah_pacifist_in_chapter1', true);
                     }
                 },
                 {
                     text: "Shout a warning",
                     next: "elijah_warns",
-                    effects: {
-                        relationships: { thomas_elijah_trust: 10 }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.thomas.trust', getStoryVariable('relationships.elijah.thomas.trust') + 10);
                     }
                 }
             ]
@@ -629,9 +632,9 @@ storyData.chapter1 = {
             speaker: "Jacob Rivers",
             text: "\"I... I got him! I actually got him!\"",
             next: "fight_ends",
-            effects: {
-                flags: { jacob_saved_elijah: true },
-                relationships: { jacob_elijah_trust: 20 }
+            onLeave: function() {
+                updateStoryVariable('flags.jacob_saved_elijah_chapter1', true);
+                updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 20);
             }
         },
         
@@ -702,8 +705,8 @@ storyData.chapter1 = {
             speaker: "Elijah Cross",
             text: "\"That emptiness? That's your soul trying to hold on. Don't let go of it.\"",
             next: "arrival_perdition",
-            effects: {
-                relationships: { jacob_elijah_trust: 15 }
+            onLeave: function() {
+                updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 15);
             }
         },
         
@@ -729,8 +732,8 @@ storyData.chapter1 = {
             speaker: "Elijah Cross",
             text: "\"Especially for them. The righteous don't need our prayers.\"",
             next: "arrival_perdition",
-            effects: {
-                flags: { elijah_prayed: true }
+            onLeave: function() {
+                updateStoryVariable('flags.elijah_prayed_for_bandits_c1', true);
             }
         },
         
@@ -759,13 +762,11 @@ storyData.chapter1 = {
                 {
                     text: "\"A drink sounds good. We should stick together.\"",
                     next: "agree_drinks",
-                    effects: {
-                        flags: { group_drinks: true },
-                        relationships: { 
-                            thomas_elijah_trust: 10,
-                            maria_elijah_trust: 5,
-                            jacob_elijah_trust: 5
-                        }
+                    onChoose: function() {
+                        updateStoryVariable('flags.group_drinks_c1', true);
+                        updateStoryVariable('relationships.elijah.thomas.trust', getStoryVariable('relationships.elijah.thomas.trust') + 10);
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 5);
+                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 5);
                     }
                 },
                 {

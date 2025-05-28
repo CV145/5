@@ -41,18 +41,13 @@ CHAPTER 4: "Blood Ties"
 - Major betrayal: Silas using them to feed the Hungry Dark
 
 CHAPTER 5: "The Binding"
-- Heroes trapped in ritual feeding their trauma to evil entity
-- Multiple paths to escape (resistance, prayer, targeting Silas)
-- Cartel and gang arrive, disrupting the ritual
-- Three major ending paths: redemption, sacrifice, unity
-- Resolution with potential Silas redemption/sacrifice
-- Town saved, new alliances formed
-
-FUTURE PLOT OUTLINE (Chapters 6-20):
-====================================
-
-ACT II: EXPANSION AND COMPLICATIONS (Chapters 6-10)
-===================================================
+- Heroes trapped in ritual feeding their trauma to the Hungry Dark
+- Multiple paths to escape or confront the ritual (resistance, willpower, understanding, teamwork)
+- Cartel and gang remnants arrive, disrupting or complicating the ritual's final stages
+- Climax of the first major story arc: The Hungry Dark is confronted, and its immediate threat to Perdition is resolved based on player choices (e.g., entity defeated, transformed, bound again, or a character sacrifices themselves).
+- Silas's fate is determined (potential for redemption, death, or continued antagonism in a new form).
+- Perdition is saved from imminent destruction; fragile new alliances or deeper enmities are formed with surviving faction members.
+- Sets the stage for Act II, dealing with the broader consequences and new threats.
 
 CHAPTER 6: "New Alliances"
 - Aftermath of supernatural crisis
@@ -61,62 +56,39 @@ CHAPTER 6: "New Alliances"
 - Introduction of federal interest in supernatural events
 - Setup for larger regional conflicts
 
-CHAPTER 7: "Echoes of the Past"
-- Other towns reporting supernatural incidents
-- Revelation that Hungry Dark was one of several entities
-- Native American character introduction with knowledge of old ways
-- Maria's cartel past creates complications with new allies
+CHAPTER 7: "Echoes of the Past" [COMPLETED]
+- Other towns reporting supernatural incidents (Copper Creek, Devil's Backbone, Willow Bend)
+- Revelation that Hungry Dark was one of five ancient entities: The Five Terrors
+- Native American character introduction (Morning Star of the Kiowa) with knowledge of old ways
+- Maria's cartel past creates complications with Isabella Valdez arrival
+- Introduction of the Bone Singer entity at Devil's Backbone
+- Multiple branching paths for group composition and cartel relations
+- Setup for journey to Devil's Backbone mining town
 
-CHAPTER 8: "The Railroad Comes"
-- Railroad company arrives in Perdition
-- Corporate interests vs. supernatural protection
-- Thomas sets up permanent medical practice
-- Jacob's family dynamics with Samuel Rivers
-- Introduction of larger conspiracy
+CHAPTER 8: "The Bone Singer's Call" [COMPLETED]
+- Journey to Devil's Backbone mining town where supernatural singing emanates from disturbed burial chamber
+- Discovery that mining operation broke through ancient Native American burial site, awakening the Bone Singer
+- Encounter with surviving miners (15 of 50) led by Old Miner Joe and Doc Peterson
+- Bone Singer revealed as entity that feeds on desecration of the dead, calling living to join the deceased
+- Multiple approaches: evacuation of survivors, ritual protection, direct confrontation, or burial ceremony restoration
+- Group composition varies based on Chapter 7 choices (Morning Star's ritual knowledge, Isabella's cartel resources)
+- Major choice: dealing with psychologically influenced survivors who hear dead relatives calling
+- Mine descent to confront the Bone Singer in the disturbed burial chamber
+- Climactic negotiation: Bone Singer demands living guardian to tend sacred dead in exchange for peace
+- Resolution through proper burial arrangement and potential character sacrifice as guardian
+- Sets up consequences for Chapter 9 based on guardian choice and group dynamics
 
-CHAPTER 9: "Blood and Iron"
-- Railroad construction awakens another ancient entity
-- Combat/negotiation with corporate forces
-- Character development: Jacob coming of age
-- Elijah's faith crisis/resolution arc begins
-
-CHAPTER 10: "The Gathering Storm"
-- Multiple supernatural threats across region
-- Federal marshals arrive investigating supernatural events
-- Party must choose: hide abilities or work with government
-- Major relationship developments (romantic subplot?)
-- Setup for climactic arc
-
-ACT III: CLIMAX AND RESOLUTION (Chapters 11-20)
-===============================================
-
-CHAPTER 11-15: "The Five Entities" Arc
-- Reveal that five ancient entities were bound across the region
-- Each requires different approach to defeat/rebind
-- Party travels to different locations
-- Character-focused chapters (one for each main character)
-- Building to revelation of master manipulator
-
-CHAPTER 16-18: "The True Enemy"
-- Reveal of larger conspiracy behind awakenings
-- Could be government, corporate, or supernatural force
-- Party must unite all their allies (cartel, gang, townspeople, natives)
-- Personal conflicts reach climax
-- Major character deaths/sacrifices possible
-
-CHAPTER 19: "The Last Stand"
-- Final battle against true enemy
-- All character arcs converge
-- Ultimate test of unity vs. division
-- Highest-stakes choices in entire game
-- Multiple possible outcomes based on previous 18 chapters
-
-CHAPTER 20: "Dust and Redemption"
-- Epilogue chapter showing consequences
-- Character fates based on player choices
-- New world state after supernatural crisis
-- Setup for potential sequel or closure
-- Thematic resolution: redemption achieved or lost
+CHAPTER 9: "Blood and Iron" [COMPLETED]
+- Aftermath of Bone Singer resolution, with dialogue adapting based on potential guardian sacrifice (Elijah or Thomas)
+- Urgent message from railroad company about Iron Devourer awakening at Copper Creek construction site
+- Revelation that Transcontinental Development Corporation is federal front deliberately seeking supernatural sites
+- Introduction of Cornelius Blackwood as government agent studying Five Terrors for military applications
+- Major choice: approach to government conspiracy (confrontation, cooperation, or infiltration)
+- Journey to Copper Creek where Iron Devourer has been consuming railroad equipment and learning from machinery
+- Iron Devourer revealed as entity that builds mechanical body and seeks to understand modern technology
+- Multiple resolution paths: partnership with entity, controlled binding for study, or return to dormancy
+- Government partnership/opposition choice significantly affects available resources and future conflicts
+- Sets up Chapter 10 with new government alliance/enemy dynamic and Iron Devourer relationship status
 
 MAJOR STORY THEMES:
 ==================

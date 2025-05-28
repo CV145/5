@@ -3,6 +3,7 @@ let game;
 
 document.addEventListener('DOMContentLoaded', () => {
     game = new GameEngine();
+    window.game = game; // Make game globally accessible
     game.init();
     
     // Add some visual polish

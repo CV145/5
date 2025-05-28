@@ -333,12 +333,14 @@ class GameEngine {
             
             <div style="margin-bottom: 15px;">
                 <strong>Chapter Navigation:</strong><br>
-                <button onclick="game.debugJumpTo('prologue', 'start')" style="margin: 2px;">Prologue</button>
-                <button onclick="game.debugJumpTo('chapter1', 'start')" style="margin: 2px;">Chapter 1</button>
-                <button onclick="game.debugJumpTo('chapter2', 'start')" style="margin: 2px;">Chapter 2</button>
-                <button onclick="game.debugJumpTo('chapter3', 'start')" style="margin: 2px;">Chapter 3</button>
-                <button onclick="game.debugJumpTo('chapter4', 'start')" style="margin: 2px;">Chapter 4</button>
-                <button onclick="game.debugJumpTo('chapter5', 'start')" style="margin: 2px;">Chapter 5</button>
+                <button id="debug-prologue" style="margin: 2px;">Prologue</button>
+                <button id="debug-chapter1" style="margin: 2px;">Chapter 1</button>
+                <button id="debug-chapter2" style="margin: 2px;">Chapter 2</button>
+                <button id="debug-chapter3" style="margin: 2px;">Chapter 3</button>
+                <button id="debug-chapter4" style="margin: 2px;">Chapter 4</button>
+                <button id="debug-chapter5" style="margin: 2px;">Chapter 5</button>
+                <button id="debug-chapter6" style="margin: 2px;">Chapter 6</button>
+                <button id="debug-chapter7" style="margin: 2px;">Chapter 7</button>
             </div>
             
             <div style="margin-bottom: 15px;">
@@ -363,12 +365,24 @@ class GameEngine {
             </div>
             
             <div>
-                <button onclick="game.hideDebugPanel()" style="background: #ff0000; color: white; padding: 5px 10px;">Close Debug</button>
-                <button onclick="game.exportGameState()" style="background: #0066cc; color: white; padding: 5px 10px; margin-left: 5px;">Export State</button>
+                <button id="debug-close" style="background: #ff0000; color: white; padding: 5px 10px;">Close Debug</button>
+                <button id="debug-export" style="background: #0066cc; color: white; padding: 5px 10px; margin-left: 5px;">Export State</button>
             </div>
         `;
 
         document.body.appendChild(debugPanel);
+
+        // Add event listeners for all buttons after they're in the DOM
+        document.getElementById('debug-prologue').onclick = () => this.debugJumpTo('prologue', 'start');
+        document.getElementById('debug-chapter1').onclick = () => this.debugJumpTo('chapter1', 'start');
+        document.getElementById('debug-chapter2').onclick = () => this.debugJumpTo('chapter2', 'start');
+        document.getElementById('debug-chapter3').onclick = () => this.debugJumpTo('chapter3', 'start');
+        document.getElementById('debug-chapter4').onclick = () => this.debugJumpTo('chapter4', 'start');
+        document.getElementById('debug-chapter5').onclick = () => this.debugJumpTo('chapter5', 'ritual_trap');
+        document.getElementById('debug-chapter6').onclick = () => this.debugJumpTo('chapter6', 'start');
+        document.getElementById('debug-chapter7').onclick = () => this.debugJumpTo('chapter7', 'start');
+        document.getElementById('debug-close').onclick = () => this.hideDebugPanel();
+        document.getElementById('debug-export').onclick = () => this.exportGameState();
     }
 
     hideDebugPanel() {
@@ -379,9 +393,18 @@ class GameEngine {
     }
 
     debugJumpTo(chapter, scene) {
+        // Ensure game screen is active
+        this.hideAllScreens();
+        document.getElementById('game-screen').classList.add('active');
+        
         this.sceneManager.loadScene(chapter, scene);
         this.showNotification(`Jumped to ${chapter} - ${scene}`);
-        this.showDebugPanel(); // Refresh debug panel
+        // Refresh debug panel after a short delay to ensure game state is updated
+        setTimeout(() => {
+            if (this.debugMode) {
+                this.showDebugPanel();
+            }
+        }, 100);
     }
 
     getRelationshipDebugInfo() {

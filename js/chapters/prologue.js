@@ -26,8 +26,8 @@ storyData.prologue = {
                 {
                     text: "Observe him quietly",
                     next: "observe_elijah",
-                    effects: {
-                        flags: { observed_elijah: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.observed_elijah', true);
                     }
                 },
                 {
@@ -63,15 +63,15 @@ storyData.prologue = {
                 {
                     text: "\"We're all running from something.\"",
                     next: "maria_response_understanding",
-                    effects: {
-                        relationships: { maria_elijah_trust: 5 }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 5);
                     }
                 },
                 {
                     text: "\"Just wondering what a woman like you is doing here.\"",
                     next: "maria_response_suspicious",
-                    effects: {
-                        relationships: { maria_elijah_tension: 10 }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') + 10);
                     }
                 }
             ],
@@ -105,8 +105,8 @@ storyData.prologue = {
                 {
                     text: "\"You're a doctor?\"",
                     next: "thomas_doctor",
-                    effects: {
-                        flags: { knows_thomas_profession: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.knows_thomas_profession', true);
                     }
                 },
                 {
@@ -143,15 +143,15 @@ storyData.prologue = {
                 {
                     text: "\"First time out west, kid?\"",
                     next: "jacob_nervous",
-                    effects: {
-                        relationships: { jacob_elijah_trust: 10 }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 10);
                     }
                 },
                 {
                     text: "\"Far enough to change your mind about coming.\"",
                     next: "jacob_defensive",
-                    effects: {
-                        relationships: { jacob_elijah_tension: 5 }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.jacob.tension', getStoryVariable('relationships.elijah.jacob.tension') + 5);
                     }
                 }
             ],

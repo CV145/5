@@ -1,0 +1,166 @@
+CHAPTER CREATION TEMPLATE AND CHECKLIST
+========================================
+
+Use this template when creating new chapters to ensure proper navigation and avoid "The End" issues.
+
+## 1. CHAPTER FILE STRUCTURE
+
+```javascript
+// Chapter X: [Chapter Title]
+storyData.chapterX = {
+    name: "Chapter X",
+    title: "[Chapter Title]",
+    scenes: {
+        start: {
+            speaker: "Narrator",
+            text: "[Opening scene text]",
+            onEnter: function() {
+                updateStoryVariable('currentChapter', 'Chapter X');
+            },
+            next: "next_scene_name"  // CRITICAL: Use 'next', not 'nextScene'
+        },
+        
+        // All other scenes follow this pattern
+        scene_name: {
+            speaker: "[Character Name or Narrator]",
+            text: "[Scene text]",
+            // For scenes with choices:
+            choices: [
+                {
+                    text: "[Choice text]",
+                    next: "target_scene",  // CRITICAL: Use 'next', not 'nextScene'
+                    onChoose: function() { 
+                        updateStoryVariable('flags.chapterX_flags.cX_choice_flag', true); 
+                    }
+                }
+            ],
+            // For scenes without choices:
+            next: "next_scene_name"  // CRITICAL: Use 'next', not 'nextScene'
+        },
+        
+        // Chapter ending scene
+        chapter_end: {
+            speaker: "Narrator",
+            text: "[Chapter conclusion text]",
+            choices: [
+                {
+                    text: "Continue to Chapter Y",
+                    next: null,
+                    nextChapter: "chapterY",  // This is the only place to use nextChapter
+                    onChoose: function() { updateStoryVariable('currentChapter', 'Chapter Y'); }
+                }
+            ]
+        }
+    }
+};
+```
+
+## 2. CRITICAL RULES TO FOLLOW
+
+### Navigation Properties:
+- ✅ ALWAYS use `next: "scene_name"` for scene-to-scene navigation
+- ❌ NEVER use `nextScene` - this causes "The End" issues
+- ✅ Only use `nextChapter: "chapterX"` in the final scene's choice
+- ✅ Set `next: null` when using `nextChapter`
+
+### Scene Completeness:
+- ✅ Every scene referenced in `next` must exist
+- ✅ Every choice must have a valid `next` target
+- ✅ No orphaned scenes (scenes that can't be reached)
+- ✅ No dead ends (scenes with no way forward)
+
+### Variable Tracking:
+- ✅ Add chapter flags to story-variables.js
+- ✅ Use `onChoose` functions for important decisions
+- ✅ Use `onEnter` for conditional scene modifications
+
+## 3. STORY VARIABLES SETUP
+
+Add to `js/story-variables.js`:
+
+```javascript
+// Chapter X Specific Flags
+chapterX_flags: {
+    cX_major_choice_1: false,
+    cX_major_choice_2: false,
+    cX_character_interaction: false,
+    // Add more flags as needed
+}
+```
+
+## 4. SCENE MANAGER UPDATES
+
+Update `js/scene-manager.js`:
+
+1. Add chapter to the chapters array:
+```javascript
+const chapters = ['prologue', 'chapter1', ..., 'chapterX'];
+```
+
+2. Add starting scene:
+```javascript
+const startingScenes = {
+    // ... existing chapters
+    'chapterX': 'start'
+};
+```
+
+## 5. TESTING CHECKLIST
+
+Before committing a new chapter:
+
+□ All choices use `next` property (not `nextScene`)
+□ All referenced scenes exist and are reachable
+□ Chapter added to scene-manager.js chapters array
+□ Starting scene defined in scene-manager.js
+□ Story variables added for chapter flags
+□ Chapter transitions work properly
+□ No console errors when navigating
+□ Test multiple story paths through the chapter
+
+## 6. COMMON MISTAKES TO AVOID
+
+❌ Using `nextScene` instead of `next`
+❌ Referencing scenes that don't exist
+❌ Forgetting to update scene-manager.js
+❌ Missing `onEnter` function for chapter start
+❌ Not handling character absence (like Elijah sacrifice)
+❌ Circular references between scenes
+❌ Missing chapter ending transition
+
+## 7. CHARACTER HANDLING TEMPLATE
+
+For scenes that need to handle character absence:
+
+```javascript
+scene_name: {
+    speaker: "Elijah",
+    text: "[Default text with Elijah]",
+    onEnter: function() {
+        if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
+            this.speaker = "Maria";
+            this.text = "[Modified text without Elijah]";
+        }
+    },
+    next: "next_scene"
+}
+```
+
+## 8. CHOICE REQUIREMENTS TEMPLATE
+
+For choices that should only appear under certain conditions:
+
+```javascript
+{
+    text: "[Choice text]",
+    next: "target_scene",
+    requires: function() { 
+        return getStoryVariable('flags.some_flag') === true; 
+    },
+    onChoose: function() { 
+        updateStoryVariable('flags.new_flag', true); 
+    }
+}
+```
+
+Following this template ensures chapters work properly and integrate seamlessly with the story system. 

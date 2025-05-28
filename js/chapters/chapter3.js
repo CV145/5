@@ -15,15 +15,15 @@ storyData.chapter3 = {
                 {
                     text: "Pray for guidance",
                     next: "prayer_moment",
-                    effects: {
-                        flags: { sought_divine_guidance: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.sought_divine_guidance_c3', true);
                     }
                 },
                 {
                     text: "Examine the old murals",
                     next: "examine_murals",
-                    effects: {
-                        flags: { investigated_church: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.investigated_church_c3', true);
                     }
                 },
                 {
@@ -74,8 +74,8 @@ storyData.chapter3 = {
                 {
                     text: "\"You look troubled.\"",
                     next: "maria_concern",
-                    effects: {
-                        relationships: { maria_elijah_trust: 5 }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 5);
                     }
                 }
             ]
@@ -118,8 +118,8 @@ storyData.chapter3 = {
                 {
                     text: "\"We can't abandon these people.\"",
                     next: "stay_and_fight",
-                    effects: {
-                        flags: { committed_to_town: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.committed_to_town_c3', true);
                     }
                 },
                 {
@@ -149,8 +149,8 @@ storyData.chapter3 = {
             speaker: "Narrator",
             text: "She's right. Whoever killed the sheriff won't be satisfied with your departure.",
             next: "gather_others",
-            effects: {
-                relationships: { maria_elijah_tension: 5 }
+            onLeave: function() {
+                updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') + 5);
             }
         },
         
@@ -173,15 +173,15 @@ storyData.chapter3 = {
                 {
                     text: "Find Thomas first",
                     next: "find_thomas",
-                    effects: {
-                        flags: { found_thomas_first: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.found_thomas_first_c3', true);
                     }
                 },
                 {
                     text: "Find Jacob first",
                     next: "find_jacob",
-                    effects: {
-                        flags: { found_jacob_first: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.found_jacob_first_c3', true);
                     }
                 }
             ]
@@ -230,15 +230,15 @@ storyData.chapter3 = {
                 {
                     text: "\"Maria, what is this?\"",
                     next: "confront_maria",
-                    effects: {
-                        flags: { confronted_maria_photo: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.confronted_maria_photo_c3', true);
                     }
                 },
                 {
                     text: "Keep quiet and observe her reaction",
                     next: "observe_maria",
-                    effects: {
-                        flags: { stayed_quiet_photo: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.stayed_quiet_photo_c3', true);
                     }
                 }
             ]
@@ -317,24 +317,26 @@ storyData.chapter3 = {
                 {
                     text: "\"We stand together. Your fight is our fight.\"",
                     next: "unity_choice",
-                    effects: {
-                        relationships: { maria_elijah_trust: 20, maria_thomas_trust: 15, maria_jacob_trust: 15 },
-                        flags: { supported_maria: true }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 20);
+                        updateStoryVariable('relationships.maria.thomas.trust', getStoryVariable('relationships.maria.thomas.trust') + 15);
+                        updateStoryVariable('relationships.maria.jacob.trust', getStoryVariable('relationships.maria.jacob.trust') + 15);
+                        updateStoryVariable('flags.supported_maria_revelation', true);
                     }
                 },
                 {
                     text: "\"You should have told us. We had a right to know.\"",
                     next: "betrayal_choice",
-                    effects: {
-                        relationships: { maria_elijah_tension: 10 },
-                        flags: { felt_betrayed_maria: true }
+                    onChoose: function() {
+                        updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') + 10);
+                        updateStoryVariable('flags.felt_betrayed_maria_revelation', true);
                     }
                 },
                 {
                     text: "\"The past doesn't matter. What matters is surviving the next three days.\"",
                     next: "practical_choice",
-                    effects: {
-                        flags: { focused_on_survival: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.focused_on_survival_c3', true);
                     }
                 }
             ]
@@ -395,36 +397,33 @@ storyData.chapter3 = {
                 {
                     text: "\"I killed my own congregation.\"",
                     next: "dark_confession",
-                    effects: {
-                        flags: { confessed_dark_secret: true },
-                        relationships: { 
-                            thomas_elijah_trust: 10,
-                            maria_elijah_trust: 10,
-                            jacob_elijah_trust: -5
-                        }
+                    onChoose: function() {
+                        updateStoryVariable('flags.elijah_confession_type', 'congregation_killed');
+                        updateStoryVariable('flags.chapter3_flags.confessed_dark_secret_c3', true);
+                        updateStoryVariable('relationships.elijah.thomas.trust', getStoryVariable('relationships.elijah.thomas.trust') + 10);
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 10);
+                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') - 5); // Jacob might be disturbed
                     }
                 },
                 {
                     text: "\"A man died because of my words. I've been running from God ever since.\"",
                     next: "guilty_confession",
-                    effects: {
-                        flags: { confessed_guilt: true },
-                        relationships: {
-                            thomas_elijah_trust: 15,
-                            maria_elijah_trust: 10,
-                            jacob_elijah_trust: 10
-                        }
+                    onChoose: function() {
+                        updateStoryVariable('flags.elijah_confession_type', 'man_died_words');
+                        updateStoryVariable('flags.chapter3_flags.confessed_guilt_c3', true);
+                        updateStoryVariable('relationships.elijah.thomas.trust', getStoryVariable('relationships.elijah.thomas.trust') + 15);
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 10);
+                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 10);
                     }
                 },
                 {
                     text: "\"My past doesn't matter. Only our future does.\"",
                     next: "refuse_confession",
-                    effects: {
-                        flags: { kept_secret: true },
-                        relationships: {
-                            maria_elijah_tension: 5,
-                            thomas_elijah_tension: 5
-                        }
+                    onChoose: function() {
+                        updateStoryVariable('flags.elijah_confession_type', 'refused');
+                        updateStoryVariable('flags.chapter3_flags.kept_secret_c3', true);
+                        updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') + 5);
+                        updateStoryVariable('relationships.elijah.thomas.tension', getStoryVariable('relationships.elijah.thomas.tension') + 5);
                     }
                 }
             ]
@@ -491,22 +490,22 @@ storyData.chapter3 = {
                 {
                     text: "\"We evacuate the innocent. Give them a chance to run.\"",
                     next: "evacuate_plan",
-                    effects: {
-                        flags: { prioritize_innocents: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.prioritize_innocents_c3', true);
                     }
                 },
                 {
                     text: "\"We arm the townspeople. Make this their fight too.\"",
                     next: "arm_townspeople",
-                    effects: {
-                        flags: { rally_town: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.rally_town_c3', true);
                     }
                 },
                 {
                     text: "\"We fight smart. Hit them before they hit us.\"",
                     next: "preemptive_strike",
-                    effects: {
-                        flags: { aggressive_strategy: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.aggressive_strategy_c3', true);
                     }
                 }
             ]
@@ -561,22 +560,22 @@ storyData.chapter3 = {
                 {
                     text: "Draw your weapon",
                     next: "defensive_reaction",
-                    effects: {
-                        flags: { hostile_to_stranger: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.hostile_to_stranger_c3', true);
                     }
                 },
                 {
                     text: "\"Who are you?\"",
                     next: "calm_inquiry",
-                    effects: {
-                        flags: { diplomatic_stranger: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.diplomatic_stranger_c3', true);
                     }
                 },
                 {
                     text: "Let the others take the lead",
                     next: "observe_stranger",
-                    effects: {
-                        flags: { cautious_stranger: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter3_flags.cautious_stranger_c3', true);
                     }
                 }
             ]

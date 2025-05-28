@@ -53,12 +53,14 @@ class SceneManager {
             this.loadScene(this.gameEngine.gameState.chapter, this.currentScene.next);
         } else if (this.currentScene && this.currentScene.nextChapter) {
             // Go to specific next chapter
-            this.loadScene(this.currentScene.nextChapter, 'start');
+            const startingScene = this.getStartingScene(this.currentScene.nextChapter);
+            this.loadScene(this.currentScene.nextChapter, startingScene);
         } else {
             // Try to go to next chapter
             const nextChapter = this.getNextChapter();
             if (nextChapter) {
-                this.loadScene(nextChapter, 'start');
+                const startingScene = this.getStartingScene(nextChapter);
+                this.loadScene(nextChapter, startingScene);
             } else {
                 // Game end
                 this.showGameEnd();
@@ -67,12 +69,40 @@ class SceneManager {
     }
 
     getNextChapter() {
-        const chapters = ['prologue', 'chapter1', 'chapter2', 'chapter3', 'chapter4', 'chapter5']; // Add more as we create them
+        const chapters = ['prologue', 'chapter1', 'chapter2', 'chapter3', 'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter9', 'chapter10', 'chapter11', 'chapter12', 'chapter13', 'chapter14', 'chapter15', 'chapter16', 'chapter17', 'chapter18', 'chapter19', 'chapter20'];
         const currentIndex = chapters.indexOf(this.gameEngine.gameState.chapter);
         if (currentIndex !== -1 && currentIndex < chapters.length - 1) {
             return chapters[currentIndex + 1];
         }
         return null;
+    }
+
+    getStartingScene(chapter) {
+        // Define the starting scene for each chapter
+        const startingScenes = {
+            'prologue': 'start',
+            'chapter1': 'start', 
+            'chapter2': 'start',
+            'chapter3': 'start',
+            'chapter4': 'start',
+            'chapter5': 'ritual_trap',
+            'chapter6': 'start',
+            'chapter7': 'start',
+            'chapter8': 'start',
+            'chapter9': 'start',
+            'chapter10': 'start',
+            'chapter11': 'start',
+            'chapter12': 'start',
+            'chapter13': 'start',
+            'chapter14': 'start',
+            'chapter15': 'start',
+            'chapter16': 'start',
+            'chapter17': 'start',
+            'chapter18': 'start',
+            'chapter19': 'start',
+            'chapter20': 'start'
+        };
+        return startingScenes[chapter] || 'start';
     }
 
     applyTransition(callback) {

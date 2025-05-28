@@ -16,23 +16,23 @@ storyData.chapter4 = {
                 {
                     text: "\"You died. I saw you die.\"",
                     next: "denial_response",
-                    effects: {
-                        flags: { denied_silas: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.denied_silas_c4', true);
                     }
                 },
                 {
                     text: "\"What have you done, Silas?\"",
                     next: "demand_answers",
-                    effects: {
-                        flags: { questioned_silas: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.questioned_silas_c4', true);
                     }
                 },
                 {
                     text: "Attack him",
                     next: "attack_silas",
-                    effects: {
-                        flags: { attacked_silas: true },
-                        relationships: { maria_elijah_trust: -5 }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.attacked_silas_c4', true);
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') - 5); // Maria might disapprove of rash action
                     }
                 }
             ]
@@ -81,25 +81,31 @@ storyData.chapter4 = {
                 {
                     text: "\"Father's prophecies were madness.\"",
                     next: "reject_prophecy",
-                    effects: {
-                        flags: { rejected_prophecy: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.rejected_prophecy_c4', true);
                     }
                 },
                 {
                     text: "\"The four figures in the church mural...\"",
                     next: "remember_mural",
-                    effects: {
-                        flags: { connected_prophecy: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.connected_prophecy_c4', true);
                     },
                     requires: {
-                        flags: { investigated_church: true }
+                        flags: { 'chapter3_flags.investigated_church_c3': true }
                     }
                 },
                 {
                     text: "\"You're insane, just like he was.\"",
                     next: "insult_silas",
-                    effects: {
-                        relationships: { silas_tension: 20 }
+                    onChoose: function() {
+                        // Assuming Silas has a tension stat with Elijah or a general disposition
+                        // For now, let's imagine a 'silas_player_rapport' variable: -100 (hates) to 100 (likes)
+                        // updateStoryVariable('storyVariables.npcs.silas.rapport', getStoryVariable('storyVariables.npcs.silas.rapport') - 20);
+                        // Or more simply, if tension is tracked directly with player (Elijah)
+                        // updateStoryVariable('relationships.elijah.silas.tension', getStoryVariable('relationships.elijah.silas.tension') + 20);
+                        // For now, this specific relationship isn't in storyVariables, so I'll skip direct update
+                        // but note it for future: relationships: { silas_tension: 20 }
                     }
                 }
             ]
@@ -156,22 +162,22 @@ storyData.chapter4 = {
                 {
                     text: "\"If this is true, how do we stop it?\"",
                     next: "ask_for_help",
-                    effects: {
-                        flags: { willing_to_believe: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.willing_to_believe_silas_c4', true);
                     }
                 },
                 {
                     text: "\"You're trying to manipulate us.\"",
                     next: "remain_suspicious",
-                    effects: {
-                        flags: { suspicious_of_silas: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.suspicious_of_silas_c4', true);
                     }
                 },
                 {
                     text: "\"Prove it. Show us this 'ancient evil.'\"",
                     next: "demand_proof",
-                    effects: {
-                        flags: { demanded_proof: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.demanded_proof_from_silas_c4', true);
                     }
                 }
             ]
@@ -222,30 +228,28 @@ storyData.chapter4 = {
                 {
                     text: "\"We fight together.\"",
                     next: "unite_for_battle",
-                    effects: {
-                        flags: { united_front: true },
-                        relationships: { 
-                            maria_elijah_trust: 10,
-                            thomas_elijah_trust: 10,
-                            jacob_elijah_trust: 10
-                        }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.united_front_c4', true);
+                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 10);
+                        updateStoryVariable('relationships.elijah.thomas.trust', getStoryVariable('relationships.elijah.thomas.trust') + 10);
+                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 10);
                     }
                 },
                 {
                     text: "\"Silas, what's your play here?\"",
                     next: "question_silas_plan",
-                    effects: {
-                        flags: { sought_silas_strategy: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.sought_silas_strategy_c4', true);
                     }
                 },
                 {
                     text: "\"We need to evacuate the townspeople first.\"",
                     next: "protect_innocents",
-                    effects: {
-                        flags: { prioritized_civilians: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.prioritized_civilians_c4', true);
                     },
                     requires: {
-                        flags: { prioritize_innocents: true }
+                        flags: { 'chapter3_flags.prioritize_innocents_c3': true }
                     }
                 }
             ]
@@ -284,22 +288,22 @@ storyData.chapter4 = {
                 {
                     text: "\"The saloon—defensible and central.\"",
                     next: "saloon_defense",
-                    effects: {
-                        flags: { chose_saloon: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.chose_saloon_defense_c4', true);
                     }
                 },
                 {
                     text: "\"The church—high ground and symbolic.\"",
                     next: "church_defense",
-                    effects: {
-                        flags: { chose_church: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.chose_church_defense_c4', true);
                     }
                 },
                 {
                     text: "\"Split up—divide their attention.\"",
                     next: "split_defense",
-                    effects: {
-                        flags: { chose_split: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.chose_split_defense_c4', true);
                     }
                 }
             ]
@@ -338,22 +342,22 @@ storyData.chapter4 = {
                 {
                     text: "Return fire immediately",
                     next: "open_fire",
-                    effects: {
-                        flags: { aggressive_combat: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.aggressive_combat_valdez_c4', true);
                     }
                 },
                 {
                     text: "Try to negotiate",
                     next: "negotiate_valdez",
-                    effects: {
-                        flags: { attempted_negotiation: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.attempted_negotiation_valdez_c4', true);
                     }
                 },
                 {
                     text: "Wait for the right moment",
                     next: "tactical_patience",
-                    effects: {
-                        flags: { tactical_approach: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.tactical_approach_valdez_c4', true);
                     }
                 }
             ]
@@ -414,22 +418,22 @@ storyData.chapter4 = {
                 {
                     text: "\"Everyone, follow Silas!\"",
                     next: "trust_silas",
-                    effects: {
-                        flags: { trusted_silas_ritual: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.trusted_silas_ritual_c4', true);
                     }
                 },
                 {
                     text: "\"We finish the fight first!\"",
                     next: "continue_fighting",
-                    effects: {
-                        flags: { ignored_ritual: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.ignored_ritual_c4', true);
                     }
                 },
                 {
                     text: "\"What are those things?\"",
                     next: "demand_explanation",
-                    effects: {
-                        flags: { sought_understanding: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.sought_understanding_ritual_c4', true);
                     }
                 }
             ]
@@ -474,22 +478,22 @@ storyData.chapter4 = {
                 {
                     text: "Begin the ritual prayer",
                     next: "start_ritual",
-                    effects: {
-                        flags: { led_ritual: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.led_ritual_c4', true);
                     }
                 },
                 {
                     text: "Wait for Silas's signal",
                     next: "wait_for_signal",
-                    effects: {
-                        flags: { followed_silas: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.followed_silas_ritual_c4', true);
                     }
                 },
                 {
                     text: "Improvise your own words",
                     next: "improvise_ritual",
-                    effects: {
-                        flags: { improvised_ritual: true }
+                    onChoose: function() {
+                        updateStoryVariable('flags.chapter4_flags.improvised_ritual_c4', true);
                     }
                 }
             ]
