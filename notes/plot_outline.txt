@@ -65,19 +65,79 @@ Four troubled strangers meet on a stagecoach bound for Perdition, a remote front
 - Hints at supernatural/mysterious elements (though kept ambiguous)
 - Demonstration of frontier hospitality and information networks
 
-## Planned Future Chapters (Linear Structure)
-
-
 ### Chapter 3: "Perdition's Gate" (50 scenes)
-**Summary:** The group finally arrives in Perdition to find a town in decline, ruled by fear and corruption.
+**Summary:** The group arrives in Perdition to find a dying town haunted by fear and mystery, but discovers unexpected sanctuary at Henderson's Boarding House.
 
 **Key Events:**
-- First glimpse of Perdition - a dying town
-- Meeting the local sheriff, saloon keeper, and other townspeople
-- Learning about the town's power structure and recent troubles
-- Discovering evidence of deeper corruption and violence
-- Choosing where to stay and how to present themselves
-- First confrontation with local bullies/corrupt officials
+- First glimpse of Perdition: a town literally dying, with fortified buildings and covered wells
+- Learning about the burned church and missing preacher
+- Meeting Jeremiah Colt, the cautious general store owner
+- Discovery that Sheriff Tom Bradley was murdered (honest law enforcement eliminated)
+- Finding lodging at Henderson's Boarding House with the stern but kind Mrs. Henderson
+- Thomas reveals his medical background, offering hope to a town without a doctor
+- Group settles into temporary sanctuary while planning next steps
+
+**Character Development:**
+- **Elijah:** Takes natural leadership role in approaching townspeople diplomatically
+- **Maria:** Provides tactical assessment of the town's defensive preparations and decline
+- **Thomas:** Finds new purpose in offering medical help to those in need
+- **Jacob:** Shows growing maturity in considering group dynamics and approach
+
+**World Building:**
+- Perdition established as a frontier town in steep decline (population unknown, marked with "?")
+- Infrastructure failing: covered wells, burned church, empty sheriff's office
+- Economic collapse: mine played out, businesses closing, people fleeing
+- Social breakdown: honest sheriff murdered, remaining residents fearful
+- Henderson's Boarding House as beacon of civilization and normalcy
+- Introduction of Jeremiah Colt as potential ally/information source
+
+**Atmospheric Elements:**
+- Oppressive weight in the air, sense of wrongness about the place
+- Town described as "graveyard of dreams" with abandoned buildings
+- Contrast between decay and Mrs. Henderson's maintained property
+- Optional dialogue choices reveal character perspectives and world lore
+
+### Chapter 4: "First Dawn in Perdition" (50 scenes)
+**Summary:** The group's first full day in Perdition reveals the systematic destruction of the community and identifies Silas Cross as the primary antagonist behind the town's troubles.
+
+**Key Events:**
+- Dawn awakening at Henderson's Boarding House with breakfast planning session
+- Mrs. Henderson provides crucial background information about the town's troubles
+- Thomas begins medical rounds, discovering mysterious illnesses that drove away the previous doctor
+- Multiple investigation paths: general store, sheriff's office, church ruins, residential areas
+- Discovery of evidence pointing to systematic land and water rights acquisition
+- Confrontation with Silas Cross, who reveals himself as the power broker behind the town's decline
+- Learning about the connection between water rights, mysterious illnesses, and property acquisition
+- Group identifies Cross as responsible for Sheriff Bradley's murder and the church burning
+- Planning afternoon action to combat Cross's influence
+
+**Character Development:**
+- **Elijah:** Emerges as natural group leader, making diplomatic introductions and moral judgments
+- **Maria:** Provides tactical analysis and investigation skills, recognizes patterns of systematic oppression
+- **Thomas:** Finds renewed purpose in medical practice, unccovers connection between illness and water poisoning
+- **Jacob:** Shows growing maturity in suggesting investigative approaches and standing up to threats
+
+**World Building:**
+- Introduction of Silas Cross as main antagonist representing eastern mining consortium
+- Revelation of systematic campaign to acquire Perdition's valuable resources
+- Establishment of water rights as central to the conflict
+- Introduction of supporting characters: Jeremiah Colt (ally), various townspeople
+- Discovery that Sheriff Bradley's investigation led to his murder
+- Pattern of violence, intimidation, and possible poisoning to force property sales
+
+**Interactive Elements:**
+- Multiple branching exploration paths (store, sheriff's office, church, residential)
+- Various conversation choices revealing different aspects of town's troubles
+- Investigation choices allowing deep examination of evidence
+- Strategic planning choices for combating Cross's influence
+
+**Atmospheric Elements:**
+- Contrast between Mrs. Henderson's safe haven and the town's pervasive fear
+- Detailed exploration of Perdition's decay and abandonment
+- Building tension through Cross's veiled threats and surveillance
+- Growing sense of purpose and hope returning to the community
+
+## Planned Future Chapters (Linear Structure)
 
 ### Chapters 4-20: Continued Linear Progression
 Each chapter will follow the same 50-scene structure, building on:

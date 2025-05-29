@@ -20,7 +20,10 @@
 **Arc:**
 - Prologue: Mysterious, hints at dark past
 - Chapter 1: Forced to embrace violence again, moral struggle
-- Future: Learning to balance faith with harsh realities
+- Chapter 2: Develops mentor relationship with Jacob, maintains moral leadership
+- Chapter 3: Takes natural leadership role in approaching townspeople diplomatically
+- Chapter 4: Emerges as group leader, making diplomatic introductions and moral judgments
+- Future: Learning to balance faith with harsh realities while leading the fight for justice
 
 ### 2. Maria Vasquez - The Revolutionary
 **Background:**
@@ -40,7 +43,10 @@
 **Arc:**
 - Prologue: Mysterious woman with obvious combat experience
 - Chapter 1: Takes charge in combat, reveals tactical expertise
-- Future: Gradual opening up to the group, sharing her past
+- Chapter 2: Opens up emotionally, accepts Jacob as family
+- Chapter 3: Provides tactical assessment of the town's defensive preparations and decline
+- Chapter 4: Provides tactical analysis and investigation skills, recognizes patterns of systematic oppression
+- Future: Gradual opening up to the group, sharing her past while becoming their tactical leader
 
 ### 3. Thomas Whitmore - The Broken Doctor
 **Background:**
@@ -60,7 +66,10 @@
 **Arc:**
 - Prologue: Appears as broken drunk with hints of better past
 - Chapter 1: Combat reveals his underlying competence and steady hands
-- Future: Gradual recovery and rediscovery of self-worth
+- Chapter 2: Rediscovers medical purpose and steady hands
+- Chapter 3: Finds new purpose in offering medical help to those in need
+- Chapter 4: Finds renewed purpose in medical practice, uncovers connection between illness and water poisoning
+- Future: Gradual recovery and rediscovery of self-worth through healing others
 
 ### 4. Jacob Rivers - The Untested Youth
 **Background:**
@@ -80,7 +89,10 @@
 **Arc:**
 - Prologue: Nervous boy trying to appear confident
 - Chapter 1: Freezes in combat but provides crucial warning, shows potential
-- Future: Steady growth into confident, capable young man
+- Chapter 2: Gains confidence and acceptance, commits to facing danger
+- Chapter 3: Shows growing maturity in considering group dynamics and approach
+- Chapter 4: Shows growing maturity in suggesting investigative approaches and standing up to threats
+- Future: Steady growth into confident, capable young man and valued team member
 
 ## Secondary Characters
 
@@ -95,6 +107,32 @@
 - Experienced but frightened civilian
 - Provides local knowledge and transportation
 - Serves as witness to the group's capabilities
+
+### Mrs. Henderson - Boarding House Owner (Chapters 3-4)
+- Stern but kind woman in her fifties
+- Maintains standards and respectability in difficult times
+- Provides crucial information about Perdition's troubles and Silas Cross
+- Represents hope and civilization's persistence
+- Becomes key ally and safe haven for the group
+
+### Jeremiah Colt - General Store Owner (Chapters 3-4)
+- Honest, cautious businessman struggling to survive
+- Provides information and supplies to the group
+- Represents the town's remaining honest citizens
+- Willing to help but fearful of Cross's retribution
+
+### Silas Cross - Main Antagonist (Chapter 4)
+- Well-dressed representative of eastern mining consortium
+- Ruthless businessman acquiring Perdition's resources through any means
+- Behind Sheriff Bradley's murder, church burning, and systematic poisoning
+- Uses intimidation, violence, and corruption to achieve his goals
+- Primary obstacle to the town's recovery and the group's mission
+
+### Sheriff Tom Bradley (Deceased - Referenced in Chapters 3-4)
+- Former honest lawman of Perdition
+- Was investigating Cross's land acquisition schemes when murdered
+- Represented law and order that Cross needed to eliminate
+- His death symbolizes the town's loss of protection and justice
 
 ## Character Relationships
 
