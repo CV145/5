@@ -1,680 +1,378 @@
-// Chapter 7: Echoes of the Past
+// Chapter 7: The Price of Victory (Linear Version)
 storyData.chapter7 = {
     name: "Chapter 7",
-    title: "Echoes of the Past",
+    title: "The Price of Victory",
     scenes: {
+        // Scene 1: Three Weeks Later
         start: {
             speaker: "Narrator",
-            text: "Two weeks have passed since the council meeting in Perdition. The fragile peace holds, but troubling news arrives with each passing rider. Reports of strange happenings in neighboring towns filter in: livestock found drained of blood in Copper Creek, an entire family disappeared from their homestead near Silver Ridge, and whispers of 'walking shadows' from the mining camp at Devil's Backbone.",
-            onEnter: function() {
-                updateStoryVariable('currentChapter', 'Chapter 7');
-            },
-            next: "messenger_arrives"
+            text: "Three weeks have passed since Cross's arrest. The federal marshal took him away in chains, but left behind only empty promises and mounting problems. Without Cross's money—dirty as it was—Perdition's economy has collapsed. The mines stay closed. The shops are shuttering. And the four heroes who saved the town are learning that victory can taste like ash.",
+            next: "morning_reality"
         },
-        
-        messenger_arrives: {
+
+        // Scene 2: Harsh Morning Reality
+        morning_reality: {
             speaker: "Narrator",
-            text: "A dust-covered rider approaches Perdition at sunset, his horse lathered with sweat and fear. He dismounts in the town square, looking around nervously before calling out in a voice that carries the weight of desperate urgency.",
-            next: "messenger_speaks"
+            text: "The boarding house dining room feels colder these days. Mrs. Henderson serves watered-down coffee and day-old bread—it's all she can afford now. Thomas stares at his trembling hands. Maria counts her remaining bullets. Jacob reads a letter from home. Elijah pretends to pray.",
+            next: "henderson_eviction_notice"
         },
-        
-        messenger_speaks: {
-            speaker: "Messenger",
-            text: "\"Anyone in charge here? I bring word from Marshal Davidson in Silver Ridge. Three towns have gone silent in the past week. Copper Creek, Devil's Backbone, and now Willow Bend. Last anyone heard, they were dealing with... unnatural disturbances. The Marshal's forming a posse, but he needs folks who've dealt with this kind of trouble before.\"",
+
+        // Scene 3: The Eviction Notice
+        henderson_eviction_notice: {
+            speaker: "Mrs. Henderson",
+            text: "'I'm sorry, but I can't keep feeding you all for free.' Her voice cracks as she sets down a final notice from the bank. 'Cross owned the mortgage on this place. The bank's calling it in. I have two weeks before they take everything.'",
+            next: "first_crack"
+        },
+
+        // Scene 4: The First Crack
+        first_crack: {
+            speaker: "Maria Vasquez",
+            text: "'So we saved the town just so the banks could destroy it instead?' Maria's laugh is bitter. 'We should have taken Cross's money when we had the chance. At least then we'd have something to show for all this.'",
+            next: "elijah_objects"
+        },
+
+        // Scene 5: Elijah's Hollow Objection
+        elijah_objects: {
+            speaker: "Elijah Cross",
+            text: "'We did the right thing—' But even Elijah can't finish the sentence. The right thing has left children hungry and good people homeless. His collar feels like a lie around his neck.",
+            next: "thomas_bitter_truth"
+        },
+
+        // Scene 6: Thomas's Bitter Truth
+        thomas_bitter_truth: {
+            speaker: "Thomas Whitmore",
+            text: "'Another child died yesterday. Not from poison this time—from hunger. The Garrett family can't afford food or medicine.' He reaches for a flask that isn't there, his hands shaking worse. 'I couldn't help them. What good is a doctor who can't even buy bandages?'",
+            next: "jacob_family_pressure"
+        },
+
+        // Scene 7: Jacob's Family Pressure
+        jacob_family_pressure: {
+            speaker: "Jacob Rivers",
+            text: "'My uncle wants me to come back.' Jacob holds up the letter. 'Says there's work with the family business. Steady pay, respect, protection. All I have to do is forget about being a hero and become what he always wanted—a Rivers man through and through.'",
+            next: "uncomfortable_truths"
+        },
+
+        // Scene 8: Uncomfortable Truths Surface
+        uncomfortable_truths: {
+            speaker: "Narrator",
+            text: "The silence that follows is heavy with unspoken accusations. They saved Perdition from Cross, but they can't save it from poverty. They're heroes with empty pockets and emptier promises. And the town is starting to notice.",
+            next: "frank_hutchins_arrives"
+        },
+
+        // Scene 9: Frank Hutchins's Proposition
+        frank_hutchins_arrives: {
+            speaker: "Frank Hutchins",
+            text: "The former saloon keeper enters without knocking. 'Got a business proposition for you folks. Some of Cross's old associates want to reopen the mines. They need... security. People who know how to handle themselves. Pays well.'",
+            next: "moral_compromise"
+        },
+
+        // Scene 10: The Moral Compromise
+        moral_compromise: {
+            speaker: "Frank Hutchins",
+            text: "'Before you get all righteous, think about this—those mines employed half the town. Without them, Perdition dies. These men aren't saints, but they're not Cross either. They just want to make money. Lot of people could eat if those mines reopen.'",
+            next: "group_divides"
+        },
+
+        // Scene 11: The Group Divides
+        group_divides: {
+            speaker: "Maria Vasquez",
+            text: "'I'll do it.' Maria's voice is flat, practical. 'I've guarded worse men for worse reasons. At least this time, I'd be helping the town survive.'",
+            next: "elijah_protests"
+        },
+
+        // Scene 12: Elijah's Protest
+        elijah_protests: {
+            speaker: "Elijah Cross",
+            text: "'We can't work for criminals! We just spent weeks fighting against—' 'Against what?' Maria cuts him off. 'Against the only people bringing money to this town? Look around, preacher. Your principles are killing these people.'",
+            next: "thomas_sides_with_maria"
+        },
+
+        // Scene 13: Thomas Takes a Side
+        thomas_sides_with_maria: {
+            speaker: "Thomas Whitmore",
+            text: "'Maria's right. I became a doctor to save lives, not watch people starve for the sake of moral purity. If working security means I can afford medicine for the sick, then I'll do it.'",
+            next: "jacob_torn"
+        },
+
+        // Scene 14: Jacob Is Torn
+        jacob_torn: {
+            speaker: "Jacob Rivers",
+            text: "'This isn't what we fought for. We were supposed to be better than this. But...' He looks at the letter from home. 'Maybe there is no 'better.' Maybe there's just survival.'",
+            next: "argument_escalates"
+        },
+
+        // Scene 15: The Argument Escalates
+        argument_escalates: {
+            speaker: "Narrator",
+            text: "What starts as a debate becomes a vicious argument. Old resentments surface. Maria calls Elijah a self-righteous fool. Elijah accuses her of being a mercenary without conscience. Thomas drinks openly now, mocking them both. Jacob watches his heroes tear each other apart.",
+            next: "maria_reveals_past"
+        },
+
+        // Scene 16: Maria's Dark Past
+        maria_reveals_past: {
+            speaker: "Maria Vasquez",
+            text: "'You want to judge me, preacher? Let me tell you who I really am. I didn't just work for the cartel—I was their best killer. Men, women, didn't matter. I did it for money, and I was good at it. The only reason I stopped was because they killed my sister by mistake.'",
+            next: "thomas_confession"
+        },
+
+        // Scene 17: Thomas's Confession
+        thomas_confession: {
+            speaker: "Thomas Whitmore",
+            text: "'We're sharing truths? Fine. I didn't come west for a fresh start. I came because I killed a patient. Operated drunk, cut an artery I shouldn't have touched. A little girl bled out on my table while I was too impaired to save her. Her parents still think it was God's will.'",
+            next: "elijah_hypocrisy"
+        },
+
+        // Scene 18: Elijah's Hypocrisy Exposed
+        elijah_hypocrisy: {
+            speaker: "Elijah Cross",
+            text: "'Stop. Just... stop.' But Maria won't let him. 'No, your turn, preacher. Tell us about the money that went missing from your church. Tell us why you really left your parish.' Elijah's face drains of color.",
+            next: "elijah_truth"
+        },
+
+        // Scene 19: Elijah's Truth
+        elijah_truth: {
+            speaker: "Elijah Cross",
+            text: "'I... I took it. Thousands of dollars meant for the poor. Gambled it away trying to feel something, anything. Told myself I'd win it back, make it right. But I lost everything. The church covered it up to avoid scandal, sent me west to disappear.'",
+            next: "jacob_disillusionment"
+        },
+
+        // Scene 20: Jacob's Disillusionment
+        jacob_disillusionment: {
+            speaker: "Jacob Rivers",
+            text: "'You're all frauds.' Jacob's voice is quiet, devastated. 'I looked up to you. Thought you were different. But you're just... broken people pretending to be heroes. Maybe my uncle was right. Maybe there's no such thing as good people, just people who hide their sins better.'",
             choices: [
                 {
-                    text: "Step forward immediately to help",
-                    next: "volunteer_immediately",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_volunteered_immediately', true); }
+                    text: "Try to salvage the group's unity",
+                    next: "salvage_attempt"
                 },
                 {
-                    text: "Ask for more details about the disturbances",
-                    next: "ask_for_details",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_asked_for_details', true); }
-                },
-                {
-                    text: "Consult with your companions first",
-                    next: "consult_companions",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_consulted_companions', true); }
+                    text: "Let the group fracture completely",
+                    next: "complete_fracture"
                 }
             ]
         },
-        
-        volunteer_immediately: {
-            speaker: "Elijah",
-            text: "\"We've faced the darkness that plagues these lands. If other towns are suffering, we have a duty to help them.\" Your quick response earns nods of approval from the gathered townsfolk.",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                    this.text = "\"We've faced the darkness that plagues these lands. If other towns are suffering, we have a duty to help them.\" Maria's firm response earns nods from the gathered townsfolk.";
-                }
-            },
-            next: "messenger_relief"
+
+        // Scene 21a: Attempting to Salvage Unity
+        salvage_attempt: {
+            speaker: "Elijah Cross",
+            text: "'Wait. We're all broken, yes. But we still saved this town. We still stood together when it mattered. That has to count for something.'",
+            next: "maria_rejects_unity"
         },
-        
-        ask_for_details: {
-            speaker: "Thomas",
-            text: "\"Before we commit to anything, we need to understand what we're dealing with. What exactly have these towns reported?\"",
-            next: "messenger_details"
-        },
-        
-        consult_companions: {
+
+        // Scene 21b: Complete Fracture
+        complete_fracture: {
             speaker: "Narrator",
-            text: "You gather your companions aside for a quick conference. The messenger waits anxiously while you discuss the implications of these new threats.",
-            next: "companion_discussion"
+            text: "The silence that follows Jacob's words is final. Four people who once trusted each other with their lives now can't stand to be in the same room. The fellowship is dead, killed by truth.",
+            next: "decisions_made"
         },
-        
-        messenger_relief: {
-            speaker: "Messenger",
-            text: "\"Thank God. The Marshal said if anyone in Perdition was still alive after what happened here, they'd know how to fight these... things. He's waiting at the crossroads five miles north of Silver Ridge. Says to bring whatever worked here.\"",
-            next: "preparation_phase"
+
+        // Scene 22: Maria Rejects Unity
+        maria_rejects_unity: {
+            speaker: "Maria Vasquez",
+            text: "'Count for something? Tell that to the families going hungry. Tell that to Mrs. Henderson losing her home. We played hero and ruined lives. At least when I was a killer, I was honest about it.'",
+            next: "decisions_made"
         },
-        
-        messenger_details: {
-            speaker: "Messenger",
-            text: "\"Copper Creek reported animals and people being found... drained. Not of blood, mind you, but something else. Like they just gave up living. Devil's Backbone had their mine collapse, but folks swear they heard singing coming from the cave-in. And Willow Bend... last telegram said something about the dead walking the streets at noon.\"",
-            next: "ominous_pattern"
-        },
-        
-        companion_discussion: {
-            speaker: "Maria",
-            text: "\"These sounds like the same kind of supernatural threats we faced here. If we don't help stop them, they might spread. But we should be careful - we don't know what we're walking into.\"",
-            next: "jacob_input"
-        },
-        
-        jacob_input: {
-            speaker: "Jacob",
-            text: "\"My family might have men near some of those areas. Samuel could provide information, or... could be a problem if we're seen as interfering with gang operations.\"",
-            next: "thomas_concern"
-        },
-        
-        thomas_concern: {
-            speaker: "Thomas",
-            text: "\"I'm worried about leaving Perdition undefended. Our peace here is still fragile. But if these threats are spreading...\"",
-            next: "group_decision"
-        },
-        
-        group_decision: {
+
+        // Scene 23: Decisions Made
+        decisions_made: {
             speaker: "Narrator",
-            text: "Your group weighs the options. The messenger shifts nervously, aware that time is of the essence.",
-            choices: [
-                {
-                    text: "Agree to help immediately",
-                    next: "volunteer_after_discussion",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_agreed_to_help', true); }
-                },
-                {
-                    text: "Offer limited assistance",
-                    next: "limited_help_offer",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_offered_limited_help', true); }
-                },
-                {
-                    text: "Ask for time to prepare Perdition's defenses first",
-                    next: "request_preparation_time",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_requested_prep_time', true); }
-                }
-            ]
+            text: "By evening, the group has shattered. Maria agrees to work security for the new mine owners. Thomas will serve as their company doctor—for the pay. Jacob writes back to his uncle, accepting his offer. Only Elijah refuses, clinging to principles that feel more hollow by the hour.",
+            next: "town_reaction"
         },
-        
-        ominous_pattern: {
-            speaker: "Thomas",
-            text: "\"These symptoms... they're different from what we faced, but related. It's as if the Hungry Dark was just one of several... entities.\"",
-            next: "messenger_urgent_plea"
+
+        // Scene 24: The Town's Reaction
+        town_reaction: {
+            speaker: "Walter Hayes",
+            text: "Walter Hayes confronts them outside the boarding house. 'Heard you're working for the new mine bosses. The same kind of men as Cross, just with different names. We trusted you. Thought you were different.'",
+            next: "maria_harsh_response"
         },
-        
-        messenger_urgent_plea: {
-            speaker: "Messenger",
-            text: "\"Look, I don't pretend to understand what's happening. But Marshal Davidson says if we don't stop this spread, every town from here to the territorial capital could be lost. Will you help or not?\"",
-            choices: [
-                {
-                    text: "Yes, we'll help",
-                    next: "volunteer_after_discussion",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_agreed_to_help', true); }
-                },
-                {
-                    text: "We need guarantees about our town's safety",
-                    next: "demand_guarantees",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_demanded_guarantees', true); }
-                }
-            ]
+
+        // Scene 25: Maria's Harsh Response
+        maria_harsh_response: {
+            speaker: "Maria Vasquez",
+            text: "'You trusted us to save you, and we did. Now you want us to starve for your principles? Pay us a living wage, and we'll be your heroes. Otherwise, we take the work we can get.'",
+            next: "town_divided"
         },
-        
-        volunteer_after_discussion: {
-            speaker: "Elijah",
-            text: "\"We've seen what happens when evil is left unchecked. We'll ride with the Marshal.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                    this.text = "\"We've seen what happens when evil is left unchecked. We'll ride with the Marshal.\"";
-                }
-            },
-            next: "preparation_phase"
-        },
-        
-        limited_help_offer: {
-            speaker: "Maria",
-            text: "\"We can spare one or two of us to advise, but we can't abandon Perdition completely. Our knowledge might be more valuable than our guns anyway.\"",
-            next: "messenger_considers"
-        },
-        
-        request_preparation_time: {
-            speaker: "Jacob",
-            text: "\"Give us one day to shore up Perdition's defenses and gather supplies. These supernatural threats might target towns left vulnerable.\"",
-            next: "messenger_time_pressure"
-        },
-        
-        demand_guarantees: {
-            speaker: "Thomas",
-            text: "\"If we leave Perdition to help other towns, what assurance do we have that it won't be attacked while we're gone?\"",
-            next: "messenger_offers_protection"
-        },
-        
-        messenger_considers: {
-            speaker: "Messenger",
-            text: "\"The Marshal said he'd take whatever help he could get. Even advice from folks who've faced this before could save lives.\"",
-            next: "choose_who_goes"
-        },
-        
-        messenger_time_pressure: {
-            speaker: "Messenger",
-            text: "\"Every hour we delay, more folks might die. But... I reckon the Marshal would understand preparing for a fight. One day, then?\"",
-            next: "preparation_phase"
-        },
-        
-        messenger_offers_protection: {
-            speaker: "Messenger",
-            text: "\"Marshal's got a deputy he can spare for Perdition. Good man, knows his business. Plus, word is these things are moving west - Perdition might be safer for now.\"",
-            next: "consider_marshal_offer"
-        },
-        
-        choose_who_goes: {
+
+        // Scene 26: The Town Divides
+        town_divided: {
             speaker: "Narrator",
-            text: "You need to decide who will go to help the Marshal and who will stay to protect Perdition.",
-            choices: [
-                {
-                    text: "Send Maria and Thomas (keep Elijah and Jacob)",
-                    next: "maria_thomas_go",
-                    onChoose: function() { 
-                        updateStoryVariable('flags.chapter7_flags.c7_maria_goes', true);
-                        updateStoryVariable('flags.chapter7_flags.c7_thomas_goes', true);
-                    }
-                },
-                {
-                    text: "Send Elijah and Jacob (keep Maria and Thomas)",
-                    next: "elijah_jacob_go",
-                    requires: function() { return getStoryVariable('storyVariables.final_ending_type') !== 'Sacrifice'; },
-                    onChoose: function() { 
-                        updateStoryVariable('flags.chapter7_flags.c7_elijah_goes', true);
-                        updateStoryVariable('flags.chapter7_flags.c7_jacob_goes', true);
-                    }
-                },
-                {
-                    text: "Everyone goes together",
-                    next: "everyone_goes_together",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_everyone_goes', true); }
-                }
-            ]
+            text: "Perdition splits into factions. Some support the pragmatic choice—better to compromise than starve. Others feel betrayed, watching their heroes become mercenaries. The unity forged in fighting Cross crumbles in the face of economic reality.",
+            next: "first_day_new_job"
         },
-        
-        consider_marshal_offer: {
+
+        // Scene 27: First Day at the New Job
+        first_day_new_job: {
             speaker: "Narrator",
-            text: "The Marshal's offer of protection for Perdition is reassuring, but you've learned to be cautious about trusting outsiders completely.",
-            choices: [
-                {
-                    text: "Accept the offer and go help",
-                    next: "accept_marshal_protection",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_accepted_marshal_protection', true); }
-                },
-                {
-                    text: "Politely decline but offer advice instead",
-                    next: "decline_but_advise",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_declined_but_advised', true); }
-                }
-            ]
+            text: "Maria and Thomas report to the mine offices. Their new employers are smooth-talking businessmen from back east—not obviously criminal, but clearly ruthless. They speak of profit margins and acceptable losses, and it's clear that 'acceptable losses' includes workers' lives.",
+            next: "moral_erosion_begins"
         },
-        
-        maria_thomas_go: {
+
+        // Scene 28: Moral Erosion Begins
+        moral_erosion_begins: {
+            speaker: "Mine Owner",
+            text: "'Sometimes workers get... uppity. Start talking about unions, safety regulations, that sort of thing. We trust you'll help them see reason. After all, a closed mine helps no one, right? And if someone needs to be made an example of, well... that's why we hired professionals.'",
+            next: "thomas_medical_compromise"
+        },
+
+        // Scene 29: Thomas's Medical Compromise
+        thomas_medical_compromise: {
+            speaker: "Thomas Whitmore",
+            text: "Thomas is shown the company medical supplies—more than he's seen in months. But there's a catch: 'Workers who cause trouble don't get treatment. Company policy. Can't waste resources on malcontents.' His hands shake as he nods agreement.",
+            next: "jacob_family_business"
+        },
+
+        // Scene 30: Jacob Joins the Family Business
+        jacob_family_business: {
+            speaker: "Samuel Rivers",
+            text: "'Good to have you back, nephew.' Samuel Rivers hands Jacob a gun. 'Your friends made quite a mess here. Cost us considerable business. But family is family. You'll help us rebuild our operations. Start by collecting some debts. Show them you're a Rivers now.'",
+            next: "elijah_isolation"
+        },
+
+        // Scene 31: Elijah's Isolation
+        elijah_isolation: {
             speaker: "Narrator",
-            text: "You decide that Maria and Thomas should go with the Marshal - Maria's experience with dangerous situations and Thomas's medical expertise could prove invaluable. Elijah and Jacob will remain to protect Perdition and maintain the fragile peace.",
-            next: "preparation_phase"
+            text: "Elijah sits alone in the burned church ruins. No one comes to his sermons anymore. The hero preacher has become a reminder of failed promises. He clutches his Bible, but the words offer no comfort. He's kept his principles, but at what cost?",
+            next: "first_violence"
         },
-        
-        elijah_jacob_go: {
+
+        // Scene 32: The First Violence
+        first_violence: {
             speaker: "Narrator",
-            text: "Elijah and Jacob volunteer to ride with the Marshal. Elijah's spiritual strength and Jacob's knowledge of the region could be crucial, while Maria and Thomas stay to coordinate Perdition's defenses and handle any cartel complications.",
-            next: "preparation_phase"
+            text: "A mine worker named Peterson—Martha's cousin—organizes a meeting about unsafe conditions. Maria is ordered to break it up. She does so efficiently, professionally. When Peterson resists, she breaks his arm. Just enough violence to send a message. She feels nothing.",
+            next: "thomas_denies_treatment"
         },
-        
-        everyone_goes_together: {
+
+        // Scene 33: Thomas Denies Treatment
+        thomas_denies_treatment: {
+            speaker: "Thomas Whitmore",
+            text: "'Sorry, Peterson. Company policy. Troublemakers don't get treatment.' Thomas's words are slurred—he's drinking heavily again. He watches the man leave in pain, tells himself it's not his fault. The company has rules. He just follows them.",
+            next: "jacob_debt_collection"
+        },
+
+        // Scene 34: Jacob's Violent Education
+        jacob_debt_collection: {
             speaker: "Narrator",
-            text: "The group decides they're stronger together. Whatever supernatural threats await, you'll face them as a united front. Perdition will have to rely on its own people and the Marshal's promised deputy for protection.",
-            next: "preparation_phase"
+            text: "Jacob stands outside a farmhouse with two Rivers men. The family owes gambling debts they can't pay. 'Sometimes you got to hurt people to help them understand,' his companion says. 'Your uncle wants to see if you've got the stomach for real work.' Jacob's hand tightens on his gun.",
+            next: "moral_event_horizon"
         },
-        
-        accept_marshal_protection: {
-            speaker: "Elijah",
-            text: "\"We accept your offer, Marshal. Perdition will be safer with your deputy here, and you'll have our full support against these supernatural threats.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-            },
-            next: "preparation_phase"
-        },
-        
-        decline_but_advise: {
-            speaker: "Thomas",
-            text: "\"We appreciate the offer, but Perdition is our responsibility. However, we can share what we've learned about fighting these supernatural entities.\"",
-            next: "share_knowledge"
-        },
-        
-        share_knowledge: {
+
+        // Scene 35: Crossing Lines
+        moral_event_horizon: {
             speaker: "Narrator",
-            text: "You spend time with the messenger, explaining the importance of unity, the power of faith and hope against despair, and the need for both spiritual and physical preparation when facing supernatural threats.",
-            next: "messenger_grateful_departure"
+            text: "The farmer begs, shows them his children watching from the window. Jacob remembers wanting to be a hero. But heroes don't eat. Heroes don't survive. He nods to his companions. The beating is brutal but measured. Business, not personal. The children cry.",
+            next: "elijah_witnesses"
         },
-        
-        messenger_grateful_departure: {
-            speaker: "Messenger",
-            text: "\"This knowledge could save lives. The Marshal will appreciate any insight into fighting these... things. May God watch over Perdition in your absence.\"",
-            next: "preparation_phase"
+
+        // Scene 36: Elijah Witnesses
+        elijah_witnesses: {
+            speaker: "Elijah Cross",
+            text: "Elijah finds the beaten farmer, tries to help. 'It was the Rivers boy,' the man gasps. 'The one who helped save the town. He just watched while they...' Elijah's faith, already fragile, cracks a little more.",
+            next: "confrontation_brewing"
         },
-        
-        preparation_phase: {
+
+        // Scene 37: The Confrontation Builds
+        confrontation_brewing: {
             speaker: "Narrator",
-            text: "The next morning, you prepare for the journey. As you gather supplies and weapons, an unexpected visitor arrives - an elderly Native American woman riding a painted horse, her presence commanding immediate attention from the townsfolk.",
-            next: "native_woman_arrives"
+            text: "Word spreads quickly. The heroes who saved Perdition have become its new oppressors. Maria breaks strikes. Thomas denies medicine. Jacob collects debts with violence. Only Elijah remains 'pure'—and useless. The town's resentment builds toward a boiling point.",
+            next: "workers_organize"
         },
-        
-        native_woman_arrives: {
+
+        // Scene 38: Workers Organize
+        workers_organize: {
+            speaker: "Sarah Mitchell",
+            text: "Sarah Mitchell, who once stood with them against Cross, now leads the opposition. 'They're no different than Cross. Worse, even—at least Cross was honest about what he was. These four pretended to be our saviors.'",
+            next: "maria_warning"
+        },
+
+        // Scene 39: Maria's Warning
+        maria_warning: {
+            speaker: "Maria Vasquez",
+            text: "Maria finds Sarah one night. 'Stop the organizing. This is your only warning. I don't want to hurt you, but I will. This is just business.' Sarah spits at her feet. 'We trusted you. I defended you to Cross.' Maria's face remains stone. 'That was your mistake.'",
+            next: "thomas_breaking_point"
+        },
+
+        // Scene 40: Thomas Reaches His Limit
+        thomas_breaking_point: {
             speaker: "Narrator",
-            text: "The woman dismounts with the fluid grace of someone who has lived most of her life on horseback. Her weathered face carries the wisdom of decades, and her dark eyes seem to see more than they should. She approaches your group directly, as if she knew exactly who to find.",
-            next: "native_woman_speaks"
+            text: "A child dies in the mine—preventable if safety measures had been in place. Thomas is ordered to write it up as an accident. He's drunk when he signs the paper, but sober enough to know what he's doing. Another small death on his conscience.",
+            next: "jacob_questions"
         },
-        
-        native_woman_speaks: {
-            speaker: "Morning Star",
-            text: "\"You are the ones who faced the Hungry Shadow in this place. I felt its binding break, then reform. I am Morning Star of the Kiowa. My grandmother's grandmother spoke of the Five Terrors that sleep beneath the earth. One has stirred. The others are waking.\"",
-            next: "morning_star_explanation"
+
+        // Scene 41: Jacob's Doubts
+        jacob_questions: {
+            speaker: "Jacob Rivers",
+            text: "'This isn't what I wanted,' Jacob tells his uncle. Samuel laughs. 'Nobody wants this, boy. But this is what the world is. You can be the one holding the gun or the one it's pointed at. Your heroic friends figured that out quick enough.'",
+            next: "elijah_final_sermon"
         },
-        
-        morning_star_explanation: {
-            speaker: "Morning Star",
-            text: "\"What you call the 'Hungry Dark' was only the first. The Bone Singer calls the dead in the mining places. The Dream Walker feeds on hope itself. The Iron Devourer turns metal to rust and flesh to dust. And the Storm Crow brings madness on the wind. All were bound by the old pacts. All are stirring now.\"",
-            next: "group_reaction_morning_star"
+
+        // Scene 42: Elijah's Last Sermon
+        elijah_final_sermon: {
+            speaker: "Elijah Cross",
+            text: "Elijah preaches to an empty church about redemption and justice. His words echo off broken walls. Outside, he can hear Maria's men breaking up another workers' meeting. He keeps preaching, desperate to believe his own words.",
+            next: "henderson_evicted"
         },
-        
-        group_reaction_morning_star: {
+
+        // Scene 43: Mrs. Henderson Loses Everything
+        henderson_evicted: {
             speaker: "Narrator",
-            text: "Your group exchanges worried glances. The messenger, who had been preparing to leave, stops to listen with growing alarm.",
-            choices: [
-                {
-                    text: "Ask Morning Star to join your mission",
-                    next: "invite_morning_star",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_invited_morning_star', true); }
-                },
-                {
-                    text: "Ask for more information about stopping these entities",
-                    next: "ask_about_binding",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_asked_about_binding', true); }
-                },
-                {
-                    text: "Express skepticism about the supernatural explanation",
-                    next: "express_skepticism",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_expressed_skepticism', true); }
-                }
-            ]
+            text: "The bank takes the boarding house. Mrs. Henderson, who showed them kindness, is thrown into the street. Maria is there, working security for the bank. She doesn't meet the old woman's eyes. Just following orders. Just doing her job.",
+            next: "complete_transformation"
         },
-        
-        invite_morning_star: {
-            speaker: "Elijah",
-            text: "\"If you know how to fight these entities, we could use your help. Lives are at stake.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-            },
-            next: "morning_star_considers"
-        },
-        
-        ask_about_binding: {
-            speaker: "Thomas",
-            text: "\"These bindings you mentioned - how were they created? And more importantly, how do we restore them?\"",
-            next: "morning_star_ritual_knowledge"
-        },
-        
-        express_skepticism: {
-            speaker: "Jacob",
-            text: "\"With respect, ma'am, we've got real problems to deal with. Marshal's waiting, towns are in danger. Can we focus on practical solutions?\"",
-            next: "morning_star_proves_knowledge"
-        },
-        
-        morning_star_considers: {
-            speaker: "Morning Star",
-            text: "\"I have walked between the worlds for many years, seeking signs of the Five Terrors' stirring. Your battle with the Hungry Shadow has accelerated their awakening. Yes, I will help, but know that this path leads to great danger.\"",
-            next: "morning_star_joins"
-        },
-        
-        morning_star_ritual_knowledge: {
-            speaker: "Morning Star",
-            text: "\"The old bindings required five sacred sites, one for each Terror. But they were made in a time when the tribes worked together and the white settlers respected our warnings. Now... we must find new ways, or adapt the old ceremonies to a changed world.\"",
-            next: "practical_guidance"
-        },
-        
-        morning_star_proves_knowledge: {
-            speaker: "Morning Star",
-            text: "\"The mining town you call Devil's Backbone - the Bone Singer has awakened there. Its song calls to the dead in the mine shafts, drawing them up to walk among the living. The collapse was not accident, but invitation.\" She fixes Jacob with an intense stare. \"Is this practical enough?\"",
-            next: "jacob_convinced"
-        },
-        
-        jacob_convinced: {
-            speaker: "Jacob",
-            text: "\"That... that matches what the messenger described. How could you know that?\"",
-            next: "morning_star_joins"
-        },
-        
-        morning_star_joins: {
-            speaker: "Morning Star",
-            text: "\"I will ride with you to face the Bone Singer. But first, you must understand - these entities corrupt not just flesh and spirit, but the very land itself. Each one requires different medicine, different sacrifice.\"",
-            next: "maria_complication_begins"
-        },
-        
-        practical_guidance: {
-            speaker: "Morning Star",
-            text: "\"For now, we focus on the immediate threat. The Bone Singer must be faced with ceremonies of life and renewal. But beware - it grows stronger with each soul it claims.\"",
-            next: "maria_complication_begins"
-        },
-        
-        maria_complication_begins: {
+
+        // Scene 44: Complete Transformation
+        complete_transformation: {
             speaker: "Narrator",
-            text: "As your group prepares to depart with Morning Star, a new rider approaches Perdition from the south. Maria's face goes pale as she recognizes the approaching figure - a woman in black, riding with the unmistakable confidence of cartel hierarchy.",
-            next: "cartel_representative_arrives"
+            text: "Six weeks after Cross's defeat, the transformation is complete. The four heroes who saved Perdition have become everything they fought against. Maria, the enforcer. Thomas, the complicit doctor. Jacob, the violent debt collector. And Elijah, the useless saint.",
+            next: "frank_observation"
         },
-        
-        cartel_representative_arrives: {
-            speaker: "Isabella Valdez",
-            text: "\"María Santos. You have been very difficult to find.\" The woman dismounts slowly, her hand resting casually on her pistol. \"I am Isabella Valdez, cousin to the late Carlos. We have unfinished business to discuss.\"",
-            next: "maria_tension"
+
+        // Scene 45: Frank's Observation
+        frank_observation: {
+            speaker: "Frank Hutchins",
+            text: "'Funny how that works,' Frank observes to whoever will listen. 'They got rid of Cross, but they became him. Maybe worse. At least Cross built things before he destroyed them. These four just learned that being good doesn't pay the bills.'",
+            next: "final_meeting"
         },
-        
-        maria_tension: {
-            speaker: "Maria",
-            text: "\"Isabella. I thought the family had accepted that I was... retired from their affairs.\" Maria's voice is carefully controlled, but you can see the tension in her shoulders.",
-            next: "isabella_explanation"
-        },
-        
-        isabella_explanation: {
-            speaker: "Isabella Valdez",
-            text: "\"Retired? You testified against us, María. Cost us men, routes, respect. But recent events... they have changed the family's perspective. We face threats that bullets cannot kill. Perhaps it is time for old grudges to be set aside.\"",
-            next: "cartel_proposition"
-        },
-        
-        cartel_proposition: {
-            speaker: "Isabella Valdez",
-            text: "\"The family extends an offer: your knowledge of these supernatural threats, in exchange for full amnesty. Help us protect our territory from these... entities... and all past grievances are forgotten.\"",
-            choices: [
-                {
-                    text: "Support Maria's decision, whatever it is",
-                    next: "support_maria_choice",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_supported_maria', true); }
-                },
-                {
-                    text: "Advise Maria to reject the cartel offer",
-                    next: "advise_rejection",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_advised_rejection', true); }
-                },
-                {
-                    text: "Suggest negotiating better terms",
-                    next: "suggest_negotiation",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_suggested_negotiation', true); }
-                }
-            ]
-        },
-        
-        support_maria_choice: {
-            speaker: "Elijah",
-            text: "\"Whatever you decide, Maria, we'll stand by you. You've proven yourself to us.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Thomas";
-                }
-            },
-            next: "maria_considers_offer"
-        },
-        
-        advise_rejection: {
-            speaker: "Thomas",
-            text: "\"Maria, you've built a new life here. Don't let them drag you back into that world.\"",
-            next: "maria_considers_rejection"
-        },
-        
-        suggest_negotiation: {
-            speaker: "Jacob",
-            text: "\"Maybe there's a middle ground. Information sharing without... full reinvolvement?\"",
-            next: "maria_considers_negotiation"
-        },
-        
-        maria_considers_offer: {
-            speaker: "Maria",
-            text: "\"Isabella, I appreciate the family's offer, but I've found something more valuable than amnesty here. However... if innocent people are dying to supernatural threats, perhaps we can work together without me rejoining the organization.\"",
-            next: "isabella_counter_offer"
-        },
-        
-        maria_considers_rejection: {
-            speaker: "Maria",
-            text: "\"You're right, Thomas. Isabella, I'm honored by the family's offer, but I've chosen a different path. I'll help fight these supernatural threats as part of this community, not as part of the cartel.\"",
-            next: "isabella_reaction_rejection"
-        },
-        
-        maria_considers_negotiation: {
-            speaker: "Maria",
-            text: "\"Perhaps we can find terms that work for everyone. I have no desire to rejoin the cartel, but if sharing knowledge saves lives...\"",
-            next: "negotiation_begins"
-        },
-        
-        isabella_counter_offer: {
-            speaker: "Isabella Valdez",
-            text: "\"Independent cooperation? The family prefers... clearer arrangements. But given the circumstances, we might consider a temporary alliance. Information shared freely, but no formal ties.\"",
-            next: "maria_final_decision"
-        },
-        
-        isabella_reaction_rejection: {
-            speaker: "Isabella Valdez",
-            text: "\"I see. The family will be... disappointed. But perhaps the supernatural threats will change your mind. When these entities reach our territory, you may find you need allies with resources.\"",
-            next: "threatening_departure"
-        },
-        
-        negotiation_begins: {
-            speaker: "Isabella Valdez",
-            text: "\"What terms do you propose? The family needs reliable intelligence about these threats, and your new... friends... might benefit from our resources.\"",
-            next: "negotiate_terms"
-        },
-        
-        negotiate_terms: {
+
+        // Scene 46: Final Meeting
+        final_meeting: {
             speaker: "Narrator",
-            text: "The negotiation is tense but productive. A temporary alliance is discussed - sharing information about supernatural threats while maintaining independence.",
-            choices: [
-                {
-                    text: "Agree to information sharing only",
-                    next: "info_sharing_agreement",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_cartel_info_sharing', true); }
-                },
-                {
-                    text: "Request cartel resources for the mission",
-                    next: "request_cartel_resources",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_requested_cartel_resources', true); }
-                },
-                {
-                    text: "Offer to include Isabella in the mission",
-                    next: "invite_isabella",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_invited_isabella', true); }
-                }
-            ]
+            text: "The four meet one last time at the abandoned boarding house. They avoid eye contact, each carrying the weight of their choices. The silence is heavy with mutual disgust and self-loathing.",
+            next: "maria_pragmatism"
         },
-        
-        maria_final_decision: {
-            speaker: "Maria",
-            text: "\"Temporary alliance it is. But I make my own choices about how to use any information shared.\"",
-            next: "isabella_accepts"
+
+        // Scene 47: Maria's Cold Pragmatism
+        maria_pragmatism: {
+            speaker: "Maria Vasquez",
+            text: "'Don't look at me like that. We're surviving. That's more than most can say. The town's eating again, even if they hate us for it. Sometimes that's the best you can do.'",
+            next: "thomas_justification"
         },
-        
-        threatening_departure: {
-            speaker: "Isabella Valdez",
-            text: "\"Very well. But María... the supernatural is not the only danger in these lands. Remember that.\" She mounts her horse with fluid grace. \"Perhaps we will meet again under different circumstances.\"",
-            next: "cartel_tension_remains"
+
+        // Scene 48: Thomas's Weak Justification
+        thomas_justification: {
+            speaker: "Thomas Whitmore",
+            text: "'I've saved more lives with company medicine than I ever could have as a principled pauper. So what if I have to look the other way sometimes? The greater good, right?' He laughs bitterly, takes another drink.",
+            next: "jacob_resignation"
         },
-        
-        info_sharing_agreement: {
-            speaker: "Isabella Valdez",
-            text: "\"Acceptable. The family will provide what intelligence we have about supernatural activities in our territory. In return, you share what you learn about fighting these entities.\"",
-            next: "temporary_alliance_formed"
+
+        // Scene 49: Jacob's Resignation
+        jacob_resignation: {
+            speaker: "Jacob Rivers",
+            text: "'We're not heroes. Never were. Just people who got lucky once and thought it meant something. Now we know better. The world doesn't want heroes. It wants survivors who don't ask questions.'",
+            next: "chapter_conclusion"
         },
-        
-        request_cartel_resources: {
-            speaker: "Maria",
-            text: "\"If we're going to fight these things, we'll need supplies, weapons, maybe even men. Can the family provide material support?\"",
-            next: "isabella_considers_resources"
-        },
-        
-        invite_isabella: {
-            speaker: "Elijah",
-            text: "\"Isabella, you're welcome to ride with us. Face these threats firsthand and see what we're all dealing with.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-            },
-            next: "isabella_considers_joining"
-        },
-        
-        isabella_accepts: {
-            speaker: "Isabella Valdez",
-            text: "\"Very well. I will remain in the area to coordinate this... partnership. But I want regular reports on these supernatural threats.\"",
-            next: "temporary_alliance_formed"
-        },
-        
-        cartel_tension_remains: {
+
+        // Scene 50: Chapter Conclusion
+        chapter_conclusion: {
             speaker: "Narrator",
-            text: "Isabella's departure leaves an air of tension. The cartel's interest in the supernatural threats adds another layer of complexity to an already dangerous situation.",
-            next: "departure_preparation"
-        },
-        
-        isabella_considers_resources: {
-            speaker: "Isabella Valdez",
-            text: "\"The family has interests to protect. If these entities threaten our operations... yes, we can provide weapons, ammunition, even safe houses along certain routes.\"",
-            next: "resource_agreement"
-        },
-        
-        isabella_considers_joining: {
-            speaker: "Isabella Valdez",
-            text: "\"Ride with you? I am not some hired gun. But... if it serves the family's interests to observe these threats firsthand...\" She pauses, considering. \"Very well. I will accompany you to this Devil's Backbone place.\"",
-            next: "isabella_joins_mission"
-        },
-        
-        temporary_alliance_formed: {
-            speaker: "Narrator",
-            text: "A fragile alliance between your group and the Valdez cartel is established. The arrangement is tense but potentially beneficial for facing the supernatural threats.",
-            next: "departure_preparation"
-        },
-        
-        resource_agreement: {
-            speaker: "Maria",
-            text: "\"Thank you, Isabella. This cooperation could save many lives.\"",
-            next: "temporary_alliance_formed"
-        },
-        
-        isabella_joins_mission: {
-            speaker: "Isabella Valdez",
-            text: "\"But I make it clear - I am here as an observer and representative of family interests. I will not take orders from anyone but María, and only because we have history.\"",
-            next: "expanded_group_dynamics"
-        },
-        
-        expanded_group_dynamics: {
-            speaker: "Narrator",
-            text: "Your group has grown considerably. Morning Star brings knowledge of the supernatural threats, while Isabella represents powerful resources but also complicated loyalties. The dynamic has shifted significantly.",
-            next: "departure_preparation"
-        },
-        
-        departure_preparation: {
-            speaker: "Narrator",
-            text: "With alliances formed and knowledge shared, you prepare to leave Perdition for Devil's Backbone. The messenger has been waiting patiently, but his nervousness has only increased as he's overheard talk of ancient evils and supernatural entities.",
-            next: "final_preparations"
-        },
-        
-        final_preparations: {
-            speaker: "Morning Star",
-            text: "\"Before we ride to face the Bone Singer, you must understand - this entity draws power from disturbed graves and violent deaths. The mining has awakened many spirits. We will need more than bullets.\"",
-            choices: [
-                {
-                    text: "Ask Morning Star to prepare ritual protection",
-                    next: "ritual_protection",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_ritual_protection', true); }
-                },
-                {
-                    text: "Focus on practical preparations - weapons and supplies",
-                    next: "practical_preparations",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_practical_preparations', true); }
-                },
-                {
-                    text: "Try to balance both spiritual and physical preparation",
-                    next: "balanced_preparation",
-                    onChoose: function() { updateStoryVariable('flags.chapter7_flags.c7_balanced_preparation', true); }
-                }
-            ]
-        },
-        
-        ritual_protection: {
-            speaker: "Morning Star",
-            text: "\"Wise. I will prepare sacred sage and protection charms for each of you. The Bone Singer cannot touch those who carry the blessing of life over death.\" She begins gathering materials from her horse's saddlebags.",
-            next: "group_departs"
-        },
-        
-        practical_preparations: {
-            speaker: "Thomas",
-            text: "\"Good thinking. I'll gather medical supplies and extra ammunition. Whatever this thing is, being prepared for a fight can't hurt.\"",
-            next: "group_departs"
-        },
-        
-        balanced_preparation: {
-            speaker: "Elijah",
-            text: "\"We should prepare for both kinds of battle - spiritual and physical. Morning Star, please prepare what protections you can. Thomas, make sure we have medical supplies and weapons ready.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-            },
-            next: "comprehensive_preparation"
-        },
-        
-        comprehensive_preparation: {
-            speaker: "Narrator",
-            text: "The next hour is spent in careful preparation. Morning Star creates protective charms while Thomas organizes medical supplies and weapons. The group's different expertise blends together effectively.",
-            next: "group_departs"
-        },
-        
-        group_departs: {
-            speaker: "Narrator",
-            text: "As the sun reaches its zenith, your expanded group rides out of Perdition toward Devil's Backbone. Behind you, the town watches with a mixture of hope and fear. Ahead lies the unknown danger of the Bone Singer and whatever horrors it has awakened in the mining tunnels.",
-            next: "chapter_transition"
-        },
-        
-        chapter_transition: {
-            speaker: "Narrator",
-            text: "The ride to Devil's Backbone will take two days, giving your group time to learn more about each other's capabilities and the nature of the threat you face. But even now, on the clear morning air, you can hear something that chills your blood - a faint, distant singing that seems to come from beneath the earth itself.",
-            next: "chapter_end"
-        },
-        
-        chapter_end: {
-            speaker: "Narrator",
-            text: "The revelation that the Hungry Dark was merely the first of five ancient evils changes everything. With new allies and old enemies at your side, you ride toward Devil's Backbone and the supernatural horror known as the Bone Singer. The scope of the threat has expanded beyond anything you imagined, and the fate of multiple towns now rests in your hands.",
+            text: "They part without goodbyes, each walking back to their new lives. Perdition still stands, but the cost of its survival has been the souls of its saviors. In trying to be better than Cross, they've become him—or perhaps something worse. They saved the town's body but poisoned its spirit, and their own. The hero's journey ends not in triumph, but in the bitter recognition that sometimes, everyone becomes what they hate, given enough hunger and desperation. The only choice is whether to admit it or keep pretending.",
             choices: [
                 {
                     text: "Continue to Chapter 8",
                     next: null,
-                    nextChapter: "chapter8",
-                    onChoose: function() { updateStoryVariable('currentChapter', 'Chapter 8'); }
+                    nextChapter: "chapter8"
                 }
             ]
         }
     }
-}; 
+};

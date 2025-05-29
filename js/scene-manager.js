@@ -94,7 +94,7 @@ class SceneManager {
             'chapter2': 'start',
             'chapter3': 'start',
             'chapter4': 'start',
-            'chapter5': 'ritual_trap',
+            'chapter5': 'start',
             'chapter6': 'start',
             'chapter7': 'start',
             'chapter8': 'start',

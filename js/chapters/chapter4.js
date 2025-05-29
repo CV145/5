@@ -14,764 +14,406 @@ storyData.chapter4 = {
         morning_awakening: {
             speaker: "Narrator",
             text: "The smell of coffee and bacon drifts up from the kitchen below, a comforting reminder of civilization. Through the thin walls, you can hear the others stirring—the creak of floorboards, the splash of water in washbasins, the quiet preparation for a new day.",
-            choices: [
-                {
-                    text: "Get dressed and head downstairs immediately",
-                    next: "early_riser"
-                },
-                {
-                    text: "Take time to look out the window at the town",
-                    next: "window_observation"
-                },
-                {
-                    text: "Listen carefully to sounds from the other rooms",
-                    next: "listening_to_companions"
-                }
-            ]
+            next: "heading_downstairs"
         },
 
-        // Scene 3a: Early Riser
-        early_riser: {
+        // Scene 3: Heading Downstairs
+        heading_downstairs: {
             speaker: "Narrator",
-            text: "You dress quickly and make your way downstairs, eager to start the day. The stairs creak softly under your feet as you descend into the warm, inviting atmosphere of Mrs. Henderson's kitchen.",
-            next: "breakfast_preparation"
-        },
-
-        // Scene 3b: Window Observation
-        window_observation: {
-            speaker: "Narrator",
-            text: "From your window, Perdition looks different in the morning light—still weathered and worn, but somehow less ominous. A few early risers move through the streets: a woman hanging laundry, an old man leading a mule, smoke rising from several chimneys. Life persists, even here.",
-            next: "breakfast_preparation"
-        },
-
-        // Scene 3c: Listening to Companions
-        listening_to_companions: {
-            speaker: "Narrator",
-            text: "Through the walls, you can hear Thomas moving about methodically, probably organizing his medical supplies. Maria's room is silent—she's likely been awake for some time, watching the street. Jacob's restless pacing suggests nervous energy about the day ahead.",
-            next: "breakfast_preparation"
-        },
-
-        // Scene 4: Breakfast Preparation
-        breakfast_preparation: {
-            speaker: "Mrs. Henderson",
-            text: "Mrs. Henderson works efficiently at the stove, her movements practiced and sure. 'Good morning,' she says without turning around. 'I trust you slept well? Breakfast will be ready shortly. I've prepared extra—figured you'd need your strength for whatever you're planning to do about this town's troubles.'",
+            text: "You dress and make your way downstairs, where Mrs. Henderson works efficiently at the stove. 'Good morning,' she says without turning around. 'I trust you slept well? Breakfast will be ready shortly.'",
             next: "companions_gather"
         },
 
-        // Scene 5: Companions Gather
+        // Scene 4: Companions Gather
         companions_gather: {
             speaker: "Narrator",
             text: "One by one, your companions join you in the kitchen. Elijah appears first, his clerical collar straightened and his expression thoughtful. Maria follows, already dressed and armed, her eyes scanning the room out of habit. Jacob comes down last, looking young but determined.",
-            next: "breakfast_conversation_start"
+            next: "mrs_henderson_revelation"
         },
 
-        // Scene 6: Breakfast Conversation Start
-        breakfast_conversation_start: {
+        // Scene 5: Mrs. Henderson's Revelation
+        mrs_henderson_revelation: {
             speaker: "Mrs. Henderson",
-            text: "'Before you ask, yes, I heard you folks talking last night. These walls aren't that thick.' She sets plates of bacon and eggs before you. 'And before you worry, I'm not one to spread gossip. But if you're truly planning to help this town, you should know what you're up against.'",
+            text: "'Before you ask, yes, I heard you folks talking last night. These walls aren't that thick.' She sets plates of bacon and eggs before you. 'And if you're truly planning to help this town, you should know what you're up against.'",
+            next: "town_troubles_revealed"
+        },
+
+        // Scene 6: Town Troubles Revealed
+        town_troubles_revealed: {
+            speaker: "Mrs. Henderson",
+            text: "'The troubles started about two years ago. First the mine production dropped, then the cattle started dying mysteriously. People began leaving, businesses closed. Sheriff Bradley tried to hold things together, but someone didn't want law and order in Perdition.'",
             choices: [
                 {
-                    text: "Ask Mrs. Henderson about the town's troubles",
-                    next: "mrs_henderson_town_troubles"
+                    text: "Ask who would want to destroy the town",
+                    next: "asking_about_enemy"
                 },
                 {
-                    text: "Inquire about specific people to avoid or trust",
-                    next: "mrs_henderson_people_advice"
-                },
-                {
-                    text: "Learn about the town's history before the decline",
-                    next: "mrs_henderson_town_history"
+                    text: "Listen quietly to learn more",
+                    next: "listening_to_details"
                 }
             ]
         },
 
-        // Scene 7a: Mrs. Henderson on Town Troubles
-        mrs_henderson_town_troubles: {
-            speaker: "Mrs. Henderson",
-            text: "'The troubles started about two years ago. First the mine production dropped, then the cattle started dying mysteriously. People began leaving, businesses closed. Sheriff Bradley tried to hold things together, but...' She shakes her head grimly. 'Someone didn't want law and order in Perdition.'",
-            next: "breakfast_continues"
-        },
-
-        // Scene 7b: Mrs. Henderson's People Advice
-        mrs_henderson_people_advice: {
-            speaker: "Mrs. Henderson",
-            text: "'Trust Jeremiah at the store—he's honest as they come. Doc Wilson at the veterinary clinic is good people too, though he's been drinking more since the cattle started dying. As for who to avoid...' She lowers her voice. 'The saloon owner, Frank Hutchins, he's got debts to unsavory folks. Makes him unreliable.'",
-            next: "breakfast_continues"
-        },
-
-        // Scene 7c: Mrs. Henderson's Town History
-        mrs_henderson_town_history: {
-            speaker: "Mrs. Henderson",
-            text: "'Perdition was a good town once. Founded by decent folks looking for a fresh start—hence the name, ironic as it seems now. The mine was productive, the land supported cattle, and we had a real community. Church socials, town meetings, children playing in the streets...' Her voice grows wistful.",
-            next: "breakfast_continues"
-        },
-
-        // Scene 8: Breakfast Continues
-        breakfast_continues: {
-            speaker: "Thomas Whitmore",
-            text: "'Mrs. Henderson, you mentioned people needing medical attention. Would you be willing to introduce me to them? I'd like to start helping as soon as possible.'",
-            next: "medical_requests"
-        },
-
-        // Scene 9: Medical Requests
-        medical_requests: {
-            speaker: "Mrs. Henderson",
-            text: "'Pete's widow, Martha, she's been poorly since he passed. Then there's young Billy at the livery—hurt his leg something fierce last week and it's not healing right. And...' She hesitates. 'There's others who might not come forward right away. Trust doesn't come easy these days.'",
-            choices: [
-                {
-                    text: "Offer to visit patients with Mrs. Henderson",
-                    next: "thomas_house_calls_planned"
-                },
-                {
-                    text: "Suggest setting up a medical clinic",
-                    next: "thomas_clinic_discussion"
-                },
-                {
-                    text: "Ask about medical supplies in town",
-                    next: "thomas_supplies_inquiry"
-                }
-            ]
-        },
-
-        // Scene 10a: Thomas House Calls Planned
-        thomas_house_calls_planned: {
-            speaker: "Thomas Whitmore",
-            text: "'House calls would be best initially. People need to see I'm here to help, not to judge or take advantage. Would you be willing to accompany me, Mrs. Henderson? Your introduction would mean a great deal.'",
-            next: "morning_plans_forming"
-        },
-
-        // Scene 10b: Thomas Clinic Discussion
-        thomas_clinic_discussion: {
-            speaker: "Thomas Whitmore",
-            text: "'A proper clinic would be ideal, but I suspect trust must be earned first. Perhaps we could start with house calls and see if there's a suitable building available later.'",
-            next: "morning_plans_forming"
-        },
-
-        // Scene 10c: Thomas Supplies Inquiry
-        thomas_supplies_inquiry: {
-            speaker: "Mrs. Henderson",
-            text: "'Jeremiah's got some basics at the store—bandages, laudanum, a few other things. But you'd need to send to the county seat for anything serious. That's a three-day ride, and not everyone can afford it.'",
-            next: "morning_plans_forming"
-        },
-
-        // Scene 11: Morning Plans Forming
-        morning_plans_forming: {
+        // Scene 7a: Asking About Enemy
+        asking_about_enemy: {
             speaker: "Elijah Cross",
-            text: "'While Thomas tends to the sick, the rest of us should learn more about this town. Yesterday was just the surface. If we're to help Perdition, we need to understand what's really happening here.'",
+            text: "'Who would benefit from Perdition's destruction? Someone must be profiting from all this misery.'",
+            next: "enemy_revealed"
+        },
+
+        // Scene 7b: Listening to Details
+        listening_to_details: {
+            speaker: "Narrator",
+            text: "You listen intently as Mrs. Henderson continues, her voice growing darker with each revelation about the town's systematic destruction.",
+            next: "enemy_revealed"
+        },
+
+        // Scene 8: Enemy Revealed
+        enemy_revealed: {
+            speaker: "Mrs. Henderson",
+            text: "'There's a man named Silas Cross. Represents some mining consortium from back east. Been buying up properties, water rights, anything of value. Those who won't sell...' She doesn't finish the sentence, but her meaning is clear.",
+            next: "thomas_medical_concerns"
+        },
+
+        // Scene 9: Thomas's Medical Concerns
+        thomas_medical_concerns: {
+            speaker: "Thomas Whitmore",
+            text: "'Mrs. Henderson, you mentioned people needing medical attention. I'd like to start helping as soon as possible. Are there specific cases I should know about?'",
+            next: "medical_mysteries"
+        },
+
+        // Scene 10: Medical Mysteries
+        medical_mysteries: {
+            speaker: "Mrs. Henderson",
+            text: "'Pete's widow Martha has been poorly since he passed. Young Billy at the livery hurt his leg and it's not healing right. But there's something else—mysterious illnesses that Dr. Morrison couldn't treat. Three people died from something that made them fear water.'",
             next: "planning_the_day"
         },
 
-        // Scene 12: Planning the Day
+        // Scene 11: Planning the Day
         planning_the_day: {
             speaker: "Maria Vasquez",
-            text: "'The sheriff's office is empty. Someone should look through Bradley's records, see what he was investigating before he was killed. And we need to know who really runs things now that he's gone.'",
-            choices: [
-                {
-                    text: "Suggest investigating the sheriff's office together",
-                    next: "group_investigation_plan"
-                },
-                {
-                    text: "Propose splitting up to cover more ground",
-                    next: "split_up_plan"
-                },
-                {
-                    text: "Recommend talking to more townspeople first",
-                    next: "information_gathering_plan"
-                }
-            ]
-        },
-
-        // Scene 13a: Group Investigation Plan
-        group_investigation_plan: {
-            speaker: "Elijah Cross",
-            text: "'Strength in numbers. If the sheriff was killed for what he knew, examining his office might be dangerous. Better we face that danger together.'",
+            text: "'We need information. The sheriff's office, the general store, the church ruins—they all might tell us something about this Silas Cross and what he's really doing here.'",
             next: "departure_preparation"
         },
 
-        // Scene 13b: Split Up Plan
-        split_up_plan: {
-            speaker: "Maria Vasquez",
-            text: "'We can cover more ground separately. Thomas makes his medical rounds with Mrs. Henderson, I check the sheriff's office, Elijah talks to business owners, Jacob observes the younger folks. We meet back here at midday.'",
-            next: "departure_preparation"
-        },
-
-        // Scene 13c: Information Gathering Plan
-        information_gathering_plan: {
-            speaker: "Jacob Rivers",
-            text: "'Maybe we should talk to more regular folks first. Workers, families, people who aren't hiding anything. Get the lay of the land before we go poking around official business.'",
-            next: "departure_preparation"
-        },
-
-        // Scene 14: Departure Preparation
+        // Scene 12: Departure Preparation
         departure_preparation: {
             speaker: "Mrs. Henderson",
-            text: "'Whatever you decide, be careful. This town's like a wounded animal—it might bite anyone trying to help. I'll have lunch ready at noon, and if you need anything...' She hands Thomas a small bell. 'Ring this from the front porch. I'll hear it.'",
+            text: "'Whatever you decide to do, be careful. Cross has eyes everywhere. I'll have lunch ready at noon.' She hands Thomas a small bell. 'Ring this from the front porch if you need help.'",
             next: "leaving_boarding_house"
         },
 
-        // Scene 15: Leaving the Boarding House
+        // Scene 13: Leaving the Boarding House
         leaving_boarding_house: {
             speaker: "Narrator",
-            text: "The four companions step out into the morning air of Perdition. The town is more active now, with people going about their daily business, though everyone seems hurried, heads down, avoiding eye contact. The sense of a community under siege is palpable.",
-            next: "first_destination_choice"
+            text: "The four companions step out into the morning air of Perdition. The town is more active now, with people going about their daily business, though everyone seems hurried, heads down, avoiding eye contact.",
+            next: "visiting_general_store"
         },
 
-        // Scene 16: First Destination Choice
-        first_destination_choice: {
+        // Scene 14: Visiting the General Store
+        visiting_general_store: {
             speaker: "Narrator",
-            text: "Standing on the boarding house porch, you have several options for beginning your investigation of Perdition. Each choice might reveal different aspects of the town's troubles.",
+            text: "Your first stop is Colt's General Store. Jeremiah Colt, a weathered man with kind but cautious eyes, looks up as you enter. 'Morning, folks. Word is you're staying at Henderson's. If you're looking for supplies, I'll be honest—selection's limited.'",
+            next: "jeremiah_information"
+        },
+
+        // Scene 15: Information from Jeremiah
+        jeremiah_information: {
+            speaker: "Jeremiah Colt",
+            text: "'Tom Bradley was a good man trying to do right in a bad situation. He was investigating something before he died—kept asking about property deeds and water rights. Made some folks nervous, if you catch my meaning.'",
             choices: [
                 {
-                    text: "Head to the general store to talk with Jeremiah",
-                    next: "visit_general_store"
+                    text: "Ask about Silas Cross directly",
+                    next: "jeremiah_on_cross"
                 },
                 {
-                    text: "Go directly to the sheriff's office",
-                    next: "visit_sheriff_office"
-                },
-                {
-                    text: "Stop by the church ruins first",
-                    next: "visit_church_ruins"
-                },
-                {
-                    text: "Walk through the residential area",
-                    next: "explore_residential"
+                    text: "Inquire about the water rights",
+                    next: "jeremiah_on_water"
                 }
             ]
         },
 
-        // Scene 17a: Visit General Store
-        visit_general_store: {
-            speaker: "Narrator",
-            text: "Colt's General Store looks busier this morning, with several customers examining the sparse shelves. Jeremiah notices your group and nods, but continues serving a worried-looking woman who's counting coins carefully.",
-            next: "general_store_interaction"
-        },
-
-        // Scene 17b: Visit Sheriff's Office
-        visit_sheriff_office: {
-            speaker: "Narrator",
-            text: "The sheriff's office door stands ajar, as if abandoned in haste. A wooden sign reading 'Sheriff Tom Bradley' hangs crooked on its chains. Through the open door, you can see papers scattered on a desk and filing cabinets with drawers partially open.",
-            next: "sheriff_office_investigation"
-        },
-
-        // Scene 17c: Visit Church Ruins
-        visit_church_ruins: {
-            speaker: "Narrator",
-            text: "The burned church sits on a small rise at the edge of town. Blackened timbers reach toward the sky like the ribs of some great beast. Even weeks after the fire, the smell of ash and charred wood lingers in the air.",
-            next: "church_ruins_exploration"
-        },
-
-        // Scene 17d: Explore Residential Area
-        explore_residential: {
-            speaker: "Narrator",
-            text: "The residential streets of Perdition tell a story of gradual abandonment. Some houses are well-maintained with gardens and fresh paint, while others show broken windows, sagging porches, and yards grown wild with weeds.",
-            next: "residential_observations"
-        },
-
-        // Scene 18a: General Store Interaction
-        general_store_interaction: {
+        // Scene 16a: Jeremiah on Cross
+        jeremiah_on_cross: {
             speaker: "Jeremiah Colt",
-            text: "After the woman leaves, Jeremiah approaches you. 'Morning, folks. Hope Mrs. Henderson treated you well. If you're looking for supplies, I'll be honest—selection's limited, but prices are fair.'",
-            choices: [
-                {
-                    text: "Ask about the woman who just left",
-                    next: "jeremiah_discusses_customer"
-                },
-                {
-                    text: "Inquire about town supplies and trade",
-                    next: "jeremiah_business_talk"
-                },
-                {
-                    text: "Question him about Sheriff Bradley",
-                    next: "jeremiah_sheriff_discussion"
-                }
-            ]
+            text: "'Cross? That man's like a vulture circling carrion. Shows up when folks are desperate, offers prices that seem generous until you realize what you're really giving up.'",
+            next: "leaving_store"
         },
 
-        // Scene 19a: Jeremiah Discusses Customer
-        jeremiah_discusses_customer: {
+        // Scene 16b: Jeremiah on Water
+        jeremiah_on_water: {
             speaker: "Jeremiah Colt",
-            text: "'Sarah Mitchell. Her husband worked the mine before it... well, before the troubles started. Now she's trying to make three dollars stretch to feed four children.' His expression is grim. 'Too many stories like hers in Perdition these days.'",
-            next: "store_conversation_continues"
+            text: "'Water's life out here. Control the water, control everything. Cross has been real interested in who owns the water rights around Perdition. Too interested, if you ask me.'",
+            next: "leaving_store"
         },
 
-        // Scene 19b: Jeremiah Business Talk
-        jeremiah_business_talk: {
-            speaker: "Jeremiah Colt",
-            text: "'Trade's been slow. Folks don't have money, and supply wagons don't come regular anymore. Had to let my clerk go last month.' He gestures at the sparse shelves. 'Running on what I had in stock, mostly.'",
-            next: "store_conversation_continues"
-        },
-
-        // Scene 19c: Jeremiah Sheriff Discussion
-        jeremiah_sheriff_discussion: {
-            speaker: "Jeremiah Colt",
-            text: "'Tom Bradley was a good man trying to do right in a bad situation.' Jeremiah's voice drops. 'He was investigating something before he died. Kept asking questions about property deeds and water rights. Made some folks nervous.'",
-            next: "store_conversation_continues"
-        },
-
-        // Scene 20: Store Conversation Continues
-        store_conversation_continues: {
+        // Scene 17: Leaving the Store
+        leaving_store: {
             speaker: "Thomas Whitmore",
-            text: "'Mr. Colt, Mrs. Henderson mentioned medical supplies. What do you have available, and what would you need to stock a proper medical kit?'",
+            text: "'Mr. Colt, I'm a physician. Mrs. Henderson mentioned medical supplies, and I'd like to help the community. Do you have anything available?'",
             next: "medical_supplies_discussion"
         },
 
-        // Scene 21: Medical Supplies Discussion
+        // Scene 18: Medical Supplies Discussion
         medical_supplies_discussion: {
             speaker: "Jeremiah Colt",
-            text: "'Bandages, some laudanum, whiskey for cleaning wounds. Basic stuff.' He opens a cabinet behind the counter. 'For anything serious, you'd need to order from the county seat. Course, with the doc gone, there wasn't much call for medical supplies.'",
-            choices: [
-                {
-                    text: "Offer to provide a list of needed supplies",
-                    next: "thomas_supply_list"
-                },
-                {
-                    text: "Ask about the previous doctor's departure",
-                    next: "previous_doctor_story"
-                },
-                {
-                    text: "Inquire about payment arrangements",
-                    next: "medical_payment_discussion"
-                }
-            ]
+            text: "'Bandages, some laudanum, whiskey for cleaning wounds. Basic stuff. The doc who was here before—Morrison—he left after three folks died from something he couldn't diagnose. Said the symptoms didn't match any natural disease.'",
+            next: "sheriff_office_investigation"
         },
 
-        // Scene 22a: Thomas Supply List
-        thomas_supply_list: {
-            speaker: "Thomas Whitmore",
-            text: "'I'll write up a list of essential medical supplies. If you can order them, I'll cover the cost initially. This town needs proper medical care, and I have some savings to invest in that goal.'",
-            next: "leaving_general_store"
-        },
-
-        // Scene 22b: Previous Doctor Story
-        previous_doctor_story: {
-            speaker: "Jeremiah Colt",
-            text: "'Doc Morrison? Good physician, but he spooked easy. After the third patient died from something he couldn't diagnose, he packed up and left. Said there was something unnatural about the illnesses. Course, that might've been the whiskey talking.'",
-            next: "leaving_general_store"
-        },
-
-        // Scene 22c: Medical Payment Discussion
-        medical_payment_discussion: {
-            speaker: "Jeremiah Colt",
-            text: "'Most folks can't pay much, but they'll find ways. Barter mostly—eggs, vegetables, labor. Mrs. Henderson always said a town without a doctor is a town without hope. Maybe you can bring some of that back.'",
-            next: "leaving_general_store"
-        },
-
-        // Scene 18b: Sheriff Office Investigation
+        // Scene 19: Sheriff's Office Investigation
         sheriff_office_investigation: {
-            speaker: "Elijah Cross",
-            text: "'We should examine this carefully. If Sheriff Bradley was killed for what he knew, his records might tell us who wanted him silenced.' He steps carefully into the office, avoiding disturbing any evidence.",
-            next: "office_search_begins"
-        },
-
-        // Scene 23: Office Search Begins
-        office_search_begins: {
             speaker: "Narrator",
-            text: "The sheriff's office is in disarray, but not from violence—it looks like someone searched it thoroughly after Bradley's death. Papers are scattered, drawers are open, and filing cabinets have been rifled through.",
-            choices: [
-                {
-                    text: "Examine the scattered papers on the desk",
-                    next: "desk_papers_examination"
-                },
-                {
-                    text: "Check the filing cabinets for missing records",
-                    next: "filing_cabinets_search"
-                },
-                {
-                    text: "Look for Bradley's personal belongings",
-                    next: "personal_belongings_search"
-                },
-                {
-                    text: "Inspect the jail cells in the back",
-                    next: "jail_cells_inspection"
-                }
-            ]
+            text: "Your next stop is the sheriff's office. The door stands ajar, papers scattered on the desk, filing cabinets rifled through. Someone searched this place thoroughly after Bradley's death.",
+            next: "examining_evidence"
         },
 
-        // Scene 24a: Desk Papers Examination
-        desk_papers_examination: {
+        // Scene 20: Examining Evidence
+        examining_evidence: {
             speaker: "Maria Vasquez",
-            text: "'Most of these are routine reports, but look at this.' She holds up a partially burned document. 'Property transfer records. Someone tried to destroy these, but didn't finish the job. Names are mostly burned, but I can make out 'water rights' and 'forced sale.''",
-            next: "evidence_discovered"
+            text: "'Look at this.' She holds up a partially burned document. 'Property transfer records. Someone tried to destroy these but didn't finish the job. I can make out 'water rights' and 'forced sale.''",
+            next: "thomas_finds_notebook"
         },
 
-        // Scene 24b: Filing Cabinets Search
-        filing_cabinets_search: {
-            speaker: "Jacob Rivers",
-            text: "'These cabinets are nearly empty. Whatever was in here, someone took it.' He pulls out a few remaining folders. 'Just old arrest records from years ago. Nothing recent.'",
-            next: "evidence_discovered"
-        },
-
-        // Scene 24c: Personal Belongings Search
-        personal_belongings_search: {
+        // Scene 21: Thomas Finds Notebook
+        thomas_finds_notebook: {
             speaker: "Thomas Whitmore",
-            text: "'Bradley's personal effects are still here—family photograph, a Bible, his badge.' Thomas picks up a small notebook. 'This might be his personal observations. The handwriting is hurried, like he was taking notes quickly.'",
-            next: "evidence_discovered"
+            text: "'Bradley's personal notebook is still here. The handwriting is hurried, like he was taking notes quickly. There are references to mysterious illnesses and... contaminated water sources.'",
+            next: "jacob_discovery"
         },
 
-        // Scene 24d: Jail Cells Inspection
-        jail_cells_inspection: {
-            speaker: "Narrator",
-            text: "The jail cells are empty but show signs of recent use. In one cell, scratched into the wall, are the words 'WATER IS LIFE' and what looks like a crude map of the area around Perdition.",
-            next: "evidence_discovered"
+        // Scene 22: Jacob's Discovery
+        jacob_discovery: {
+            speaker: "Jacob Rivers",
+            text: "'In the jail cell, someone scratched 'WATER IS LIFE' into the wall, along with what looks like a crude map of the area around Perdition. Someone was trying to leave a message.'",
+            next: "silas_cross_arrives"
         },
 
-        // Scene 25: Evidence Discovered
-        evidence_discovered: {
-            speaker: "Elijah Cross",
-            text: "'Water rights, forced sales, property transfers—there's a pattern here. Someone's been acquiring land and water access systematically. Sheriff Bradley must have been getting close to proving it.'",
-            next: "office_investigation_interrupted"
-        },
-
-        // Scene 26: Office Investigation Interrupted
-        office_investigation_interrupted: {
+        // Scene 23: Silas Cross Arrives
+        silas_cross_arrives: {
             speaker: "Narrator",
             text: "A shadow falls across the doorway. A well-dressed man in an expensive coat stands there, flanked by two rough-looking companions. His smile doesn't reach his eyes.",
-            next: "mysterious_visitor"
+            next: "cross_introduction"
         },
 
-        // Scene 27: Mysterious Visitor
-        mysterious_visitor: {
-            speaker: "Well-Dressed Man",
-            text: "'Good morning. I don't believe we've been introduced. I'm Silas Cross, and I handle... business matters... for various interests in the area. I couldn't help but notice you examining poor Sheriff Bradley's office.'",
-            choices: [
-                {
-                    text: "Introduce yourselves politely",
-                    next: "polite_introduction"
-                },
-                {
-                    text: "Ask about his business in Perdition",
-                    next: "business_inquiry"
-                },
-                {
-                    text: "Question why he's watching you",
-                    next: "suspicious_response"
-                }
-            ]
+        // Scene 24: Cross's Introduction
+        cross_introduction: {
+            speaker: "Silas Cross",
+            text: "'Good morning. I don't believe we've been introduced. I'm Silas Cross, and I handle business matters for various interests in the area. I couldn't help but notice you examining poor Sheriff Bradley's office.'",
+            next: "polite_response"
         },
 
-        // Scene 28a: Polite Introduction
-        polite_introduction: {
+        // Scene 25: Polite Response
+        polite_response: {
             speaker: "Elijah Cross",
             text: "'I'm Elijah Cross, and these are my companions. We're new to Perdition and were curious about the recent troubles. We heard Sheriff Bradley was well-respected.'",
-            next: "silas_response"
+            next: "cross_response"
         },
 
-        // Scene 28b: Business Inquiry
-        business_inquiry: {
-            speaker: "Maria Vasquez",
-            text: "'What kind of business matters? This is a small frontier town. What interests would need... handling?' Her hand rests casually near her gun.",
-            next: "silas_response"
-        },
-
-        // Scene 28c: Suspicious Response
-        suspicious_response: {
-            speaker: "Thomas Whitmore",
-            text: "'Interesting that you notice everyone examining the sheriff's office. Do you make it a habit to monitor who investigates law enforcement matters?'",
-            next: "silas_response"
-        },
-
-        // Scene 29: Silas Response
-        silas_response: {
+        // Scene 26: Cross's Response
+        cross_response: {
             speaker: "Silas Cross",
-            text: "'Cross? Interesting. No relation, I assume.' His smile grows colder. 'As for my business, I represent clients who have investments in this region. Property, water rights, mining interests. When strangers start asking questions about official matters, my clients like to know why.'",
-            next: "tension_builds"
-        },
-
-        // Scene 30: Tension Builds
-        tension_builds: {
-            speaker: "Silas Cross",
-            text: "'Sheriff Bradley was investigating matters that didn't concern him. Sadly, his curiosity proved... unhealthy. I'd hate to see newcomers make the same mistake. Perdition can be dangerous for those who don't understand how things work here.'",
+            text: "'Cross? Interesting coincidence. As for my business, I represent clients with investments in this region. Property, water rights, mining interests. When strangers start asking questions about official matters, my clients like to know why.'",
             next: "veiled_threat"
         },
 
-        // Scene 18c: Church Ruins Exploration
-        church_ruins_exploration: {
-            speaker: "Narrator",
-            text: "Up close, the church ruins are even more devastating. The fire was clearly intense and thorough—too thorough for a simple lightning strike. Melted metal fixtures and strangely burned stone suggest something more deliberate.",
+        // Scene 27: Veiled Threat
+        veiled_threat: {
+            speaker: "Silas Cross",
+            text: "'Sheriff Bradley was investigating matters that didn't concern him. Sadly, his curiosity proved unhealthy. I'd hate to see newcomers make the same mistake. Perdition can be dangerous for those who don't understand how things work here.'",
             choices: [
                 {
-                    text: "Examine the burned altar area",
-                    next: "altar_examination"
+                    text: "Stand firm against the threat",
+                    next: "standing_firm"
                 },
                 {
-                    text: "Look for signs of accelerant or arson",
-                    next: "arson_investigation"
-                },
-                {
-                    text: "Search for any surviving religious items",
-                    next: "religious_items_search"
-                },
-                {
-                    text: "Check the cemetery behind the church",
-                    next: "cemetery_visit"
+                    text: "Remain diplomatically neutral",
+                    next: "diplomatic_response"
                 }
             ]
         },
 
-        // Scene 31a: Altar Examination
-        altar_examination: {
-            speaker: "Elijah Cross",
-            text: "'The altar stone is cracked, but not from heat. Look at these marks—they're deliberate. Someone took an axe or sledgehammer to this before the fire.' His voice is troubled. 'This wasn't just arson. This was desecration.'",
-            next: "church_discoveries"
-        },
-
-        // Scene 31b: Arson Investigation
-        arson_investigation: {
+        // Scene 28a: Standing Firm
+        standing_firm: {
             speaker: "Maria Vasquez",
-            text: "'Here.' She points to several spots around the church foundation. 'Burn patterns are wrong for a lightning fire. Multiple ignition points, and look at this—' She kicks at some debris. 'Remnants of oil-soaked rags.'",
-            next: "church_discoveries"
+            text: "'We understand perfectly. Some people think they can intimidate others into submission. They're usually wrong.' Her hand rests near her gun.",
+            next: "cross_departure"
         },
 
-        // Scene 31c: Religious Items Search
-        religious_items_search: {
-            speaker: "Thomas Whitmore",
-            text: "'Most of the religious artifacts are destroyed, but...' He carefully lifts a partially melted cross from the rubble. 'This was silver. Good quality. Why would someone burn down a church but leave valuable items?'",
-            next: "church_discoveries"
-        },
-
-        // Scene 31d: Cemetery Visit
-        cemetery_visit: {
-            speaker: "Jacob Rivers",
-            text: "'The cemetery's been disturbed too.' Jacob calls from behind the church. 'Several headstones are knocked over, and this fresh grave...' He pauses. 'The marker says Tom Bradley. They buried the sheriff here.'",
-            next: "church_discoveries"
-        },
-
-        // Scene 32: Church Discoveries
-        church_discoveries: {
-            speaker: "Narrator",
-            text: "Your examination of the church ruins reveals a pattern of deliberate destruction. This wasn't just a building that burned—it was a symbol that someone wanted erased from Perdition.",
-            next: "church_reflection"
-        },
-
-        // Scene 33: Church Reflection
-        church_reflection: {
+        // Scene 28b: Diplomatic Response
+        diplomatic_response: {
             speaker: "Elijah Cross",
-            text: "'A church represents hope, community, moral authority. Destroying it sends a message: there's no higher power here than whoever controls this town. No sanctuary, no redemption, no resistance.'",
-            next: "leaving_church_ruins"
+            text: "'We appreciate the information, Mr. Cross. We're simply travelers trying to understand our new surroundings.'",
+            next: "cross_departure"
         },
 
-        // Scene 18d: Residential Observations
-        residential_observations: {
+        // Scene 29: Cross's Departure
+        cross_departure: {
+            speaker: "Silas Cross",
+            text: "'Of course. Well, gentlemen... and lady... I hope your stay in Perdition is brief and uneventful.' He tips his hat and walks away with his men, but the threat hangs in the air.",
+            next: "church_ruins_visit"
+        },
+
+        // Scene 30: Church Ruins Visit
+        church_ruins_visit: {
             speaker: "Narrator",
-            text: "Walking through the residential streets, you notice the clear divide between those who've stayed and those who've fled. Maintained houses cluster together, while abandoned ones create islands of decay.",
+            text: "Your investigation takes you to the burned church on the hill. Up close, the destruction is even more devastating. The fire was clearly intense and thorough—too thorough for a simple lightning strike.",
+            next: "examining_church_damage"
+        },
+
+        // Scene 31: Examining Church Damage
+        examining_church_damage: {
+            speaker: "Elijah Cross",
+            text: "'The altar stone is cracked, but not from heat. These marks are deliberate—someone took an axe to this before the fire. This wasn't just arson. This was desecration of everything this building represented.'",
+            next: "maria_finds_evidence"
+        },
+
+        // Scene 32: Maria Finds Evidence
+        maria_finds_evidence: {
+            speaker: "Maria Vasquez",
+            text: "'Multiple ignition points, remnants of oil-soaked rags. This was carefully planned destruction, not a random act of violence. Someone wanted to eliminate what this church meant to the community.'",
+            next: "jacob_finds_grave"
+        },
+
+        // Scene 33: Jacob Finds Grave
+        jacob_finds_grave: {
+            speaker: "Jacob Rivers",
+            text: "'Behind the church, several headstones are knocked over, and there's a fresh grave. The marker says Tom Bradley. They buried the sheriff here, where the church used to provide sanctuary.'",
+            next: "residential_area_visit"
+        },
+
+        // Scene 34: Residential Area Visit
+        residential_area_visit: {
+            speaker: "Narrator",
+            text: "Walking through Perdition's residential streets, you see the clear divide between those who've stayed and those who've fled. Some houses are well-maintained, while others show broken windows and yards grown wild.",
+            next: "meeting_ruth_peterson"
+        },
+
+        // Scene 35: Meeting Ruth Peterson
+        meeting_ruth_peterson: {
+            speaker: "Ruth Peterson",
+            text: "A woman tending her garden looks up warily. 'You're the strangers staying at Henderson's. Word travels fast in a small town. I'm Ruth Peterson. Are you really here to help, or just passing through like everyone else?'",
+            next: "thomas_offers_help"
+        },
+
+        // Scene 36: Thomas Offers Help
+        thomas_offers_help: {
+            speaker: "Thomas Whitmore",
+            text: "'I'm a physician, Mrs. Peterson. I'm here to help however I can. Mrs. Henderson mentioned your husband worked at the mine before the troubles started.'",
+            next: "ruth_explains_situation"
+        },
+
+        // Scene 37: Ruth Explains Situation
+        ruth_explains_situation: {
+            speaker: "Ruth Peterson",
+            text: "'My husband Pete worked the mine for fifteen years. When production started dropping, Cross's men came around, offering to buy us out. Pete refused. A week later, he came down with the sickness that killed him and two others.'",
+            next: "abandoned_house_discovery"
+        },
+
+        // Scene 38: Abandoned House Discovery
+        abandoned_house_discovery: {
+            speaker: "Narrator",
+            text: "You pass an abandoned house with furniture still inside, as if the family left in a hurry. A hastily scrawled note on the door reads: 'Gone to California. Don't follow.' The desperation is palpable.",
+            next: "walter_hayes_encounter"
+        },
+
+        // Scene 39: Walter Hayes Encounter
+        walter_hayes_encounter: {
+            speaker: "Walter Hayes",
+            text: "An elderly man rocks on his porch. 'Name's Walter Hayes. Been in Perdition since it was founded. Seen this town rise and fall. Used to be, strangers were welcome. Now they either bring trouble or get it. Which are you?'",
             choices: [
                 {
-                    text: "Approach a woman tending her garden",
-                    next: "garden_woman_encounter"
+                    text: "We're here to help rebuild",
+                    next: "rebuilding_response"
                 },
                 {
-                    text: "Investigate an abandoned house",
-                    next: "abandoned_house_exploration"
-                },
-                {
-                    text: "Watch children playing in a yard",
-                    next: "children_observation"
-                },
-                {
-                    text: "Talk to an elderly man on his porch",
-                    next: "elderly_man_conversation"
+                    text: "We're here to find the truth",
+                    next: "truth_seeking_response"
                 }
             ]
         },
 
-        // Scene 34a: Garden Woman Encounter
-        garden_woman_encounter: {
-            speaker: "Garden Woman",
-            text: "The woman looks up from her vegetables warily. 'You're the strangers staying at Henderson's place. Word travels fast in a small town.' She wipes her hands on her apron. 'I'm Ruth Peterson. Are you really here to help, or are you just passing through like everyone else?'",
-            next: "residential_conversation"
+        // Scene 40a: Rebuilding Response
+        rebuilding_response: {
+            speaker: "Elijah Cross",
+            text: "'We're here to help rebuild what's been torn down, Mr. Hayes. Every community deserves hope.'",
+            next: "walter_advice"
         },
 
-        // Scene 34b: Abandoned House Exploration
-        abandoned_house_exploration: {
-            speaker: "Narrator",
-            text: "The abandoned house still has furniture inside, as if the family left in a hurry. Children's toys scatter the floor, and a half-finished meal sits molding on the kitchen table. A hastily scrawled note on the door reads: 'Gone to California. Don't follow.'",
-            next: "residential_discoveries"
+        // Scene 40b: Truth Seeking Response
+        truth_seeking_response: {
+            speaker: "Maria Vasquez",
+            text: "'We're here to find the truth about what's happening to Perdition and stop it.'",
+            next: "walter_advice"
         },
 
-        // Scene 34c: Children Observation
-        children_observation: {
-            speaker: "Narrator",
-            text: "Three children play quietly in a fenced yard, but their games are subdued. Instead of laughing and shouting, they whisper to each other and glance frequently at the windows of their house, as if checking for permission to continue playing.",
-            next: "residential_discoveries"
-        },
-
-        // Scene 34d: Elderly Man Conversation
-        elderly_man_conversation: {
-            speaker: "Elderly Man",
-            text: "'Name's Walter Hayes. Been in Perdition since it was founded.' He rocks slowly in his chair. 'Seen this town rise and fall. Used to be, strangers were welcome. Now...' He studies you carefully. 'Now strangers either bring trouble or get it. Which are you?'",
-            next: "residential_conversation"
-        },
-
-        // Scene 35: Residential Conversation/Discoveries
-        residential_conversation: {
-            speaker: "Narrator",
-            text: "Your exploration of Perdition's residential area reveals a community under pressure. Families are afraid, isolated, and suspicious of outsiders. Yet underneath the fear, there's still hope that someone might help restore what they've lost.",
-            next: "midday_approach"
-        },
-
-        residential_discoveries: {
-            speaker: "Narrator",
-            text: "The residential areas tell a story of a community slowly bleeding away. Yet those who remain show remarkable resilience, maintaining their homes and families despite the growing darkness around them.",
-            next: "midday_approach"
-        },
-
-        // Scene 36: Midday Approach (Convergence Point)
-        midday_approach: {
-            speaker: "Narrator",
-            text: "As the sun reaches its zenith, your morning explorations come to an end. Whether you've been investigating the sheriff's office, exploring the church ruins, talking to residents, or gathering supplies, one thing has become clear: Perdition is a town caught in the grip of systematic oppression.",
+        // Scene 41: Walter's Advice
+        walter_advice: {
+            speaker: "Walter Hayes",
+            text: "'Truth is, Cross has this town by the throat. But maybe... maybe if enough people stood together...' He trails off, but there's a spark of hope in his old eyes.",
             next: "returning_to_boarding_house"
         },
 
-        // Scene 37: Returning to Boarding House
+        // Scene 42: Returning to Boarding House
         returning_to_boarding_house: {
             speaker: "Narrator",
-            text: "You make your way back to Henderson's Boarding House, where the smell of cooking food and the promise of safety provide a welcome respite from the morning's discoveries. Mrs. Henderson has prepared a hearty lunch, and your companions are beginning to gather.",
+            text: "As the sun reaches its zenith, you make your way back to Henderson's Boarding House. The smell of cooking food and the promise of safety provide welcome respite from the morning's dark discoveries.",
             next: "lunch_discussion"
         },
 
-        // Scene 38: Lunch Discussion
+        // Scene 43: Lunch Discussion
         lunch_discussion: {
             speaker: "Mrs. Henderson",
-            text: "'Well? What did you learn about our troubled town?' She sets bowls of stew before you. 'And Dr. Whitmore, how did your first patient visits go?'",
+            text: "'Well? What did you learn about our troubled town?' She sets bowls of stew before you. The warmth is comforting after the cold reality of Perdition's systematic destruction.",
             next: "sharing_discoveries"
         },
 
-        // Scene 39: Sharing Discoveries
+        // Scene 44: Sharing Discoveries
         sharing_discoveries: {
             speaker: "Thomas Whitmore",
-            text: "'Martha Peterson is indeed ill, but it's grief more than medicine that ails her. Young Billy's leg is infected—I've cleaned it and left instructions. But Mrs. Henderson, I found something troubling. Several people described similar mysterious illnesses that Dr. Morrison couldn't treat.'",
-            next: "medical_concerns"
+            text: "'The mysterious illnesses, the property acquisitions, the systematic intimidation—it's all connected. Someone is poisoning people who won't sell their water rights, making it look like a disease.'",
+            next: "cross_pattern_revealed"
         },
 
-        // Scene 40: Medical Concerns
-        medical_concerns: {
-            speaker: "Thomas Whitmore",
-            text: "'The symptoms they describe don't match any natural disease I know. Sudden weakness, strange dreams, and a peculiar fear of water. Three people died from it, and Dr. Morrison fled rather than face a fourth case.'",
-            choices: [
-                {
-                    text: "Suggest investigating the water supply",
-                    next: "water_investigation_suggested"
-                },
-                {
-                    text: "Ask if the illness affected specific people",
-                    next: "illness_pattern_inquiry"
-                },
-                {
-                    text: "Wonder if the symptoms could be poisoning",
-                    next: "poisoning_theory"
-                }
-            ]
-        },
-
-        // Scene 41a: Water Investigation Suggested
-        water_investigation_suggested: {
+        // Scene 45: Cross's Pattern Revealed
+        cross_pattern_revealed: {
             speaker: "Maria Vasquez",
-            text: "'That fits with what we learned. Someone's been acquiring water rights systematically. Maybe they're not just controlling the water—maybe they're contaminating it.'",
-            next: "afternoon_planning"
+            text: "'Silas Cross threatened us directly. He's behind Sheriff Bradley's murder, the church burning, and the poisonings. He's systematically destroying everything that gives this community strength.'",
+            next: "mrs_henderson_confirms"
         },
 
-        // Scene 41b: Illness Pattern Inquiry
-        illness_pattern_inquiry: {
-            speaker: "Elijah Cross",
-            text: "'Were the victims connected in any way? Property owners? People who opposed something? There might be a pattern to who was targeted.'",
-            next: "afternoon_planning"
-        },
-
-        // Scene 41c: Poisoning Theory
-        poisoning_theory: {
-            speaker: "Jacob Rivers",
-            text: "'Could someone be poisoning people? Making it look like a disease to cover up murder?'",
-            next: "afternoon_planning"
-        },
-
-        // Scene 42: Afternoon Planning
-        afternoon_planning: {
-            speaker: "Narrator",
-            text: "As you share your morning discoveries over lunch, a clearer picture emerges. Perdition isn't just declining—it's being systematically destroyed by someone with resources, connections, and a complete lack of conscience.",
-            next: "silas_cross_revelation"
-        },
-
-        // Scene 43: Silas Cross Revelation
-        silas_cross_revelation: {
+        // Scene 46: Mrs. Henderson Confirms
+        mrs_henderson_confirms: {
             speaker: "Mrs. Henderson",
-            text: "'Silas Cross? You met him?' Her face goes pale. 'He's the one behind all this. Represents some mining consortium from back east. Been buying up properties, water rights, anything of value. Those who won't sell...' She doesn't finish the sentence.",
-            next: "the_threat_revealed"
-        },
-
-        // Scene 44: The Threat Revealed
-        the_threat_revealed: {
-            speaker: "Mrs. Henderson",
-            text: "'Sheriff Bradley was investigating Cross's land deals when he was killed. The church burned down after Pastor Williams preached against selling out to outside interests. The mysterious illnesses started after people refused to sell their water rights.'",
+            text: "'I was afraid you'd figure that out. Cross has been the shadow over this town for two years. Every family that's fled, every business that's closed, every death—he's profited from all of it.'",
             next: "decision_point"
         },
 
-        // Scene 45: Decision Point
+        // Scene 47: Decision Point
         decision_point: {
             speaker: "Elijah Cross",
-            text: "'Then we know our enemy. The question is: what do we do about it? Silas Cross has money, men, and no scruples. But Perdition still has people worth fighting for.'",
-            choices: [
-                {
-                    text: "Plan to gather evidence against Cross",
-                    next: "evidence_gathering_plan"
-                },
-                {
-                    text: "Focus on protecting the remaining townspeople",
-                    next: "protection_strategy"
-                },
-                {
-                    text: "Consider confronting Cross directly",
-                    next: "direct_confrontation_idea"
-                }
-            ]
+            text: "'Then we know our enemy. The question is: what do we do about it? Cross has money, men, and no scruples. But Perdition still has people worth fighting for.'",
+            next: "jacob_speaks_up"
         },
 
-        // Scene 46a: Evidence Gathering Plan
-        evidence_gathering_plan: {
-            speaker: "Thomas Whitmore",
-            text: "'Evidence is our best weapon. If we can prove Cross is behind the murders, the land fraud, and the poisonings, we might be able to bring in federal authorities.'",
-            next: "afternoon_mission"
-        },
-
-        // Scene 46b: Protection Strategy
-        protection_strategy: {
-            speaker: "Maria Vasquez",
-            text: "'Our first duty is to the innocent. We organize the remaining townspeople, help them defend themselves, and make Cross's job harder. Every family we save is a victory.'",
-            next: "afternoon_mission"
-        },
-
-        // Scene 46c: Direct Confrontation Idea
-        direct_confrontation_idea: {
+        // Scene 48: Jacob Speaks Up
+        jacob_speaks_up: {
             speaker: "Jacob Rivers",
-            text: "'Maybe it's time someone stood up to Cross directly. Show him that Perdition won't be pushed around anymore.'",
+            text: "'We came west to become better than we were. Maybe this is how we do it—by standing up to someone like Cross. By protecting people who can't protect themselves.'",
             next: "afternoon_mission"
         },
 
-        // Scene 47: Afternoon Mission
+        // Scene 49: Afternoon Mission
         afternoon_mission: {
             speaker: "Mrs. Henderson",
-            text: "'Whatever you decide to do, be careful. Cross has eyes everywhere, and he's not above using innocent people to get what he wants. But...' She looks around the room. 'I haven't felt hope like this in months. Maybe you really can help us.'",
-            next: "leaving_for_afternoon"
-        },
-
-        // Scene 48: Leaving for Afternoon
-        leaving_for_afternoon: {
-            speaker: "Narrator",
-            text: "Armed with new knowledge and purpose, the four companions prepare to spend their afternoon taking action against the forces threatening Perdition. The real work is just beginning.",
-            next: "afternoon_action_begins"
-        },
-
-        // Scene 49: Afternoon Action Begins
-        afternoon_action_begins: {
-            speaker: "Narrator",
-            text: "As you step back into the streets of Perdition, you're no longer just visitors seeking shelter. You're champions of a community under siege, ready to fight for justice in a town that has almost forgotten what that word means.",
+            text: "'Whatever you decide to do, be careful. Cross has eyes everywhere. But...' She looks around the room with something she hasn't felt in months. 'I haven't felt hope like this since Tom Bradley was alive. Maybe you really can help us.'",
             next: "chapter_conclusion"
         },
 
         // Scene 50: Chapter Conclusion
         chapter_conclusion: {
             speaker: "Narrator",
-            text: "The first full day in Perdition has revealed the true scope of the town's troubles and the identity of its primary enemy. Tomorrow will bring new challenges as you begin the fight to reclaim this troubled community from the grip of Silas Cross and his consortium. But tonight, hope has returned to Perdition—in the form of four unlikely heroes who refuse to let evil triumph unopposed.",
+            text: "Armed with knowledge of their true enemy, the four companions prepare for the fight ahead. Silas Cross has built his empire on fear, corruption, and murder. But now he faces something he hasn't encountered before—four souls united by purpose, determined to restore justice to a town that has almost forgotten what that word means.",
             choices: [
                 {
                     text: "Continue to Chapter 5",
@@ -779,25 +421,6 @@ storyData.chapter4 = {
                     nextChapter: "chapter5"
                 }
             ]
-        },
-
-        // Additional scenes for various paths that were referenced
-        leaving_general_store: {
-            speaker: "Narrator",
-            text: "Leaving the general store with new understanding of the town's economic struggles, you step back into the street with a growing sense of the challenges facing Perdition.",
-            next: "midday_approach"
-        },
-
-        veiled_threat: {
-            speaker: "Narrator",
-            text: "Silas Cross tips his hat politely, but his message is clear. As he walks away with his men, the threat hangs in the air like smoke from a gunbarrel.",
-            next: "midday_approach"
-        },
-
-        leaving_church_ruins: {
-            speaker: "Narrator",
-            text: "The church ruins have told their story of deliberate destruction and community wounds. As you leave this place of former sanctuary, the magnitude of Perdition's loss becomes clear.",
-            next: "midday_approach"
         }
     }
 };

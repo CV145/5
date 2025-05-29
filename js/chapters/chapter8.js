@@ -1,730 +1,626 @@
-// Chapter 8: The Bone Singer's Call
+// Chapter 8: Four Roads Diverge (Linear Version - 100 scenes)
 storyData.chapter8 = {
     name: "Chapter 8",
-    title: "The Bone Singer's Call",
+    title: "Four Roads Diverge",
     scenes: {
+        // Opening Scene
         start: {
             speaker: "Narrator",
-            text: "The first day's ride to Devil's Backbone passes in uneasy silence. The singing that began as a distant whisper has grown stronger, a haunting melody that seems to resonate in your bones. Your horses grow increasingly restless as you approach the mining territory, and even the most hardened among you feel the weight of something ancient and malevolent awakening.",
-            onEnter: function() {
-                updateStoryVariable('currentChapter', 'Chapter 8');
-                
-                // Check Chapter 7 outcomes to determine group composition
-                let morningStarJoined = getStoryVariable('flags.chapter7_flags.c7_invited_morning_star');
-                let isabellaJoined = getStoryVariable('flags.chapter7_flags.c7_invited_isabella');
-                let cartelAlliance = getStoryVariable('flags.chapter7_flags.c7_cartel_info_sharing');
-                let ritualProtection = getStoryVariable('flags.chapter7_flags.c7_ritual_protection');
-                
-                updateStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star', morningStarJoined || false);
-                updateStoryVariable('flags.chapter8_flags.c8_group_composition_isabella', isabellaJoined || false);
-                updateStoryVariable('flags.chapter8_flags.c8_cartel_alliance_active', cartelAlliance || false);
-                updateStoryVariable('flags.chapter8_flags.c8_has_ritual_protection', ritualProtection || false);
-            },
-            next: "camp_first_night"
+            text: "Six months have passed since the fellowship shattered. Four souls who once stood together now walk alone, each carrying the weight of their choices. In Perdition and beyond, their separate paths wind through darkness, occasionally crossing but never quite meeting. This is where their individual stories truly begin.",
+            next: "maria_opening"
         },
 
-        camp_first_night: {
+        // MARIA'S STORYLINE (Scenes 2-26)
+        maria_opening: {
             speaker: "Narrator",
-            text: "As night falls, you make camp in a sheltered grove several miles from Devil's Backbone. The singing is now clearly audible - a wordless chant that seems to call to something deep within the earth. Around the campfire, tensions and uncertainties surface among your expanded group.",
-            next: "campfire_dynamics"
+            text: "The mining compound at dawn. Maria Vasquez stands on the watchtower, surveying her domain. Chief of Security now, with a team of twenty men under her command. The title came with blood on her hands and ice in her heart. She's good at her job. Too good.",
+            next: "maria_morning_report"
         },
 
-        campfire_dynamics: {
-            speaker: "Morning Star",
-            text: "\"The Bone Singer grows stronger with each hour. It feeds on the disturbance of the dead and the grief of the living. The mining has given it much to feast upon.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star')) {
-                    // If Morning Star didn't join, this knowledge comes from experience instead
-                    this.speaker = "Thomas";
-                    this.text = "\"That singing... it's getting into my head. There's something about the frequency that affects the nervous system. Whatever's causing it isn't natural.\"";
-                }
-            },
-            next: "isabella_concerns"
+        maria_morning_report: {
+            speaker: "Lieutenant Morrison",
+            text: "'Morning report, Chief. Caught three workers trying to organize again. They're in the detention building. Also, the new owners arrive today from Chicago. They want a full security briefing.'",
+            next: "maria_efficiency"
         },
 
-        isabella_concerns: {
-            speaker: "Isabella Valdez",
-            text: "\"My family has lost three shipments near Devil's Backbone in the past month. The miners who survived spoke of dead men walking the tunnels, calling their names. I thought it was just mine gas causing hallucinations.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter8_flags.c8_group_composition_isabella')) {
-                    // If Isabella didn't join, this comes from Maria's cartel knowledge
-                    this.speaker = "Maria";
-                    this.text = "\"I've heard reports from cartel contacts near Devil's Backbone. Three shipments lost, miners talking about dead men in the tunnels. I thought it was just stories to cover theft.\"";
-                }
-            },
-            next: "group_discussion"
+        maria_efficiency: {
+            speaker: "Maria Vasquez",
+            text: "'Have the organizers processed and expelled from company property. If they return, break something that won't heal right. As for the owners...' She pauses, checking her weapons. 'Set up the briefing for noon. Full display of our capabilities.'",
+            next: "maria_inspection"
         },
 
-        group_discussion: {
-            speaker: "Jacob",
-            text: "\"So what's our plan? We can't just walk into those mines if there are... things... down there.\"",
+        maria_inspection: {
+            speaker: "Narrator",
+            text: "Maria walks through the compound, noting every detail. Her men fear her more than respect her, which suits her fine. Fear is reliable. Respect can waver. She stops at the detention building, hearing muffled sounds from within.",
+            next: "maria_detained_workers"
+        },
+
+        maria_detained_workers: {
+            speaker: "Detained Worker",
+            text: "'Please, we just wanted fair wages. My children are hungry—' The man's plea is cut short by one of Maria's men backhanding him. Maria watches impassively.",
+            next: "maria_cold_orders"
+        },
+
+        maria_cold_orders: {
+            speaker: "Maria Vasquez",
+            text: "'Fair wages aren't my concern. Order is. You disrupted operations. Actions have consequences.' She nods to her men. 'Put them on the next wagon out. If I see them again, they won't leave vertical.'",
+            next: "maria_owners_arrive"
+        },
+
+        maria_owners_arrive: {
+            speaker: "Narrator",
+            text: "A luxurious carriage arrives at noon, incongruous against the dusty mining camp. Three men in expensive suits emerge, led by William Thornbury—young, ambitious, and radiating the casual cruelty of inherited wealth.",
+            next: "maria_thornbury_introduction"
+        },
+
+        maria_thornbury_introduction: {
+            speaker: "William Thornbury",
+            text: "'So you're the famous Maria Vasquez. I've heard impressive things. They say you've reduced work stoppages by eighty percent.' His smile doesn't reach his eyes. 'I hope you can do even better.'",
+            next: "maria_briefing"
+        },
+
+        maria_briefing: {
+            speaker: "Maria Vasquez",
+            text: "'My methods are simple and effective. Swift punishment for infractions, rewards for compliance, and absolute surveillance. I have informants in every work crew. Trouble rarely has time to spread.'",
+            next: "maria_demonstration"
+        },
+
+        maria_demonstration: {
+            speaker: "Narrator",
+            text: "As if on cue, a commotion erupts near the mine entrance. A worker refuses to enter, claiming unsafe conditions. Maria's men look to her, and she sees an opportunity to demonstrate her effectiveness to the new owners.",
+            next: "maria_harsh_example"
+        },
+
+        maria_harsh_example: {
+            speaker: "Maria Vasquez",
+            text: "Without a word, Maria strides to the protesting worker. One swift motion—her boot to his knee. The crack echoes across the compound. As the man screams, she addresses the watching workers: 'The mine is safe because I say it is. Questions?'",
+            next: "maria_owners_impressed"
+        },
+
+        maria_owners_impressed: {
+            speaker: "William Thornbury",
+            text: "'Excellent. Though I wonder... might there be more permanent solutions to our labor problems? The consortium has developed certain... strategies at our other operations.'",
+            next: "maria_darker_proposition"
+        },
+
+        maria_darker_proposition: {
+            speaker: "William Thornbury",
+            text: "'There's going to be an accident soon. A terrible tragedy in the eastern shaft. Gas leak, perhaps. Or a support beam failure. We'll need someone to ensure the right people are working that shift. Troublemakers, union sympathizers...'",
+            next: "maria_realization"
+        },
+
+        maria_realization: {
+            speaker: "Narrator",
+            text: "Even Maria, hardened as she is, feels a chill. This isn't about maintaining order anymore. This is murder, calculated and corporate. She keeps her expression neutral, but something stirs in the ice around her heart.",
+            next: "maria_dangerous_knowledge"
+        },
+
+        maria_dangerous_knowledge: {
+            speaker: "Maria Vasquez",
+            text: "'I understand. You'll have a list of recommended shift assignments by week's end.' Her voice remains steady, professional. But her mind races. This is a line even she hasn't crossed. Mass murder for profit.",
+            next: "maria_private_investigation"
+        },
+
+        maria_private_investigation: {
+            speaker: "Narrator",
+            text: "That night, Maria begins her own investigation. Using her security clearance, she accesses company files. What she finds makes her stomach turn—this isn't the first 'accident' the consortium has orchestrated. There's a pattern across multiple states.",
+            next: "maria_evidence_gathering"
+        },
+
+        maria_evidence_gathering: {
+            speaker: "Maria Vasquez",
+            text: "She photographs documents, creates copies, builds a file. Old instincts from her cartel days serve her well. Information is power, and power might be the only thing that keeps her alive if she refuses to comply.",
+            next: "maria_unexpected_visitor"
+        },
+
+        maria_unexpected_visitor: {
+            speaker: "Rosa Morales",
+            text: "'Don't reach for your gun, Vasquez.' A woman emerges from the shadows of Maria's office. 'I'm Rosa Morales, and I think we have a common problem. You're not the only one who's noticed the consortium's plans.'",
+            next: "maria_union_leader"
+        },
+
+        maria_union_leader: {
+            speaker: "Maria Vasquez",
+            text: "'You're the union organizer. I should shoot you where you stand.' But Maria doesn't move. 'How did you get past my security?'",
+            next: "maria_uncomfortable_alliance"
+        },
+
+        maria_uncomfortable_alliance: {
+            speaker: "Rosa Morales",
+            text: "'Your security includes people with families in those mines. They know what's coming. The question is: are you going to help orchestrate a massacre, or are you going to help me stop it?'",
+            next: "maria_moral_crossroads"
+        },
+
+        maria_moral_crossroads: {
+            speaker: "Narrator",
+            text: "Maria stares at the union leader—everything she's paid to destroy. But the weight of the planned murders presses down on her. She thinks of the children who'll lose fathers, the wives who'll become widows. When did she start caring again?",
             choices: [
                 {
-                    text: "Gather intelligence from surviving miners first",
-                    next: "intelligence_gathering",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_chose_intelligence_first', true); }
+                    text: "Consider Rosa's proposal",
+                    next: "maria_considers_alliance"
                 },
                 {
-                    text: "Attempt to confront the Bone Singer directly",
-                    next: "direct_confrontation_plan",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_chose_direct_confrontation', true); }
-                },
-                {
-                    text: "Try to find and protect survivors before facing the entity",
-                    next: "rescue_mission_plan",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_chose_rescue_first', true); }
+                    text: "Maintain professional distance",
+                    next: "maria_stays_cautious"
                 }
             ]
         },
 
-        intelligence_gathering: {
-            speaker: "Thomas",
-            text: "\"Smart. We need to understand what we're facing before we go underground. The more we know about this Bone Singer's abilities and weaknesses, the better our chances.\"",
-            next: "morning_star_ritual_knowledge"
+        maria_considers_alliance: {
+            speaker: "Maria Vasquez",
+            text: "'I'm listening. But understand this—I'm not doing this for your cause. If there's a way to prevent this without destroying my position, I'll consider it. Otherwise, you're on your own.'",
+            next: "maria_information_exchange"
         },
 
-        direct_confrontation_plan: {
-            speaker: "Elijah",
-            text: "\"Every moment we delay, more innocent souls are claimed. Sometimes the righteous path is the direct one, regardless of the danger.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                    this.text = "\"Every moment we delay, more people die. We know what we're facing - an ancient evil. Better to strike quickly than let it grow stronger.\"";
-                }
-            },
-            next: "morning_star_ritual_knowledge"
+        maria_stays_cautious: {
+            speaker: "Maria Vasquez",
+            text: "'Get out. Whatever you think you know, you're wrong. I do my job, nothing more.' But she doesn't call for security, and Rosa notices.",
+            next: "maria_information_exchange"
         },
 
-        rescue_mission_plan: {
-            speaker: "Maria",
-            text: "\"There might still be people alive down there, trapped or hiding. If we can get them out first, the Bone Singer loses potential victims and we gain information.\"",
-            next: "morning_star_ritual_knowledge"
+        maria_information_exchange: {
+            speaker: "Rosa Morales",
+            text: "'I have people inside the consortium's Chicago office. We know about their plans for multiple sites. This isn't just about Perdition. They're going to use these 'accidents' to justify bringing in federal troops, breaking unions across the frontier.'",
+            next: "maria_bigger_picture"
         },
 
-        morning_star_ritual_knowledge: {
-            speaker: "Morning Star", 
-            text: "\"The Bone Singer cannot be destroyed by conventional means. It must be bound again using the old ceremonies, or... transformed through great sacrifice. But first, we must understand why it has awakened now, in this place.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star')) {
-                    // Alternative dialogue if Morning Star isn't present
-                    this.speaker = "Thomas";
-                    this.text = "\"From what we learned fighting the Hungry Dark, these entities can't be killed conventionally. We need to find a way to stop it that goes beyond bullets and blades.\"";
-                }
-            },
-            next: "approach_devils_backbone"
-        },
-
-        approach_devils_backbone: {
+        maria_bigger_picture: {
             speaker: "Narrator",
-            text: "The next morning, Devil's Backbone looms before you - a collection of ramshackle buildings built around the entrance to what was once a prosperous silver mine. Now it stands eerily silent except for that omnipresent singing echoing from the depths. Smoke rises from a few chimneys, suggesting some survivors remain.",
-            next: "town_observation"
+            text: "Maria realizes she's stumbled into something far larger than one mining camp. The consortium isn't just exploiting workers—they're orchestrating a corporate takeover of the entire western frontier, using blood as their ink to rewrite laws.",
+            next: "maria_decision_point"
         },
 
-        town_observation: {
-            speaker: "Jacob",
-            text: "\"I count maybe a dozen buildings with signs of life. The mine entrance... there's something wrong with it. It looks bigger than it should be, like it's been... opened wider.\"",
-            next: "survivor_encounter"
+        maria_decision_point: {
+            speaker: "Maria Vasquez",
+            text: "'I need time. The owners expect that list by week's end. Give me three days to figure out a way to prevent this without getting us all killed. And Morales? If this is a trap, I'll personally ensure you don't live to regret it.'",
+            next: "thomas_opening"
         },
 
-        survivor_encounter: {
+        // THOMAS'S STORYLINE (Scenes 27-51)
+        thomas_opening: {
             speaker: "Narrator",
-            text: "As you approach the town, a figure emerges from one of the buildings - an elderly man with wild eyes and hands that shake with more than just age. He stares at your group with a mixture of relief and terror.",
-            next: "survivor_speaks"
+            text: "The Company Clinic reeks of carbolic acid and despair. Thomas Whitmore sits at his desk, hands trembling as he reviews patient files. Each one stamped with payment status: APPROVED or DENIED. He doesn't need to look to know which pile is larger.",
+            next: "thomas_morning_drink"
         },
 
-        survivor_speaks: {
-            speaker: "Old Miner Joe",
-            text: "\"Strangers! Thank God, strangers! You... you ain't come about the silver, have you? Please tell me you ain't here for the silver. It's cursed, all of it. The singing started a month ago, and since then...\" He shudders. \"Since then, the dead don't stay dead.\"",
-            choices: [
-                {
-                    text: "Reassure him you're here to help with the supernatural threat",
-                    next: "reassure_survivor",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_reassured_survivor', true); }
-                },
-                {
-                    text: "Ask about the other survivors in town",
-                    next: "ask_about_survivors",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_asked_about_survivors', true); }
-                },
-                {
-                    text: "Demand information about what happened in the mine",
-                    next: "demand_mine_information",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_demanded_information', true); }
-                }
-            ]
+        thomas_morning_drink: {
+            speaker: "Thomas Whitmore",
+            text: "The whiskey burns, but not enough to wash away the taste of compromise. He's saved more lives in six months than in his previous five years—but only the lives that could pay. The others... he tries not to think about the others.",
+            next: "thomas_nurse_announcement"
         },
 
-        reassure_survivor: {
-            speaker: "Elijah",
-            text: "\"We're not here for silver, friend. We've come to help stop whatever evil has awakened in these mountains. You're safe now.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-            },
-            next: "joe_relief"
+        thomas_nurse_announcement: {
+            speaker: "Nurse Catherine",
+            text: "'Doctor, there's a situation. The Garrett family is here again. Their youngest is worse. I know they're on the denied list, but the child is dying. Maybe if you could just look—'",
+            next: "thomas_painful_denial"
         },
 
-        ask_about_survivors: {
-            speaker: "Thomas",
-            text: "\"How many people are still alive in the town? Are they injured? We have medical supplies if needed.\"",
-            next: "joe_survivor_count"
+        thomas_painful_denial: {
+            speaker: "Thomas Whitmore",
+            text: "'Company policy is clear, Catherine. No payment, no treatment. Send them to the charity ward in Silver Creek.' His voice is steady, but his hands shake worse. He knows there is no charity ward. Not anymore.",
+            next: "thomas_haunted_morning"
         },
 
-        demand_mine_information: {
-            speaker: "Maria",
-            text: "\"Tell us exactly what happened in that mine. We need to know everything if we're going to stop this.\"",
-            next: "joe_fearful_compliance"
-        },
-
-        joe_relief: {
-            speaker: "Old Miner Joe",
-            text: "\"Help? You... you mean to fight it? The thing that's been calling to us? Mister, I seen grown men walk into that mine 'cause they heard their dead fathers calling their names. Ain't none of them come back out.\"",
-            next: "mine_horror_details"
-        },
-
-        joe_survivor_count: {
-            speaker: "Old Miner Joe",
-            text: "\"Maybe fifteen of us left out of near fifty. The rest... they either got called into the mine or they ran. Those of us left, we're too scared to leave and too scared to stay. Doc Peterson's been trying to keep folks calm, but that singing...\"",
-            next: "meet_doc_peterson"
-        },
-
-        joe_fearful_compliance: {
-            speaker: "Old Miner Joe",
-            text: "\"I'll tell you what I can, miss, but it ain't natural what's down there. Started when we broke through into the old tribal burial caves. The foreman said to keep digging, but we shoulda listened to the warnings...\"",
-            next: "mine_horror_details"
-        },
-
-        meet_doc_peterson: {
+        thomas_haunted_morning: {
             speaker: "Narrator",
-            text: "Joe leads you to a larger building where you find Dr. Peterson, a frontier physician who's been tending to the survivors' physical and mental distress. He looks up with weary hope as you enter.",
-            next: "peterson_greeting"
+            text: "Through his office window, Thomas watches the Garrett family leave, the father carrying his fevered daughter. The same child he could save with basic antibiotics sitting in his locked cabinet. Company property, for approved patients only.",
+            next: "thomas_company_inspection"
         },
 
-        peterson_greeting: {
-            speaker: "Doc Peterson",
-            text: "\"Thank God someone came. I'm Dr. Henry Peterson. I've been trying to keep these people sane, but that infernal singing is driving everyone to madness. Some days it's louder, some days softer, but it never stops.\"",
-            onEnter: function() {
-                // Thomas and Peterson have a professional connection
-                if (getStoryVariable('flags.thomas_established_practice')) {
-                    updateStoryVariable('flags.chapter8_flags.c8_thomas_medical_connection', true);
-                }
-            },
-            next: "thomas_medical_consultation"
+        thomas_company_inspection: {
+            speaker: "Mr. Fitzgerald",
+            text: "'Excellent compliance rates, Doctor Whitmore. Profit margins are up twelve percent since you took over. The board is pleased. Though we've noticed some inventory discrepancies. Medicine going missing?'",
+            next: "thomas_covering_tracks"
         },
 
-        thomas_medical_consultation: {
-            speaker: "Thomas",
-            text: "\"Doctor, I'm Thomas Whitmore. What are the symptoms you're seeing? Physical manifestations beyond the psychological effects?\"",
-            next: "peterson_medical_report"
+        thomas_covering_tracks: {
+            speaker: "Thomas Whitmore",
+            text: "'Minor breakage and spoilage. I've already adjusted the protocols to prevent future losses.' He lies smoothly, not mentioning his midnight visits to the poor quarter, the medicine he's been stealing for those who can't pay.",
+            next: "thomas_fitzgerald_warning"
         },
 
-        peterson_medical_report: {
-            speaker: "Doc Peterson",
-            text: "\"Severe auditory hallucinations, compulsive behavior toward the mine entrance, and... this is where it gets strange... some patients show signs of communicating with deceased family members. Not hallucinations, mind you. Actual responses to information they couldn't possibly know.\"",
-            next: "supernatural_medical_evidence"
+        thomas_fitzgerald_warning: {
+            speaker: "Mr. Fitzgerald",
+            text: "'See that you do. The consortium has a zero-tolerance policy for theft. Even from employees. Especially from employees who might be tempted by... misguided compassion.'",
+            next: "thomas_new_symptoms"
         },
 
-        mine_horror_details: {
-            speaker: "Old Miner Joe",
-            text: "\"We was digging the new shaft when we broke through. Found a whole chamber full of bones - arranged all proper-like, in patterns. The foreman made us keep digging, said it was just old Indian graves. But that night, the singing started. And the next morning... Bill Henderson walked right into that mine, talking to his dead wife like she was standing right there beside him.\"",
-            next: "chamber_discovery"
-        },
-
-        supernatural_medical_evidence: {
-            speaker: "Thomas",
-            text: "\"That's not possible through conventional psychology. There's definitely a supernatural element affecting the brain's temporal lobe and auditory processing centers.\"",
-            next: "chamber_discovery"
-        },
-
-        chamber_discovery: {
-            speaker: "Morning Star",
-            text: "\"A burial chamber with bones in patterns - that was a sacred site. The mining disturbed an ancient resting place, and the Bone Singer feeds on such desecration. The dead call to the living because their rest has been broken.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star')) {
-                    this.speaker = "Elijah";
-                    this.text = "\"Disturbing a burial ground... no wonder something evil has awakened. The dead deserve their rest, and when that's violated, consequences follow.\"";
-                    if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                        this.speaker = "Thomas";
-                        this.text = "\"A burial chamber with organized bone patterns - that suggests ceremonial significance. The mining likely disturbed something that was meant to stay undisturbed.\"";
-                    }
-                }
-            },
-            choices: [
-                {
-                    text: "Ask Morning Star how to perform a proper burial ceremony",
-                    next: "burial_ceremony_discussion",
-                    requires: function() { return getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star'); },
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_burial_ceremony_option', true); }
-                },
-                {
-                    text: "Plan to evacuate the remaining survivors first",
-                    next: "evacuation_plan",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_evacuation_priority', true); }
-                },
-                {
-                    text: "Prepare to enter the mine and confront the Bone Singer",
-                    next: "mine_entry_preparation",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_direct_mine_entry', true); }
-                }
-            ]
-        },
-
-        burial_ceremony_discussion: {
-            speaker: "Morning Star",
-            text: "\"To quiet the Bone Singer, we must first restore peace to the disturbed spirits. This requires gathering the scattered bones, performing the proper burial rites, and making an offering to appease the ancestor spirits. But it is dangerous work - the Bone Singer will try to stop us.\"",
-            next: "ceremony_requirements"
-        },
-
-        evacuation_plan: {
-            speaker: "Isabella Valdez",
-            text: "\"Smart thinking. My people can provide safe passage for the survivors. Better to clear the area before dealing with supernatural threats.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter8_flags.c8_group_composition_isabella')) {
-                    this.speaker = "Maria";
-                    this.text = "\"We should get these people to safety first. I know some safe routes away from here, places where they can shelter until this is over.\"";
-                }
-            },
-            next: "evacuation_logistics"
-        },
-
-        mine_entry_preparation: {
-            speaker: "Jacob",
-            text: "\"Every minute we wait, that thing gets stronger. Let's gear up and go face it head-on. We've got the skills and the knowledge - time to use them.\"",
-            next: "preparation_for_descent"
-        },
-
-        ceremony_requirements: {
-            speaker: "Morning Star",
-            text: "\"We will need sage, sweetgrass, and tobacco for the ceremony. I have some, but more would be better. Also, someone must stay above to maintain the ritual circle while others enter the mine to gather the disturbed bones.\"",
-            next: "ritual_preparation"
-        },
-
-        evacuation_logistics: {
-            speaker: "Doc Peterson",
-            text: "\"Some of these people are in no condition to travel far. Mrs. Henderson hasn't spoken since her husband walked into the mine. And young Tommy's been having seizures every time the singing gets louder.\"",
-            choices: [
-                {
-                    text: "Thomas stays to care for those too sick to move",
-                    next: "thomas_stays_medical",
-                    onChoose: function() { 
-                        updateStoryVariable('flags.chapter8_flags.c8_thomas_stays_behind', true);
-                        updateStoryVariable('relationships.thomas_medical_dedication', 
-                            Math.min(3, getStoryVariable('relationships.thomas_medical_dedication') + 1));
-                    }
-                },
-                {
-                    text: "Move everyone regardless of condition - nowhere is safe",
-                    next: "force_evacuation",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_forced_evacuation', true); }
-                },
-                {
-                    text: "Split the group - some escort evacuees, others face the Bone Singer",
-                    next: "split_group_plan",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_split_group', true); }
-                }
-            ]
-        },
-
-        preparation_for_descent: {
-            speaker: "Thomas",
-            text: "\"We'll need light sources, rope, and weapons that can function in confined spaces. Also, if this entity affects people psychologically, we should establish signals in case someone becomes compromised.\"",
-            next: "preparation_for_descent"
-        },
-
-        ritual_preparation: {
-            speaker: "Morning Star",
-            text: "\"The ceremony must be performed at sunset, when the veil between worlds is thinnest. We have perhaps two hours to gather the materials and prepare the sacred space.\"",
-            next: "ritual_preparation"
-        },
-
-        thomas_stays_medical: {
-            speaker: "Thomas",
-            text: "\"I'll stay and keep the survivors stable. If that Bone Singer is calling to people through psychological manipulation, medical intervention might help resist its influence.\"",
-            next: "reduced_mine_team"
-        },
-
-        force_evacuation: {
-            speaker: "Elijah",
-            text: "\"Sometimes you have to save people despite themselves. We'll carry them if we have to.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-            },
-            next: "evacuation_complications"
-        },
-
-        split_group_plan: {
-            speaker: "Maria",
-            text: "\"Half of us escort the survivors to safety while the other half deals with the supernatural threat. We can't abandon these people, but we also can't let that thing spread to other towns.\"",
-            next: "divide_responsibilities"
-        },
-
-        reduced_mine_team: {
+        thomas_new_symptoms: {
             speaker: "Narrator",
-            text: "With Thomas remaining to care for the survivors, your mine team consists of those willing and able to face the supernatural threat directly. The responsibility weighs heavily on those chosen to descend.",
-            next: "mine_descent_begins"
+            text: "After Fitzgerald leaves, Thomas reviews a disturbing pattern in his files. Children of known union organizers all presenting similar symptoms: muscle weakness, cognitive decline, organ failure. Too consistent to be coincidence.",
+            next: "thomas_investigation_begins"
         },
 
-        evacuation_complications: {
-            speaker: "Mrs. Henderson",
-            text: "\"I ain't leaving! William's down there, and he's calling for me! I can hear him singing... he needs me...\" Several other survivors nod in agreement, their eyes distant and unfocused.",
-            next: "handle_influenced_survivors"
+        thomas_investigation_begins: {
+            speaker: "Thomas Whitmore",
+            text: "He pulls water samples from affected households, runs tests after hours. The results confirm his suspicions—targeted poisoning, something sophisticated. Not arsenic like Cross used. This is chemistry beyond frontier capabilities.",
+            next: "thomas_catherine_conspiracy"
         },
 
-        divide_responsibilities: {
+        thomas_catherine_conspiracy: {
+            speaker: "Nurse Catherine",
+            text: "'Doctor, I know what you've been doing. The night visits. The missing medicine. I want to help. My brother's children are sick with the same symptoms. This isn't natural, is it?'",
+            next: "thomas_reluctant_trust"
+        },
+
+        thomas_reluctant_trust: {
+            speaker: "Thomas Whitmore",
+            text: "'It's targeted poisoning. Specifically designed to affect children—slower metabolism makes them more vulnerable. Someone's using these families' own children as weapons against organizing efforts.'",
+            next: "thomas_moral_awakening"
+        },
+
+        thomas_moral_awakening: {
             speaker: "Narrator",
-            text: "The group discusses who should escort the survivors and who should face the Bone Singer. The decisions made here will determine both the survivors' safety and the composition of the team entering the mine.",
-            choices: [
-                {
-                    text: "Elijah and Jacob escort survivors, Maria stays for the mine",
-                    requires: function() { return getStoryVariable('storyVariables.final_ending_type') !== 'Sacrifice'; },
-                    next: "reduced_mine_team",
-                    onChoose: function() { 
-                        updateStoryVariable('flags.chapter8_flags.c8_elijah_jacob_escort', true);
-                        updateStoryVariable('flags.chapter8_flags.c8_maria_mine_team', true);
-                    }
-                },
-                {
-                    text: "Maria and Isabella escort survivors, others handle the mine",
-                    requires: function() { return getStoryVariable('flags.chapter8_flags.c8_group_composition_isabella'); },
-                    next: "reduced_mine_team",
-                    onChoose: function() { 
-                        updateStoryVariable('flags.chapter8_flags.c8_maria_isabella_escort', true);
-                    }
-                },
-                {
-                    text: "Keep the core team together, find another solution",
-                    next: "mine_entry_preparation",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_alternative_solution', true); }
-                }
-            ]
+            text: "For the first time in months, Thomas feels something beyond numbed compliance. Rage. Pure, clarifying rage. Using children as weapons crosses every line, violates every oath he ever took, drunk or sober.",
+            next: "thomas_dangerous_decision"
         },
 
-        handle_influenced_survivors: {
-            speaker: "Morning Star",
-            text: "\"The Bone Singer's influence grows stronger on them. We must break its hold or they will walk into the mine willingly.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star')) {
-                    this.speaker = "Thomas";
-                    this.text = "\"This is mass psychological manipulation. We need to break the auditory pattern that's influencing them.\"";
-                }
-            },
-            choices: [
-                {
-                    text: "Use Morning Star's protective rituals on the survivors",
-                    requires: function() { return getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star'); },
-                    next: "protective_ritual_survivors",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_survivors_protected', true); }
-                },
-                {
-                    text: "Thomas sedates the most affected survivors",
-                    next: "medical_intervention",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_medical_sedation', true); }
-                },
-                {
-                    text: "Use physical restraint to prevent them from entering the mine",
-                    next: "physical_restraint",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_physical_restraint', true); }
-                }
-            ]
+        thomas_dangerous_decision: {
+            speaker: "Thomas Whitmore",
+            text: "'Catherine, I need you to quietly identify all affected families. I'm going to synthesize an antidote. But we'll need to be careful. If the company realizes what we're doing...'",
+            next: "thomas_fitzgerald_summons"
         },
 
-        mine_descent_begins: {
+        thomas_fitzgerald_summons: {
+            speaker: "Mr. Fitzgerald",
+            text: "'Doctor, the board has a special assignment for you. The mine owner's son has taken ill during his visit. You're to provide exclusive care. Drop everything else. This takes absolute priority.'",
+            next: "thomas_ironic_patient"
+        },
+
+        thomas_ironic_patient: {
             speaker: "Narrator",
-            text: "As your team approaches the mine entrance, the singing becomes almost overwhelming. The opening itself seems to pulse with a malevolent life, and strange symbols have been carved around its edges - symbols that weren't there when the miners first broke through.",
-            next: "mine_entrance_examination"
+            text: "Thomas examines William Thornbury Jr., age seven. The boy presents with symptoms eerily similar to the poisoned children—an ironic twist that suggests someone else is playing a deeper game. The poisoner has made a mistake, or sent a message.",
+            next: "thomas_treating_enemy"
         },
 
-        protective_ritual_survivors: {
-            speaker: "Morning Star",
-            text: "\"I will create a protective circle around them. The sage smoke will cloud the Bone Singer's influence and give their spirits strength to resist the call.\"",
-            next: "ritual_success"
+        thomas_treating_enemy: {
+            speaker: "William Thornbury",
+            text: "'You'll save him, won't you, Doctor? Whatever it takes. Money is no object. The best care possible.' The same man who ordered children poisoned now begs for his own child's life.",
+            next: "thomas_moral_test"
         },
 
-        medical_intervention: {
-            speaker: "Thomas",
-            text: "\"A mild sedative should disrupt whatever neurological manipulation is occurring. It's not ideal, but it's better than losing them to that thing.\"",
-            next: "sedation_effects"
-        },
-
-        physical_restraint: {
-            speaker: "Jacob",
-            text: "\"I don't like it, but if they try to walk into that mine, we'll have to stop them by force. Better alive and angry than dead and gone.\"",
-            next: "restraint_consequences"
-        },
-
-        mine_entrance_examination: {
-            speaker: "Thomas",
-            text: "\"These symbols... they're not Native American. They look almost... surgical. Like something was carved out rather than carved in.\"",
-            next: "symbol_investigation"
-        },
-
-        ritual_success: {
-            speaker: "Mrs. Henderson",
-            text: "\"The... the singing's quieter now. I can think more clearly. William... William's been dead for weeks, hasn't he? That thing was using his voice...\"",
-            next: "mine_entrance_examination"
-        },
-
-        sedation_effects: {
-            speaker: "Doc Peterson",
-            text: "\"The sedatives are working. They're calmer now, less responsive to the auditory stimulus. But Thomas, how long will this last?\"",
-            next: "mine_entrance_examination"
-        },
-
-        restraint_consequences: {
-            speaker: "Mrs. Henderson",
-            text: "\"Let me go! William needs me! You don't understand - he's in pain down there! The singing... it hurts him...\" She struggles against the ropes, tears streaming down her face.",
-            next: "mine_entrance_examination"
-        },
-
-        symbol_investigation: {
-            speaker: "Morning Star",
-            text: "\"These are not symbols of binding or warning. They are... invitations. The Bone Singer has marked this place as its own territory, claiming dominion over both the living and the dead.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star')) {
-                    this.speaker = "Elijah";
-                    this.text = "\"Whatever made these marks, it's claiming this place. This isn't just an awakened evil - it's actively expanding its influence.\"";
-                    if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                        this.speaker = "Maria";
-                    }
-                }
-            },
-            next: "enter_the_mine"
-        },
-
-        enter_the_mine: {
+        thomas_moral_test: {
             speaker: "Narrator",
-            text: "Taking a collective breath, your team steps into the mine. The singing immediately becomes overwhelming, echoing off the walls with supernatural resonance. Ahead, the tunnel branches, and from each passage comes the sound of different voices - some familiar, some ancient, all calling you deeper into the darkness.",
-            choices: [
-                {
-                    text: "Follow the main tunnel toward the burial chamber",
-                    next: "main_tunnel_path",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_main_tunnel_chosen', true); }
-                },
-                {
-                    text: "Investigate the side passages where the voices are strongest",
-                    next: "side_passage_investigation",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_side_passages_chosen', true); }
-                },
-                {
-                    text: "Try to resist the voices and find a path that leads to silence",
-                    next: "resist_voices_path",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_resisted_voices', true); }
-                }
-            ]
+            text: "Thomas holds the boy's life in his shaking hands. He could let him die, claim the poisoning was too advanced. Poetic justice for a poisoner's son. Or he could save him, prove he's still a doctor despite everything.",
+            next: "thomas_saves_child"
         },
 
-        main_tunnel_path: {
+        thomas_saves_child: {
+            speaker: "Thomas Whitmore",
+            text: "'I'll save him. But I'll need access to your private water supply for testing, and a full investigation of potential contamination sources.' He'll save the boy, but use the opportunity to gather evidence.",
+            next: "thomas_evidence_access"
+        },
+
+        thomas_evidence_access: {
             speaker: "Narrator",
-            text: "The main tunnel slopes downward into the heart of the mountain. As you descend, you begin to see them - figures walking ahead of you in the darkness, translucent and shimmering, but unmistakably human. They seem to be leading you toward the source of the singing.",
-            next: "encounter_spirits"
+            text: "Treating the Thornbury boy gives Thomas unprecedented access to company facilities. He discovers shipping manifests, chemical requisitions, correspondence about 'population management strategies.' The conspiracy is vast, methodical, monstrous.",
+            next: "thomas_catherine_plan"
         },
 
-        side_passage_investigation: {
-            speaker: "Jacob",
-            text: "\"There's something in this passage... someone crying. It sounds like... like Sarah from the general store. But she ain't dead, is she?\"",
-            next: "encounter_spirits"
+        thomas_catherine_plan: {
+            speaker: "Nurse Catherine",
+            text: "'Doctor, I've identified forty-three affected children. But we don't have enough antidote for all of them. And if we treat them openly, the company will know we've discovered their plan.'",
+            next: "thomas_impossible_choice"
         },
 
-        resist_voices_path: {
-            speaker: "Maria",
-            text: "\"Don't listen to them. They're trying to lead us into a trap. Look for a passage where the singing is quieter - that's where the entity doesn't want us to go.\"",
-            next: "encounter_spirits"
+        thomas_impossible_choice: {
+            speaker: "Thomas Whitmore",
+            text: "'Then we prioritize the worst cases and work in secret. Set up a hidden clinic in the old church basement. I'll steal what supplies I can. Some will die because we couldn't reach them in time, but we'll save who we can.'",
+            next: "thomas_note_discovery"
         },
 
-        encounter_spirits: {
+        thomas_note_discovery: {
             speaker: "Narrator",
-            text: "The spirits turn to face you, and you recognize some of them - miners who disappeared, townspeople who walked into the mine. But their eyes are hollow, and when they speak, it's the Bone Singer's voice that emerges.",
-            next: "spirit_communication"
+            text: "While treating the Thornbury boy, Thomas finds a note in the father's jacket: 'The doctor knows. Solve the problem.' His blood runs cold. They're onto him. The only question is how much time he has left.",
+            next: "jacob_opening"
         },
 
-        spirit_communication: {
-            speaker: "Spirit of Bill Henderson",
-            text: "\"Come deeper... join us in the singing... the chamber of bones needs tending... the old ones hunger for proper burial... you can help us rest...\"",
-            choices: [
-                {
-                    text: "Try to communicate with the spirits directly",
-                    next: "attempt_spirit_dialogue",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_attempted_spirit_dialogue', true); }
-                },
-                {
-                    text: "Use Morning Star's protective rituals against the spirits",
-                    requires: function() { return getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star'); },
-                    next: "protective_ritual_survivors",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_used_ritual_protection', true); }
-                },
-                {
-                    text: "Push past the spirits to reach the chamber",
-                    next: "reach_burial_chamber",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_forced_passage', true); }
-                }
-            ]
-        },
-
-        attempt_spirit_dialogue: {
-            speaker: "Elijah",
-            text: "\"Bill, if that's really you, tell me - what does the Bone Singer want? How do we help you find peace?\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Thomas";
-                }
-            },
-            next: "spirit_revelation"
-        },
-
-        spirit_revelation: {
-            speaker: "Spirit of Bill Henderson",
-            text: "\"The chamber... the bones were scattered when the miners broke through... the Bone Singer cannot rest while the burial is incomplete... but it grows stronger... feeding on our need for peace... soon it will be too powerful to bind again...\"",
-            next: "urgent_time_limit"
-        },
-
-        urgent_time_limit: {
-            speaker: "Morning Star",
-            text: "\"The spirit speaks truth! If we don't complete the burial ceremony before the next dawn, the Bone Singer will have enough power to spread beyond this mine to other burial grounds across the territory.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star')) {
-                    this.speaker = "Thomas";
-                    this.text = "\"The spirit's right - this entity is feeding on the disturbance and growing stronger. We need to act quickly before it becomes too powerful to stop.\"";
-                }
-                updateStoryVariable('flags.chapter8_flags.c8_time_limit_revealed', true);
-            },
-            next: "reach_burial_chamber"
-        },
-
-        reach_burial_chamber: {
+        // JACOB'S STORYLINE (Scenes 52-76)
+        jacob_opening: {
             speaker: "Narrator",
-            text: "Guided by the spirits, you reach the heart of the mine - a vast natural chamber that has been carved open by mining equipment. Ancient bone arrangements lie scattered across the floor, and in the center sits a pulsing mass of shadow and sound - the Bone Singer itself.",
-            next: "bone_singer_encounter"
+            text: "The Rivers compound sprawls across the badlands like a cancer. Jacob Rivers stands beside his uncle, watching their men load crates of contraband. Six months ago, he wanted to be a hero. Now he's becoming what he once fought against—and he's disturbingly good at it.",
+            next: "jacob_uncle_lesson"
         },
 
-        bone_singer_encounter: {
+        jacob_uncle_lesson: {
+            speaker: "Samuel Rivers",
+            text: "'You've exceeded my expectations, nephew. That business with the Morrison farm—swift, efficient, minimal bloodshed. You're learning that fear is more useful than violence. Violence ends problems. Fear prevents them.'",
+            next: "jacob_hollow_pride"
+        },
+
+        jacob_hollow_pride: {
+            speaker: "Jacob Rivers",
+            text: "'The Morrisons won't miss any more payments. Made sure the whole valley heard about what happens to those who do.' His voice is steady, professional. The idealistic boy is buried deep, smothered by practical necessity.",
+            next: "jacob_new_assignment"
+        },
+
+        jacob_new_assignment: {
+            speaker: "Samuel Rivers",
+            text: "'I have a special project for you. We're expanding operations into Perdition. The chaos you and your friends created left a power vacuum. Time to fill it with something profitable. I want you to establish our distribution network there.'",
+            next: "jacob_return_reluctance"
+        },
+
+        jacob_return_reluctance: {
+            speaker: "Jacob Rivers",
+            text: "'Perdition? Uncle, perhaps someone else would be better suited—' He can't finish. The thought of returning to where he was once a hero, now as a criminal, makes his chest tight.",
+            next: "jacob_no_choice"
+        },
+
+        jacob_no_choice: {
+            speaker: "Samuel Rivers",
+            text: "'You know the town, the people. They trusted you once. That residual trust is valuable. Besides, this isn't a request. The family has invested too much in your education to waste it on sentiment.'",
+            next: "jacob_preparation"
+        },
+
+        jacob_preparation: {
             speaker: "Narrator",
-            text: "The Bone Singer is not a creature in any conventional sense - it's a writhing confluence of shadows, bones, and pure sound that seems to exist in multiple dimensions simultaneously. Its song fills your minds with the voices of every person who has ever died in these mountains, demanding their proper burial and eternal rest.",
-            next: "bone_singer_communication"
+            text: "Jacob prepares for the journey with mechanical efficiency. Weapons cleaned, men selected, routes planned. But his hands pause over a small bundle—letters from Sarah Mitchell, the miner's wife who still believes he's worth saving.",
+            next: "jacob_sarah_letters"
         },
 
-        bone_singer_communication: {
-            speaker: "The Bone Singer",
-            text: "\"LIVING ONES... YOU DISTURB THE SACRED DEAD... THE BONES MUST BE ARRANGED... THE PATTERNS MUST BE COMPLETE... HELP US... OR JOIN US IN ETERNAL SONG...\"",
-            choices: [
-                {
-                    text: "Offer to help restore the proper burial arrangements",
-                    next: "offer_burial_help",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_offered_burial_help', true); }
-                },
-                {
-                    text: "Attempt to bind the Bone Singer with Morning Star's rituals",
-                    requires: function() { return getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star'); },
-                    next: "burial_sacrifice_required",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_attempted_binding', true); }
-                },
-                {
-                    text: "Challenge the Bone Singer's right to claim the living",
-                    next: "burial_sacrifice_required",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_challenged_bone_singer', true); }
-                }
-            ]
+        jacob_sarah_letters: {
+            speaker: "Jacob Rivers",
+            text: "Reading Sarah's latest letter: 'I know you're struggling with your choices. But I remember the young man who stood up to Cross. That person is still in there. Perdition needs hope, not more poison. Please come back to us, not to them.'",
+            next: "jacob_conflicted_arrival"
         },
 
-        offer_burial_help: {
-            speaker: "Elijah",
-            text: "\"We understand your pain. The dead deserve proper rest. Show us how to arrange the bones correctly, and we'll help restore the sacred burial.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-            },
-            next: "bone_singer_accepts_help"
-        },
-
-        bone_singer_accepts_help: {
-            speaker: "The Bone Singer",
-            text: "\"YES... ARRANGE THE BONES IN THE ANCIENT PATTERNS... BUT BEWARE... THE LIVING WHO TOUCH THE SACRED DEAD RISK JOINING THEM... ONE OF YOU MUST REMAIN TO TEND THE BURIAL FOREVER...\"",
-            next: "burial_sacrifice_required"
-        },
-
-        burial_sacrifice_required: {
-            speaker: "Morning Star",
-            text: "\"The entity speaks of an ancient law - one guardian must remain to tend the sacred dead. But there may be another way... a living guardian who volunteers to stay temporarily while we complete a stronger binding ritual.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star')) {
-                    this.speaker = "Thomas";
-                    this.text = "\"It's demanding a permanent guardian. But we might be able to find a way to fulfill the requirement without losing someone forever.\"";
-                }
-            },
-            choices: [
-                {
-                    text: "Volunteer to stay as the burial guardian",
-                    next: "volunteer_as_guardian",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_volunteered_as_guardian', true); }
-                },
-                {
-                    text: "Ask if a symbolic guardian would be acceptable",
-                    next: "guardian_acceptance",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_negotiated_guardian', true); }
-                },
-                {
-                    text: "Refuse the terms and seek another solution",
-                    next: "burial_sacrifice_required",
-                    onChoose: function() { updateStoryVariable('flags.chapter8_flags.c8_refused_guardian_terms', true); }
-                }
-            ]
-        },
-
-        volunteer_as_guardian: {
-            speaker: "Elijah",
-            text: "\"If staying to tend the sacred dead brings peace to these spirits, then I accept. But my friends go free, and no other living souls are claimed.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Thomas";
-                    this.text = "\"If someone must stay to guard this place, I volunteer. I've spent too much of my life running from responsibility. This is where I make my stand.\"";
-                }
-            },
-            next: "guardian_acceptance"
-        },
-
-        guardian_acceptance: {
-            speaker: "The Bone Singer",
-            text: "\"THE LIVING GUARDIAN ACCEPTS... ARRANGE THE BONES... COMPLETE THE SACRED PATTERNS... AND THE DEAD WILL FIND PEACE... THE SINGING WILL QUIET... THE GUARDIAN WILL BECOME THE BRIDGE BETWEEN LIFE AND DEATH...\"",
-            next: "burial_arrangement_begins"
-        },
-
-        burial_arrangement_begins: {
+        jacob_conflicted_arrival: {
             speaker: "Narrator",
-            text: "Working together, your team begins the solemn task of arranging the scattered bones according to the ancient patterns the Bone Singer shows you. It's delicate, sacred work that requires both reverence and precision. As you work, the entity's song gradually becomes less frantic and more peaceful.",
-            next: "chapter_climax"
+            text: "Arriving in Perdition at night, Jacob sees what six months of 'freedom' has brought. The town is worse than under Cross—multiple criminal factions fighting for control, honest folks caught in the crossfire. His uncle's drugs will be the final nail in the coffin.",
+            next: "jacob_establishing_presence"
         },
 
-        chapter_climax: {
+        jacob_establishing_presence: {
+            speaker: "Jacob Rivers",
+            text: "'Spread the word quietly. The Rivers family offers protection and fair dealing. Anyone who works with us prospers. Anyone who opposes us...' He lets the threat hang. It's a speech he's given before, in other towns.",
+            next: "jacob_unexpected_encounter"
+        },
+
+        jacob_unexpected_encounter: {
+            speaker: "Sarah Mitchell",
+            text: "'Jacob? Is it really you?' Sarah stands in the doorway of the saloon, her face a mix of hope and horror as she takes in his expensive clothes, the armed men at his back. 'What have you become?'",
+            next: "jacob_painful_reunion"
+        },
+
+        jacob_painful_reunion: {
+            speaker: "Jacob Rivers",
+            text: "'Sarah. You shouldn't be here. This isn't... I'm here on business. Family business.' He can't meet her eyes. The disappointment in them cuts deeper than any blade.",
+            next: "jacob_sarah_plea"
+        },
+
+        jacob_sarah_plea: {
+            speaker: "Sarah Mitchell",
+            text: "'Business? I know what kind of business your family does. Poison that enslaves men's souls. Is this really who you want to be? The boy who saved this town, now returning to destroy it?'",
+            next: "jacob_cold_necessity"
+        },
+
+        jacob_cold_necessity: {
+            speaker: "Jacob Rivers",
+            text: "'That boy was naive. The world doesn't reward heroes, Sarah. It rewards survivors. I'm sorry you had to see me like this. Stay away from the saloon district. For your own safety.'",
+            next: "jacob_lieutenant_report"
+        },
+
+        jacob_lieutenant_report: {
+            speaker: "Rico Valdez",
+            text: "'Boss, we've scouted the competition. Three gangs fighting for territory. Disorganized, poorly supplied. We can have this town locked down in a week. But there's something else—rumors about the mine owners planning something big.'",
+            next: "jacob_intelligence_gathering"
+        },
+
+        jacob_intelligence_gathering: {
+            speaker: "Jacob Rivers",
+            text: "'Find out more about these plans. Information is currency. And set up a meeting with the strongest gang leader. Better to absorb competition than destroy it. Less messy, more profitable.'",
+            next: "jacob_darker_discovery"
+        },
+
+        jacob_darker_discovery: {
             speaker: "Narrator",
-            text: "As the final bone is placed in its proper position, a profound silence falls over the chamber. The Bone Singer's form begins to fade, becoming more translucent and peaceful. The spirits of the dead miners appear one final time, nodding their gratitude before dissolving into gentle light. The supernatural threat to Devil's Backbone is ended, but the cost and consequences of this victory will echo through the choices yet to come.",
-            onEnter: function() {
-                updateStoryVariable('flags.chapter8_flags.c8_bone_singer_pacified', true);
-                updateStoryVariable('flags.chapter8_flags.c8_chapter_complete', true);
-                
-                // Set up variables for Chapter 9 based on choices made
-                let guardianVolunteered = getStoryVariable('flags.chapter8_flags.c8_volunteered_as_guardian');
-                let groupSplit = getStoryVariable('flags.chapter8_flags.c8_split_group');
-                let cartelAlliance = getStoryVariable('flags.chapter8_flags.c8_cartel_alliance_active');
-                
-                if (guardianVolunteered) {
-                    updateStoryVariable('flags.chapter9_opening.c9_guardian_sacrifice', true);
-                }
-                if (groupSplit) {
-                    updateStoryVariable('flags.chapter9_opening.c9_team_separated', true);
-                }
-                if (cartelAlliance) {
-                    updateStoryVariable('flags.chapter9_opening.c9_cartel_relationship', true);
-                }
-            },
+            text: "Through his network, Jacob uncovers disturbing intelligence. His uncle isn't just planning to distribute opium—he's partnering with the Eastern Mining Consortium. The same group that backed Cross. The Rivers family was involved from the beginning.",
+            next: "jacob_family_betrayal"
+        },
+
+        jacob_family_betrayal: {
+            speaker: "Jacob Rivers",
+            text: "Reading stolen documents: 'Phase One: Install Cross to destabilize. Phase Two: Remove Cross, create chaos. Phase Three: Flood town with narcotics, reduce population to compliant workforce.' His own family orchestrated everything.",
+            next: "jacob_uncle_confrontation"
+        },
+
+        jacob_uncle_confrontation: {
+            speaker: "Samuel Rivers",
+            text: "'Ah, you found the papers. I wondered when you'd piece it together. Yes, we've been working with the consortium for years. Your friends' heroics? All part of the plan. Though you adapting so well to the family business—that was a pleasant surprise.'",
+            next: "jacob_horrible_truth"
+        },
+
+        jacob_horrible_truth: {
+            speaker: "Jacob Rivers",
+            text: "'You used me. Used all of us. The stagecoach attack, meeting the others—none of it was chance?' The full weight of manipulation crushes down on him.",
+            next: "jacob_uncle_justification"
+        },
+
+        jacob_uncle_justification: {
+            speaker: "Samuel Rivers",
+            text: "'Business, nephew. The consortium needed the town softened up. We provided the means. Soon Perdition will be the most profitable operation in three states. And you'll help run it, or you'll be buried under it. Family or not.'",
+            next: "jacob_sarah_danger"
+        },
+
+        jacob_sarah_danger: {
+            speaker: "Rico Valdez",
+            text: "'Boss, that Mitchell woman's been organizing families against our operation. Your uncle wants her silenced. Permanently. Says to make an example of her.'",
+            next: "jacob_line_crossed"
+        },
+
+        jacob_line_crossed: {
+            speaker: "Narrator",
+            text: "Jacob stands at the precipice. Following orders means killing the one person who still believes in his better nature. Refusing means war with his own family. Either path leads through blood.",
+            next: "jacob_desperate_warning"
+        },
+
+        jacob_desperate_warning: {
+            speaker: "Jacob Rivers",
+            text: "He finds Sarah at her home, urgency cracking his cold facade: 'You need to leave town. Tonight. Don't ask questions, don't pack, just go. Please. I can't protect you if you stay.'",
+            next: "jacob_sarah_refusal"
+        },
+
+        jacob_sarah_refusal: {
+            speaker: "Sarah Mitchell",
+            text: "'I'm not running. This is my home. These are my people. If your family wants to silence me, they'll have to do it in front of everyone. Maybe then folks will finally fight back. Even against the mighty Rivers family.'",
+            next: "jacob_impossible_position"
+        },
+
+        jacob_impossible_position: {
+            speaker: "Jacob Rivers",
+            text: "'You don't understand. This isn't just my family anymore. It's bigger. The consortium, the mine owners, the government—they're all connected. Fighting them isn't brave, it's suicide.'",
+            next: "elijah_opening"
+        },
+
+        // ELIJAH'S STORYLINE (Scenes 77-100)
+        elijah_opening: {
+            speaker: "Narrator",
+            text: "The abandoned church in Cedar Falls echoes with Elijah's solitary voice. Three people sit in makeshift pews—down from five last week. His journey as a traveling preacher has shown him the consortium's reach. Every town tells the same story: corruption, violence, despair.",
+            next: "elijah_sparse_congregation"
+        },
+
+        elijah_sparse_congregation: {
+            speaker: "Elijah Cross",
+            text: "'We gather not in grand cathedrals but in ruins, not in certainty but in doubt. Yet still we gather. Still we hope. The darkness spreading across our land is man-made, and what man has wrought, man can undo.'",
+            next: "elijah_after_sermon"
+        },
+
+        elijah_after_sermon: {
+            speaker: "Old Timer",
+            text: "'Pretty words, Preacher. But words don't stop bullets or fill bellies. You talk about fighting darkness, but what have you actually done? Where were you when the Murphy family was burned out? When the sheriff was bought?'",
+            next: "elijah_hollow_defense"
+        },
+
+        elijah_hollow_defense: {
+            speaker: "Elijah Cross",
+            text: "'I... I'm trying to inspire people to stand together. To find their courage.' But the words taste like ash. He knows the truth—he's been running from action, hiding behind sermons.",
+            next: "elijah_congregation_leaves"
+        },
+
+        elijah_congregation_leaves: {
+            speaker: "Narrator",
+            text: "The sparse congregation files out, leaving Elijah alone with his doubts. Six months of preaching, and what has he accomplished? Towns still fall, people still suffer, and he still clings to words instead of taking action.",
+            next: "elijah_mysterious_visitor"
+        },
+
+        elijah_mysterious_visitor: {
+            speaker: "Marshal Catherine Brooks",
+            text: "'Elijah Cross? I'm Federal Marshal Catherine Brooks. I've been following your trail, listening to your sermons. You speak about the consortium's corruption. I think it's time you did more than talk.'",
+            next: "elijah_federal_interest"
+        },
+
+        elijah_federal_interest: {
+            speaker: "Elijah Cross",
+            text: "'A federal marshal? I'm surprised the government cares about frontier troubles. Usually, you only show up after the killing's done and the profits are secured.'",
+            next: "elijah_brooks_proposition"
+        },
+
+        elijah_brooks_proposition: {
+            speaker: "Marshal Brooks",
+            text: "'Not all of us are bought. A few of us still believe in justice. I'm building a case against the Eastern Mining Consortium, but I need witnesses, evidence, someone who's seen their operations firsthand. Someone like you.'",
+            next: "elijah_dangerous_knowledge"
+        },
+
+        elijah_dangerous_knowledge: {
+            speaker: "Elijah Cross",
+            text: "'What I've seen would turn your stomach, Marshal. Towns destroyed, people poisoned, entire communities enslaved by debt and drugs. But seeing and proving are different things. The consortium owns judges, kills witnesses.'",
+            next: "elijah_evidence_offer"
+        },
+
+        elijah_evidence_offer: {
+            speaker: "Marshal Brooks",
+            text: "'Then help me gather proof they can't dismiss. You travel freely, people trust you. Document what you see. Build a case so airtight that even bought judges can't ignore it. Will you stop preaching about justice and start pursuing it?'",
+            next: "elijah_accepts_mission"
+        },
+
+        elijah_accepts_mission: {
+            speaker: "Elijah Cross",
+            text: "'Yes. I'm tired of empty words. Tell me what you need.' For the first time in months, Elijah feels purpose beyond mere survival.",
+            next: "elijah_investigation_begins"
+        },
+
+        elijah_investigation_begins: {
+            speaker: "Narrator",
+            text: "Armed with federal authority and renewed purpose, Elijah begins systematic documentation. Each town reveals new horrors: mass graves hidden outside mining camps, water sources deliberately contaminated, entire populations reduced to virtual slavery.",
+            next: "elijah_pattern_recognition"
+        },
+
+        elijah_pattern_recognition: {
+            speaker: "Elijah Cross",
+            text: "Studying his notes: 'It's the same pattern everywhere. First, destabilization through violence. Then economic collapse. Finally, the consortium moves in as 'saviors,' but their salvation is slavery. Perdition was just the beginning.'",
+            next: "elijah_survivor_testimony"
+        },
+
+        elijah_survivor_testimony: {
+            speaker: "Mining Camp Survivor",
+            text: "'They worked us until we dropped, Preacher. No water breaks in summer, no heat in winter. Anyone who complained disappeared. They said they were creating prosperity, but we were the coal they burned for it.'",
+            next: "elijah_documenting_horror"
+        },
+
+        elijah_documenting_horror: {
+            speaker: "Narrator",
+            text: "Each testimony adds to Elijah's growing file. Photographs of mass graves, chemical samples from poisoned wells, financial documents showing the web of corruption. The evidence is damning, but also dangerous to possess.",
+            next: "elijah_near_capture"
+        },
+
+        elijah_near_capture: {
+            speaker: "Consortium Enforcer",
+            text: "'Preacher Cross. You've been asking uncomfortable questions. Mr. Thornbury would like a word. You can come quietly, or we can drag your corpse. Your choice.'",
+            next: "elijah_narrow_escape"
+        },
+
+        elijah_narrow_escape: {
+            speaker: "Narrator",
+            text: "Violence Elijah had forsworn saves him now. Muscle memory from darker days guides his hands as he fights free. But the message is clear—the consortium knows about his investigation. Time is running out.",
+            next: "elijah_return_decision"
+        },
+
+        elijah_return_decision: {
+            speaker: "Marshal Brooks",
+            text: "'They're onto you. But I have news—my sources say the consortium is planning something massive in Perdition. An event to demonstrate their power and crush resistance permanently. We need someone who knows the town.'",
+            next: "elijah_perdition_bound"
+        },
+
+        elijah_perdition_bound: {
+            speaker: "Elijah Cross",
+            text: "'Perdition. Where it all began.' He touches the evidence case. 'My former companions are there, aren't they? Maria, Thomas, Jacob—all serving the enemy now. Perhaps it's time for a reunion.'",
+            next: "elijah_painful_truth"
+        },
+
+        elijah_painful_truth: {
+            speaker: "Marshal Brooks",
+            text: "'Your friends might be the key to stopping this. They're inside the consortium's operations. If we could turn them, get their cooperation... But from what I've heard, they've fallen far from their heroic days.'",
+            next: "elijah_determination"
+        },
+
+        elijah_determination: {
+            speaker: "Elijah Cross",
+            text: "'We all fell, Marshal. The question is whether we can rise again. I'll return to Perdition. If there's any spark of who they were left in my friends, I'll find it. And if not... then I'll stop the consortium alone.'",
+            next: "elijah_final_preparation"
+        },
+
+        elijah_final_preparation: {
+            speaker: "Narrator",
+            text: "Elijah prepares for the journey to Perdition, knowing he rides toward either redemption or doom. The evidence he carries could save the frontier or get him killed. But after months of empty words, action—any action—feels like salvation.",
+            next: "chapter_convergence"
+        },
+
+        // CONVERGENCE SCENE
+        chapter_convergence: {
+            speaker: "Narrator",
+            text: "Four roads wind toward Perdition, carrying four broken souls toward an inevitable collision. Maria plots to prevent a massacre while maintaining her cover. Thomas races to save poisoned children while marked for death. Jacob stands between family loyalty and his last shred of humanity. And Elijah returns with evidence that could damn them all—or save them. The stage is set for a reckoning that will determine not just their fates, but the future of the frontier itself.",
+            next: "chapter_conclusion"
+        },
+
+        // FINAL SCENE
+        chapter_conclusion: {
+            speaker: "Narrator",
+            text: "As the sun sets on another day in Perdition, four former friends pursue their separate paths, unaware that their stories are about to violently intersect. Each carries secrets that could destroy the others. Each faces choices that will define who they truly are. The fellowship may be broken, but fate—and the Eastern Mining Consortium—will soon force them together again. Whether as allies or enemies remains to be seen.",
             choices: [
                 {
                     text: "Continue to Chapter 9",
                     next: null,
-                    nextChapter: "chapter9",
-                    onChoose: function() { updateStoryVariable('currentChapter', 'Chapter 9'); }
+                    nextChapter: "chapter9"
                 }
             ]
         }

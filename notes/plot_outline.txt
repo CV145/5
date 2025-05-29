@@ -98,54 +98,210 @@ Four troubled strangers meet on a stagecoach bound for Perdition, a remote front
 - Optional dialogue choices reveal character perspectives and world lore
 
 ### Chapter 4: "First Dawn in Perdition" (50 scenes)
-**Summary:** The group's first full day in Perdition reveals the systematic destruction of the community and identifies Silas Cross as the primary antagonist behind the town's troubles.
+**Summary:** The group's first full day in Perdition follows a linear investigation that reveals the systematic destruction of the community and identifies Silas Cross as the primary antagonist behind the town's troubles.
 
 **Key Events:**
-- Dawn awakening at Henderson's Boarding House with breakfast planning session
-- Mrs. Henderson provides crucial background information about the town's troubles
-- Thomas begins medical rounds, discovering mysterious illnesses that drove away the previous doctor
-- Multiple investigation paths: general store, sheriff's office, church ruins, residential areas
+- Dawn awakening at Henderson's Boarding House with breakfast conversation
+- Mrs. Henderson reveals information about Silas Cross and the town's troubles
+- Thomas learns about mysterious illnesses that drove away the previous doctor
+- Linear investigation sequence: general store → sheriff's office → church ruins → residential area
 - Discovery of evidence pointing to systematic land and water rights acquisition
-- Confrontation with Silas Cross, who reveals himself as the power broker behind the town's decline
+- Direct confrontation with Silas Cross, who makes veiled threats about their investigation
 - Learning about the connection between water rights, mysterious illnesses, and property acquisition
 - Group identifies Cross as responsible for Sheriff Bradley's murder and the church burning
-- Planning afternoon action to combat Cross's influence
+- United resolve to fight against Cross's influence
 
 **Character Development:**
-- **Elijah:** Emerges as natural group leader, making diplomatic introductions and moral judgments
-- **Maria:** Provides tactical analysis and investigation skills, recognizes patterns of systematic oppression
-- **Thomas:** Finds renewed purpose in medical practice, unccovers connection between illness and water poisoning
-- **Jacob:** Shows growing maturity in suggesting investigative approaches and standing up to threats
+- **Elijah:** Takes diplomatic lead in conversations, shows natural leadership
+- **Maria:** Analyzes evidence and tactical situations, stands firm against threats
+- **Thomas:** Connects medical knowledge to the mystery, offers help to townspeople
+- **Jacob:** Shows growing maturity and commitment to protecting the innocent
 
 **World Building:**
 - Introduction of Silas Cross as main antagonist representing eastern mining consortium
-- Revelation of systematic campaign to acquire Perdition's valuable resources
+- Revelation of systematic campaign to acquire Perdition's valuable resources through murder and poisoning
 - Establishment of water rights as central to the conflict
-- Introduction of supporting characters: Jeremiah Colt (ally), various townspeople
+- Introduction of supporting characters: Jeremiah Colt (ally), Ruth Peterson (victim's widow), Walter Hayes (town founder)
 - Discovery that Sheriff Bradley's investigation led to his murder
-- Pattern of violence, intimidation, and possible poisoning to force property sales
+- Pattern of violence, intimidation, and poisoning to force property sales
 
 **Interactive Elements:**
-- Multiple branching exploration paths (store, sheriff's office, church, residential)
-- Various conversation choices revealing different aspects of town's troubles
-- Investigation choices allowing deep examination of evidence
-- Strategic planning choices for combating Cross's influence
+- Minimal flavor choices that redirect back to main plot
+- Two choice points: asking about the enemy vs. listening quietly; standing firm vs. diplomatic response
+- Final choice point: rebuilding vs. truth-seeking approach
+- All choices lead back to the same linear progression
 
 **Atmospheric Elements:**
 - Contrast between Mrs. Henderson's safe haven and the town's pervasive fear
-- Detailed exploration of Perdition's decay and abandonment
-- Building tension through Cross's veiled threats and surveillance
+- Sequential exploration building the case against Cross
+- Building tension through Cross's direct threats and intimidation
 - Growing sense of purpose and hope returning to the community
 
-## Planned Future Chapters (Linear Structure)
+### Chapter 5: "Lines in the Sand" (50 scenes)
+**Summary:** The companions take organized action against Silas Cross, building community resistance while Cross escalates his violent response, culminating in a public confrontation that awakens the town's courage.
 
-### Chapters 4-20: Continued Linear Progression
-Each chapter will follow the same 50-scene structure, building on:
-- **Character relationships** deepening through shared experiences
-- **Individual growth arcs** as each character confronts their past
-- **Escalating external threats** testing the group's bonds
-- **Moral dilemmas** that challenge their values and unity
-- **Western setting elements** including lawlessness, survival, justice
+**Key Events:**
+- Strategic planning session to organize resistance against Cross
+- Splitting up for afternoon missions: Thomas collects evidence, Elijah builds community, Maria gathers intelligence, Jacob talks to elders
+- Thomas discovers concrete evidence of water poisoning through medical rounds with Martha Peterson and Billy Thompson
+- Elijah attempts community organizing but encounters fear of Cross's informant network
+- Maria observes Cross's operations and Deputy Morrison's corruption
+- Jacob learns about previous failed resistance attempt from Walter Hayes
+- Cross retaliates by burning Martha Peterson's house, but she survives
+- Deputy Morrison's callous threats backfire, turning townspeople against him
+- Community members find their voices and publicly oppose Cross's corruption
+- Final confrontation as Cross arrives with armed men to face awakened community resistance
+
+**Character Development:**
+- **Elijah:** Takes strategic leadership role and rallies the community to action
+- **Maria:** Conducts professional intelligence gathering and stands firm against threats
+- **Thomas:** Uses medical skills to gather evidence of poisoning, treats townspeople
+- **Jacob:** Connects with elders and learns valuable lessons about community resistance
+
+**World Building:**
+- Revelation of Cross's informant network including Deputy Morrison and Frank Hutchins
+- Evidence of systematic water poisoning affecting people and animals
+- Introduction of Billy Thompson (livery stable), Martha Peterson (widow), Sarah Mitchell (miner's wife)
+- Discovery of previous failed resistance attempt six months ago
+- Cross's escalation from intimidation to attempted murder (burning Martha's house)
+- Community transformation from fear to courage and united resistance
+
+**Interactive Elements:**
+- Three choice points: evidence vs. trust priority; community organizing vs. practical help; public challenge vs. searching for Martha
+- All choices redirect back to main linear plot
+- Choices add flavor to character approaches but don't change story outcomes
+
+**Atmospheric Elements:**
+- Rising tension as Cross's surveillance and retaliation increase
+- Transformation of community from isolated fear to united courage
+- Dramatic escalation with house fire and near-murder attempt
+- Public confrontation setting up major showdown for Chapter 6
+- Hope emerging as people find their voices and stand together
+
+### Chapter 6: "The Reckoning" (50 scenes)
+**Summary:** The confrontation with Silas Cross reaches its climax as the awakened townspeople stand against him. The companions' unity and the community's courage lead to Cross's downfall, but victory comes with new challenges.
+
+**Key Events:**
+- Direct confrontation between Cross's hired guns and the united townspeople
+- Cross's threats and intimidation tactics fail against community solidarity
+- Deputy Morrison and Cross's men abandon him when faced with overwhelming opposition
+- Frank Hutchins switches sides, providing evidence against Cross
+- Cross is arrested and the immediate threat ends
+- Planning for Perdition's future begins: new sheriff, rebuilding economy, community organization
+- Mysterious rider observes from afar, hinting at larger forces at play
+- Documents reveal Cross was part of a larger Eastern Mining Consortium scheme
+
+**Character Development:**
+- **All four companions:** Work together seamlessly, their bond stronger than ever
+- **Elijah:** Provides moral leadership that inspires the town
+- **Maria:** Uses tactical skills to outmaneuver Cross's forces
+- **Thomas:** Commits to healing the poisoned and rebuilding medical services
+- **Jacob:** Shows maturity in organizing the younger townspeople
+
+### Chapter 7: "The Price of Victory" (50 scenes)
+**Summary:** Three weeks after Cross's defeat, the harsh realities of victory set in. Without Cross's money, Perdition's economy collapses. The companions face impossible choices between their principles and survival, leading to the fracturing of their fellowship.
+
+**Key Events:**
+- Economic collapse: mines closed, shops shuttering, people going hungry
+- Mrs. Henderson faces eviction from the boarding house
+- New mine owners arrive offering jobs - but requiring moral compromises
+- Heated arguments reveal each character's dark past and true nature
+- Maria reveals she was a cartel assassin; Thomas killed a patient while drunk; Elijah stole church funds; Jacob has his own shameful secrets
+- The group splits: Maria and Thomas take jobs with the mine owners, Jacob returns to his criminal family, Elijah clings to useless principles
+- Former heroes become the town's new oppressors: Maria breaks strikes, Thomas denies medical care to troublemakers, Jacob collects debts violently
+- The town that once loved them now fears and hates them
+
+**Character Development:**
+- **Maria:** Becomes a cold enforcer, believing survival justifies any action
+- **Thomas:** Returns to drinking, compromises medical ethics for pay
+- **Jacob:** Abandons heroic ideals, embraces family criminal legacy
+- **Elijah:** Maintains principles but becomes isolated and ineffective
+
+## Planned Future Chapters - Separate Storylines (Chapters 8-14)
+
+### Chapter 8: "Four Roads Diverge" (100 scenes - 25 per character)
+**Summary:** The former companions begin their separate journeys, each pursuing their own path in the aftermath of their moral downfall. Their stories run parallel, occasionally intersecting through shared connections or consequences.
+
+**Maria's Arc - The Enforcer's War:**
+- Rises in ranks of mine security, becoming chief enforcer
+- Discovers the mine owners are planning something worse than Cross ever did
+- Uncovers evidence of planned massacre of striking workers
+- Must choose between profitable compliance and preventing bloodshed
+
+**Thomas's Arc - The Doctor's Descent:**
+- Opens company clinic, treating only those who can pay
+- Encounters mysterious illness affecting children of union organizers
+- Realizes the company is deliberately poisoning families
+- Faces choice between exposing truth and keeping lucrative position
+
+**Jacob's Arc - Blood and Family:**
+- Becomes his uncle's right hand in criminal operations
+- Sent to establish new smuggling route through Perdition
+- Discovers his uncle plans to flood town with opium
+- Torn between family loyalty and protecting innocent lives
+
+**Elijah's Arc - Faith in Ruins:**
+- Wanders between towns as traveling preacher
+- Encounters refugees fleeing Perdition's new violence
+- Investigates Eastern Mining Consortium's expansion
+- Uncovers pattern of town destructions across the frontier
+
+### Chapters 9-14: Individual Journey Chapters
+Each chapter focuses primarily on one character while others make brief appearances:
+
+**Chapter 9: "Maria's War" (100 scenes - Maria focus)**
+- Maria infiltrates union organizing efforts as a spy
+- Develops unexpected respect for labor leader Rosa Morales
+- Discovers consortium plans to frame union for mine explosion
+- Must choose between warning workers and maintaining cover
+
+**Chapter 10: "Thomas's Patients" (100 scenes - Thomas focus)**
+- Thomas secretly treats poor families at night
+- Company discovers his activities and threatens him
+- Child he refused to treat earlier dies, haunting him
+- Forced to perform surgery on mine owner's son, considers revenge
+
+**Chapter 11: "Jacob's Inheritance" (100 scenes - Jacob focus)**
+- Jacob uncovers his uncle's connection to Cross's consortium
+- Learns his family orchestrated much of Perdition's suffering
+- Romance develops with Sarah Mitchell (from earlier chapters)
+- Must choose between exposing family crimes and protecting Sarah
+
+**Chapter 12: "Elijah's Crusade" (100 scenes - Elijah focus)**
+- Elijah gathers evidence of consortium's widespread corruption
+- Forms alliance with federal marshal investigating corporate crimes
+- Returns to Perdition to find it worse than ever
+- Realizes his former friends are the only ones who can stop what's coming
+
+**Chapter 13: "Converging Paths" (100 scenes - Multiple perspectives)**
+- Maria discovers consortium plans to destroy Perdition completely
+- Thomas finds proof of systematic poisoning across multiple towns
+- Jacob learns his uncle will betray him to protect larger operation
+- Elijah arrives with federal backing but needs inside help
+
+**Chapter 14: "The Reckoning Approaches" (100 scenes - All characters)**
+- Former companions forced to communicate through intermediaries
+- Each holds piece of puzzle to stop consortium's final plan
+- Trust must be rebuilt despite betrayals and moral failures
+- Stage is set for reunion and final confrontation
+
+### Chapter 15: "Reunited in Darkness" (100 scenes - Convergence)
+**Summary:** The four storylines converge as the former companions must reunite to face a threat greater than any of them imagined. The Eastern Mining Consortium plans to destroy Perdition and blame it on union radicals, using it as pretense for martial law across the frontier.
+
+**Key Convergence Points:**
+- Maria's intelligence network discovers the date of planned attack
+- Thomas's medical evidence proves conspiracy across multiple towns
+- Jacob's inside knowledge reveals consortium's kill list includes all four of them
+- Elijah's federal contacts offer pardons in exchange for testimony
+
+**Unified Action Required:**
+- Must overcome mutual distrust and self-loathing
+- Each character's unique position becomes essential
+- Old bonds reassert themselves in face of greater evil
+- Choice between personal redemption and community salvation
+
+### Chapters 16-20: Final Arc Together
+The reunited but changed companions face their greatest challenge, fighting not just for Perdition but for the soul of the frontier itself. Their journey from heroes to villains to reluctant saviors comes full circle, but victory—if it comes—will be forever tainted by what they've become.
 
 ## Major Story Themes
 

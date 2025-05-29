@@ -1,277 +1,400 @@
-// Chapter 6: New Alliances
+// Chapter 6: The Reckoning (Linear Version)
 storyData.chapter6 = {
     name: "Chapter 6",
-    title: "New Alliances",
+    title: "The Reckoning",
     scenes: {
+        // Scene 1: Opening Confrontation
         start: {
-            onEnter: function() {
-                updateStoryVariable('currentChapter', 'Chapter 6');
-                let endingType = getStoryVariable('storyVariables.final_ending_type');
-                let C5flags = getStoryVariable('flags.chapter5_flags') || {};
-                let nextScene = "start_generic_aftermath";
+            speaker: "Narrator",
+            text: "The late afternoon sun casts long shadows across Perdition's main street as Silas Cross stands before the gathered townspeople. His hired guns fan out behind him, hands resting on their weapons. The air is thick with tension and the acrid smell of Martha Peterson's still-burning house.",
+            next: "cross_demands"
+        },
 
-                if (endingType === 'Sacrifice') {
-                    nextScene = "start_after_sacrifice";
-                } else if (endingType === 'Redemption') {
-                    if (C5flags.c5_outcome_silas_redeemed_together && getStoryVariable('flags.forgave_silas_chapter5')) {
-                        nextScene = "start_after_redemption_silas_redeemed";
-                    } else {
-                        nextScene = "start_after_redemption_silas_uncertain";
-                    }
-                } else if (endingType === 'Unity') {
-                    nextScene = "start_after_unity";
-                } else if (endingType === 'Transformation') {
-                    nextScene = "start_after_transformation";
-                }
-                
-                // Use setTimeout to redirect after the current scene loads
-                setTimeout(() => {
-                    if (typeof game !== 'undefined' && game.loadScene) {
-                        game.loadScene('chapter6', nextScene);
-                    }
-                }, 100);
-            },
-            text: "Loading Chapter 6...",
-            next: "start_generic_aftermath" // Fallback if redirect fails
+        // Scene 2: Cross's Demands
+        cross_demands: {
+            speaker: "Silas Cross",
+            text: "'I see you've been busy making friends, preacher. But let me remind everyone here who owns the water rights, who controls the trade routes, and who has the means to enforce order in this town.' His eyes scan the crowd with cold calculation.",
+            next: "crowd_stands_firm"
         },
-        
-        start_after_sacrifice: {
+
+        // Scene 3: The Crowd Stands Firm
+        crowd_stands_firm: {
             speaker: "Narrator",
-            text: "In the wake of Elijah's sacrifice, Perdition mourns a hero but finds a fragile new hope. The immediate crisis is over, but his absence leaves a void. The townsfolk speak his name in hushed, reverent tones. The remaining three – Maria, Thomas, and Jacob – must now carry the weight of his legacy and the town's future.",
-            next: "council_meeting_prep"
+            text: "But something has changed. Where once the townspeople would have scattered at Cross's approach, they now stand their ground. Walter Hayes, Sarah Mitchell, Martha Peterson, and dozens of others form a human wall of defiance. The four companions stand at their center.",
+            next: "maria_assessment"
         },
-        
-        start_after_redemption_silas_redeemed: {
-            speaker: "Narrator",
-            text: "With Silas finding redemption alongside Elijah and the Hungry Dark quelled, Perdition begins to heal. The Cross brothers, once symbols of division, now represent a complex hope. Silas, though weakened and changed, works with the group, his knowledge invaluable, his presence a constant reminder of the thin line between damnation and grace.",
-            next: "council_meeting_prep"
+
+        // Scene 4: Maria's Assessment
+        maria_assessment: {
+            speaker: "Maria Vasquez",
+            text: "Maria counts the opposition with a professional eye. 'Eight men, not counting Cross and Morrison. Armed but spread thin. They weren't expecting this many people.' She keeps her voice low, meant only for her companions.",
+            next: "thomas_medical_evidence"
         },
-        
-        start_after_redemption_silas_uncertain: {
-            speaker: "Narrator",
-            text: "Though Silas aided in stopping the Hungry Dark, his ultimate fate and the town's trust in him remain points of contention. Perdition is saved, but the air is thick with unspoken questions about the surviving Cross brother. Elijah and the group must navigate this uneasy peace carefully.",
-            next: "council_meeting_prep"
+
+        // Scene 5: Thomas's Medical Evidence
+        thomas_medical_evidence: {
+            speaker: "Thomas Whitmore",
+            text: "Thomas steps forward, holding up the water sample vial. 'Mr. Cross, I have evidence here of arsenic poisoning in the Peterson well. The same poison that killed Pete Peterson and made others sick. As a doctor, I'm prepared to testify to what I've found.'",
+            next: "cross_threatens_thomas"
         },
-        
-        start_after_unity: {
-            speaker: "Narrator",
-            text: "The hard-won unity against the Hungry Dark holds, for now. Cartel remnants, gang members, and townsfolk eye each other with a wary respect born of shared trauma. Perdition is saved, but this new peace is a delicate seedling in scorched earth, needing careful cultivation by Elijah and his companions.",
-            next: "council_meeting_prep"
+
+        // Scene 6: Cross Threatens Thomas
+        cross_threatens_thomas: {
+            speaker: "Silas Cross",
+            text: "'A drunk doctor's testimony? Who would believe that?' Cross's smile doesn't reach his eyes. 'Be careful, Dr. Whitmore. Perdition can be dangerous for men who don't know their place.'",
+            next: "jacob_speaks_up"
         },
-        
-        start_after_transformation: {
-            speaker: "Narrator",
-            text: "Perdition is safe, now watched over by the transformed Hungry Dark – a guardian entity whose motives remain as alien as its previous hunger. The town is uneasy, trying to understand if this new protector is a blessing or merely a different kind of leash. Elijah and the group are the de facto interpreters of its silent vigil.",
-            next: "council_meeting_prep"
+
+        // Scene 7: Jacob Speaks Up
+        jacob_speaks_up: {
+            speaker: "Jacob Rivers",
+            text: "'You can't threaten all of us, Cross.' Jacob's voice cracks slightly, but he stands tall. 'We've all seen what you've done. Sheriff Bradley, the church, the poisoned wells. The whole town knows the truth now.'",
+            next: "morrison_draws_gun"
         },
-        
-        start_generic_aftermath: {
-            speaker: "Narrator",
-            text: "The days immediately following the confrontation with the Hungry Dark are a blur of activity and uneasy quiet. Perdition is saved, but the cost is etched on every face and every damaged building. Elijah and his companions survey the aftermath, knowing the fight for Perdition's soul is far from over.",
-            next: "council_meeting_prep"
+
+        // Scene 8: Morrison Draws His Gun
+        morrison_draws_gun: {
+            speaker: "Deputy Morrison",
+            text: "Deputy Morrison's hand moves to his gun. 'That's enough talk. You're all under arrest for disturbing the peace and sedition.' But his voice wavers as he realizes how outnumbered they are.",
+            next: "elijah_moral_authority"
         },
-        
-        council_meeting_prep: {
-            speaker: "Narrator",
-            text: "A week later, a council of sorts is to be held. Representatives from the town, what remains of the Valdez interests, and the Rivers gang have agreed to meet. Your group is central to brokering this fragile peace.",
+
+        // Scene 9: Elijah's Moral Authority
+        elijah_moral_authority: {
+            speaker: "Elijah Cross",
+            text: "'Deputy, you're going to arrest an entire town? On whose authority? The sheriff you helped murder?' Elijah's voice carries the weight of absolute conviction. 'Put the gun away before someone gets hurt.'",
             choices: [
                 {
-                    text: "Prepare your arguments for unity.",
-                    next: "prepare_unity_speech",
-                    onChoose: function() { updateStoryVariable('flags.chapter6_flags.c6_prepared_unity_speech', true); }
+                    text: "Appeal to Cross's men directly",
+                    next: "appeal_to_gunmen"
                 },
                 {
-                    text: "Scout the meeting location for potential threats.",
-                    next: "scout_meeting_location",
-                    onChoose: function() { updateStoryVariable('flags.chapter6_flags.c6_scouted_location', true); }
-                },
-                {
-                    text: "Speak with key faction members beforehand.",
-                    next: "pre_council_talks",
-                    onChoose: function() { updateStoryVariable('flags.chapter6_flags.c6_held_pre_talks', true); }
+                    text: "Focus on rallying the townspeople",
+                    next: "rally_townspeople"
                 }
             ]
         },
-        
-        prepare_unity_speech: {
-            speaker: "Elijah",
-            text: "You spend hours refining your points, hoping to appeal to the shared desire for survival and prosperity, even among bitter enemies. Thomas helps you consider different perspectives while Jacob provides insights into gang mentality.",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                    this.text = "Maria spends hours refining arguments for unity, hoping to appeal to the shared desire for survival. Thomas helps consider different perspectives while Jacob provides insights into gang mentality.";
-                }
-            },
-            next: "council_begins"
+
+        // Scene 10a: Appeal to Cross's Men
+        appeal_to_gunmen: {
+            speaker: "Elijah Cross",
+            text: "'You men behind Cross—is this what you signed up for? Burning widows out of their homes? Poisoning wells? You're not soldiers or lawmen. You're just hired thugs doing dirty work for a man who'd sell you out in a heartbeat.'",
+            next: "gunmen_waver"
         },
-        
-        scout_meeting_location: {
-            speaker: "Maria",
-            text: "Maria joins you in scouting the chosen meeting spot - the town's half-repaired church. She points out potential ambush points and escape routes. \"Hope for peace,\" she murmurs, \"but always be ready for war.\"",
-            next: "council_begins"
+
+        // Scene 10b: Rally the Townspeople
+        rally_townspeople: {
+            speaker: "Elijah Cross",
+            text: "'People of Perdition, this is your moment. You can choose to live in fear, or you can choose to stand together. Cross only has power if we give it to him. United, we are stronger than any hired guns.'",
+            next: "townspeople_surge"
         },
-        
-        pre_council_talks: {
-            speaker: "Thomas",
-            text: "Thomas, with his surprisingly diplomatic demeanor, proves invaluable in sounding out the faction leaders before the official meeting. He reports back that both sides are wary but genuinely tired of bloodshed.",
-            next: "council_begins"
-        },
-        
-        council_begins: {
+
+        // Scene 11: The Gunmen Waver / Townspeople Surge
+        gunmen_waver: {
             speaker: "Narrator",
-            text: "The church is crowded. Townsfolk fill the pews, their faces a mix of hope and fear. At the altar, now a makeshift table, sit the key players: a stern-faced woman representing the Valdez interests, Samuel Rivers (looking older and more tired), and Elder Hayes, Perdition's unofficial mayor. Your group stands as mediators.",
-            next: "valdez_opening_statement"
+            text: "Some of Cross's men exchange uneasy glances. They signed on for easy money intimidating a broken town, not facing down an angry mob. Two of them take small steps backward, their commitment wavering.",
+            next: "cross_desperation"
         },
-        
-        valdez_opening_statement: {
-            speaker: "Isabella Valdez",
-            text: "\"Let us be clear. We are here because too many have died. My family... has paid a heavy price. We seek not vengeance for the past madness, but security for our future. Perdition sits on a valuable trade route. We can all prosper, or we can all bleed out in this dust.\"",
-            next: "rivers_response"
-        },
-        
-        rivers_response: {
-            speaker: "Samuel Rivers",
-            text: "\"Prosperity?\" Samuel Rivers scoffs, his hand never far from his gun. \"This town owes us. My men died fighting that... thing. We ain't leaving empty-handed. But more war? Even I'm getting tired of burying my kin.\"",
-            next: "elder_hayes_plea"
-        },
-        
-        elder_hayes_plea: {
-            speaker: "Elder Hayes",
-            text: "\"Friends, please!\" Elder Hayes, a man whose face is a roadmap of Perdition's hardships, raises his trembling hands. \"This town has suffered enough. We need peace to rebuild. We need your strength, not your strife. We offer... cooperation. Fair trade. A new beginning for all of us, under the eyes of God and whatever spirits watch over this cursed, blessed land.\"",
-            next: "player_mediation_choice"
-        },
-        
-        player_mediation_choice: {
+
+        townspeople_surge: {
             speaker: "Narrator",
-            text: "All eyes turn to your group. This is the moment to steer Perdition towards a new dawn or watch it collapse back into violence.",
+            text: "The crowd surges forward slightly, emboldened by Elijah's words. Men who haven't carried guns in years rest hands on old revolvers. Women grip kitchen knives and farming tools. The message is clear: Perdition will fight.",
+            next: "cross_desperation"
+        },
+
+        // Scene 12: Cross's Desperation
+        cross_desperation: {
+            speaker: "Silas Cross",
+            text: "'You fools! You think you can stand against progress? Against the future?' Cross's composed facade cracks. 'I offered this town prosperity. I offered to make it more than a dusty waystation. And this is how you repay me?'",
+            next: "walter_hayes_speaks"
+        },
+
+        // Scene 13: Walter Hayes Speaks
+        walter_hayes_speaks: {
+            speaker: "Walter Hayes",
+            text: "'You offered us slavery, Cross. You offered to steal our water, our land, our dignity. Perdition may be small, but it's ours. We built it with honest sweat and honest work. We won't let you turn it into your personal kingdom.'",
+            next: "martha_peterson_testimony"
+        },
+
+        // Scene 14: Martha Peterson's Testimony
+        martha_peterson_testimony: {
+            speaker: "Martha Peterson",
+            text: "Martha steps forward, soot-stained but unbroken. 'You tried to burn me alive because I talked to the doctor. Just like you burned the church. Just like you poisoned my Pete. How many more have to die for your greed?'",
+            next: "cross_final_gambit"
+        },
+
+        // Scene 15: Cross's Final Gambit
+        cross_final_gambit: {
+            speaker: "Silas Cross",
+            text: "'Fine. You want to do this the hard way?' Cross pulls out a telegram. 'I have friends in high places. Federal marshals, railroad barons, men who matter. One word from me, and this town will be wiped off the map. Is that what you want?'",
+            next: "unexpected_ally"
+        },
+
+        // Scene 16: An Unexpected Ally
+        unexpected_ally: {
+            speaker: "Frank Hutchins",
+            text: "Frank Hutchins, the saloon keeper and Cross's informant, suddenly speaks from the crowd. 'I'm done being your spy, Cross. These people deserve better than what you've given them. I'll testify to everything I've seen and heard.'",
+            next: "momentum_shifts"
+        },
+
+        // Scene 17: The Momentum Shifts
+        momentum_shifts: {
+            speaker: "Narrator",
+            text: "The betrayal from his own informant visibly shakes Cross. More of his hired guns step away, unwilling to fight a battle they can't win. Deputy Morrison looks around nervously, realizing he's rapidly becoming isolated.",
+            next: "maria_tactical_move"
+        },
+
+        // Scene 18: Maria's Tactical Move
+        maria_tactical_move: {
+            speaker: "Maria Vasquez",
+            text: "Maria moves with practiced efficiency, positioning herself to cut off Morrison's escape route. 'Deputy, drop the gun. You're outnumbered fifty to one. Don't die for a man who wouldn't spit on you if you were on fire.'",
+            next: "morrison_surrenders"
+        },
+
+        // Scene 19: Morrison Surrenders
+        morrison_surrenders: {
+            speaker: "Deputy Morrison",
+            text: "Morrison's gun clatters to the ground. 'I... I surrender. Don't shoot.' His badge follows the gun into the dust. 'Cross made me do it. Threatened my family if I didn't play along.'",
+            next: "cross_alone"
+        },
+
+        // Scene 20: Cross Stands Alone
+        cross_alone: {
+            speaker: "Narrator",
+            text: "Silas Cross stands alone now, abandoned by his men and his corrupt deputy. The man who once held Perdition in a grip of fear is reduced to a solitary figure surrounded by the people he terrorized. His empire of intimidation has crumbled in minutes.",
+            next: "cross_draws_weapon"
+        },
+
+        // Scene 21: Cross Draws His Weapon
+        cross_draws_weapon: {
+            speaker: "Narrator",
+            text: "In desperation, Cross reaches for his own gun. But before he can clear leather, multiple clicks of hammers being cocked fill the air. He's staring down the barrels of dozens of weapons held by steady hands.",
+            next: "elijah_final_offer"
+        },
+
+        // Scene 22: Elijah's Final Offer
+        elijah_final_offer: {
+            speaker: "Elijah Cross",
+            text: "'It's over, Silas. You've lost. But you still have a choice. Surrender peacefully and face justice in a court of law, or...' Elijah doesn't need to finish. The alternative is clear.",
+            next: "cross_bitter_defeat"
+        },
+
+        // Scene 23: Cross's Bitter Defeat
+        cross_bitter_defeat: {
+            speaker: "Silas Cross",
+            text: "'You think you've won? You have no idea what you've done. The consortium I represent won't forget this. They'll send more men, harder men. Perdition will burn, and it'll be on your heads.'",
+            next: "thomas_steps_forward"
+        },
+
+        // Scene 24: Thomas Steps Forward
+        thomas_steps_forward: {
+            speaker: "Thomas Whitmore",
+            text: "'Let them come. We'll be ready. And we'll have the law on our side this time—real law, not your bought-and-paid-for thuggery. I'll make sure every newspaper from here to San Francisco knows what you did here.'",
+            next: "securing_cross"
+        },
+
+        // Scene 25: Securing Cross
+        securing_cross: {
+            speaker: "Narrator",
+            text: "Several townsmen move forward to secure Cross, binding his hands with rope. The once-powerful man who terrorized Perdition is led away like a common criminal, his threats echoing hollowly in the evening air.",
+            next: "addressing_the_crowd"
+        },
+
+        // Scene 26: Addressing the Crowd
+        addressing_the_crowd: {
+            speaker: "Elijah Cross",
+            text: "'People of Perdition, what we've done today is just the beginning. We need to organize, elect a new sheriff, establish real law and order. This town belongs to all of us now, and we must work together to keep it that way.'",
+            next: "practical_matters"
+        },
+
+        // Scene 27: Practical Matters
+        practical_matters: {
+            speaker: "Walter Hayes",
+            text: "'We'll need to send word to the territorial capital about what happened here. Get a federal marshal to take Cross and Morrison for trial. And we need to make sure those poisoned wells are sealed properly.'",
+            next: "maria_security_concerns"
+        },
+
+        // Scene 28: Maria's Security Concerns
+        maria_security_concerns: {
+            speaker: "Maria Vasquez",
+            text: "'Cross wasn't lying about having friends. We should post watches, organize a militia. Some of his men might come back, or the consortium might send others. We need to be ready.'",
+            next: "jacob_volunteers"
+        },
+
+        // Scene 29: Jacob Volunteers
+        jacob_volunteers: {
+            speaker: "Jacob Rivers",
+            text: "'I'll help organize the younger men for watch duty. We can use the old sheriff's office as headquarters once we clean it out. This is our town now—we need to protect it.'",
+            next: "thomas_medical_priorities"
+        },
+
+        // Scene 30: Thomas's Medical Priorities
+        thomas_medical_priorities: {
+            speaker: "Thomas Whitmore",
+            text: "'I need to set up a proper clinic and start treating everyone who's been affected by the poisoned water. With clean sources and proper care, we can heal this town—literally and figuratively.'",
+            next: "frank_hutchins_confession"
+        },
+
+        // Scene 31: Frank Hutchins's Full Confession
+        frank_hutchins_confession: {
+            speaker: "Frank Hutchins",
+            text: "'I have records in my saloon safe—payments from Cross, lists of who he was targeting next, correspondence with his eastern backers. I'll turn it all over. Maybe it'll help make up for my part in this.'",
+            next: "community_rebuilding"
+        },
+
+        // Scene 32: Community Rebuilding Plans
+        community_rebuilding: {
+            speaker: "Sarah Mitchell",
+            text: "'We should rebuild the church first. Not just for worship, but as a symbol that Cross couldn't break our spirit. And we need to help Martha rebuild her home—all of us together.'",
+            next: "evening_celebration"
+        },
+
+        // Scene 33: Evening Celebration Preparation
+        evening_celebration: {
+            speaker: "Mrs. Henderson",
+            text: "'Tonight, we should celebrate. Not just our freedom from Cross, but our unity. I'll open my kitchen—everyone bring what food you can. We'll feast like a real community again.'",
             choices: [
                 {
-                    text: "Appeal for a unified Perdition, with shared responsibilities.",
-                    next: "propose_unity_pact",
-                    onChoose: function() { updateStoryVariable('flags.chapter6_flags.c6_proposed_unity_pact', true); }
+                    text: "Help organize the celebration",
+                    next: "organizing_celebration"
                 },
                 {
-                    text: "Suggest a pragmatic truce: separate territories, enforced peace.",
-                    next: "propose_territorial_truce",
-                    onChoose: function() { updateStoryVariable('flags.chapter6_flags.c6_proposed_territorial_truce', true); }
-                },
-                {
-                    text: "Warn them: unite against external threats, or be destroyed piecemeal.",
-                    next: "warn_external_threats",
-                    onChoose: function() { updateStoryVariable('flags.chapter6_flags.c6_warned_external_threats', true); }
+                    text: "Focus on securing the prisoners",
+                    next: "securing_prisoners"
                 }
             ]
         },
-        
-        propose_unity_pact: {
-            speaker: "Elijah",
-            text: "\"Perdition can be more than just a stop on the road. It can be a sanctuary, a place of true community. But only if we share the burden of its defense and the fruits of its prosperity. A council, with representatives from each group, ensuring fairness. Shared patrols. A new charter for a new Perdition.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-            },
-            next: "faction_reactions"
-        },
-        
-        propose_territorial_truce: {
-            speaker: "Thomas",
-            text: "\"Perhaps full unity is too much to ask for, too soon. But we can draw lines. The Valdez interests manage trade east, the Rivers clan handles routes west. The town itself... neutral ground, policed jointly. Clear boundaries, clear consequences for breaking them. A hard peace, but peace nonetheless.\"",
-            next: "faction_reactions"
-        },
-        
-        warn_external_threats: {
-            speaker: "Maria",
-            text: "\"What we faced... it may not be the only horror in these lands. And word of Perdition's troubles will travel. The vultures will circle – not just bandits, but powers that would see us all enslaved or erased. If we don't stand together, at least in defense, we stand for nothing and will fall alone.\"",
-            next: "faction_reactions"
-        },
-        
-        faction_reactions: {
+
+        // Scene 34a: Organizing the Celebration
+        organizing_celebration: {
             speaker: "Narrator",
-            text: "The faction leaders consider your proposal. Isabella Valdez looks thoughtful, Samuel Rivers grudgingly nods, and Elder Hayes clasps his hands in prayer. The discussion is tense but avoids open hostility. A fragile agreement begins to form, documented on paper.",
-            next: "federal_agent_arrival_subtle"
+            text: "The companions help coordinate an impromptu town celebration. Tables are dragged into the street, lanterns are hung, and for the first time in months, music drifts through Perdition's dusty air. The town remembers how to smile.",
+            next: "quiet_moment"
         },
-        
-        federal_agent_arrival_subtle: {
+
+        // Scene 34b: Securing the Prisoners
+        securing_prisoners: {
             speaker: "Narrator",
-            text: "As the meeting concludes and parchments are signed, a lone rider approaches Perdition. Dressed in unremarkable traveler's clothes, he asks for lodging and observes the town with an unnervingly keen gaze. He introduces himself as Mr. Smith, a 'historian' interested in local events.",
-            next: "agent_observes"
+            text: "The companions ensure Cross and Morrison are securely locked in the jail, with rotating guards from the townspeople. Justice will be served properly this time, through courts and law rather than vengeance.",
+            next: "quiet_moment"
         },
-        
-        agent_observes: {
+
+        // Scene 35: A Quiet Moment
+        quiet_moment: {
             speaker: "Narrator",
-            text: "Mr. Smith spends the next few days quietly talking to townsfolk, taking notes, and paying particular attention to your group. He asks pointed questions about the 'recent disturbances' and the 'unusual weather patterns.'",
-            choices: [
-                {
-                    text: "Offer him a carefully edited version of events.",
-                    next: "agent_partial_truth",
-                    onChoose: function() { updateStoryVariable('flags.chapter6_flags.c6_agent_told_partial_truth', true); }
-                },
-                {
-                    text: "Be open about the supernatural, gauging his reaction.",
-                    next: "agent_full_truth",
-                    onChoose: function() { updateStoryVariable('flags.chapter6_flags.c6_agent_told_full_truth', true); }
-                },
-                {
-                    text: "Avoid him and warn the others to be cautious.",
-                    next: "agent_avoidance",
-                    onChoose: function() { updateStoryVariable('flags.chapter6_flags.c6_agent_avoided', true); }
-                }
-            ]
+            text: "As night falls and the celebration begins, the four companions find a quiet moment together on the boarding house porch. They've been in Perdition less than two weeks, but it feels like a lifetime.",
+            next: "elijah_reflection"
         },
-        
-        agent_partial_truth: {
-            speaker: "Elijah",
-            text: "\"We had a severe bandit problem, Mr. Smith, coupled with a... peculiar storm. Caused a lot of damage and fear. But the town pulled together. We're rebuilding now.\" You omit the more unbelievable details.",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-            },
-            next: "agent_departs_or_reveals"
+
+        // Scene 36: Elijah's Reflection
+        elijah_reflection: {
+            speaker: "Elijah Cross",
+            text: "'When I boarded that stagecoach, I was running from my past. Now... I feel like I've found something worth fighting for again. You three, this town—it's given me purpose I thought I'd lost forever.'",
+            next: "maria_acceptance"
         },
-        
-        agent_full_truth: {
-            speaker: "Elijah",
-            text: "\"Mr. Smith, what happened here was beyond bandits. We faced something... unnatural. A darkness that fed on this town's pain. We stood against it, and by some miracle, we survived.\" You watch him carefully.",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-            },
-            next: "agent_departs_or_reveals"
+
+        // Scene 37: Maria's Acceptance
+        maria_acceptance: {
+            speaker: "Maria Vasquez",
+            text: "'I've been alone for so long, I forgot what it felt like to trust others. To have people who'd stand with you no matter what. You're not just allies anymore. You're...' She pauses, unused to the word. 'Family.'",
+            next: "thomas_redemption"
         },
-        
-        agent_avoidance: {
-            speaker: "Maria",
-            text: "\"That man asks too many questions. And his eyes don't match his story. Keep your distance. I don't like him.\" The group becomes more guarded.",
-            next: "agent_departs_or_reveals"
+
+        // Scene 38: Thomas's Redemption
+        thomas_redemption: {
+            speaker: "Thomas Whitmore",
+            text: "'My hands haven't shaken once since we got here. For the first time in years, I feel like a real doctor again. Like I can actually help people instead of just... drowning in a bottle. Thank you for that.'",
+            next: "jacob_growth"
         },
-        
-        agent_departs_or_reveals: {
+
+        // Scene 39: Jacob's Growth
+        jacob_growth: {
+            speaker: "Jacob Rivers",
+            text: "'I came west thinking I'd find adventure, prove I was a man. But what I found was so much more. I found courage I didn't know I had, and people worth being courageous for. Whatever comes next, I'm ready.'",
+            next: "mysterious_rider"
+        },
+
+        // Scene 40: A Mysterious Rider
+        mysterious_rider: {
             speaker: "Narrator",
-            text: "A few days later, Mr. Smith departs as quietly as he arrived, leaving behind a lingering sense of unease and unanswered questions.",
-            onEnter: function() {
-                let C6flags = getStoryVariable('flags.chapter6_flags') || {};
-                if (C6flags.c6_agent_told_full_truth && (getStoryVariable('flags.unity_vs_division_meter') > 2 || getStoryVariable('flags.chapter5_flags.c5_outcome_unity_victory'))) {
-                    this.text = "Mr. Smith nods slowly after your full account. Before leaving, he discreetly shows you a U.S. Marshal's badge. \"Washington is taking an interest in these... anomalies. You haven't heard the last of us. Be prepared.\"";
-                    updateStoryVariable('flags.chapter6_flags.c6_federal_interest_known', true);
-                }
-            },
-            next: "chapter_end"
+            text: "As the celebration continues below, Maria notices a lone rider on the horizon, watching the town from a distant hill. The figure remains motionless for several minutes before turning and disappearing into the darkness.",
+            next: "maria_warns_others"
         },
-        
-        chapter_end: {
+
+        // Scene 41: Maria Warns the Others
+        maria_warns_others: {
+            speaker: "Maria Vasquez",
+            text: "'We had an observer. Single rider, trained horse, patient surveillance. Could be one of Cross's men checking on their boss, or...' She frowns. 'Could be someone else entirely. The consortium, maybe.'",
+            next: "planning_ahead"
+        },
+
+        // Scene 42: Planning for the Future
+        planning_ahead: {
+            speaker: "Elijah Cross",
+            text: "'Tomorrow we start preparing for whatever comes next. Tonight, let Perdition celebrate. These people have earned one night of peace and joy. We'll stand watch.'",
+            next: "thomas_agreement"
+        },
+
+        // Scene 43: Thomas's Agreement
+        thomas_agreement: {
+            speaker: "Thomas Whitmore",
+            text: "'The fight's not over. Cross was just a symptom of larger forces—greed, exploitation, the powerful preying on the weak. But we've shown that communities can fight back when they stand together.'",
+            next: "setting_watches"
+        },
+
+        // Scene 44: Setting the Watch
+        setting_watches: {
             speaker: "Narrator",
-            text: "The fragile peace treaty signed in Perdition's church represents a new beginning, but you know it's only the start. The strange events that brought your group together seem to be spreading beyond this small town. As Mr. Smith's departure reminds you, the world is taking notice of what happened here. Whatever comes next, Perdition now stands as a beacon of unity in a region plagued by conflict - and perhaps something far worse than human enemies.",
+            text: "The companions organize a watch schedule for the night, ensuring someone is always alert while the town celebrates. The mysterious rider has reminded them that vigilance is the price of their newfound freedom.",
+            next: "celebration_continues"
+        },
+
+        // Scene 45: The Celebration Continues
+        celebration_continues: {
+            speaker: "Narrator",
+            text: "Music and laughter fill Perdition's streets as the town rediscovers its sense of community. Children play games they'd been too frightened to enjoy, couples dance, and stories of better days are shared around improvised tables.",
+            next: "hutchins_documents"
+        },
+
+        // Scene 46: Hutchins Delivers Documents
+        hutchins_documents: {
+            speaker: "Frank Hutchins",
+            text: "Frank Hutchins approaches with a leather satchel. 'As promised—every document I kept for Cross. Names, dates, money transfers. There's enough here to interest federal prosecutors and journalists alike.'",
+            next: "examining_evidence"
+        },
+
+        // Scene 47: Examining the Evidence
+        examining_evidence: {
+            speaker: "Narrator",
+            text: "A quick examination reveals the scope of Cross's operation—and more troubling, hints at similar schemes in other frontier towns. The Eastern Mining Consortium appears to have a systematic approach to acquiring western territories.",
+            next: "bigger_picture"
+        },
+
+        // Scene 48: Understanding the Bigger Picture
+        bigger_picture: {
+            speaker: "Elijah Cross",
+            text: "'This is bigger than just Perdition. According to these papers, we're just one of a dozen towns targeted. If we can get this information to the right authorities, we might save other communities from our fate.'",
+            next: "hope_and_determination"
+        },
+
+        // Scene 49: Hope and Determination
+        hope_and_determination: {
+            speaker: "Narrator",
+            text: "As the night wears on, the four companions take turns watching over their adopted town. They've won an important victory, but they know it's only the beginning. Perdition has been saved, but the fight for justice in the frontier continues.",
+            next: "chapter_conclusion"
+        },
+
+        // Scene 50: Chapter Conclusion
+        chapter_conclusion: {
+            speaker: "Narrator",
+            text: "Dawn breaks over a transformed Perdition. Silas Cross sits in jail awaiting justice, the wells are being cleansed, and hope has returned to the community. But on the horizon, that mysterious rider represents questions yet unanswered and challenges yet to come. The four strangers who met on a stagecoach have become the guardians of a town reborn, united in purpose and ready for whatever the harsh frontier might throw at them next.",
             choices: [
                 {
                     text: "Continue to Chapter 7",
                     next: null,
-                    nextChapter: "chapter7",
-                    onChoose: function() { updateStoryVariable('currentChapter', 'Chapter 7'); }
+                    nextChapter: "chapter7"
                 }
             ]
         }
     }
-}; 
+};
