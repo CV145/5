@@ -243,11 +243,17 @@ class GameEngine {
         // Skip if narrator
         if (speakerName === 'Narrator') return;
 
+        // Special case for Doc Whitmore
+        let searchName = speakerName;
+        if (speakerName === 'Doc Whitmore') {
+            searchName = "Thomas 'Doc' Whitmore";
+        }
+
         // Find and highlight the speaking character
         const character = Object.values(characters).find(char => 
-            char.name === speakerName || 
-            char.name.includes(speakerName) || 
-            speakerName.includes(char.name.split(' ')[0]) // Match first name
+            char.name === searchName || 
+            char.name.includes(searchName) || 
+            searchName.includes(char.name.split(' ')[0]) // Match first name
         );
 
         if (character) {

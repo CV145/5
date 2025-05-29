@@ -1,888 +1,395 @@
-// Chapter 9: Blood and Iron
+// Chapter 9: Underground
 storyData.chapter9 = {
     name: "Chapter 9",
-    title: "Blood and Iron",
+    title: "Underground",
     scenes: {
+        // Scene 1: Elijah Revisits the Grave
         start: {
             speaker: "Narrator",
-            text: "The silence following the Bone Singer's pacification feels almost unnatural after days of its constant song. As dawn breaks over Devil's Backbone, your group emerges from the mine forever changed by what you've witnessed and the choices you've made.",
+            text: "Days after his confrontation with Josiah Truth, Elijah Cross found himself drawn back to the desecrated cemetery. The children's bones he had briefly unearthed haunted him. Josiah's forgiveness had settled not as peace, but as a burning coal of responsibility.",
             onEnter: function() {
                 updateStoryVariable('currentChapter', 'Chapter 9');
-                
-                // Check major Chapter 8 outcomes
-                let guardianSacrifice = getStoryVariable('flags.chapter9_opening.c9_guardian_sacrifice');
-                let teamSeparated = getStoryVariable('flags.chapter9_opening.c9_team_separated');
-                let cartelRelationship = getStoryVariable('flags.chapter9_opening.c9_cartel_relationship');
-                let morningStarPresent = getStoryVariable('flags.chapter8_flags.c8_group_composition_morning_star');
-                let isabellaPresent = getStoryVariable('flags.chapter8_flags.c8_group_composition_isabella');
-                
-                // Check previous chapter flags for narrative context
-                let violenceMeter = getStoryVariable('flags.violence_vs_peace_meter') || 0;
-                let unityMeter = getStoryVariable('flags.unity_vs_division_meter') || 0;
-                let faithMeter = getStoryVariable('flags.faith_vs_doubt_meter') || 0;
-                let elijahAcceptsViolence = getStoryVariable('flags.chapter1_flags.elijah_accepts_violence');
-                let soughtDivineGuidance = getStoryVariable('flags.chapter3_flags.sought_divine_guidance_c3');
-                let trustedSilasRitual = getStoryVariable('flags.chapter4_flags.trusted_silas_ritual_c4');
-                let forgaveSilas = getStoryVariable('flags.forgave_silas_chapter5');
-                let federalInterestKnown = getStoryVariable('flags.chapter6_flags.c6_federal_interest_known');
-                let groupDrinksChapter1 = getStoryVariable('flags.chapter1_flags.group_drinks_c1');
-                let confessedDarkSecret = getStoryVariable('flags.chapter3_flags.confessed_dark_secret_c3');
-                
-                updateStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made', guardianSacrifice || false);
-                updateStoryVariable('flags.chapter9_flags.c9_team_separated', teamSeparated || false);
-                updateStoryVariable('flags.chapter9_flags.c9_cartel_alliance', cartelRelationship || false);
-                updateStoryVariable('flags.chapter9_flags.c9_morning_star_ally', morningStarPresent || false);
-                updateStoryVariable('flags.chapter9_flags.c9_isabella_ally', isabellaPresent || false);
-                
-                // Modify opening text based on previous choices
-                let contextualText = "The silence following the Bone Singer's pacification feels almost unnatural after days of its constant song. ";
-                
-                if (guardianSacrifice) {
-                    contextualText += "The weight of sacrifice hangs heavy over your surviving group members, but ";
-                } else if (unityMeter >= 2) {
-                    contextualText += "Your group's strong bonds helped everyone survive the ordeal, and ";
-                } else if (unityMeter <= -2) {
-                    contextualText += "Despite the tensions within your group, you all managed to survive, and ";
-                }
-                
-                if (violenceMeter >= 2) {
-                    contextualText += "the violence you've witnessed and perhaps participated in has left its mark. ";
-                } else if (violenceMeter <= -2) {
-                    contextualText += "your commitment to peaceful solutions has been tested but maintained. ";
-                } else {
-                    contextualText += "the difficult choices you've made have shaped who you've become. ";
-                }
-                
-                if (federalInterestKnown) {
-                    contextualText += "The memory of Agent Smith's warnings about federal interest in these supernatural events adds urgency to your situation. ";
-                }
-                
-                if (forgaveSilas) {
-                    contextualText += "The lessons learned from Silas's redemption remind you that even the darkest situations can find resolution. ";
-                } else if (trustedSilasRitual) {
-                    contextualText += "Your experience with supernatural rituals has prepared you for what may come next. ";
-                }
-                
-                contextualText += "As dawn breaks over Devil's Backbone, your group emerges from the mine forever changed.";
-                
-                this.text = contextualText;
             },
-            next: "aftermath_assessment"
+            next: "elijah_examines_site_again"
         },
 
-        aftermath_assessment: {
+        // Scene 2: Closer Examination
+        elijah_examines_site_again: {
             speaker: "Narrator",
-            text: "The survivors of Devil's Backbone gather around you as you exit the mine. For the first time in weeks, their eyes are clear and their minds their own. The supernatural terror that claimed so many lives has been laid to rest, but the cost weighs heavily on everyone present.",
-            onEnter: function() {
-                // Different opening based on guardian sacrifice
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                if (guardianSacrifice) {
-                    let sacrificer = "Elijah";
-                    if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                        sacrificer = "Thomas";
-                    }
-                    this.text = `The survivors of Devil's Backbone gather as the remaining members of your group exit the mine. ${sacrificer} remains behind as the guardian of the sacred burial site, his sacrifice ensuring the dead will rest peacefully. The supernatural terror has been laid to rest, but the cost weighs heavily on everyone present.`;
-                    updateStoryVariable('flags.chapter9_flags.c9_guardian_identity', sacrificer);
-                }
-            },
-            next: "doc_peterson_gratitude"
+            text: "This time, he searched more carefully around the disturbed earth where he'd been digging the grave. He sifted through the soil, his fingers tracing the outline of what felt like fabric.",
+            next: "discovery_of_fabric_and_bead"
         },
 
-        doc_peterson_gratitude: {
-            speaker: "Doc Peterson",
-            text: "\"I don't know how you did it, but that hellish singing has stopped. People are thinking clearly for the first time in a month. You've given us our lives back.\"",
-            onEnter: function() {
-                // Different response if Thomas stayed behind as guardian
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                let guardianIdentity = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                if (guardianSacrifice && guardianIdentity === "Thomas") {
-                    this.text = "\"Dr. Whitmore's sacrifice... I don't know how he convinced that thing to let the rest of us go, but the singing has stopped. People are thinking clearly for the first time in a month. He gave his life so we could have ours back.\"";
-                }
-            },
-            next: "morning_star_warning"
-        },
-
-        morning_star_warning: {
-            speaker: "Morning Star",
-            text: "\"The Bone Singer sleeps, but its awakening has sent ripples through the spirit world. The other Terrors will know that their brother has been bound. They will become more dangerous, more desperate to break free before they too are contained.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter9_flags.c9_morning_star_ally')) {
-                    // If Morning Star isn't present, this insight comes from experience
-                    this.speaker = "Maria";
-                    this.text = "\"Two supernatural entities down, but I have a feeling this isn't over. Whatever's connecting these things, they're going to know we stopped another one. The next fight is going to be harder.\"";
-                }
-            },
-            next: "urgent_message_arrives"
-        },
-
-        urgent_message_arrives: {
+        // Scene 3: A Shred of Evidence
+        discovery_of_fabric_and_bead: {
             speaker: "Narrator",
-            text: "As if summoned by Morning Star's words, a rider approaches at breakneck speed. His horse is lathered with sweat and foam, and the man himself looks haggard with exhaustion and fear. He barely slows as he calls out to your group.",
-            next: "messenger_urgent_news"
+            text: "He unearthed a tattered piece of coarse, dark blue cloth – the kind used for institutional uniforms. And then, a single, fire-blackened bead, identical to those on the necklace Samuel Crane always clutched.",
+            next: "connection_to_residential_school"
         },
 
-        messenger_urgent_news: {
-            speaker: "Railroad Messenger",
-            text: "\"Are you the ones who stopped the singing? Thank God! I bring word from the Transcontinental Development Corporation - our construction crews are under attack! Strange metal creatures, tools turning to rust, workers disappearing into the ground itself!\"",
-            onEnter: function() {
-                let federalInterestKnown = getStoryVariable('flags.chapter6_flags.c6_federal_interest_known');
-                if (federalInterestKnown) {
-                    this.text = "\"Are you the ones who stopped the singing? Thank God! The Transcontinental Development Corporation sent me - the same company that federal agent mentioned. Our construction crews are under attack! Strange metal creatures, tools turning to rust, workers disappearing into the ground itself!\"";
-                }
-            },
-            next: "iron_devourer_threat"
-        },
-
-        iron_devourer_threat: {
-            speaker: "Railroad Messenger",
-            text: "\"The railroad construction has awakened something terrible at Copper Creek. Every piece of metal we bring turns to dust. Our steam engines are dying, our rails crumbling. Workers speak of something in the earth that hungers for iron and steel. The foreman sent me to find anyone who's dealt with... unnatural problems.\"",
+        // Scene 4: The Residential School Connection
+        connection_to_residential_school: {
+            speaker: "Elijah Cross",
+            text: "(Internal) 'St. Catherine's... Crane mentioned Pike ran it years ago. The children... the ones from the Prologue... Sarah Crow Feather...' The horrifying truth began to coalesce.",
             choices: [
                 {
-                    text: "Immediately agree to help with the new threat",
-                    next: "immediate_assistance",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_immediate_response', true); }
+                    text: "Recall Crane's nervous demeanor about the past.",
+                    next: "recall_crane_nervousness_ch9"
                 },
                 {
-                    text: "Ask for details about the railroad's operations first",
-                    next: "investigate_railroad_connection",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_investigated_railroad', true); }
-                },
-                {
-                    text: "Insist on proper rest and resupply before taking on another threat",
-                    next: "demand_preparation_time",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_demanded_rest', true); }
+                    text: "Feel a surge of cold fury at Pike.",
+                    next: "elijah_fury_at_pike_ch9"
                 }
             ]
         },
 
-        immediate_assistance: {
-            speaker: "Elijah",
-            text: "\"We can't let innocent workers suffer. If this Iron Devourer is another of the Five Terrors, every day we delay gives it more strength.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                    this.text = "\"Workers are dying, and this sounds like another of those ancient entities. We can't let it grow stronger while we rest.\"";
-                }
-                
-                // Adjust based on Elijah's character development
-                let elijahAcceptsViolence = getStoryVariable('flags.chapter1_flags.elijah_accepts_violence');
-                let soughtDivineGuidance = getStoryVariable('flags.chapter3_flags.sought_divine_guidance_c3');
-                let violenceMeter = getStoryVariable('flags.violence_vs_peace_meter') || 0;
-                
-                if (elijahAcceptsViolence && violenceMeter >= 1) {
-                    this.text = "\"I've learned that sometimes we must fight to protect the innocent. These workers don't deserve to suffer for corporate greed.\"";
-                } else if (soughtDivineGuidance) {
-                    this.text = "\"Divine guidance led us through the darkness before. We cannot abandon those in need when we have the power to help.\"";
-                }
-                
-                // Adjust if guardian sacrifice was made
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                if (guardianSacrifice) {
-                    let sacrificer = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                    this.text = `\"${sacrificer} gave his life to stop the Bone Singer. We honor that sacrifice by not letting this Iron Devourer claim more innocent lives.\"`;
-                }
-            },
-            next: "railroad_corporate_revelation"
+        // Scene 5: Recall Crane's Nervousness (Optional)
+        recall_crane_nervousness_ch9: {
+            speaker: "Elijah Cross",
+            text: "(Internal) 'Crane's fear... his warnings to forget what I'd seen. He knew. He knew these were those children.'",
+            next: "elijah_heads_to_confront_crane"
         },
 
-        investigate_railroad_connection: {
-            speaker: "Thomas",
-            text: "\"Wait. Transcontinental Development Corporation? That's the same company we encountered before. This isn't coincidence - they're either incredibly unlucky or they know more about these supernatural threats than they're letting on.\"",
-            onEnter: function() {
-                // Adjust if Thomas was the guardian sacrifice
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                let guardianIdentity = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                if (guardianSacrifice && guardianIdentity === "Thomas") {
-                    this.speaker = "Jacob";
-                    this.text = "\"Thomas mentioned that company before he... before he stayed behind. Transcontinental Development Corporation - they know more about these supernatural threats than they're admitting.\"";
-                }
-            },
-            next: "railroad_corporate_revelation"
+        // Scene 6: Elijah's Fury (Optional)
+        elijah_fury_at_pike_ch9: {
+            speaker: "Elijah Cross",
+            text: "(Internal) 'Pike. This man's evil has no bounds. From the mercury poisoning then, to whatever horrors he inflicts now.'",
+            next: "elijah_heads_to_confront_crane"
         },
 
-        demand_preparation_time: {
-            speaker: "Jacob",
-            text: "\"We just fought a supernatural entity that nearly claimed one of our own. We need time to grieve, resupply, and plan properly. Rushing into another fight will get us all killed.\"",
-            onEnter: function() {
-                // Different tone if guardian sacrifice was made
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                if (guardianSacrifice) {
-                    let sacrificer = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                    this.text = `\"We just lost ${sacrificer} to the Bone Singer. We need time to process that loss and plan properly, or we'll just be throwing more lives away.\"`;
-                }
-                
-                // Add context based on Jacob's previous experiences and choices
-                let jacobSavedElijah = getStoryVariable('flags.jacob_saved_elijah_chapter1');
-                let requestedPrepTime = getStoryVariable('flags.chapter7_flags.c7_requested_prep_time');
-                let balancedPreparation = getStoryVariable('flags.chapter7_flags.c7_balanced_preparation');
-                let unityMeter = getStoryVariable('flags.unity_vs_division_meter') || 0;
-                
-                if (jacobSavedElijah && unityMeter >= 1) {
-                    this.text = "\"I've seen what happens when we rush into danger without thinking. I saved Elijah once by being careful - let's not waste lives by charging ahead blindly now.\"";
-                } else if (requestedPrepTime || balancedPreparation) {
-                    this.text = "\"Our preparation before facing the Bone Singer paid off. We can't afford to be reckless now when workers' lives hang in the balance.\"";
-                }
-            },
-            next: "messenger_time_pressure"
+        // Scene 7: Elijah Decides to Confront Crane Again
+        elijah_heads_to_confront_crane: {
+            speaker: "Narrator",
+            text: "Armed with this grim certainty, Elijah strode towards Crane's undertaking establishment. The time for Crane's evasions was over.",
+            next: "crane_in_his_workshop"
         },
 
-        messenger_time_pressure: {
-            speaker: "Railroad Messenger",
-            text: "\"I understand your need for rest, but people are dying every hour! The Iron Devourer grows stronger with each piece of machinery it consumes. Our entire operation could be destroyed by week's end!\"",
-            next: "railroad_corporate_revelation"
+        // Scene 8: Crane in His Workshop
+        crane_in_his_workshop: {
+            speaker: "Narrator",
+            text: "Samuel Crane was meticulously polishing a coffin, a task that seemed to absorb all his nervous energy. He looked up, startled, as Elijah entered without knocking.",
+            next: "elijah_direct_confrontation_crane"
         },
 
-        railroad_corporate_revelation: {
-            speaker: "Railroad Messenger",
-            text: "\"The foreman... he mentioned that the company has been tracking supernatural incidents across the territory. They have files on what happened in Perdition and Devil's Backbone. They know you're the ones who can stop these things.\"",
-            next: "corporate_conspiracy_unfolds"
+        // Scene 9: Elijah's Direct Confrontation
+        elijah_direct_confrontation_crane: {
+            speaker: "Elijah Cross",
+            text: "'The children in that mass grave, Crane. They were from St. Catherine's Residential School, weren't they? The one Pike ran. The one where they died of mercury poisoning.' Elijah's voice was low, but held the sharp edge of judgment.",
+            next: "crane_attempts_denial"
         },
 
-        corporate_conspiracy_unfolds: {
-            speaker: "Morning Star",
-            text: "\"The railroad company seeks to bind the ancient powers to their will. They deliberately build where the Terrors sleep, thinking they can control forces older than their civilization. They are fools, and their greed will doom us all.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter9_flags.c9_morning_star_ally')) {
-                    this.speaker = "Maria";
-                    this.text = "\"This railroad company is deliberately seeking out supernatural sites. They're not just unlucky - they're trying to exploit these ancient powers. That makes them extremely dangerous.\"";
-                }
-                
-                // Add context based on previous supernatural encounters
-                let trustedSilasRitual = getStoryVariable('flags.chapter4_flags.trusted_silas_ritual_c4');
-                let forgaveSilas = getStoryVariable('flags.forgave_silas_chapter5');
-                let attemptedNegotiationValdez = getStoryVariable('flags.chapter4_flags.attempted_negotiation_valdez_c4');
-                
-                if (trustedSilasRitual && forgaveSilas) {
-                    if (getStoryVariable('flags.chapter9_flags.c9_morning_star_ally')) {
-                        this.text += " You have learned that supernatural forces can be reasoned with, but corporate greed lacks such wisdom.";
-                    } else {
-                        this.text += " We've seen how supernatural entities can be reasoned with, but corporate greed is often more dangerous than ancient magic.";
-                    }
-                } else if (attemptedNegotiationValdez) {
-                    this.text += " We've tried negotiation before - sometimes it works, sometimes it doesn't. But corporate manipulation is different from facing supernatural threats directly.";
-                }
-            },
+        // Scene 10: Crane's Attempted Denial
+        crane_attempts_denial: {
+            speaker: "Samuel Crane",
+            text: "'Preacher, I told you... old graves... best left undisturbed. What happened in the past...'",
+            next: "elijah_shows_evidence"
+        },
+
+        // Scene 11: Elijah Shows the Evidence
+        elijah_shows_evidence: {
+            speaker: "Elijah Cross",
+            text: "Elijah placed the tattered blue cloth and the blackened bead on the coffin. 'Like this bead, Crane? From the necklace you carry? Sarah Crow Feather's necklace?'",
+            next: "crane_breaks_down"
+        },
+
+        // Scene 12: Crane Breaks
+        crane_breaks_down: {
+            speaker: "Narrator",
+            text: "Crane stared at the items, his face crumbling. The carefully constructed walls of denial he'd lived behind for seventeen years shattered. He sank onto a stool, head in his hands.",
+            next: "crane_confession_begins"
+        },
+
+        // Scene 13: Crane's Confession Begins
+        crane_confession_begins: {
+            speaker: "Samuel Crane",
+            text: "'Yes... yes, it was them. All those little ones.' His voice was a choked whisper. 'Pike... he made me bury them. Threatened my family. I was young, terrified... I've lived with their faces every night since.'",
+            next: "crane_reveals_operation_moved"
+        },
+
+        // Scene 14: Crane Reveals Pike's Operation Moved
+        crane_reveals_operation_moved: {
+            speaker: "Samuel Crane",
+            text: "'But that ain't the worst of it, Preacher. He didn't stop. He just got smarter. Moved his operation... underground. Literally. Still using children. Heard whispers... from the new mine.'",
+            next: "elijah_presses_for_location"
+        },
+        
+        // Scene 15: Elijah Presses for Location
+        elijah_presses_for_location: {
+            speaker: "Elijah Cross",
+            text: "'Underground? Where, Crane? Tell me everything.'",
             choices: [
                 {
-                    text: "Demand to meet with railroad executives to confront them",
-                    next: "demand_executive_meeting",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_confronted_executives', true); }
+                    text: "Show compassion for Crane's past fear.",
+                    next: "elijah_compassion_for_crane"
                 },
                 {
-                    text: "Focus on stopping the Iron Devourer first, deal with corporate conspiracy later",
-                    next: "prioritize_immediate_threat",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_prioritized_threat', true); }
-                },
-                {
-                    text: "Propose working with the railroad to learn their true agenda",
-                    next: "infiltration_strategy",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_infiltration_approach', true); }
+                    text: "Maintain a stern, demanding tone.",
+                    next: "elijah_stern_with_crane"
                 }
             ]
         },
 
-        demand_executive_meeting: {
-            speaker: "Elijah",
-            text: "\"If this corporation is deliberately awakening ancient evils, they need to be stopped. Take us to whoever's in charge - it's time for some honest answers.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                if (guardianSacrifice) {
-                    let sacrificer = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                    this.text = `\"${sacrificer} died because of their reckless greed. If this corporation is deliberately awakening ancient evils, they have blood on their hands.\"`;
-                }
-            },
-            next: "executive_meeting_arranged"
+        // Scene 16: Elijah's Compassion (Optional)
+        elijah_compassion_for_crane: {
+            speaker: "Elijah Cross",
+            text: "'I understand fear, Samuel. I've lived with my own. But these are children, alive now, suffering now. You can help stop it.'",
+            next: "crane_reveals_more_details"
         },
 
-        prioritize_immediate_threat: {
-            speaker: "Thomas",
-            text: "\"Corporate conspiracy or not, people are dying right now. We save the workers first, then deal with whoever's responsible for this mess.\"",
-            onEnter: function() {
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                let guardianIdentity = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                if (guardianSacrifice && guardianIdentity === "Thomas") {
-                    this.speaker = "Jacob";
-                    this.text = "\"Thomas would have said to save the workers first, worry about corporate politics later. We honor his memory by protecting innocent lives.\"";
-                }
-            },
-            next: "journey_to_copper_creek"
+        // Scene 17: Elijah Stern with Crane (Optional)
+        elijah_stern_with_crane: {
+            speaker: "Elijah Cross",
+            text: "'Your past guilt is no excuse for present silence, man! Where is Pike keeping those children?'",
+            next: "crane_reveals_more_details"
+        },
+        
+        // Scene 18: Crane Reveals More Details
+        crane_reveals_more_details: {
+            speaker: "Samuel Crane",
+            text: "'I... I don't know exactly. Pike's too clever. But there are old tunnels... beneath the North Ridge mine. Forgotten ways. He uses them. I've seen... small figures, being taken there at night.'",
+            next: "transition_to_maria_investigation_ch9"
         },
 
-        infiltration_strategy: {
-            speaker: "Maria",
-            text: "\"We play along for now. Work with them to stop the Iron Devourer, but keep our eyes open. Information is power, and we need to understand what we're really up against.\"",
-            next: "corporate_cooperation"
-        },
-
-        executive_meeting_arranged: {
-            speaker: "Railroad Messenger",
-            text: "\"Mr. Blackwood is at the Copper Creek site overseeing operations. I can take you there, but... he won't be happy about being questioned. The company doesn't like being challenged.\"",
-            next: "blackwood_confrontation_setup"
-        },
-
-        journey_to_copper_creek: {
+        // --- Maria's Storyline Convergence ---
+        transition_to_maria_investigation_ch9: {
             speaker: "Narrator",
-            text: "The ride to Copper Creek takes most of the day. As you approach the railroad construction site, the evidence of the Iron Devourer's presence becomes unmistakable - twisted metal sculptures that were once tools, railroad tracks crumbling to rust, and workers fleeing in terror from something unseen underground.",
-            next: "copper_creek_devastation"
+            text: "As Elijah pieced together the truth from Crane's tortured confession, Maria Vasquez was reaching a similar conclusion through her own methodical, colder means.",
+            next: "maria_recap_child_disappearances"
         },
 
-        corporate_cooperation: {
-            speaker: "Railroad Messenger",
-            text: "\"Mr. Blackwood will be pleased to have your cooperation. The company has resources, information, equipment - whatever you need to stop this threat. Just... don't ask too many questions about how we knew to find you.\"",
-            next: "journey_to_copper_creek"
-        },
-
-        blackwood_confrontation_setup: {
+        // Scene 20: Maria Recap - Missing Students
+        maria_recap_child_disappearances: {
             speaker: "Narrator",
-            text: "Cornelius Blackwood stands at the edge of the Copper Creek construction site, his fine eastern suit a stark contrast to the industrial devastation around him. When he sees your group approaching, his expression shifts from annoyance to calculating interest.",
-            next: "blackwood_greeting"
+            text: "The disappearance of her student informants had gnawed at Maria. Her investigation, initially focused on Dalton and Pike's general operations, now centered on the missing children. She had confirmed they weren't sick, nor had they simply left town.",
+            next: "maria_observing_mine_activity"
         },
 
-        blackwood_greeting: {
-            speaker: "Cornelius Blackwood",
-            text: "\"Ah, the heroes of Perdition and Devil's Backbone. Your reputation precedes you. I trust my messenger explained our... unusual problem? The Iron Devourer has been most inconvenient for our schedule.\"",
+        // Scene 21: Maria Observing Mine Activity
+        maria_observing_mine_activity: {
+            speaker: "Narrator",
+            text: "Her nightly reconnaissance of the North Ridge mine, the same one Crane mentioned, had revealed unusual activity: small, heavily guarded convoys arriving and leaving under the cover of darkness, carrying something... or someone.",
+            next: "maria_suspects_underground_operation"
+        },
+
+        // Scene 22: Maria Suspects Underground Operation
+        maria_suspects_underground_operation: {
+            speaker: "Maria Vasquez",
+            text: "(Internal) 'The main shafts are for show, for legitimate silver. But the children... they're being taken somewhere else. Deeper. Hidden. An underground operation.'",
+            next: "maria_sees_crane_acting_strangely"
+        },
+        
+        // Scene 23: Maria Notices Crane
+        maria_sees_crane_acting_strangely: {
+            speaker: "Narrator",
+            text: "Maria had also noticed Samuel Crane's increasingly furtive behavior, particularly his late-night solitary walks towards the desolate North Ridge area. The undertaker knew something.",
+            next: "elijah_and_maria_paths_cross_intro"
+        },
+
+        // Scene 24: Paths Cross - Elijah and Maria
+        elijah_and_maria_paths_cross_intro: {
+            speaker: "Narrator",
+            text: "That evening, as Elijah left Crane's, his mind reeling, he almost collided with Maria, who was emerging from the shadows nearby, clearly having observed the undertaker's shop.",
+            next: "maria_to_elijah_crane_knows"
+        },
+
+        // Scene 25: Maria to Elijah
+        maria_to_elijah_crane_knows: {
+            speaker: "Maria Vasquez",
+            text: "'Crane knows more than he lets on, Preacher. About Pike. About the children disappearing. I've been watching him.'",
+            next: "elijah_shares_crane_confession"
+        },
+
+        // Scene 26: Elijah Shares Crane's Confession
+        elijah_shares_crane_confession: {
+            speaker: "Elijah Cross",
+            text: "'He just confessed it. Pike is using children, working them in secret tunnels beneath the North Ridge mine. The same children from the residential school... some of them.' His voice was raw.",
+            next: "maria_confirms_her_findings"
+        },
+
+        // Scene 27: Maria Confirms Her Findings
+        maria_confirms_her_findings: {
+            speaker: "Maria Vasquez",
+            text: "'My investigation led me to the same place. The children from my school... they were being taken there.' Her expression was unreadable, but a dangerous light glinted in her eyes.",
+            next: "uneasy_alliance_forms_discussion"
+        },
+
+        // Scene 28: The Uneasy Alliance Forms
+        uneasy_alliance_forms_discussion: {
+            speaker: "Narrator",
+            text: "They stood in the twilight, the preacher driven by a desperate need for atonement and justice, the gunslinger by a cold thirst for revenge and a pragmatic understanding of the enemy. Their motives differed, but their immediate target was the same: Pike.",
             choices: [
                 {
-                    text: "Accuse Blackwood of deliberately awakening supernatural threats",
-                    next: "direct_accusation",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_accused_blackwood', true); }
+                    text: "Elijah: 'We have to stop him. Together.'",
+                    next: "elijah_proposes_alliance_ch9"
                 },
                 {
-                    text: "Demand to know what the railroad company really wants",
-                    next: "demand_true_agenda",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_demanded_agenda', true); }
-                },
-                {
-                    text: "Focus on the immediate threat and avoid confrontation for now",
-                    next: "avoid_confrontation",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_diplomatic_approach', true); }
+                    text: "Maria: 'It seems our interests align, Preacher.'",
+                    next: "maria_acknowledges_alignment_ch9"
                 }
             ]
         },
 
-        copper_creek_devastation: {
+        // Scene 29: Elijah Proposes Alliance (Optional)
+        elijah_proposes_alliance_ch9: {
+            speaker: "Elijah Cross",
+            text: "'Pike is a monster. What he's doing to those children... it cannot stand. I don't trust your methods, Miss Vasquez, but right now, we need each other.'",
+            next: "maria_agrees_to_temporary_alliance"
+        },
+
+        // Scene 30: Maria Acknowledges Alignment (Optional)
+        maria_acknowledges_alignment_ch9: {
+            speaker: "Maria Vasquez",
+            text: "'Pike and Dalton are my targets. If freeing some children helps me get to them, then our paths run parallel for now. Don't mistake it for friendship, Preacher.'",
+            next: "maria_agrees_to_temporary_alliance"
+        },
+
+        // Scene 31: Maria Agrees to Temporary Alliance
+        maria_agrees_to_temporary_alliance: {
+            speaker: "Maria Vasquez",
+            text: "'Agreed. For now. Crane seems to be our best lead to these tunnels. He's terrified of Pike, but his guilt is eating him alive. He might be persuaded... or forced... to show us the way.'",
+            next: "plan_to_follow_crane"
+        },
+
+        // Scene 32: Plan to Follow Crane
+        plan_to_follow_crane: {
+            speaker: "Elijah Cross",
+            text: "'He mentioned making late-night visits to the North Ridge. Perhaps out of some twisted penance. We watch him tonight. If he goes, we follow.'",
+            next: "waiting_for_nightfall_ch9"
+        },
+
+        // Scene 33: Waiting for Nightfall
+        waiting_for_nightfall_ch9: {
             speaker: "Narrator",
-            text: "The Copper Creek site is a wasteland of rusted metal and panicked workers. Steam engines sit silent, their boilers corroded beyond repair. Railroad tracks end abruptly where the metal has simply crumbled away. And from deep underground comes a rhythmic pounding, like the heartbeat of some massive iron beast.",
-            next: "iron_devourer_manifestation"
+            text: "The hours crawled by. Elijah and Maria found separate, concealed positions near Crane's workshop, the silence between them thick with unspoken questions and simmering distrust.",
+            next: "crane_emerges_at_night"
+        },
+        
+        // Scene 34-36: The Vigil (Montage)
+        crane_emerges_at_night: {
+            speaker: "Narrator",
+            text: "Well after midnight, under a sliver of moon, Crane's door creaked open. He emerged, carrying a small, covered lantern and a shovel, looking furtively around before heading towards the North Ridge.",
+            next: "elijah_maria_begin_tailing_crane"
+        },
+        elijah_maria_begin_tailing_crane: {
+            speaker: "Narrator",
+            text: "Elijah and Maria exchanged a look, then melted into the deeper shadows, following Crane at a safe distance. The undertaker moved with the slump of a man carrying an unbearable weight.",
+            next: "crane_path_to_hidden_entrance"
+        },
+        crane_path_to_hidden_entrance: {
+            speaker: "Narrator",
+            text: "Crane didn't take the main path to the mine. Instead, he veered off towards a cluster of collapsed, ancient-looking adits, long forgotten by most.",
+            next: "crane_at_the_hidden_entrance"
         },
 
-        iron_devourer_manifestation: {
-            speaker: "Construction Foreman",
-            text: "\"Thank God you're here! That thing... it's not just destroying our equipment. It's learning from it. Every machine it consumes makes it smarter, stronger. Yesterday it was just rusting our tools. Today it's building something down there.\"",
-            next: "underground_investigation_decision"
+        // Scene 37: Crane at the Hidden Entrance
+        crane_at_the_hidden_entrance: {
+            speaker: "Narrator",
+            text: "He stopped before a rock face almost entirely obscured by overgrown brush and a recent-looking rockslide. After a nervous glance around, he began to pull away specific stones, revealing a narrow, dark opening.",
+            next: "crane_enters_tunnel_elijah_maria_wait"
         },
 
-        direct_accusation: {
-            speaker: "Elijah",
-            text: "\"Your company is deliberately building on supernatural sites. People have died because of your greed. How many more will you sacrifice for profit?\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                if (guardianSacrifice) {
-                    let sacrificer = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                    this.text = `\"${sacrificer} died stopping the Bone Singer that your company's mining operations awakened. How many more will you sacrifice for profit?\"`;
-                }
-            },
-            next: "blackwood_reveals_truth"
+        // Scene 38: Crane Enters
+        crane_enters_tunnel_elijah_maria_wait: {
+            speaker: "Samuel Crane",
+            text: "(Muttering to himself as he entered) 'Forgive me, little ones... forgive an old fool...'",
+            next: "elijah_and_maria_approach_entrance"
         },
 
-        demand_true_agenda: {
-            speaker: "Thomas",
-            text: "\"Enough games, Blackwood. Your company has files on supernatural incidents. You're not just building a railroad - what do you really want?\"",
-            onEnter: function() {
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                let guardianIdentity = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                if (guardianSacrifice && guardianIdentity === "Thomas") {
-                    this.speaker = "Jacob";
-                    this.text = "\"Thomas was right about your company being suspicious. Enough games, Blackwood - what do you really want with these supernatural sites?\"";
-                }
-            },
-            next: "blackwood_reveals_truth"
+        // Scene 39: Elijah and Maria Approach
+        elijah_and_maria_approach_entrance: {
+            speaker: "Narrator",
+            text: "Once Crane disappeared inside, Elijah and Maria cautiously approached the hidden entrance. A faint, metallic scent and the distant, rhythmic chink of tools drifted from the darkness.",
+            next: "decision_to_enter_tunnel_ch9"
+        },
+        
+        // Scene 40: Decision to Enter
+        decision_to_enter_tunnel_ch9: {
+            speaker: "Maria Vasquez",
+            text: "'This is it. Are you ready, Preacher? No turning back once we're inside.'",
+            next: "elijah_resolve_entering_tunnel"
         },
 
-        avoid_confrontation: {
-            speaker: "Maria",
-            text: "\"Mr. Blackwood, we're here to stop the Iron Devourer. Whatever other business we might have can wait until after innocent lives are saved.\"",
-            next: "blackwood_cooperation"
+        // Scene 41: Elijah's Resolve
+        elijah_resolve_entering_tunnel: {
+            speaker: "Elijah Cross",
+            text: "'I've been turning back my whole life. It ends tonight.' He pushed aside the remaining brush and stepped into the oppressive blackness.",
+            next: "inside_the_tunnels_intro"
         },
 
-        blackwood_reveals_truth: {
-            speaker: "Cornelius Blackwood",
-            text: "\"Very well. Yes, we know about the Five Terrors. The federal government has been tracking supernatural phenomena for decades. These entities represent both a threat and an opportunity - imagine the military applications of controlled supernatural forces. The railroad is merely our method of reaching these sites.\"",
-            next: "government_conspiracy_revealed"
+        // Scene 42: Inside the Tunnels
+        inside_the_tunnels_intro: {
+            speaker: "Narrator",
+            text: "The tunnel was narrow, suffocating. The air was stale, heavy with the smell of damp earth and something else... despair. They followed the faint glimmer of Crane's lantern ahead.",
+            next: "sounds_of_labor_in_tunnels"
         },
 
-        blackwood_cooperation: {
-            speaker: "Cornelius Blackwood",
-            text: "\"Practical approach - I appreciate that. The Iron Devourer has already consumed twelve men and countless tons of equipment. Our excavation awakened it three days ago, and it's been growing stronger ever since.\"",
-            next: "iron_devourer_briefing"
+        // Scene 43: Sounds of Labor
+        sounds_of_labor_in_tunnels: {
+            speaker: "Narrator",
+            text: "As they went deeper, the chinking sounds grew louder, accompanied by hacking coughs and the occasional sharp cry of an overseer. And then... a sound that froze Elijah's blood.",
+            next: "childrens_voices_in_mine"
+        },
+        
+        // Scene 44: Children's Voices
+        childrens_voices_in_mine: {
+            speaker: "Narrator",
+            text: "Children's voices, weak and strained, singing a work song with no joy in it, their small efforts punctuated by the crack of a whip.",
+            next: "reaching_the_main_cavern"
         },
 
-        government_conspiracy_revealed: {
-            speaker: "Cornelius Blackwood",
-            text: "\"The Transcontinental Development Corporation is a front for a federal supernatural research division. We've been studying these entities since the war ended. Your group's success against the Hungry Dark and Bone Singer has made you... valuable assets.\"",
+        // Scene 45: Reaching the Main Cavern
+        reaching_the_main_cavern: {
+            speaker: "Narrator",
+            text: "The tunnel opened into a larger cavern, lit by sputtering torches. What they saw made them both recoil in horror.",
+            next: "witnessing_the_child_labor_horror"
+        },
+
+        // Scene 46: Witnessing the Horror
+        witnessing_the_child_labor_horror: {
+            speaker: "Narrator",
+            text: "Dozens of children, some no older than six or seven, were hacking at silver-veined rock with undersized pickaxes. Their faces were smudged with grime and illness, their bodies frail. Armed guards watched them with callous indifference.",
+            next: "children_conditions_described"
+        },
+        
+        // Scene 47: Children's Conditions
+        children_conditions_described: {
+            speaker: "Narrator",
+            text: "Many of the children coughed wrackingly, their eyes dull. Some had the tell-tale tremors of mercury poisoning. This wasn't just labor; it was a slow, agonizing death sentence.",
             choices: [
                 {
-                    text: "Refuse to work with government conspirators",
-                    next: "refuse_government_cooperation",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_refused_government', true); }
+                    text: "Elijah's internal prayer of anguish.",
+                    next: "elijah_anguished_prayer_ch9"
                 },
                 {
-                    text: "Demand guarantees for the safety of innocent people",
-                    next: "negotiate_safety_guarantees",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_negotiated_guarantees', true); }
-                },
-                {
-                    text: "Agree to work with them to gain access to their resources",
-                    next: "accept_government_partnership",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_government_partnership', true); }
+                    text: "Maria's cold fury solidifies.",
+                    next: "maria_cold_fury_ch9"
                 }
             ]
         },
 
-        iron_devourer_briefing: {
-            speaker: "Cornelius Blackwood",
-            text: "\"The Iron Devourer feeds on metal and mechanical complexity. Each machine it consumes adds to its intelligence and capabilities. Our experts believe it's trying to build some kind of... construct. A body for itself in the physical world.\"",
-            next: "underground_investigation_decision"
+        // Scene 48: Elijah's Anguished Prayer (Optional)
+        elijah_anguished_prayer_ch9: {
+            speaker: "Elijah Cross",
+            text: "(Internal) 'Lord, if you exist, how can you permit this? These are your children... What have we become?'",
+            next: "maria_cold_fury_ch9" // Ensure both paths converge if one is optional
+        },
+        
+        // Scene 49: Maria's Cold Fury (Optional or Converging)
+        maria_cold_fury_ch9: {
+            speaker: "Maria Vasquez",
+            text: "(Internal) 'Pike. Dalton. They will pay for this. Not just for Sofia. For all of them.' Her hand instinctively went to her hidden Colt.",
+            next: "chapter_end_scene_ch9"
         },
 
-        refuse_government_cooperation: {
-            speaker: "Elijah",
-            text: "\"We won't be your weapons. These entities are too dangerous to be controlled or weaponized. Stand aside and let us do what's right.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-                
-                // Adjust based on Elijah's faith development and past choices
-                let faithMeter = getStoryVariable('flags.faith_vs_doubt_meter') || 0;
-                let soughtDivineGuidance = getStoryVariable('flags.chapter3_flags.sought_divine_guidance_c3');
-                let confessedDarkSecret = getStoryVariable('flags.chapter3_flags.confessed_dark_secret_c3');
-                let prioritizedInnocents = getStoryVariable('flags.chapter3_flags.prioritize_innocents_c3');
-                
-                if (faithMeter >= 2 && soughtDivineGuidance) {
-                    this.text = "\"Divine guidance has shown me the right path through this darkness. These entities are not tools to be used - they're forces that require wisdom and respect, not exploitation.\"";
-                } else if (prioritizedInnocents) {
-                    this.text = "\"We've always put innocent lives first. We won't become government weapons when people need protection, not exploitation of supernatural forces.\"";
-                } else if (confessedDarkSecret) {
-                    this.text = "\"I've faced my own darkness and emerged stronger. I won't let the government turn these ancient powers into instruments of control.\"";
-                }
-            },
-            next: "government_opposition"
-        },
-
-        negotiate_safety_guarantees: {
-            speaker: "Thomas",
-            text: "\"If we're going to work together, we need guarantees. No more civilians endangered by your experiments. Full disclosure about supernatural threats. And we make the final decisions about how to handle these entities.\"",
-            onEnter: function() {
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                let guardianIdentity = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                if (guardianSacrifice && guardianIdentity === "Thomas") {
-                    this.speaker = "Jacob";
-                    this.text = "\"If we work together, we need guarantees. No more people die because of your experiments. Full honesty about what we're facing. And we decide how to handle these entities - not you.\"";
-                }
-            },
-            next: "blackwood_considers_terms"
-        },
-
-        accept_government_partnership: {
-            speaker: "Maria",
-            text: "\"Fine. We'll work with you. But we're not your employees - we're partners. Equal say in decisions, full access to your information, and if you betray us, we'll make sure the world knows what you're really doing.\"",
-            next: "government_partnership_terms"
-        },
-
-        government_opposition: {
-            speaker: "Cornelius Blackwood",
-            text: "\"I'm afraid that's not an option. Too much is at stake for the nation's security. However, I'd prefer cooperation to... conflict. The Iron Devourer threatens all of us equally.\"",
-            next: "underground_investigation_decision"
-        },
-
-        blackwood_considers_terms: {
-            speaker: "Cornelius Blackwood",
-            text: "\"Acceptable terms. The federal government needs your expertise more than your compliance. Full partnership it is - as long as we stop this Iron Devourer before it builds whatever monstrosity it's planning.\"",
-            next: "government_partnership_terms"
-        },
-
-        government_partnership_terms: {
-            speaker: "Cornelius Blackwood",
-            text: "\"Our researchers have developed specialized equipment for dealing with supernatural threats. Electromagnetic dampeners, silver-lined weapons, protective amulets based on indigenous designs. You'll have access to everything we've learned.\"",
-            next: "underground_investigation_decision"
-        },
-
-        underground_investigation_decision: {
+        // Scene 50: Chapter End - Grim Resolve
+        chapter_end_scene_ch9: {
             speaker: "Narrator",
-            text: "The pounding from underground grows louder and more rhythmic. Whatever the Iron Devourer is building, it's nearing completion. Steam vents have begun appearing around the construction site, and workers report seeing mechanical tentacles emerging from the ground.",
-            choices: [
-                {
-                    text: "Descend immediately to confront the Iron Devourer",
-                    next: "immediate_descent",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_immediate_descent', true); }
-                },
-                {
-                    text: "Study the entity's patterns and plan a coordinated assault",
-                    next: "tactical_planning",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_tactical_approach', true); }
-                },
-                {
-                    text: "Try to evacuate the area and contain the threat",
-                    next: "containment_strategy",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_containment_approach', true); }
-                }
-            ]
-        },
-
-        immediate_descent: {
-            speaker: "Jacob",
-            text: "\"Every minute we wait, that thing gets stronger. We go down there now and stop it before it finishes whatever it's building.\"",
-            next: "descent_into_copper_creek"
-        },
-
-        tactical_planning: {
-            speaker: "Morning Star",
-            text: "\"The Iron Devourer is ancient but newly awakened. It seeks to understand the modern world through consuming its machines. If we can disrupt its learning process, we can weaken it before the final confrontation.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter9_flags.c9_morning_star_ally')) {
-                    this.speaker = "Thomas";
-                    this.text = "\"This entity is learning from every machine it consumes. If we can disrupt that process or overload it with contradictory information, we might be able to weaken it.\"";
-                    if (getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made') && 
-                        getStoryVariable('flags.chapter9_flags.c9_guardian_identity') === "Thomas") {
-                        this.speaker = "Maria";
-                        this.text = "\"This entity learns from machines. If we can confuse it or overload it with contradictory information, we might weaken it before we face it directly.\"";
-                    }
-                }
-                
-                // Add context based on previous tactical experience
-                let tacticalApproachValdez = getStoryVariable('flags.chapter4_flags.tactical_approach_valdez_c4');
-                let balancedPreparation = getStoryVariable('flags.chapter7_flags.c7_balanced_preparation');
-                let soughtSilasStrategy = getStoryVariable('flags.chapter4_flags.sought_silas_strategy_c4');
-                let askForDetails = getStoryVariable('flags.chapter7_flags.c7_asked_for_details');
-                
-                if (tacticalApproachValdez && balancedPreparation) {
-                    this.text += " Our experience with tactical planning against Valdez and preparing for the Bone Singer has taught us the value of understanding our enemy first.";
-                } else if (soughtSilasStrategy || askForDetails) {
-                    this.text += " We've learned that gathering information before acting saves lives and improves our chances of success.";
-                }
-            },
-            next: "planning_phase"
-        },
-
-        containment_strategy: {
-            speaker: "Cornelius Blackwood",
-            text: "\"Containment might be our best option. We have experimental electromagnetic barriers that could isolate the entity until we find a permanent solution. Less risk to personnel.\"",
-            next: "containment_preparation"
-        },
-
-        planning_phase: {
-            speaker: "Narrator",
-            text: "Your team spends precious time analyzing the Iron Devourer's patterns. The entity seems to follow a learning cycle - consume, analyze, integrate, build. If you can interrupt this cycle at the right moment, you might catch it in a vulnerable state.",
-            next: "descent_into_copper_creek"
-        },
-
-        containment_preparation: {
-            speaker: "Narrator",
-            text: "The electromagnetic barriers are deployed around the excavation site. The humming energy field seems to slow the Iron Devourer's surface manifestations, but the underground pounding continues. Containment may not be enough if it completes its construct.",
-            next: "descent_into_copper_creek"
-        },
-
-        descent_into_copper_creek: {
-            speaker: "Narrator",
-            text: "Your group descends into the excavated tunnels of Copper Creek. The air thrums with electromagnetic energy, and every metal object you carry grows warm to the touch. Deep below, you can hear the rhythmic pounding growing louder - and now you can see its source.",
-            next: "iron_devourer_encounter"
-        },
-
-        iron_devourer_encounter: {
-            speaker: "Narrator",
-            text: "The Iron Devourer has built itself a massive mechanical body from the consumed railroad equipment. Pistons pump with the rhythm of a heartbeat, gears turn with hypnotic precision, and at its center sits a core of pure energy that pulses with insatiable hunger. It turns toward you with grinding metal sounds, and when it speaks, its voice is the screech of metal on metal.",
-            next: "iron_devourer_communication"
-        },
-
-        iron_devourer_communication: {
-            speaker: "The Iron Devourer",
-            text: "\"FLESH-THINGS... YOUR METAL-CRAFTS FEED ME KNOWLEDGE... I UNDERSTAND NOW... THE SURFACE WORLD... THE MOVING-FIRE BEASTS... I WILL RISE... I WILL CONSUME... I WILL BECOME...\"",
-            choices: [
-                {
-                    text: "Try to negotiate or reason with the entity",
-                    next: "attempt_negotiation",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_attempted_negotiation', true); }
-                },
-                {
-                    text: "Attack the entity's mechanical body directly",
-                    next: "direct_assault",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_direct_assault', true); }
-                },
-                {
-                    text: "Try to overload its systems with conflicting information",
-                    next: "overload_strategy",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_overload_strategy', true); }
-                }
-            ]
-        },
-
-        attempt_negotiation: {
-            speaker: "Elijah",
-            text: "\"You seek to understand our world? Then understand this - consuming and destroying will only bring you conflict. There are better ways to exist alongside humanity.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-                
-                // Adjust negotiation approach based on previous diplomatic experiences
-                let attemptedNegotiationValdez = getStoryVariable('flags.chapter4_flags.attempted_negotiation_valdez_c4');
-                let diplomaticStranger = getStoryVariable('flags.chapter3_flags.diplomatic_stranger_c3');
-                let forgaveSilas = getStoryVariable('flags.forgave_silas_chapter5');
-                let violenceMeter = getStoryVariable('flags.violence_vs_peace_meter') || 0;
-                let unityMeter = getStoryVariable('flags.unity_vs_division_meter') || 0;
-                
-                if (forgaveSilas && attemptedNegotiationValdez) {
-                    this.text = "\"We've learned that even the most corrupted souls can find redemption. You have the chance to choose cooperation over consumption, wisdom over destruction.\"";
-                } else if (diplomaticStranger && violenceMeter <= 0) {
-                    this.text = "\"We've always believed in talking first, fighting only when necessary. You're intelligent enough to understand that cooperation serves everyone better than conflict.\"";
-                } else if (unityMeter >= 2) {
-                    this.text = "\"Our group has learned the power of working together despite our differences. You could be part of that unity instead of standing against it.\"";
-                }
-                
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                if (guardianSacrifice) {
-                    let sacrificer = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                    this.text = `\"${sacrificer} understood the importance of coexistence between the old and new worlds. You can learn without destroying. There are better ways to exist alongside humanity.\"`;
-                }
-            },
-            next: "iron_devourer_considers"
-        },
-
-        iron_devourer_considers: {
-            speaker: "The Iron Devourer",
-            text: "\"COEXISTENCE... INTERESTING CONCEPT... BUT I HUNGER... YOUR METAL-CRAFTS CONTAIN SUCH COMPLEXITY... SUCH BEAUTY IN THEIR FUNCTION... HOW CAN I LEARN WITHOUT CONSUMING?\"",
-            next: "negotiation_breakthrough"
-        },
-
-        direct_assault: {
-            speaker: "Maria",
-            text: "\"This thing is going to destroy everything if we let it grow stronger. Hit it hard and fast - aim for the energy core!\"",
-            onEnter: function() {
-                // Adjust Maria's combat approach based on previous experiences
-                let supportedMariaRevelation = getStoryVariable('flags.supported_maria_revelation');
-                let mariaForcedToLead = getStoryVariable('flags.maria_forced_to_lead');
-                let violenceMeter = getStoryVariable('flags.violence_vs_peace_meter') || 0;
-                let aggressiveStrategyChapter3 = getStoryVariable('flags.chapter3_flags.aggressive_strategy_c3');
-                let rallyTownChapter3 = getStoryVariable('flags.chapter3_flags.rally_town_c3');
-                
-                if (mariaForcedToLead && rallyTownChapter3) {
-                    this.text = "\"I've had to make the hard decisions before when others couldn't. This entity won't respond to words - only decisive action.\"";
-                } else if (supportedMariaRevelation && violenceMeter >= 1) {
-                    this.text = "\"You trusted me when I revealed the truth about myself. Trust me now - sometimes violence is the only language these things understand.\"";
-                } else if (aggressiveStrategyChapter3) {
-                    this.text = "\"We learned in Perdition that sometimes you have to hit hard and fast. This thing is just another threat that needs to be eliminated.\"";
-                }
-            },
-            next: "combat_escalates"
-        },
-
-        overload_strategy: {
-            speaker: "Thomas",
-            text: "\"If it learns from machines, let's give it too much to process. Everyone with mechanical equipment - activate everything at once. Overload its ability to absorb information!\"",
-            onEnter: function() {
-                let guardianSacrifice = getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made');
-                let guardianIdentity = getStoryVariable('flags.chapter9_flags.c9_guardian_identity');
-                if (guardianSacrifice && guardianIdentity === "Thomas") {
-                    this.speaker = "Jacob";
-                    this.text = "\"Thomas figured out how it learns - from machines. If we activate every piece of equipment at once, we might overload its ability to process information!\"";
-                }
-            },
-            next: "overload_successful"
-        },
-
-        combat_escalates: {
-            speaker: "Narrator",
-            text: "The battle with the Iron Devourer is fierce and chaotic. Its mechanical body adapts to each attack, learning and countering your strategies. But your combined assault begins to wear down its defenses, and cracks appear in its metal shell.",
-            next: "combat_resolution"
-        },
-
-        overload_successful: {
-            speaker: "Narrator",
-            text: "The Iron Devourer staggers as multiple machines activate simultaneously around it. Steam engines whistle, clockwork mechanisms tick frantically, and metal tools clatter. The entity's form flickers and sparks as it struggles to process the conflicting information streams.",
-            next: "overload_resolution"
-        },
-
-        negotiation_breakthrough: {
-            speaker: "Morning Star",
-            text: "\"There is a way, Iron Devourer. In the old times, spirits learned from observation, not consumption. We can teach you to understand without destroying, to grow without taking life.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter9_flags.c9_morning_star_ally')) {
-                    this.speaker = "Elijah";
-                    this.text = "\"There must be a way to learn without destroying. If you truly wish to understand our world, start by understanding our values - cooperation over consumption, creation over destruction.\"";
-                    if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                        this.speaker = "Maria";
-                    }
-                }
-            },
-            next: "iron_devourer_transformation"
-        },
-
-        combat_resolution: {
-            speaker: "The Iron Devourer",
-            text: "\"ENOUGH... YOUR VIOLENCE TEACHES ME... MUCH... PERHAPS... COOPERATION... MORE EFFICIENT... THAN... CONSUMPTION...\"",
-            next: "iron_devourer_transformation"
-        },
-
-        overload_resolution: {
-            speaker: "The Iron Devourer",
-            text: "\"TOO... MUCH... INFORMATION... CANNOT... PROCESS... NEED... SIMPLER... APPROACH... GUIDANCE... HELP...\"",
-            next: "iron_devourer_transformation"
-        },
-
-        iron_devourer_transformation: {
-            speaker: "The Iron Devourer",
-            text: "\"YES... I UNDERSTAND... OBSERVATION... COOPERATION... I WILL BECOME... HELPER... NOT DESTROYER... BUT I NEED... GUIDANCE... TEACHER...\"",
-            choices: [
-                {
-                    text: "Offer to establish a partnership between the entity and humanity",
-                    next: "establish_partnership",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_iron_devourer_ally', true); }
-                },
-                {
-                    text: "Suggest binding the entity in a controlled environment",
-                    next: "controlled_binding",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_controlled_binding', true); }
-                },
-                {
-                    text: "Propose that the entity return to dormancy until humanity is ready",
-                    next: "propose_dormancy",
-                    onChoose: function() { updateStoryVariable('flags.chapter9_flags.c9_entity_dormancy', true); }
-                }
-            ]
-        },
-
-        establish_partnership: {
-            speaker: "Elijah",
-            text: "\"We'll teach you about our world, and you can help us understand the intersection of technology and the supernatural. Together, we can build something better than either could alone.\"",
-            onEnter: function() {
-                if (getStoryVariable('storyVariables.final_ending_type') === 'Sacrifice') {
-                    this.speaker = "Maria";
-                }
-                
-                // Adjust partnership offer based on previous unity/cooperation experiences
-                let unityMeter = getStoryVariable('flags.unity_vs_division_meter') || 0;
-                let unitedFrontChapter4 = getStoryVariable('flags.chapter4_flags.united_front_c4');
-                let groupDrinksChapter1 = getStoryVariable('flags.chapter1_flags.group_drinks_c1');
-                let forgaveSilas = getStoryVariable('flags.forgave_silas_chapter5');
-                let invitedIsabella = getStoryVariable('flags.chapter7_flags.c7_invited_isabella');
-                
-                if (unityMeter >= 2 && unitedFrontChapter4) {
-                    this.text = "\"Our group has learned the strength that comes from unlikely alliances. We stood united against Valdez, found common ground with former enemies. You could be part of that unity.\"";
-                } else if (forgaveSilas && invitedIsabella) {
-                    this.text = "\"We've seen that former enemies can become allies when they choose cooperation. Silas found redemption, the cartel learned to work with us. There's a place for you too.\"";
-                } else if (groupDrinksChapter1) {
-                    this.text = "\"From the very beginning, we've believed in building bridges rather than walls. We shared drinks as strangers and became a family. You can be part of something larger than yourself.\"";
-                }
-            },
-            next: "partnership_formed"
-        },
-
-        controlled_binding: {
-            speaker: "Cornelius Blackwood",
-            text: "\"The entity could be housed in a controlled facility where it can learn safely while contributing to technological advancement. A win-win arrangement.\"",
-            next: "binding_arranged"
-        },
-
-        propose_dormancy: {
-            speaker: "Morning Star",
-            text: "\"Perhaps it is best for the Iron Devourer to return to sleep until humanity has learned to balance technology with wisdom. The time may come when both are ready for true cooperation.\"",
-            onEnter: function() {
-                if (!getStoryVariable('flags.chapter9_flags.c9_morning_star_ally')) {
-                    this.speaker = "Thomas";
-                    this.text = "\"Maybe we're not ready for this kind of partnership yet. The entity should return to dormancy until humanity has learned to handle this responsibly.\"";
-                    if (getStoryVariable('flags.chapter9_flags.c9_guardian_sacrifice_made') && 
-                        getStoryVariable('flags.chapter9_flags.c9_guardian_identity') === "Thomas") {
-                        this.speaker = "Jacob";
-                        this.text = "\"Maybe we're not ready for this. The entity should sleep until we figure out how to handle this kind of power responsibly.\"";
-                    }
-                }
-            },
-            next: "dormancy_accepted"
-        },
-
-        partnership_formed: {
-            speaker: "The Iron Devourer",
-            text: "\"PARTNERSHIP... YES... I WILL LEARN YOUR COOPERATION... HELP BUILD... NOT DESTROY... TOGETHER WE MAKE... NEW HARMONY...\"",
-            next: "chapter_resolution"
-        },
-
-        binding_arranged: {
-            speaker: "The Iron Devourer",
-            text: "\"CONTROLLED ENVIRONMENT... ACCEPTABLE... I LEARN SAFELY... YOU LEARN FROM ME... MUTUAL BENEFIT... UNDERSTANDING...\"",
-            next: "chapter_resolution"
-        },
-
-        dormancy_accepted: {
-            speaker: "The Iron Devourer",
-            text: "\"PERHAPS... WISDOM... I SLEEP... UNTIL... READINESS... BOTH SIDES... PREPARED... FOR... COOPERATION...\"",
-            next: "chapter_resolution"
-        },
-
-        chapter_resolution: {
-            speaker: "Narrator",
-            text: "The Iron Devourer's mechanical body begins to change based on your agreement. Whether through partnership, controlled study, or return to dormancy, a third of the Five Terrors has been addressed. However, the revelation of government involvement in supernatural affairs adds a new layer of complexity to your mission. The remaining Terrors still sleep beneath the earth, and powerful forces now watch your every move.",
-            onEnter: function() {
-                updateStoryVariable('flags.chapter9_flags.c9_iron_devourer_resolved', true);
-                updateStoryVariable('flags.chapter9_flags.c9_chapter_complete', true);
-                
-                // Set up variables for Chapter 10 based on choices made
-                let governmentPartnership = getStoryVariable('flags.chapter9_flags.c9_government_partnership');
-                let ironDevourerAlly = getStoryVariable('flags.chapter9_flags.c9_iron_devourer_ally');
-                let corporateOpposition = getStoryVariable('flags.chapter9_flags.c9_refused_government');
-                let controlledBinding = getStoryVariable('flags.chapter9_flags.c9_controlled_binding');
-                let entityDormancy = getStoryVariable('flags.chapter9_flags.c9_entity_dormancy');
-                
-                // Add context based on overall journey and character development
-                let violenceMeter = getStoryVariable('flags.violence_vs_peace_meter') || 0;
-                let unityMeter = getStoryVariable('flags.unity_vs_division_meter') || 0;
-                let faithMeter = getStoryVariable('flags.faith_vs_doubt_meter') || 0;
-                let forgaveSilas = getStoryVariable('flags.forgave_silas_chapter5');
-                let federalInterestKnown = getStoryVariable('flags.chapter6_flags.c6_federal_interest_known');
-                
-                let resolutionContext = "";
-                if (violenceMeter <= -2 && ironDevourerAlly) {
-                    resolutionContext = " Your commitment to peaceful solutions throughout this journey has led to another cooperative resolution. ";
-                } else if (unityMeter >= 2 && (ironDevourerAlly || controlledBinding)) {
-                    resolutionContext = " The unity your group has built has once again proven stronger than conflict. ";
-                } else if (forgaveSilas && ironDevourerAlly) {
-                    resolutionContext = " Just as you found redemption for Silas, you've offered the Iron Devourer a path beyond destruction. ";
-                } else if (federalInterestKnown && governmentPartnership) {
-                    resolutionContext = " Agent Smith's warnings about federal interest have proven prophetic, but perhaps working with them serves the greater good. ";
-                } else if (federalInterestKnown && corporateOpposition) {
-                    resolutionContext = " Agent Smith's warnings about federal interest have proven true, and your refusal to be their weapon may have consequences. ";
-                }
-                
-                this.text = "The Iron Devourer's mechanical body begins to change based on your agreement." + resolutionContext + "Whether through partnership, controlled study, or return to dormancy, a third of the Five Terrors has been addressed. However, the revelation of government involvement in supernatural affairs adds a new layer of complexity to your mission. The remaining Terrors still sleep beneath the earth, and powerful forces now watch your every move.";
-                
-                if (governmentPartnership) {
-                    updateStoryVariable('flags.chapter10_opening.c10_government_alliance', true);
-                }
-                if (ironDevourerAlly) {
-                    updateStoryVariable('flags.chapter10_opening.c10_iron_devourer_ally', true);
-                }
-                if (corporateOpposition) {
-                    updateStoryVariable('flags.chapter10_opening.c10_government_enemy', true);
-                }
-                if (controlledBinding) {
-                    updateStoryVariable('flags.chapter10_opening.c10_controlled_entity', true);
-                }
-                if (entityDormancy) {
-                    updateStoryVariable('flags.chapter10_opening.c10_entity_dormant', true);
-                }
-            },
+            text: "Hidden in the shadows, Elijah and Maria exchanged a look. No words were needed. They had found Pike's dark secret, a horror beyond their darkest imaginings. The path ahead was fraught with peril, but their resolve was now forged in the fires of this shared, terrible witness.",
             choices: [
                 {
                     text: "Continue to Chapter 10",
                     next: null,
-                    nextChapter: "chapter10",
-                    onChoose: function() { updateStoryVariable('currentChapter', 'Chapter 10'); }
+                    nextChapter: "chapter10"
                 }
             ]
         }

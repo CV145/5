@@ -1,394 +1,389 @@
-// Chapter 2: The Way Station (Linear Version)
+// Chapter 2: The Healer's Poison
 storyData.chapter2 = {
     name: "Chapter 2",
-    title: "The Way Station",
+    title: "The Healer's Poison",
     scenes: {
-        // Scene 1: Approaching the Way Station
+        // Scene 1: Stagecoach Arrival - Doc's Perspective
         start: {
             speaker: "Narrator",
-            text: "The sun climbs higher as the stagecoach rolls across the desert landscape. Elijah's bandaged arm throbs with each jolt, but the pain is manageable. The four passengers sit in a different silence now—not the awkward quiet of strangers, but the contemplative hush of people who have shared blood and survived together.",
-            next: "driver_announces_station"
+            text: "The stagecoach rattled into Perdition, each jolt a fresh wave of agony for Thomas 'Doc' Whitmore. His hands trembled, not from the rough ride, but from the gnawing hunger of laudanum withdrawal. Sweat slicked his brow despite the dry desert air. He needed a dose, badly.",
+            onEnter: function() {
+                updateStoryVariable('currentChapter', 'Chapter 2');
+            },
+            next: "doc_initial_observation"
         },
 
-        // Scene 2: Driver Announces the Station
-        driver_announces_station: {
-            speaker: "Stagecoach Driver",
-            text: "'Way station ahead!' the driver calls down. 'Miller's Rest! We'll stop for water, supplies, and to tend that wound proper-like!' His voice carries relief—he's as shaken by the bandit attack as anyone.",
-            next: "first_glimpse_station"
-        },
-
-        // Scene 3: First Glimpse of Miller's Rest
-        first_glimpse_station: {
+        // Scene 2: Doc's Initial Observation of Perdition
+        doc_initial_observation: {
             speaker: "Narrator",
-            text: "Miller's Rest appears on the horizon like a mirage—a cluster of adobe buildings around a well, with corrals for horses and a small general store. Smoke rises from a chimney, promising hot food and civilization's comforts, however modest.",
-            next: "maria_assessment"
-        },
-
-        // Scene 4: Maria's Tactical Assessment
-        maria_assessment: {
-            speaker: "Maria Vasquez",
-            text: "'Good defensive position.' Maria's eyes scan the approaching buildings with professional interest. 'Built against those rocks for protection from wind and raiders. Whoever runs this place knows the frontier.'",
-            next: "thomas_medical_concern"
-        },
-
-        // Scene 5: Thomas's Medical Concerns
-        thomas_medical_concern: {
-            speaker: "Thomas Whitmore",
-            text: "'That wound needs proper cleaning and fresh bandages, Elijah.' Thomas's voice is steadier than it was yesterday. 'Desert air may be dry, but infection is still a threat. We should see if they have any medical supplies.'",
-            next: "jacob_nervous_observation"
-        },
-
-        // Scene 6: Jacob's Nervous Observation
-        jacob_nervous_observation: {
-            speaker: "Jacob Rivers",
-            text: "'Looks peaceful enough,' Jacob says, though his hand unconsciously checks his pistol. 'After yesterday... well, I reckon I'll be checking shadows for a while.'",
+            text: "Through bleary eyes, Doc surveyed the desolate town. It was a festering sore on the face of the territory, but even sores had their uses. And often, their own peculiar sources of profit.",
             choices: [
                 {
-                    text: "Elijah reassures Jacob about his caution",
-                    next: "elijah_reassures_jacob"
+                    text: "Focus on the faces of the few visible townsfolk.",
+                    next: "observe_townsfolk_faces"
                 },
                 {
-                    text: "Maria comments on staying alert",
-                    next: "maria_on_vigilance"
+                    text: "Assess the structural decay of the buildings.",
+                    next: "assess_structural_decay"
                 },
                 {
-                    text: "Focus on approaching the station",
-                    next: "coach_pulls_up"
+                    text: "Concentrate on fighting the withdrawal symptoms.",
+                    next: "doc_withdrawal_fight"
                 }
             ]
         },
 
-        // Scene 7: Elijah Reassures Jacob
-        elijah_reassures_jacob: {
-            speaker: "Elijah Cross",
-            text: "'That caution might save your life someday, son. The frontier teaches hard lessons, but surviving them makes you wiser.' Elijah's tone is gentle but approving. 'Trust your instincts, but don't let fear rule you.'",
-            next: "coach_pulls_up"
+        // Scene 3: Observe Townsfolk Faces (Optional Insight)
+        observe_townsfolk_faces: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'Fearful. Beaten down. But also... watchful. This town has secrets. And secrets often have gatekeepers who can be... persuaded.'",
+            next: "doc_withdrawal_fight"
         },
 
-        // Scene 8: Maria on Vigilance
-        maria_on_vigilance: {
-            speaker: "Maria Vasquez",
-            text: "'Good. Stay alert.' Maria nods approvingly. 'The boy who saved my life yesterday is learning to think like a survivor. That's more valuable than all the fast-draw practice in the world.'",
-            next: "coach_pulls_up"
+        // Scene 4: Assess Structural Decay (Optional Insight)
+        assess_structural_decay: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'Rotten timbers, crumbling adobe. A place falling apart. Perfect for someone who knows how to pick through the debris for valuables. Or someone who can offer a quick fix to delay the inevitable.'",
+            next: "doc_withdrawal_fight"
         },
 
-        // Scene 9: Coach Pulls Up to the Station
-        coach_pulls_up: {
+        // Scene 5: Doc Fights Withdrawal
+        doc_withdrawal_fight: {
             speaker: "Narrator",
-            text: "The stagecoach rolls to a stop beside the main building, wheels crunching on gravel. A wooden sign reads 'Miller's Rest - Est. 1885 - Cold Water, Hot Food, Fair Prices.' The promise of civilization feels like a blessing after the violence of yesterday.",
-            next: "station_keeper_emerges"
+            text: "He clenched his fists, nails digging into his palms. The familiar tremors were escalating. He needed to find a local apothecary, or a doctor he could... influence. Soon.",
+            next: "stagecoach_stops_doc"
         },
 
-        // Scene 10: Station Keeper Emerges
-        station_keeper_emerges: {
-            speaker: "Station Keeper Miller",
-            text: "'Welcome to Miller's Rest!' A portly man with graying hair and kind eyes emerges from the main building. 'I'm Sam Miller. You folks look like you've had a hard journey. Come in, come in! We'll get you fed and rested.'",
-            next: "driver_explains_attack"
-        },
-
-        // Scene 11: Driver Explains the Attack
-        driver_explains_attack: {
-            speaker: "Stagecoach Driver",
-            text: "'Bandits hit us yesterday, Sam. Six men led by that devil Valdez.' The driver's voice shakes slightly at the memory. 'These folks here fought them off, but the preacher took a bullet in the arm.'",
-            next: "miller_reaction"
-        },
-
-        // Scene 12: Miller's Reaction
-        miller_reaction: {
-            speaker: "Station Keeper Miller",
-            text: "'Valdez?' Miller's face darkens. 'That murdering snake hit the Peterson ranch last month. Killed old Pete and burned his house.' He looks at the four passengers with new respect. 'You fought off his whole gang and lived to tell it?'",
-            next: "disembarking"
-        },
-
-        // Scene 13: Disembarking from the Coach
-        disembarking: {
+        // Scene 6: Stagecoach Stops
+        stagecoach_stops_doc: {
             speaker: "Narrator",
-            text: "The four companions climb down from the coach, their legs stiff from the long ride. The desert heat hits them immediately, but the promise of shade and water draws them toward the main building. They move together now, a unit forged by shared trial.",
-            next: "miller_observes_group"
+            text: "The stage pulled up near a dilapidated building claiming to be a hotel. As Doc stepped down, his legs nearly buckled. The driver eyed him with a mixture of pity and contempt.",
+            next: "flashback_trigger_boston"
         },
-
-        // Scene 14: Miller Observes the Group
-        miller_observes_group: {
-            speaker: "Station Keeper Miller",
-            text: "'You four stick together like family, but I can tell you're strangers.' Miller's eyes are shrewd but kind. 'Funny how the frontier can forge bonds faster than years of peaceful living. Come on, let's get that arm looked at.'",
-            next: "entering_station"
-        },
-
-        // Scene 15: Entering the Station
-        entering_station: {
+        
+        // Scene 7: Flashback Trigger - A Child's Cry (Imagined or real from nearby)
+        flashback_trigger_boston: {
             speaker: "Narrator",
-            text: "The inside of Miller's Rest is simple but welcoming. Rough wooden tables, a stone fireplace, shelves lined with supplies. The smell of coffee and beans fills the air. After the harsh desert and yesterday's violence, it feels like sanctuary.",
-            next: "other_travelers_present"
+            text: "A distant sound, perhaps a child's sharp cry or just the wind, pierced through Doc's laudanum haze. Suddenly, he wasn't in Perdition. He was back in Boston, in the sterile confines of his once-prestigious operating theater.",
+            next: "flashback_boston_intro"
         },
 
-        // Scene 16: Other Travelers Present
-        other_travelers_present: {
+        // --- FLASHBACK SEQUENCE START (BOSTON) ---
+        flashback_boston_intro: {
             speaker: "Narrator",
-            text: "Three other travelers sit at a corner table—a well-dressed businessman, an elderly woman in widow's weeds, and a young cowboy who can't be much older than Jacob. They look up with curious eyes as the newcomers enter.",
-            next: "businessman_speaks"
+            text: "Boston. Years ago. The air thick with the scent of antiseptic and his own expensive cologne. He'd been at the height of his career, lauded, respected. And drunk. So very drunk.",
+            next: "flashback_operating_room"
         },
 
-        // Scene 17: Businessman Speaks Up
-        businessman_speaks: {
-            speaker: "Businessman",
-            text: "'Excuse me, friends.' The businessman rises politely. 'Harold Jenkins, traveling merchant. Word is you folks tangled with Valdez's gang. Might I ask... how did you fare?'",
+        flashback_operating_room: {
+            speaker: "Narrator",
+            text: "The child on the table, young Master Harrington, heir to a shipping fortune. A routine appendectomy. But Doc's hands, usually so steady, had betrayed him, slick with whiskey sweat.",
+            next: "flashback_fatal_slip"
+        },
+
+        flashback_fatal_slip: {
+            speaker: "Narrator",
+            text: "A slip of the scalpel. A severed artery. He remembered the gush of crimson, the panicked nurses, the sudden, terrible silence as the small heart gave out.",
+            next: "flashback_harrington_sr_arrival"
+        },
+        
+        flashback_harrington_sr_arrival: {
+            speaker: "Narrator",
+            text: "Later, in his private study, the elder Harrington had confronted him. A titan of industry, his face contorted with grief and a dawning, terrible understanding as he smelled the liquor on Doc's breath.",
+            next: "flashback_confrontation"
+        },
+
+        flashback_confrontation: {
+            speaker: "Mr. Harrington (Flashback)",
+            text: "'You were drunk! You killed my son, you drunken butcher!' Harrington's voice, usually booming with authority, was choked with tears and rage.",
             choices: [
                 {
-                    text: "Elijah answers diplomatically",
-                    next: "elijah_diplomatic_response"
+                    text: "Recall Doc's immediate reaction to the accusation.",
+                    next: "flashback_doc_denial"
                 },
                 {
-                    text: "Maria responds bluntly",
-                    next: "maria_blunt_response"
-                },
-                {
-                    text: "Let someone else answer",
-                    next: "thomas_measured_response"
+                    text: "Remember Harrington's threat.",
+                    next: "flashback_harrington_threat"
                 }
             ]
         },
 
-        // Scene 18: Elijah's Diplomatic Response
-        elijah_diplomatic_response: {
-            speaker: "Elijah Cross",
-            text: "'We were fortunate, Mr. Jenkins. The Lord saw fit to preserve us, though not without cost.' Elijah indicates his bandaged arm. 'Valdez won't be troubling anyone again, but his men scattered to the winds.'",
-            next: "jenkins_relief"
+        flashback_doc_denial: { // Optional
+            speaker: "Doc Whitmore (Flashback)",
+            text: "'Complications can arise in any surgery, Mr. Harrington. I assure you, I did everything...' The lies tasted like ash, even then.",
+            next: "flashback_harrington_threat"
+        },
+        
+        flashback_harrington_threat: {
+            speaker: "Mr. Harrington (Flashback)",
+            text: "'I'll see you ruined! Stripped of your license! Jailed! You'll pay for this!' Harrington had lunged, not with fists, but with the promise of utter destruction.",
+            next: "flashback_the_second_murder"
         },
 
-        // Scene 19: Maria's Blunt Response
-        maria_blunt_response: {
-            speaker: "Maria Vasquez",
-            text: "'Valdez is dead. Three of his men too. The rest ran like the cowards they are.' Maria's voice is matter-of-fact. 'If you're traveling these roads, you'd best go armed and ready.'",
-            next: "jenkins_relief"
-        },
-
-        // Scene 20: Thomas's Measured Response
-        thomas_measured_response: {
-            speaker: "Thomas Whitmore",
-            text: "'The encounter was... educational.' Thomas's dry humor surfaces. 'I learned that medical training includes steady hands under fire. Not something they taught at Philadelphia General.'",
-            next: "jenkins_relief"
-        },
-
-        // Scene 21: Jenkins Shows Relief
-        jenkins_relief: {
-            speaker: "Businessman",
-            text: "'Thank Providence! I've been dreading that stretch of road for weeks. Valdez has been the scourge of honest travelers.' He extends his hand. 'Allow me to buy your meal, friends. It's the least I can do.'",
-            next: "widow_speaks_up"
-        },
-
-        // Scene 22: The Widow Speaks
-        widow_speaks_up: {
-            speaker: "Widow Morrison",
-            text: "'Agnes Morrison,' the elderly woman introduces herself. 'I'm traveling to my sister's in California. This old heart has been fearful of the journey, but if you brave souls defeated those villains...' She dabs her eyes with a handkerchief.",
-            next: "young_cowboy_interested"
-        },
-
-        // Scene 23: Young Cowboy Shows Interest
-        young_cowboy_interested: {
-            speaker: "Young Cowboy",
-            text: "'Name's Billy.' The young cowboy looks at Jacob with interest. 'You don't look much older than me. Did you really fight bandits?' There's admiration and envy in his voice.",
-            next: "jacob_responds_to_billy"
-        },
-
-        // Scene 24: Jacob Responds to Billy
-        jacob_responds_to_billy: {
-            speaker: "Jacob Rivers",
-            text: "'I... I tried to help.' Jacob's modesty is genuine. 'Mostly I just watched these three save all our lives. But I learned something about courage yesterday. It's not about not being scared—it's about doing what's right anyway.'",
-            next: "miller_medical_attention"
-        },
-
-        // Scene 25: Miller Offers Medical Attention
-        miller_medical_attention: {
-            speaker: "Station Keeper Miller",
-            text: "'Now then, let's see about that arm.' Miller gestures toward a back room. 'My Mary was a nurse before we came west. She'll have you fixed up proper. The rest of you, sit and rest. Food'll be ready shortly.'",
-            next: "group_settles_in"
-        },
-
-        // Scene 26: Group Settles In
-        group_settles_in: {
+        flashback_the_second_murder: {
             speaker: "Narrator",
-            text: "As Thomas accompanies Elijah to have his wound tended, Maria and Jacob settle at a table. The atmosphere is relaxed but watchful—yesterday's violence has taught them all to stay alert even in peaceful moments.",
-            next: "maria_jacob_conversation"
+            text: "Fear, cold and absolute, had gripped Doc. Not fear of jail, but fear of losing his access, his supply. In a moment of brutal clarity, he'd grabbed the heavy glass decanter from his desk. One blow. Harrington had fallen like a stone.",
+            next: "flashback_the_escape"
         },
-
-        // Scene 27: Maria and Jacob's Conversation
-        maria_jacob_conversation: {
-            speaker: "Maria Vasquez",
-            text: "'You did well yesterday, boy.' Maria's voice is quiet but sincere. 'That warning you gave me—it saved my life. In my experience, that makes you family. You understand?'",
-            next: "jacob_touched_response"
-        },
-
-        // Scene 28: Jacob's Touched Response
-        jacob_touched_response: {
-            speaker: "Jacob Rivers",
-            text: "'Family?' Jacob's voice catches slightly. 'I... thank you, Maria. I never had anyone say that about something I did. My brothers always said I was too soft, too weak for this country.'",
-            next: "maria_wisdom"
-        },
-
-        // Scene 29: Maria's Wisdom
-        maria_wisdom: {
-            speaker: "Maria Vasquez",
-            text: "'Your brothers were fools. Soft? You kept your eyes open when bullets were flying. Weak? You warned me when a killer was about to put a bullet in my back. That's not weakness—that's strength.'",
-            next: "elijah_returns_bandaged"
-        },
-
-        // Scene 30: Elijah Returns, Properly Bandaged
-        elijah_returns_bandaged: {
+        
+        flashback_the_escape: {
             speaker: "Narrator",
-            text: "Elijah returns with his arm properly cleaned and rebandaged, followed by Thomas and a motherly woman who must be Mary Miller. Elijah moves more easily now, the professional medical attention having eased his pain considerably.",
-            next: "mary_miller_introduction"
+            text: "He hadn't waited for the authorities. He'd packed his laudanum, his cash, and fled west, leaving behind two bodies and a life in ruins. No remorse. Only the cold calculation of survival.",
+            next: "flashback_boston_end"
         },
+        // --- FLASHBACK SEQUENCE END ---
 
-        // Scene 31: Mary Miller's Introduction
-        mary_miller_introduction: {
-            speaker: "Mary Miller",
-            text: "'Clean wound, should heal fine if kept dry.' Mary Miller wipes her hands on her apron. 'Dr. Whitmore here has good hands. Been a while since I met a real physician out here. Most frontier doctors are just cowboys with a few bottles of whiskey.'",
-            next: "thomas_appreciates_compliment"
-        },
-
-        // Scene 32: Thomas Appreciates the Compliment
-        thomas_appreciates_compliment: {
-            speaker: "Thomas Whitmore",
-            text: "'Kind of you to say, Mrs. Miller. It's been... some time since I practiced proper medicine. This morning reminded me why I became a doctor in the first place.' His hands are steady as he accepts a cup of coffee.",
-            next: "meal_preparation"
-        },
-
-        // Scene 33: Meal Preparation
-        meal_preparation: {
+        flashback_boston_end: {
             speaker: "Narrator",
-            text: "Mary bustles about preparing a hearty meal of beans, bacon, and fresh bread. The simple food smells like heaven after yesterday's trail rations and violence. The other travelers join them at the large common table, creating an impromptu gathering.",
-            next: "jenkins_shares_news"
+            text: "The tremors brought Doc back to Perdition. The past was a ghost, but the present was a pressing need. He clutched his medical bag, its contents more precious than gold.",
+            next: "doc_finds_apothecary_sign"
+        },
+        
+        // Scene 18: Doc Seeks a Solution
+        doc_finds_apothecary_sign: {
+            speaker: "Doc Whitmore",
+            text: "(To himself, voice raspy) 'First things first. Find the local sawbones. Or an apothecary. Someone with a stock of... necessary compounds.'",
+            next: "inquiring_about_doctor"
         },
 
-        // Scene 34: Jenkins Shares News from the Road
-        jenkins_shares_news: {
-            speaker: "Businessman",
-            text: "'I've been traveling these territories for months.' Jenkins cuts his bread carefully. 'Valdez wasn't the only problem. Heard tell of strange happenings around Perdition itself. People leaving, businesses closing. Some say the town's dying.'",
+        // Scene 19: Inquiring About a Local Doctor
+        inquiring_about_doctor: {
+            speaker: "Narrator",
+            text: "He stumbled towards what passed for a main street, stopping a passing, wary-looking woman.",
+            next: "doc_asks_woman"
+        },
+        
+        doc_asks_woman: {
+            speaker: "Doc Whitmore",
+            text: "'Excuse me, madam. Could you direct me to the town's physician or apothecary?'",
+            next: "woman_points_to_holstead"
+        },
+
+        // Scene 21: Woman Points to Holstead's
+        woman_points_to_holstead: {
+            speaker: "Townswoman",
+            text: "'Doctor Holstead's place is just yonder.' She pointed a trembling finger towards a slightly less dilapidated building. 'But... he ain't seen many patients lately. Not since... well, folks 'round here got their own remedies.'",
+            next: "doc_senses_opportunity"
+        },
+
+        // Scene 22: Doc Senses Opportunity
+        doc_senses_opportunity: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'Not seeing patients? Interesting. Either incompetent, or hiding something. Both are exploitable.' A predatory gleam entered his eyes.",
+            next: "approaching_holsteads_practice"
+        },
+
+        // Scene 23: Approaching Holstead's Practice
+        approaching_holsteads_practice: {
+            speaker: "Narrator",
+            text: "The sign above the door read 'Dr. Alistair Holstead - Physician & Surgeon'. The windows were grimy, the paint peeling. Doc pushed the door open.",
+            next: "inside_holsteads_office"
+        },
+
+        // Scene 24: Inside Holstead's Office
+        inside_holsteads_office: {
+            speaker: "Narrator",
+            text: "The interior was dusty and smelled of stale herbs and fear. An older man, Dr. Holstead, looked up from a ledger, his eyes watery and his hands shaking even more than Doc's.",
+            next: "holstead_nervous_greeting"
+        },
+        
+        // Scene 25: Holstead's Nervous Greeting
+        holstead_nervous_greeting: {
+            speaker: "Dr. Holstead",
+            text: "'Can I... can I help you, sir? I wasn't expecting... patients.'",
+            next: "doc_introduces_himself"
+        },
+
+        // Scene 26: Doc Introduces Himself
+        doc_introduces_himself: {
+            speaker: "Doc Whitmore",
+            text: "'Dr. Thomas Whitmore, formerly of Boston General.' Doc offered a charming, utterly false smile. 'Passing through. Thought I'd pay my respects to a fellow practitioner. Perhaps... compare notes on local ailments?'",
+            next: "doc_observes_holstead_closely"
+        },
+        
+        // Scene 27: Doc Observes Holstead
+        doc_observes_holstead_closely: {
+            speaker: "Narrator",
+            text: "Doc's keen eyes took in Holstead's disarray: the poorly hidden laudanum bottle, the fresh track marks on his arm, the ledgers that seemed to list more payments received than services rendered.",
             choices: [
                 {
-                    text: "Ask about the strange happenings",
-                    next: "strange_happenings_detail"
+                    text: "Inquire about Holstead's 'research'.",
+                    next: "inquire_holstead_research"
                 },
                 {
-                    text: "Inquire about why people are leaving",
-                    next: "exodus_reasons"
+                    text: "Comment on the town's 'health'.",
+                    next: "comment_town_health"
+                }
+            ]
+        },
+        
+        // Scene 28: Inquire Holstead's Research (Optional)
+        inquire_holstead_research: {
+            speaker: "Doc Whitmore",
+            text: "'Fascinating setup you have here, Doctor. Engaged in any particular... local research?' Doc's tone was silk over steel.",
+            next: "holstead_stammers"
+        },
+
+        // Scene 29: Comment on Town Health (Optional)
+        comment_town_health: {
+            speaker: "Doc Whitmore",
+            text: "'Perdition seems... a rather unhealthy place, wouldn't you say, Doctor? I imagine a man with your access to medicinals is kept quite busy.'",
+            next: "holstead_stammers"
+        },
+
+        // Scene 30: Holstead Stammers
+        holstead_stammers: {
+            speaker: "Dr. Holstead",
+            text: "'Research? N-no, nothing of the sort. Just... just a simple frontier doctor. The townsfolk... they prefer their own ways.' He avoided Doc's gaze.",
+            next: "doc_finds_pike_connection"
+        },
+
+        // Scene 31: Doc Finds the Pike Connection
+        doc_finds_pike_connection: {
+            speaker: "Narrator",
+            text: "Doc's eyes landed on a half-hidden shipping manifest on Holstead's desk. 'Pike Mining Concern' was printed clearly at the top, alongside a list of chemicals that had little to do with common medicine.",
+            next: "doc_the_blackmail_begins"
+        },
+
+        // Scene 32: The Blackmail Begins
+        doc_the_blackmail_begins: {
+            speaker: "Doc Whitmore",
+            text: "'Pike Mining Concern.' Doc tapped the manifest. 'Interesting suppliers for a simple frontier doctor. Tell me, Dr. Holstead, what sort of ailments require such... industrial-grade compounds? Or is Mr. Pike perhaps your most lucrative patient?'",
+            next: "holstead_panics"
+        },
+
+        // Scene 33: Holstead Panics
+        holstead_panics: {
+            speaker: "Dr. Holstead",
+            text: "'I... I don't know what you mean! That's... for sterilizing equipment! Pike is a benefactor to this town!' Sweat beaded on Holstead's forehead.",
+            next: "doc_presses_advantage"
+        },
+
+        // Scene 34: Doc Presses His Advantage
+        doc_presses_advantage: {
+            speaker: "Doc Whitmore",
+            text: "'Benefactor? Or puppet master? And you, his loyal string-puller?' Doc leaned in. 'I think you and I are going to come to an arrangement, Dr. Holstead. You see, I'm in need of a practice. And a reliable... supply. And you look like a man ready for retirement.'",
+            next: "holstead_relents"
+        },
+        
+        // Scene 35: Holstead Relents
+        holstead_relents: {
+            speaker: "Narrator",
+            text: "Holstead crumpled. The fight went out of him, replaced by weary resignation. 'Take it. Take it all. The practice, the damned supplies, Pike's cursed attention. Just... let me leave this town alive.'",
+            next: "doc_takes_over"
+        },
+
+        // Scene 36: Doc Takes Over
+        doc_takes_over: {
+            speaker: "Doc Whitmore",
+            text: "'An excellent decision.' Doc helped himself to Holstead's laudanum, the first dose in what felt like an eternity washing over him in a warm, blissful wave. 'I'll ensure Mr. Pike knows his... investments are in new, capable hands.'",
+            next: "new_practice_day_one"
+        },
+        
+        // Scene 37: New Practice, Day One
+        new_practice_day_one: {
+            speaker: "Narrator",
+            text: "By nightfall, Holstead was gone, and 'Dr. T. Whitmore' was painted crudely over the old sign. Doc, finally sated with laudanum, surveyed his new domain. This town was ripe for the picking.",
+            next: "call_for_the_doctor"
+        },
+
+        // Scene 38: A Call for the Doctor
+        call_for_the_doctor: {
+            speaker: "Narrator",
+            text: "A knock came at the door. A grimy, desperate-looking man stood there. 'Doctor? You gotta come quick. It's Jed. Collapsed in the mine. He's... he's sayin' strange things.'",
+            next: "doc_sees_profit"
+        },
+        
+        // Scene 39: Doc Sees Profit, Not Patients
+        doc_sees_profit: {
+            speaker: "Doc Whitmore",
+            text: "'Mining accident, you say?' Doc's mind, sharpened by the drug, immediately went to Pike. 'Compensation can be... complicated in such matters. My fee for a mine visit is considerable. Payable in advance, of course.'",
+            next: "at_the_miner_shack"
+        },
+
+        // Scene 40: At the Miner's Shack
+        at_the_miner_shack: {
+            speaker: "Narrator",
+            text: "The 'miner's shack' was a hovel. Jed lay on a dirty cot, his breathing shallow, his skin tinged grey. He was clearly dying. Mercury poisoning, Doc diagnosed instantly, but kept it to himself.",
+            next: "jed_dying_words1"
+        },
+
+        // Scene 41: Jed's Dying Words
+        jed_dying_words1: {
+            speaker: "Jed (Miner)",
+            text: "(Gasping) 'The silver... it sings, Doc... but it's cursed. Pike... he knows. The children...'",
+            next: "jed_dying_words2"
+        },
+
+        // Scene 42: Jed's Cryptic Warning
+        jed_dying_words2: {
+            speaker: "Jed (Miner)",
+            text: "'Children in the mountain... they cry silver tears... Pike puts them there... makes 'em dig... Don't let him... don't...'",
+            next: "jed_expires"
+        },
+        
+        // Scene 43: Jed Expires
+        jed_expires: {
+            speaker: "Narrator",
+            text: "Jed's eyes rolled back. A final, shuddering breath, and he was still. Doc felt for a pulse he knew wasn't there.",
+            next: "doc_collects_fee"
+        },
+
+        // Scene 44: Doc Collects His Fee
+        doc_collects_fee: {
+            speaker: "Doc Whitmore",
+            text: "'A tragic loss.' Doc pocketed the coins the other miner offered. 'Sometimes, despite our best efforts... Nothing more I could do.' He made sure to look suitably somber.",
+            next: "information_is_valuable"
+        },
+
+        // Scene 45: Information is Valuable
+        information_is_valuable: {
+            speaker: "Narrator",
+            text: "But Jed's words resonated. 'Children in the mountain.' Mercury poisoning. Pike. This wasn't just a dying town; it was a web of secrets. And Doc Whitmore held a new, potentially very profitable thread.",
+            choices: [
+                {
+                    text: "Consider the moral implications (briefly).",
+                    next: "doc_moral_flicker"
                 },
                 {
-                    text: "Focus on practical concerns about the town",
-                    next: "practical_town_concerns"
+                    text: "Immediately focus on leveraging the information.",
+                    next: "doc_scheming"
                 }
             ]
         },
 
-        // Scene 35: Strange Happenings Detail
-        strange_happenings_detail: {
-            speaker: "Businessman",
-            text: "'Hard to say what's truth and what's trail gossip.' Jenkins lowers his voice. 'But I heard from three different sources about livestock found dead with no wounds, wells going bad overnight, and folks claiming they hear voices on the wind. Superstitious nonsense, most likely.'",
-            next: "widow_adds_information"
+        // Scene 46: Doc's Moral Flicker (Optional)
+        doc_moral_flicker: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'Children... Exploited. Poisoned. A monstrous crime.' A fleeting image of the Harrington child. He pushed it down. Sentiment was a weakness. Information, however, was power.",
+            next: "doc_scheming"
         },
 
-        // Scene 36: Exodus Reasons
-        exodus_reasons: {
-            speaker: "Businessman",
-            text: "'Economic troubles, mostly. Mine played out, cattle rustling increased, and the railroad changed its route. But some folks... they seemed spooked. Left everything behind like they were running from something more than hard times.'",
-            next: "widow_adds_information"
+        // Scene 47: Doc Begins Scheming
+        doc_scheming: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'Pike is clearly a man of influence and dark dealings. This information about 'children in the mountain'... it could be a useful bargaining chip. Or a way to ensure my own... security and prosperity in this charming hamlet.'",
+            next: "planning_the_approach"
         },
 
-        // Scene 37: Practical Town Concerns
-        practical_town_concerns: {
-            speaker: "Businessman",
-            text: "'From a practical standpoint, it's not promising. Half the businesses shuttered, sheriff's position vacant more often than not, and the local saloon is about the only thriving enterprise. Not exactly a destination for respectable folks.'",
-            next: "widow_adds_information"
-        },
-
-        // Scene 38: Widow Adds Information
-        widow_adds_information: {
-            speaker: "Widow Morrison",
-            text: "'My dear departed husband passed through Perdition five years ago.' The widow's voice is soft but clear. 'He said it was a town with shadows in its corners. Poor man took sick right after and never quite recovered. Course, that might've been coincidence.'",
-            next: "billy_cowboy_perspective"
-        },
-
-        // Scene 39: Billy's Cowboy Perspective
-        billy_cowboy_perspective: {
-            speaker: "Young Cowboy",
-            text: "'My trail boss won't take cattle through Perdition anymore.' Billy speaks up. 'Says the stock gets spooked something fierce. Horses won't drink from certain wells, cattle won't graze certain areas. Animals know things people don't.'",
-            next: "group_processes_information"
-        },
-
-        // Scene 40: Group Processes Information
-        group_processes_information: {
+        // Scene 48: Planning His Approach
+        planning_the_approach: {
             speaker: "Narrator",
-            text: "The four companions exchange meaningful glances. They came to Perdition seeking new starts, but the picture painted by fellow travelers suggests they might be heading toward more trouble than opportunity. Yet none speaks of turning back.",
-            next: "elijah_philosophical_moment"
+            text: "Back in his newly acquired practice, surrounded by Holstead's dusty implements and his own fresh supply of laudanum, Doc began to plan. He needed to confirm Jed's story, gather more details, and then decide who would pay most dearly for his silence, or his assistance.",
+            next: "a_toast_to_perdition"
         },
-
-        // Scene 41: Elijah's Philosophical Moment
-        elijah_philosophical_moment: {
-            speaker: "Elijah Cross",
-            text: "'Sometimes the places that need help most are the places decent folks avoid.' Elijah's voice carries quiet conviction. 'If Perdition is truly troubled, perhaps that's exactly where we're meant to be.'",
-            next: "maria_pragmatic_response"
-        },
-
-        // Scene 42: Maria's Pragmatic Response
-        maria_pragmatic_response: {
-            speaker: "Maria Vasquez",
-            text: "'Troubled towns mean desperate people. Desperate people do desperate things.' Maria's tone is matter-of-fact. 'But we've proven we can handle ourselves. And sometimes opportunity hides in places others fear to go.'",
-            next: "thomas_medical_perspective"
-        },
-
-        // Scene 43: Thomas's Medical Perspective
-        thomas_medical_perspective: {
-            speaker: "Thomas Whitmore",
-            text: "'A town without proper medical care...' Thomas muses. 'There might be real purpose in that. People need healing, whether from bullets, disease, or whatever troubles they face. Perhaps this old drunk might finally be useful again.'",
-            next: "jacob_brave_decision"
-        },
-
-        // Scene 44: Jacob's Brave Decision
-        jacob_brave_decision: {
-            speaker: "Jacob Rivers",
-            text: "'I came west to become my own man.' Jacob's voice grows stronger. 'Running from the first sign of trouble would make me everything my brothers said I was. If you three are willing to face whatever's in Perdition, so am I.'",
-            next: "meal_conclusion"
-        },
-
-        // Scene 45: Meal Conclusion
-        meal_conclusion: {
-            speaker: "Narrator",
-            text: "The meal concludes with the four travelers more unified than before. The warnings about Perdition have not deterred them—if anything, they've strengthened their resolve. They've already faced death together; they can face uncertainty together too.",
-            next: "mysterious_rider_arrives"
-        },
-
-        // Scene 46: Mysterious Rider Arrives
-        mysterious_rider_arrives: {
-            speaker: "Station Keeper Miller",
-            text: "'Rider coming in fast!' Miller calls from the window. Through the glass, they can see a lone horseman approaching at a gallop, dust streaming behind him. 'Looks like he's been riding hard for miles.'",
-            next: "rider_brings_news"
-        },
-
-        // Scene 47: Rider Brings Urgent News
-        rider_brings_news: {
-            speaker: "Urgent Rider",
-            text: "The rider bursts through the door, sweat-stained and breathless. 'Perdition!' he gasps. 'Sheriff's been found dead! Murdered in his own office! Town's in chaos—folks are talking about abandoning the place entirely!'",
-            next: "shocking_revelation"
-        },
-
-        // Scene 48: Shocking Revelation Impact
-        shocking_revelation: {
-            speaker: "Narrator",
-            text: "The news hits the common room like a thunderclap. The other travelers look stricken, but the four companions exchange grim looks of determination. If anything, this news confirms they're heading where they're needed most.",
-            next: "final_resolution"
-        },
-
-        // Scene 49: Final Resolution
-        final_resolution: {
-            speaker: "Elijah Cross",
-            text: "'Then we'd better get moving.' Elijah stands, testing his bandaged arm. 'A town without law needs people willing to stand for what's right. Whatever we're riding into, we'll face it together.'",
-            next: "chapter_end"
+        
+        // Scene 49: A Toast to Perdition
+        a_toast_to_perdition: {
+            speaker: "Doc Whitmore",
+            text: "He poured a generous measure of laudanum. 'To Perdition,' he toasted the empty room. 'May your corruption be as deep as your despair, and may my profits rise from both.'",
+            next: "chapter_end_scene_doc"
         },
 
         // Scene 50: Chapter End
-        chapter_end: {
+        chapter_end_scene_doc: {
             speaker: "Narrator",
-            text: "As the stagecoach prepares to depart Miller's Rest, the four companions board with new purpose. Behind them lies the safety of civilization; ahead waits Perdition and its deadly mysteries. But they are no longer strangers—they are a family forged by fire, ready to face whatever darkness awaits.",
+            text: "Doc Whitmore, the healer with poison in his veins and murder in his past, had found his new hunting ground. Perdition, with its suffering and secrets, was an open wound, and he was uniquely equipped to feast upon its misery.",
             choices: [
                 {
                     text: "Continue to Chapter 3",

@@ -1,419 +1,381 @@
-// Chapter 4: First Dawn in Perdition (Linear Version)
+// Chapter 4: Running from Blood
 storyData.chapter4 = {
     name: "Chapter 4",
-    title: "First Dawn in Perdition",
+    title: "Running from Blood",
     scenes: {
-        // Scene 1: Dawn at Henderson's Boarding House
+        // --- Flashback: Texas Bank Robbery ---
         start: {
             speaker: "Narrator",
-            text: "Dawn breaks over Perdition with reluctant light, casting long shadows through the boarding house windows. The four companions wake to their first morning in the troubled town, each carrying the weight of yesterday's discoveries and the uncertainty of what lies ahead.",
-            next: "morning_awakening"
+            text: "Texas, three weeks prior. Gunsmoke choked the air in the First National Bank of Redemption. Jacob Rivers, barely nineteen, stared at the terrified bank teller, his father's cold command echoing in his ears: 'Finish it, boy. No witnesses.'",
+            onEnter: function() {
+                updateStoryVariable('currentChapter', 'Chapter 4');
+            },
+            next: "flashback_robbery_chaos"
         },
 
-        // Scene 2: Morning Awakening
-        morning_awakening: {
+        flashback_robbery_chaos: {
             speaker: "Narrator",
-            text: "The smell of coffee and bacon drifts up from the kitchen below, a comforting reminder of civilization. Through the thin walls, you can hear the others stirring—the creak of floorboards, the splash of water in washbasins, the quiet preparation for a new day.",
-            next: "heading_downstairs"
+            text: "The robbery had gone sour fast. Pinkertons, alerted by a silent alarm, had surrounded the bank. Two of Jacob's brothers lay dead. His father, Silas Rivers, a man carved from granite and cruelty, was fighting like a cornered wolf.",
+            next: "flashback_silas_order"
         },
 
-        // Scene 3: Heading Downstairs
-        heading_downstairs: {
+        flashback_silas_order: {
+            speaker: "Silas Rivers (Flashback)",
+            text: "'The teller saw our faces, Jacob! He dies, or you ain't no son of mine!' Silas bellowed over the gunfire, shoving a pistol into Jacob's trembling hand.",
+            next: "flashback_jacob_refusal"
+        },
+
+        flashback_jacob_refusal: {
             speaker: "Narrator",
-            text: "You dress and make your way downstairs, where Mrs. Henderson works efficiently at the stove. 'Good morning,' she says without turning around. 'I trust you slept well? Breakfast will be ready shortly.'",
-            next: "companions_gather"
+            text: "Jacob looked at the cowering teller, a boy not much older than himself, tears streaming down his face. He couldn't do it. This wasn't him. He dropped the gun.",
+            next: "flashback_silas_fury"
         },
 
-        // Scene 4: Companions Gather
-        companions_gather: {
+        flashback_silas_fury: {
+            speaker: "Silas Rivers (Flashback)",
+            text: "'Traitor! Coward!' Silas roared, his face contorted with rage. He fired his own gun, not at the teller, but at the Pinkertons providing covering fire for Jacob's escape. 'You run, you run from your own blood! You're dead to me!'",
+            next: "flashback_escape"
+        },
+
+        flashback_escape: {
             speaker: "Narrator",
-            text: "One by one, your companions join you in the kitchen. Elijah appears first, his clerical collar straightened and his expression thoughtful. Maria follows, already dressed and armed, her eyes scanning the room out of habit. Jacob comes down last, looking young but determined.",
-            next: "mrs_henderson_revelation"
-        },
-
-        // Scene 5: Mrs. Henderson's Revelation
-        mrs_henderson_revelation: {
-            speaker: "Mrs. Henderson",
-            text: "'Before you ask, yes, I heard you folks talking last night. These walls aren't that thick.' She sets plates of bacon and eggs before you. 'And if you're truly planning to help this town, you should know what you're up against.'",
-            next: "town_troubles_revealed"
-        },
-
-        // Scene 6: Town Troubles Revealed
-        town_troubles_revealed: {
-            speaker: "Mrs. Henderson",
-            text: "'The troubles started about two years ago. First the mine production dropped, then the cattle started dying mysteriously. People began leaving, businesses closed. Sheriff Bradley tried to hold things together, but someone didn't want law and order in Perdition.'",
+            text: "Jacob fled, shots ringing behind him. He didn't know if the teller lived or died. He just knew he couldn't be a killer, couldn't be a Rivers. He rode for days, putting as much distance as possible between himself and Texas.",
             choices: [
                 {
-                    text: "Ask who would want to destroy the town",
-                    next: "asking_about_enemy"
+                    text: "Recall the one thing he managed to take with him.",
+                    next: "flashback_taken_item"
                 },
                 {
-                    text: "Listen quietly to learn more",
-                    next: "listening_to_details"
+                    text: "Focus on the guilt of leaving his family.",
+                    next: "flashback_guilt_leaving"
                 }
             ]
         },
 
-        // Scene 7a: Asking About Enemy
-        asking_about_enemy: {
-            speaker: "Elijah Cross",
-            text: "'Who would benefit from Perdition's destruction? Someone must be profiting from all this misery.'",
-            next: "enemy_revealed"
-        },
-
-        // Scene 7b: Listening to Details
-        listening_to_details: {
+        flashback_taken_item: { // Optional
             speaker: "Narrator",
-            text: "You listen intently as Mrs. Henderson continues, her voice growing darker with each revelation about the town's systematic destruction.",
-            next: "enemy_revealed"
+            text: "Clutched in his saddlebag was his mother's locket, the only gentle thing he owned from a life of violence. It was a reminder of a different path, a path he now desperately sought.",
+            next: "flashback_guilt_leaving"
         },
 
-        // Scene 8: Enemy Revealed
-        enemy_revealed: {
-            speaker: "Mrs. Henderson",
-            text: "'There's a man named Silas Cross. Represents some mining consortium from back east. Been buying up properties, water rights, anything of value. Those who won't sell...' She doesn't finish the sentence, but her meaning is clear.",
-            next: "thomas_medical_concerns"
-        },
-
-        // Scene 9: Thomas's Medical Concerns
-        thomas_medical_concerns: {
-            speaker: "Thomas Whitmore",
-            text: "'Mrs. Henderson, you mentioned people needing medical attention. I'd like to start helping as soon as possible. Are there specific cases I should know about?'",
-            next: "medical_mysteries"
-        },
-
-        // Scene 10: Medical Mysteries
-        medical_mysteries: {
-            speaker: "Mrs. Henderson",
-            text: "'Pete's widow Martha has been poorly since he passed. Young Billy at the livery hurt his leg and it's not healing right. But there's something else—mysterious illnesses that Dr. Morrison couldn't treat. Three people died from something that made them fear water.'",
-            next: "planning_the_day"
-        },
-
-        // Scene 11: Planning the Day
-        planning_the_day: {
-            speaker: "Maria Vasquez",
-            text: "'We need information. The sheriff's office, the general store, the church ruins—they all might tell us something about this Silas Cross and what he's really doing here.'",
-            next: "departure_preparation"
-        },
-
-        // Scene 12: Departure Preparation
-        departure_preparation: {
-            speaker: "Mrs. Henderson",
-            text: "'Whatever you decide to do, be careful. Cross has eyes everywhere. I'll have lunch ready at noon.' She hands Thomas a small bell. 'Ring this from the front porch if you need help.'",
-            next: "leaving_boarding_house"
-        },
-
-        // Scene 13: Leaving the Boarding House
-        leaving_boarding_house: {
+        flashback_guilt_leaving: { // Optional
             speaker: "Narrator",
-            text: "The four companions step out into the morning air of Perdition. The town is more active now, with people going about their daily business, though everyone seems hurried, heads down, avoiding eye contact.",
-            next: "visiting_general_store"
+            text: "Even as he ran, a part of him ached for the twisted loyalty of the gang. His brothers were dead, his father had disowned him. He was utterly alone.",
+            next: "end_flashback_perdition_arrival_jacob"
         },
+        // --- End Flashback ---
 
-        // Scene 14: Visiting the General Store
-        visiting_general_store: {
+        // Scene 9: Arrival in Perdition
+        end_flashback_perdition_arrival_jacob: {
             speaker: "Narrator",
-            text: "Your first stop is Colt's General Store. Jeremiah Colt, a weathered man with kind but cautious eyes, looks up as you enter. 'Morning, folks. Word is you're staying at Henderson's. If you're looking for supplies, I'll be honest—selection's limited.'",
-            next: "jeremiah_information"
+            text: "Now, weeks later, Jacob Rivers stumbled into Perdition, a ghost of his former self, his horse long gone, his resolve worn thin by hunger and dust. He carried only the clothes on his back and a desperate hope for honest work.",
+            next: "jacob_observes_perdition_ch4"
         },
 
-        // Scene 15: Information from Jeremiah
-        jeremiah_information: {
-            speaker: "Jeremiah Colt",
-            text: "'Tom Bradley was a good man trying to do right in a bad situation. He was investigating something before he died—kept asking about property deeds and water rights. Made some folks nervous, if you catch my meaning.'",
-            choices: [
-                {
-                    text: "Ask about Silas Cross directly",
-                    next: "jeremiah_on_cross"
-                },
-                {
-                    text: "Inquire about the water rights",
-                    next: "jeremiah_on_water"
-                }
-            ]
-        },
-
-        // Scene 16a: Jeremiah on Cross
-        jeremiah_on_cross: {
-            speaker: "Jeremiah Colt",
-            text: "'Cross? That man's like a vulture circling carrion. Shows up when folks are desperate, offers prices that seem generous until you realize what you're really giving up.'",
-            next: "leaving_store"
-        },
-
-        // Scene 16b: Jeremiah on Water
-        jeremiah_on_water: {
-            speaker: "Jeremiah Colt",
-            text: "'Water's life out here. Control the water, control everything. Cross has been real interested in who owns the water rights around Perdition. Too interested, if you ask me.'",
-            next: "leaving_store"
-        },
-
-        // Scene 17: Leaving the Store
-        leaving_store: {
-            speaker: "Thomas Whitmore",
-            text: "'Mr. Colt, I'm a physician. Mrs. Henderson mentioned medical supplies, and I'd like to help the community. Do you have anything available?'",
-            next: "medical_supplies_discussion"
-        },
-
-        // Scene 18: Medical Supplies Discussion
-        medical_supplies_discussion: {
-            speaker: "Jeremiah Colt",
-            text: "'Bandages, some laudanum, whiskey for cleaning wounds. Basic stuff. The doc who was here before—Morrison—he left after three folks died from something he couldn't diagnose. Said the symptoms didn't match any natural disease.'",
-            next: "sheriff_office_investigation"
-        },
-
-        // Scene 19: Sheriff's Office Investigation
-        sheriff_office_investigation: {
-            speaker: "Narrator",
-            text: "Your next stop is the sheriff's office. The door stands ajar, papers scattered on the desk, filing cabinets rifled through. Someone searched this place thoroughly after Bradley's death.",
-            next: "examining_evidence"
-        },
-
-        // Scene 20: Examining Evidence
-        examining_evidence: {
-            speaker: "Maria Vasquez",
-            text: "'Look at this.' She holds up a partially burned document. 'Property transfer records. Someone tried to destroy these but didn't finish the job. I can make out 'water rights' and 'forced sale.''",
-            next: "thomas_finds_notebook"
-        },
-
-        // Scene 21: Thomas Finds Notebook
-        thomas_finds_notebook: {
-            speaker: "Thomas Whitmore",
-            text: "'Bradley's personal notebook is still here. The handwriting is hurried, like he was taking notes quickly. There are references to mysterious illnesses and... contaminated water sources.'",
-            next: "jacob_discovery"
-        },
-
-        // Scene 22: Jacob's Discovery
-        jacob_discovery: {
+        // Scene 10: Jacob's View of Perdition
+        jacob_observes_perdition_ch4: {
             speaker: "Jacob Rivers",
-            text: "'In the jail cell, someone scratched 'WATER IS LIFE' into the wall, along with what looks like a crude map of the area around Perdition. Someone was trying to leave a message.'",
-            next: "silas_cross_arrives"
+            text: "(Internal) 'This place ain't much better than Redemption, Texas. But maybe... maybe here a man can start over. Leave the blood behind.'",
+            next: "jacob_seeking_work_intro"
         },
 
-        // Scene 23: Silas Cross Arrives
-        silas_cross_arrives: {
+        // Scene 11: Seeking Honest Work
+        jacob_seeking_work_intro: {
             speaker: "Narrator",
-            text: "A shadow falls across the doorway. A well-dressed man in an expensive coat stands there, flanked by two rough-looking companions. His smile doesn't reach his eyes.",
-            next: "cross_introduction"
+            text: "He was tired of running, tired of violence. All he wanted was a simple job, a chance to earn his keep without a gun in his hand.",
+            next: "jacob_approaches_store_for_work"
+        },
+        
+        // Scene 12: First Attempt - General Store
+        jacob_approaches_store_for_work: {
+            speaker: "Narrator",
+            text: "He tried the general store first. The proprietor, a wary man named Colt, just shook his head.",
+            next: "colt_no_work"
         },
 
-        // Scene 24: Cross's Introduction
-        cross_introduction: {
-            speaker: "Silas Cross",
-            text: "'Good morning. I don't believe we've been introduced. I'm Silas Cross, and I handle business matters for various interests in the area. I couldn't help but notice you examining poor Sheriff Bradley's office.'",
-            next: "polite_response"
+        colt_no_work: {
+            speaker: "Jeremiah Colt",
+            text: "'No work here, son. Barely enough trade to keep myself afloat. Try the saloon, maybe. Or Pike's mine, if you're desperate.'",
+            next: "jacob_saloon_attempt"
         },
 
-        // Scene 25: Polite Response
-        polite_response: {
-            speaker: "Elijah Cross",
-            text: "'I'm Elijah Cross, and these are my companions. We're new to Perdition and were curious about the recent troubles. We heard Sheriff Bradley was well-respected.'",
-            next: "cross_response"
+        // Scene 14: Second Attempt - Saloon
+        jacob_saloon_attempt: {
+            speaker: "Narrator",
+            text: "The saloon was dark and smelled of stale beer and desperation. The bartender, a burly man with dead eyes, just laughed.",
+            next: "bartender_no_work"
         },
 
-        // Scene 26: Cross's Response
-        cross_response: {
-            speaker: "Silas Cross",
-            text: "'Cross? Interesting coincidence. As for my business, I represent clients with investments in this region. Property, water rights, mining interests. When strangers start asking questions about official matters, my clients like to know why.'",
-            next: "veiled_threat"
+        bartender_no_work: {
+            speaker: "Saloon Bartender",
+            text: "'Work? Kid, the only job here is drinking yourself to death, and you can't afford the whiskey.'",
+            next: "jacob_heads_to_mine_office"
         },
 
-        // Scene 27: Veiled Threat
-        veiled_threat: {
-            speaker: "Silas Cross",
-            text: "'Sheriff Bradley was investigating matters that didn't concern him. Sadly, his curiosity proved unhealthy. I'd hate to see newcomers make the same mistake. Perdition can be dangerous for those who don't understand how things work here.'",
+        // Scene 16: Last Resort - Pike's Mine
+        jacob_heads_to_mine_office: {
+            speaker: "Narrator",
+            text: "Pike's silver mine. The name sent a shiver down Jacob's spine, too close to the life he'd fled. But hunger gnawed at his belly. He found the mine office, a rough-hewn shack near the gaping maw of the mine entrance.",
+            next: "meeting_hank_morrison_intro"
+        },
+
+        // Scene 17: Meeting Hank Morrison
+        meeting_hank_morrison_intro: {
+            speaker: "Narrator",
+            text: "Inside, a heavy-set man with a perpetual scowl looked up from a ledger. This was Hank Morrison, the mine supervisor.",
+            next: "hank_morrison_greeting_jacob"
+        },
+
+        hank_morrison_greeting_jacob: {
+            speaker: "Hank Morrison",
+            text: "'Whaddya want? Can't you see I'm busy?'",
+            next: "jacob_asks_for_job_at_mine"
+        },
+
+        // Scene 19: Jacob Asks for a Job
+        jacob_asks_for_job_at_mine: {
+            speaker: "Jacob Rivers",
+            text: "'Name's Jacob. Looking for work, Mr. Morrison. Any kind. I'm strong, and I learn fast.'",
+            next: "morrison_skeptical_assessment"
+        },
+
+        // Scene 20: Morrison's Skeptical Assessment
+        morrison_skeptical_assessment: {
+            speaker: "Hank Morrison",
+            text: "'Strong, eh? You look half-starved. Ever worked a mine before, boy?' He spat tobacco juice near Jacob's boots.",
             choices: [
                 {
-                    text: "Stand firm against the threat",
-                    next: "standing_firm"
+                    text: "Admit his inexperience honestly.",
+                    next: "jacob_admits_inexperience"
                 },
                 {
-                    text: "Remain diplomatically neutral",
-                    next: "diplomatic_response"
+                    text: "Try to bluff about past work.",
+                    next: "jacob_tries_to_bluff"
                 }
             ]
         },
 
-        // Scene 28a: Standing Firm
-        standing_firm: {
-            speaker: "Maria Vasquez",
-            text: "'We understand perfectly. Some people think they can intimidate others into submission. They're usually wrong.' Her hand rests near her gun.",
-            next: "cross_departure"
-        },
-
-        // Scene 28b: Diplomatic Response
-        diplomatic_response: {
-            speaker: "Elijah Cross",
-            text: "'We appreciate the information, Mr. Cross. We're simply travelers trying to understand our new surroundings.'",
-            next: "cross_departure"
-        },
-
-        // Scene 29: Cross's Departure
-        cross_departure: {
-            speaker: "Silas Cross",
-            text: "'Of course. Well, gentlemen... and lady... I hope your stay in Perdition is brief and uneventful.' He tips his hat and walks away with his men, but the threat hangs in the air.",
-            next: "church_ruins_visit"
-        },
-
-        // Scene 30: Church Ruins Visit
-        church_ruins_visit: {
-            speaker: "Narrator",
-            text: "Your investigation takes you to the burned church on the hill. Up close, the destruction is even more devastating. The fire was clearly intense and thorough—too thorough for a simple lightning strike.",
-            next: "examining_church_damage"
-        },
-
-        // Scene 31: Examining Church Damage
-        examining_church_damage: {
-            speaker: "Elijah Cross",
-            text: "'The altar stone is cracked, but not from heat. These marks are deliberate—someone took an axe to this before the fire. This wasn't just arson. This was desecration of everything this building represented.'",
-            next: "maria_finds_evidence"
-        },
-
-        // Scene 32: Maria Finds Evidence
-        maria_finds_evidence: {
-            speaker: "Maria Vasquez",
-            text: "'Multiple ignition points, remnants of oil-soaked rags. This was carefully planned destruction, not a random act of violence. Someone wanted to eliminate what this church meant to the community.'",
-            next: "jacob_finds_grave"
-        },
-
-        // Scene 33: Jacob Finds Grave
-        jacob_finds_grave: {
+        // Scene 21: Jacob Admits Inexperience (Optional Path)
+        jacob_admits_inexperience: {
             speaker: "Jacob Rivers",
-            text: "'Behind the church, several headstones are knocked over, and there's a fresh grave. The marker says Tom Bradley. They buried the sheriff here, where the church used to provide sanctuary.'",
-            next: "residential_area_visit"
+            text: "'No, sir. But I'm not afraid of hard work. Just need a chance.'",
+            next: "morrison_considers_jacob"
         },
 
-        // Scene 34: Residential Area Visit
-        residential_area_visit: {
+        // Scene 22: Jacob Tries to Bluff (Optional Path)
+        jacob_tries_to_bluff: {
+            speaker: "Jacob Rivers",
+            text: "'Worked some claims up in Colorado. Nothing this big, but I know my way around a pick and shovel.' The lie felt clumsy on his tongue.",
+            next: "morrison_sees_through_bluff"
+        },
+
+        // Scene 23: Morrison Sees Through Bluff
+        morrison_sees_through_bluff: {
+            speaker: "Hank Morrison",
+            text: "'Colorado, huh? Your hands are softer than a San Francisco whore's. Don't lie to me, boy. Wastes my time.' Despite the rebuke, there was a hint of something else in his tone.",
+            next: "morrison_considers_jacob"
+        },
+
+        // Scene 24: Morrison Hires Jacob
+        morrison_considers_jacob: {
+            speaker: "Hank Morrison",
+            text: "'Alright, fine. We're short-handed. Muckers mostly. Pay's a dollar a day, less for food and board at the company barracks. You break your back, you might last. You slack, you're out. Or worse.'",
+            next: "jacob_accepts_mine_job"
+        },
+
+        jacob_accepts_mine_job: {
+            speaker: "Jacob Rivers",
+            text: "'I'll take it. Thank you, Mr. Morrison.' Relief warred with a sense of unease.",
+            next: "first_day_underground_intro"
+        },
+
+        // Scene 26: First Day Underground
+        first_day_underground_intro: {
             speaker: "Narrator",
-            text: "Walking through Perdition's residential streets, you see the clear divide between those who've stayed and those who've fled. Some houses are well-maintained, while others show broken windows and yards grown wild.",
-            next: "meeting_ruth_peterson"
+            text: "The next day, Jacob descended into the oppressive darkness of Pike's silver mine. The air was thick with dust and the clang of steel on rock. It was brutal, back-breaking work, but it was honest. Or so he hoped.",
+            next: "mine_conditions_described"
         },
 
-        // Scene 35: Meeting Ruth Peterson
-        meeting_ruth_peterson: {
-            speaker: "Ruth Peterson",
-            text: "A woman tending her garden looks up warily. 'You're the strangers staying at Henderson's. Word travels fast in a small town. I'm Ruth Peterson. Are you really here to help, or just passing through like everyone else?'",
-            next: "thomas_offers_help"
-        },
-
-        // Scene 36: Thomas Offers Help
-        thomas_offers_help: {
-            speaker: "Thomas Whitmore",
-            text: "'I'm a physician, Mrs. Peterson. I'm here to help however I can. Mrs. Henderson mentioned your husband worked at the mine before the troubles started.'",
-            next: "ruth_explains_situation"
-        },
-
-        // Scene 37: Ruth Explains Situation
-        ruth_explains_situation: {
-            speaker: "Ruth Peterson",
-            text: "'My husband Pete worked the mine for fifteen years. When production started dropping, Cross's men came around, offering to buy us out. Pete refused. A week later, he came down with the sickness that killed him and two others.'",
-            next: "abandoned_house_discovery"
-        },
-
-        // Scene 38: Abandoned House Discovery
-        abandoned_house_discovery: {
+        // Scene 27: Mine Conditions
+        mine_conditions_described: {
             speaker: "Narrator",
-            text: "You pass an abandoned house with furniture still inside, as if the family left in a hurry. A hastily scrawled note on the door reads: 'Gone to California. Don't follow.' The desperation is palpable.",
-            next: "walter_hayes_encounter"
+            text: "Men coughed, their lungs filling with rock dust. Safety was an afterthought. Cave-ins were common, injuries frequent. But the silver kept coming out, and Pike kept profiting.",
+            next: "jacob_works_hard"
         },
 
-        // Scene 39: Walter Hayes Encounter
-        walter_hayes_encounter: {
-            speaker: "Walter Hayes",
-            text: "An elderly man rocks on his porch. 'Name's Walter Hayes. Been in Perdition since it was founded. Seen this town rise and fall. Used to be, strangers were welcome. Now they either bring trouble or get it. Which are you?'",
+        // Scene 28: Jacob Works Hard
+        jacob_works_hard: {
+            speaker: "Narrator",
+            text: "Jacob threw himself into the work, determined to prove himself. He hauled ore, swung a pickaxe, learned the rhythms of the mine. He was strong, and quickly earned a grudging respect from some of the older miners.",
+            next: "whispers_among_miners"
+        },
+
+        // Scene 29: Whispers Among Miners
+        whispers_among_miners: {
+            speaker: "Narrator",
+            text: "He heard whispers, though. Talk of sections of the mine that were off-limits, of strange sounds, of men who went into certain tunnels and never came out.",
+            next: "jacob_dismisses_rumors_initially"
+        },
+
+        // Scene 30: Jacob Dismisses Rumors
+        jacob_dismisses_rumors_initially: {
+            speaker: "Jacob Rivers",
+            text: "(Internal) 'Superstition. Miners are always spooked by the dark. Just focus on the work. Stay out of trouble.'",
+            next: "weeks_pass_in_mine"
+        },
+
+        // Scene 31: Weeks Pass
+        weeks_pass_in_mine: {
+            speaker: "Narrator",
+            text: "Weeks passed. Jacob grew leaner, harder. The mine became his world. But the whispers persisted, and a gnawing curiosity began to take root.",
+            next: "assigned_to_new_section"
+        },
+        
+        // Scene 32: Assigned to a New Section
+        assigned_to_new_section: {
+            speaker: "Narrator",
+            text: "One day, Morrison assigned Jacob to clear rubble near an older, less stable part of the mine – Section Gamma, a place most miners avoided.",
+            next: "morrison_instructions_gamma"
+        },
+
+        morrison_instructions_gamma: {
+            speaker: "Hank Morrison",
+            text: "'Clear this passage, Rivers. Pike wants to see if there's still good ore further in. Don't wander off. And don't go poking your nose where it ain't wanted.'",
+            next: "jacob_working_in_gamma_section"
+        },
+
+        // Scene 34: Working in Section Gamma
+        jacob_working_in_gamma_section: {
+            speaker: "Narrator",
+            text: "The air in Section Gamma was colder, the silence deeper, broken only by the drip of water and the scuttling of unseen things. The main passage was shored up with rotting timbers.",
+            next: "discovering_sealed_tunnel_intro"
+        },
+
+        // Scene 35: Discovering a Sealed-Off Tunnel
+        discovering_sealed_tunnel_intro: {
+            speaker: "Narrator",
+            text: "As Jacob cleared away a rockfall, he uncovered a smaller, older tunnel branching off the main one. It was crudely sealed with newer-looking planks and beams, as if someone had recently tried to hide its existence.",
             choices: [
                 {
-                    text: "We're here to help rebuild",
-                    next: "rebuilding_response"
+                    text: "Examine the sealed tunnel more closely.",
+                    next: "examine_sealed_tunnel_detail"
                 },
                 {
-                    text: "We're here to find the truth",
-                    next: "truth_seeking_response"
+                    text: "Ignore it and continue his assigned work.",
+                    next: "ignore_sealed_tunnel_continue_work"
                 }
             ]
         },
 
-        // Scene 40a: Rebuilding Response
-        rebuilding_response: {
-            speaker: "Elijah Cross",
-            text: "'We're here to help rebuild what's been torn down, Mr. Hayes. Every community deserves hope.'",
-            next: "walter_advice"
-        },
-
-        // Scene 40b: Truth Seeking Response
-        truth_seeking_response: {
-            speaker: "Maria Vasquez",
-            text: "'We're here to find the truth about what's happening to Perdition and stop it.'",
-            next: "walter_advice"
-        },
-
-        // Scene 41: Walter's Advice
-        walter_advice: {
-            speaker: "Walter Hayes",
-            text: "'Truth is, Cross has this town by the throat. But maybe... maybe if enough people stood together...' He trails off, but there's a spark of hope in his old eyes.",
-            next: "returning_to_boarding_house"
-        },
-
-        // Scene 42: Returning to Boarding House
-        returning_to_boarding_house: {
+        // Scene 36: Examine Sealed Tunnel (Optional Path)
+        examine_sealed_tunnel_detail: {
             speaker: "Narrator",
-            text: "As the sun reaches its zenith, you make your way back to Henderson's Boarding House. The smell of cooking food and the promise of safety provide welcome respite from the morning's dark discoveries.",
-            next: "lunch_discussion"
+            text: "The planks were haphazardly nailed, and a faint, unusual smell – metallic and faintly sweet – seemed to emanate from the darkness beyond. The work was shoddy, unlike the rest of the mine's construction.",
+            next: "hearing_the_sounds_intro"
         },
 
-        // Scene 43: Lunch Discussion
-        lunch_discussion: {
-            speaker: "Mrs. Henderson",
-            text: "'Well? What did you learn about our troubled town?' She sets bowls of stew before you. The warmth is comforting after the cold reality of Perdition's systematic destruction.",
-            next: "sharing_discoveries"
-        },
-
-        // Scene 44: Sharing Discoveries
-        sharing_discoveries: {
-            speaker: "Thomas Whitmore",
-            text: "'The mysterious illnesses, the property acquisitions, the systematic intimidation—it's all connected. Someone is poisoning people who won't sell their water rights, making it look like a disease.'",
-            next: "cross_pattern_revealed"
-        },
-
-        // Scene 45: Cross's Pattern Revealed
-        cross_pattern_revealed: {
-            speaker: "Maria Vasquez",
-            text: "'Silas Cross threatened us directly. He's behind Sheriff Bradley's murder, the church burning, and the poisonings. He's systematically destroying everything that gives this community strength.'",
-            next: "mrs_henderson_confirms"
-        },
-
-        // Scene 46: Mrs. Henderson Confirms
-        mrs_henderson_confirms: {
-            speaker: "Mrs. Henderson",
-            text: "'I was afraid you'd figure that out. Cross has been the shadow over this town for two years. Every family that's fled, every business that's closed, every death—he's profited from all of it.'",
-            next: "decision_point"
-        },
-
-        // Scene 47: Decision Point
-        decision_point: {
-            speaker: "Elijah Cross",
-            text: "'Then we know our enemy. The question is: what do we do about it? Cross has money, men, and no scruples. But Perdition still has people worth fighting for.'",
-            next: "jacob_speaks_up"
-        },
-
-        // Scene 48: Jacob Speaks Up
-        jacob_speaks_up: {
+        // Scene 37: Ignore Sealed Tunnel (Optional Path)
+        ignore_sealed_tunnel_continue_work: {
             speaker: "Jacob Rivers",
-            text: "'We came west to become better than we were. Maybe this is how we do it—by standing up to someone like Cross. By protecting people who can't protect themselves.'",
-            next: "afternoon_mission"
+            text: "(Internal) 'Morrison said not to poke around. Best to just do my job.' He tried to ignore the strange tunnel, but it preyed on his mind.",
+            next: "hearing_the_sounds_intro"
         },
 
-        // Scene 49: Afternoon Mission
-        afternoon_mission: {
-            speaker: "Mrs. Henderson",
-            text: "'Whatever you decide to do, be careful. Cross has eyes everywhere. But...' She looks around the room with something she hasn't felt in months. 'I haven't felt hope like this since Tom Bradley was alive. Maybe you really can help us.'",
-            next: "chapter_conclusion"
-        },
-
-        // Scene 50: Chapter Conclusion
-        chapter_conclusion: {
+        // Scene 38: Hearing the Sounds
+        hearing_the_sounds_intro: {
             speaker: "Narrator",
-            text: "Armed with knowledge of their true enemy, the four companions prepare for the fight ahead. Silas Cross has built his empire on fear, corruption, and murder. But now he faces something he hasn't encountered before—four souls united by purpose, determined to restore justice to a town that has almost forgotten what that word means.",
+            text: "Then he heard it. Faintly, at first, almost lost in the dripping water. A sound that didn't belong in a mine.",
+            next: "the_crying_sound"
+        },
+
+        the_crying_sound: {
+            speaker: "Narrator",
+            text: "It was crying. Soft, desolate, unmistakably the sound of children weeping. It seemed to come from beyond the sealed tunnel.",
+            next: "jacob_disbelief_and_fear"
+        },
+
+        // Scene 40: Jacob's Disbelief and Fear
+        jacob_disbelief_and_fear: {
+            speaker: "Jacob Rivers",
+            text: "(Internal) 'Children? Down here? It can't be. The mind plays tricks in the dark...' But the sounds were too real, too filled with sorrow.",
+            next: "jacob_investigates_further"
+        },
+
+        // Scene 41: Jacob Investigates Further
+        jacob_investigates_further: {
+            speaker: "Narrator",
+            text: "Driven by a horrifying suspicion, Jacob pried at one of the loose planks sealing the tunnel. It came away with a groan of tortured wood. He peered into the oppressive blackness beyond.",
+            next: "glimpse_into_darkness"
+        },
+        
+        // Scene 42: Glimpse into Darkness
+        glimpse_into_darkness: {
+            speaker: "Narrator",
+            text: "His lamp cast feeble light into the tunnel. He couldn't see much, but the crying was louder now, accompanied by a rhythmic clinking, like tiny hammers on rock. The metallic, sweet smell was stronger too.",
+            next: "morrison_catches_jacob"
+        },
+
+        // Scene 43: Hank Morrison Catches Him
+        morrison_catches_jacob: {
+            speaker: "Hank Morrison",
+            text: "'What in the blue blazes do you think you're doing, Rivers?!' Hank Morrison's voice boomed from behind him, making Jacob jump.",
+            next: "jacob_tries_to_explain"
+        },
+
+        // Scene 44: Jacob Tries to Explain
+        jacob_tries_to_explain: {
+            speaker: "Jacob Rivers",
+            text: "'Mr. Morrison, I... I heard something. Crying. From in there. Sounded like... like children.'",
+            next: "morrison_cold_stare"
+        },
+        
+        // Scene 45: Morrison's Cold Stare
+        morrison_cold_stare: {
+            speaker: "Narrator",
+            text: "Morrison's face was a mask of cold fury. He glanced at the pried-open plank, then back at Jacob. His eyes held no surprise, only a chilling menace.",
+            next: "morrison_threatens_jacob"
+        },
+
+        // Scene 46: Morrison's Threat
+        morrison_threatens_jacob: {
+            speaker: "Hank Morrison",
+            text: "'You heard the wind, boy. Or rats. Some tunnels in this mine are best left alone. For your health.' He took a step closer, his bulk intimidating.",
+            next: "morrison_specific_warning"
+        },
+
+        morrison_specific_warning: {
+            speaker: "Hank Morrison",
+            text: "'You forget what you think you heard. You forget about this tunnel. You do your job, keep your mouth shut, and maybe you live to see another payday. You breathe a word of this to anyone, and you'll disappear down a shaft so deep, no one will ever find your bones. Am I clear?'",
+            choices: [
+                {
+                    text: "Nod dumbly, terrified.",
+                    next: "jacob_terrified_nod"
+                },
+                {
+                    text: "Try to protest (futilely).",
+                    next: "jacob_futile_protest"
+                }
+            ]
+        },
+        
+        // Scene 48: Jacob's Terrified Nod (Leads to same outcome)
+        jacob_terrified_nod: {
+            speaker: "Narrator",
+            text: "Jacob, his blood running cold, could only nod. The implication was terrifyingly clear.",
+            next: "morrison_final_look_jacob"
+        },
+
+        // Scene 49: Jacob's Futile Protest (Leads to same outcome)
+        jacob_futile_protest: {
+            speaker: "Jacob Rivers",
+            text: "'But... children...' The words died in his throat as Morrison's glare intensified.",
+            next: "morrison_final_look_jacob"
+        },
+        
+        // Scene 50: Morrison's Final Look, Chapter End
+        morrison_final_look_jacob: {
+            speaker: "Narrator",
+            text: "Morrison gave him one last, hard look, then gestured back to the main passage. 'Get back to work, Rivers. And remember what I said.' Jacob, shaken to his core, knew he had stumbled upon a secret far more dangerous than any outlaw gang. The sounds of crying, muffled but persistent, would haunt his waking hours.",
             choices: [
                 {
                     text: "Continue to Chapter 5",

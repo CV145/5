@@ -9,11 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add some visual polish
     addDustParticles();
     initializePortraits();
-    
-    // Enable auto-save
-    if (game.saveSystem) {
-        game.saveSystem.enableAutoSave(3); // Auto-save every 3 minutes
-    }
 });
 
 // Add atmospheric dust particles

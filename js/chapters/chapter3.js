@@ -1,394 +1,389 @@
-// Chapter 3: Perdition's Gate (Linear Version)
+// Chapter 3: The Gun and the Chalk
 storyData.chapter3 = {
     name: "Chapter 3",
-    title: "Perdition's Gate",
+    title: "The Gun and the Chalk",
     scenes: {
-        // Scene 1: Approaching Perdition
+        // Scene 1: Maria's Arrival - The Schoolteacher
         start: {
             speaker: "Narrator",
-            text: "The stagecoach crests a low ridge, and there it is—Perdition. The town sprawls in a dusty valley like a wound in the earth, its buildings weathered and gray under the merciless sun. Even from a distance, the place feels wrong, as if hope itself has abandoned these streets.",
-            next: "first_impression"
+            text: "A different kind of traveler stepped off the noon stage a week after Doc Whitmore's arrival. She was comely, dressed in modest but neat attire, and carried a valise filled with books and slates. 'Miss Maria Vasquez,' she introduced herself to the station agent, 'the new schoolteacher for Perdition.'",
+            onEnter: function() {
+                updateStoryVariable('currentChapter', 'Chapter 3');
+            },
+            next: "maria_hidden_luggage"
         },
 
-        // Scene 2: First Impressions
-        first_impression: {
-            speaker: "Jacob Rivers",
-            text: "'It's smaller than I expected.' Jacob's voice carries disappointment and unease. 'And... empty. Where are all the people?' Indeed, the streets visible from their vantage point seem eerily deserted for midday.",
-            next: "maria_tactical_assessment"
+        // Scene 2: Hidden Luggage
+        maria_hidden_luggage: {
+            speaker: "Narrator",
+            text: "Her other trunk, heavier and securely locked, contained no books. Instead, nestled among spare clothing were well-oiled twin Colts, a Winchester rifle, and enough ammunition to start a small war. Maria Vasquez was many things, but a simple schoolteacher was not one of them.",
+            next: "maria_observes_perdition"
         },
 
-        // Scene 3: Maria's Tactical Assessment
-        maria_tactical_assessment: {
+        // Scene 3: Maria Observes Perdition
+        maria_observes_perdition: {
             speaker: "Maria Vasquez",
-            text: "'A dying town.' Maria's eyes scan the buildings with professional interest. 'Half the structures are abandoned, but someone's maintaining defenses. See those boarded windows? Those aren't just empty—they're fortified.'",
-            next: "thomas_observes_decay"
-        },
-
-        // Scene 4: Thomas Observes the Decay
-        thomas_observes_decay: {
-            speaker: "Thomas Whitmore",
-            text: "'Look at the well in the center square.' Thomas points to a stone structure that seems to be the town's heart. 'It's covered over. That's not normal for a desert town. Either the water's gone bad, or they're afraid of something contaminating it.'",
-            next: "elijah_spiritual_observation"
-        },
-
-        // Scene 5: Elijah's Spiritual Observation
-        elijah_spiritual_observation: {
-            speaker: "Elijah Cross",
-            text: "'There's no church bell ringing for midday prayers.' Elijah's voice is troubled. 'In a frontier town, the church is usually the strongest building, the heart of the community. I don't even see a steeple.'",
+            text: "(Internal) 'This town stinks of fear and desperation. Good. People are easier to manage when they're afraid.' Her eyes, sharp and missing nothing, scanned the faces of the few townsfolk who watched her arrival.",
             choices: [
                 {
-                    text: "Ask about the missing church",
-                    next: "church_discussion"
+                    text: "Assess the children she sees.",
+                    next: "assess_children_perdition"
                 },
                 {
-                    text: "Focus on immediate practical concerns",
-                    next: "practical_concerns"
+                    text: "Look for signs of Pike's influence.",
+                    next: "look_for_pike_signs"
                 },
                 {
-                    text: "Continue observing the town",
-                    next: "driver_breaks_silence"
+                    text: "Focus on securing her lodgings.",
+                    next: "maria_secures_lodging"
                 }
             ]
         },
 
-        // Scene 6: Church Discussion
-        church_discussion: {
-            speaker: "Stagecoach Driver",
-            text: "'Burned down three months ago,' the driver calls down, overhearing. 'Lightning strike, they said. But folks whispered it was deliberate. Preacher left town the next day and never came back.'",
-            next: "driver_breaks_silence"
-        },
-
-        // Scene 7: Practical Concerns
-        practical_concerns: {
+        // Scene 4: Assess Children (Optional Insight)
+        assess_children_perdition: {
             speaker: "Maria Vasquez",
-            text: "'Church or no church, we need shelter, supplies, and information. A town this scared will have loose tongues in the right places. Usually the saloon.'",
-            next: "driver_breaks_silence"
+            text: "(Internal) 'Thin. Wary. Some look like they haven't seen a decent meal in weeks. Their parents will be grateful for any attention paid to them. Trust will be easy to earn, and easier to exploit.'",
+            next: "maria_secures_lodging"
         },
 
-        // Scene 8: Driver Breaks His Silence
-        driver_breaks_silence: {
-            speaker: "Stagecoach Driver",
-            text: "'This is as far as I go, folks.' The driver's voice is apologetic but firm. 'Company orders. I drop passengers at the edge of town and turn around. Won't even water the horses here anymore.'",
-            next: "coach_stops"
-        },
-
-        // Scene 9: Coach Stops at Town's Edge
-        coach_stops: {
-            speaker: "Narrator",
-            text: "The stagecoach rolls to a stop at a weathered wooden sign: 'PERDITION - EST. 1887 - POPULATION 347.' Someone has scratched out the population number and written '?' in its place. The amendment looks recent.",
-            next: "gathering_belongings"
-        },
-
-        // Scene 10: Gathering Belongings
-        gathering_belongings: {
-            speaker: "Narrator",
-            text: "The four companions gather their meager belongings and step down onto the dusty ground. The heat hits them immediately, but it's more than just desert sun—there's an oppressive weight to the air, as if the very atmosphere bears some unseen burden.",
-            next: "driver_urgent_departure"
-        },
-
-        // Scene 11: Driver's Urgent Departure
-        driver_urgent_departure: {
-            speaker: "Stagecoach Driver",
-            text: "'God go with you, folks.' The driver tips his hat nervously. 'And if you take my advice, you won't stay long. This place... it ain't natural anymore.' Without waiting for a response, he cracks his whip and turns the coach around.",
-            next: "watching_coach_leave"
-        },
-
-        // Scene 12: Watching the Coach Leave
-        watching_coach_leave: {
-            speaker: "Narrator",
-            text: "They watch the stagecoach disappear in a cloud of dust, taking with it their last connection to the outside world. Now they truly stand alone at the threshold of Perdition, four souls against whatever darkness awaits within.",
-            next: "first_steps_into_town"
-        },
-
-        // Scene 13: First Steps Into Town
-        first_steps_into_town: {
-            speaker: "Narrator",
-            text: "Their boots crunch on the hard-packed earth as they walk down what was once Perdition's main street. Buildings loom on either side—some occupied and showing signs of life, others clearly abandoned with boarded windows and doors hanging askew.",
-            next: "eyes_watching"
-        },
-
-        // Scene 14: Eyes Watching from Shadows
-        eyes_watching: {
+        // Scene 5: Look for Pike's Influence (Optional Insight)
+        look_for_pike_signs: {
             speaker: "Maria Vasquez",
-            text: "'We're being watched.' Maria's hand hovers near her gun. 'Windows, doorways, alley mouths. Count at least six different positions. They're cautious but curious.'",
-            next: "jacob_nervous_energy"
+            text: "(Internal) 'The few men who look well-fed and confident... they walk with a swagger. Pike's men, likely. I'll need to know them all. And who they answer to, besides Pike himself.'",
+            next: "maria_secures_lodging"
         },
 
-        // Scene 15: Jacob's Nervous Energy
-        jacob_nervous_energy: {
-            speaker: "Jacob Rivers",
-            text: "'Should we... announce ourselves? Call out?' Jacob's voice is uncertain. 'Seems wrong to just walk into someone's town without greeting. But then again, nobody's come out to greet us either.'",
-            next: "elijah_leadership_moment"
-        },
-
-        // Scene 16: Elijah's Leadership Moment
-        elijah_leadership_moment: {
-            speaker: "Elijah Cross",
-            text: "'We walk with purpose but not aggression. We're travelers seeking shelter and honest work, nothing more. Let them see we're not here to cause trouble.' His voice carries quiet authority.",
-            next: "approaching_town_center"
-        },
-
-        // Scene 17: Approaching Town Center
-        approaching_town_center: {
+        // Scene 6: Maria Secures Lodging
+        maria_secures_lodging: {
             speaker: "Narrator",
-            text: "They approach what appears to be the town center—a small square dominated by the covered well Thomas had noticed. Around it, several buildings show signs of activity: a general store, a saloon called 'The Last Chance,' and what might be a sheriff's office.",
-            next: "sheriff_office_observation"
+            text: "She inquired about the schoolhouse and was directed to a small, dusty cottage attached to it, recently vacated. It was meager, but it would serve. Privacy was her main concern.",
+            next: "unpacking_her_tools"
         },
 
-        // Scene 18: Sheriff's Office Observation
-        sheriff_office_observation: {
-            speaker: "Thomas Whitmore",
-            text: "'There's the sheriff's office.' Thomas nods toward a building with a hanging sign and barred windows. 'Door's standing open, but I don't see anyone moving inside. After what that rider told us...'",
-            next: "saloon_activity"
-        },
-
-        // Scene 19: Saloon Shows Life
-        saloon_activity: {
+        // Scene 7: Unpacking Her True Tools
+        unpacking_her_tools: {
             speaker: "Narrator",
-            text: "The Last Chance Saloon shows the most signs of life—horses tied outside, the sound of voices from within, and the tinkling of an out-of-tune piano. It seems to be the beating heart of what's left of Perdition's community.",
-            next: "first_townsperson_encounter"
+            text: "Once alone, Maria carefully unpacked her 'teaching supplies' – the guns. She checked their mechanisms, the weight familiar and comforting in her hands. These were the tools of her true trade: vengeance.",
+            next: "the_target_jim_dalton"
         },
 
-        // Scene 20: First Townsperson Encounter
-        first_townsperson_encounter: {
-            speaker: "Elderly Townsman",
-            text: "An elderly man emerges from the general store, stops short when he sees them, and stares with a mixture of surprise and suspicion. 'Strangers.' His voice is gravelly with age and caution. 'Don't see many new faces these days. You folks lost?'",
+        // Scene 8: The Target - Jim Dalton
+        the_target_jim_dalton: {
+            speaker: "Maria Vasquez",
+            text: "(Internal, looking at a faded photograph of her younger sister, Sofia) 'Jim Dalton. You took her from me two years ago. Now, I've found you. And Perdition will be your grave.'",
+            next: "first_day_at_school"
+        },
+
+        // Scene 9: Setting up the Schoolhouse
+        first_day_at_school: {
+            speaker: "Narrator",
+            text: "The next morning, Maria opened the schoolhouse. It was a single, dilapidated room, thick with dust and neglect. She spent hours cleaning, arranging the few rickety desks, and making it resemble a place of learning.",
+            next: "students_arrive_hesitantly"
+        },
+
+        // Scene 10: Students Arrive
+        students_arrive_hesitantly: {
+            speaker: "Narrator",
+            text: "A handful of children arrived, pushed by hopeful parents or drawn by reluctant curiosity. They were a motley crew, ranging in age from six to nearly twelve, their clothes patched, their faces smudged but alight with cautious interest.",
+            next: "maria_charming_facade"
+        },
+        
+        // Scene 11: Maria's Charming Facade
+        maria_charming_facade: {
+            speaker: "Maria Vasquez",
+            text: "'Welcome, children! I am Miss Vasquez. It's so wonderful to see so many bright faces ready to learn!' Her smile was warm, her voice gentle – a carefully constructed mask.",
+            next: "initial_lessons_observation"
+        },
+
+        // Scene 12: Initial Lessons and Observation
+        initial_lessons_observation: {
+            speaker: "Narrator",
+            text: "She began with simple lessons – letters, numbers, stories. But all the while, Maria observed. Who was shy? Who was bold? Who spoke of their families, their fathers' work? She was gathering intelligence, one innocent remark at a time.",
+            next: "searching_for_dalton_info_subtly"
+        },
+        
+        // Scene 13: Searching for Dalton - Subtle Inquiries
+        searching_for_dalton_info_subtly: {
+            speaker: "Narrator",
+            text: "In the following days, Maria subtly steered conversations. 'Your father works at the mine? That must be very important work! Who is the foreman there? A Mr. Dalton, perhaps?'",
+            next: "dalton_identified_as_enforcer"
+        },
+
+        // Scene 14: Dalton Identified as Pike's Enforcer
+        dalton_identified_as_enforcer: {
+            speaker: "Child 1 (Timidly)",
+            text: "'Mr. Dalton? Yes, ma'am. He's Mr. Pike's right hand. Pa says he's a hard man. Makes sure everyone does what Mr. Pike wants.'",
+            next: "maria_internal_confirmation"
+        },
+
+        // Scene 15: Maria's Internal Confirmation
+        maria_internal_confirmation: {
+            speaker: "Maria Vasquez",
+            text: "(Internal) 'Pike's enforcer. Good. Close to power. Close to my vengeance. Now, to find his weaknesses.'",
+            next: "identifying_key_children"
+        },
+
+        // Scene 16: Identifying Key Children
+        identifying_key_children: {
+            speaker: "Narrator",
+            text: "Maria identified three children whose parents had direct ties to Pike or his closest men: young Timmy, whose father was a guard at Pike's office; Lily, whose mother cleaned for Pike; and quiet Samuel, whose older brother was one of Dalton's cronies.",
+            next: "cultivating_timmy"
+        },
+
+        // Scene 17: Cultivating Timmy - Praise and Small Gifts
+        cultivating_timmy: {
+            speaker: "Maria Vasquez",
+            text: "'Timmy, your drawing is so clever! You have a keen eye for detail. Here, a piece of candy for such good work.' A little praise, a small treat – trust was easily bought.",
+            next: "timmy_shares_information"
+        },
+
+        // Scene 18: Timmy Shares Information
+        timmy_shares_information: {
+            speaker: "Timmy",
+            text: "'Miss Vasquez, guess what? Pa said Mr. Pike is expecting a big shipment tonight! Lots of guards will be there!' He beamed, eager for more praise.",
+            next: "maria_notes_info"
+        },
+
+        // Scene 19: Maria Notes the Information
+        maria_notes_info: {
+            speaker: "Maria Vasquez",
+            text: "'Is that so, Timmy? How exciting! You're a very observant boy.' (Internal) 'A shipment. Valuable. Dalton will be there.'",
+            next: "cultivating_lily"
+        },
+
+        // Scene 20: Cultivating Lily - False Sympathy
+        cultivating_lily: {
+            speaker: "Maria Vasquez",
+            text: "'Lily, dear, you seem sad today. Is everything alright at home?' Maria’s voice was honey-laced with feigned concern. Vulnerability was a door she knew how to open.",
+            next: "lily_divulges_details"
+        },
+        
+        // Scene 21: Lily Divulges Pike's Habits
+        lily_divulges_details: {
+            speaker: "Lily",
+            text: "'Ma says Mr. Pike has been angry lately. Shouting a lot. He meets with strange men in his study late at night. Ma has to clean up cigar smoke and spilled whiskey.'",
+            next: "maria_files_away_detail"
+        },
+
+        // Scene 22: Maria Files Away the Detail
+        maria_files_away_detail: {
+            speaker: "Maria Vasquez",
+            text: "(Internal) 'Late night meetings. Irritable. Perhaps his operations aren't as smooth as he'd like. Or perhaps he's expecting trouble.'",
+            next: "cultivating_samuel"
+        },
+
+        // Scene 23: Cultivating Samuel - Shared 'Secrets'
+        cultivating_samuel: {
+            speaker: "Narrator",
+            text: "With Samuel, whose brother ran with Dalton, Maria used a different tactic. She shared small, harmless 'secrets' with him, making him feel important and trusted.",
+            next: "samuel_boasts_brother"
+        },
+
+        // Scene 24: Samuel Boasts About His Brother
+        samuel_boasts_brother: {
+            speaker: "Samuel (Child)",
+            text: "'My brother, Tom, he ain't afraid of nobody! Not even Mr. Dalton. He told me Mr. Dalton carries a special kind of knife, one with a bird feather on the handle. Says it's his lucky charm.'",
+            next: "maria_recognizes_knife"
+        },
+
+        // Scene 25: Maria Recognizes the Knife Description
+        maria_recognizes_knife: {
+            speaker: "Maria Vasquez",
+            text: "(Internal, a jolt of cold fury) 'A bird feather... Sofia collected feathers. That bastard. He took a trophy.' Her resolve hardened.",
             choices: [
                 {
-                    text: "Elijah responds diplomatically",
-                    next: "elijah_diplomatic_introduction"
+                    text: "Press Samuel for more details about Dalton.",
+                    next: "press_samuel_for_more"
                 },
                 {
-                    text: "Ask about lodging directly",
-                    next: "direct_lodging_question"
+                    text: "Praise Samuel to reinforce his trust.",
+                    next: "praise_samuel_for_info"
+                }
+            ]
+        },
+        
+        // Scene 26: Press Samuel for More (Optional)
+        press_samuel_for_more: {
+            speaker: "Maria Vasquez",
+            text: "'That's very interesting, Samuel. Does your brother say where Mr. Dalton keeps this special knife? Or when he carries it?'",
+            next: "samuel_hesitates_then_shares"
+        },
+
+        // Scene 27: Samuel Hesitates, Then Shares More
+        samuel_hesitates_then_shares: {
+            speaker: "Samuel (Child)",
+            text: "'He... he keeps it in his left boot mostly. Says it's for emergencies. My brother says Mr. Dalton is quick with it.'",
+            next: "praise_samuel_for_info"
+        },
+
+        // Scene 28: Praise Samuel
+        praise_samuel_for_info: {
+            speaker: "Maria Vasquez",
+            text: "'You're a very good secret-keeper, Samuel. And very brave to share such important things with me. This will be our special secret, alright?'",
+            next: "the_web_of_informants"
+        },
+        
+        // Scene 29: The Web of Unwitting Informants
+        the_web_of_informants: {
+            speaker: "Narrator",
+            text: "Days turned into a week. Maria, the beloved Miss Vasquez, wove a web of innocent informants. Children, eager for a kind word or a sweet, unknowingly fed her scraps of information about Pike's operations, Dalton's routines, and the undercurrents of Perdition.",
+            next: "one_child_grows_suspicious_intro"
+        },
+
+        // Scene 30: One Child Grows Suspicious - Billy
+        one_child_grows_suspicious_intro: {
+            speaker: "Narrator",
+            text: "But not all children were so easily swayed. A boy named Billy, older and sharper than most, began to notice the pointed nature of Miss Vasquez's questions.",
+            next: "billy_questions_maria"
+        },
+        
+        // Scene 31: Billy Questions Maria
+        billy_questions_maria: {
+            speaker: "Billy (Suspicious Child)",
+            text: "'Miss Vasquez? Why do you ask so much about Mr. Pike and his men? My pa says it ain't healthy to be too curious in Perdition.'",
+            next: "maria_cold_assessment"
+        },
+
+        // Scene 32: Maria's Cold Assessment
+        maria_cold_assessment: {
+            speaker: "Maria Vasquez",
+            text: "(Internal) 'This one is a problem. His suspicion could unravel everything. He needs to be silenced, but not in a way that draws attention.'",
+            next: "maria_private_word_billy"
+        },
+
+        // Scene 33: Maria Asks for a Private Word
+        maria_private_word_billy: {
+            speaker: "Maria Vasquez",
+            text: "'Billy, could you stay after class for a moment? I have something important to discuss with you.' Her smile remained, but her eyes were chips of ice.",
+            next: "the_threat_to_billy"
+        },
+        
+        // Scene 34: The Threat
+        the_threat_to_billy: {
+            speaker: "Narrator",
+            text: "When they were alone, Maria's demeanor shifted. The warmth vanished, replaced by a chilling intensity.",
+            next: "maria_delivers_threat"
+        },
+
+        // Scene 35: Maria Delivers the Threat
+        maria_delivers_threat: {
+            speaker: "Maria Vasquez",
+            text: "'Billy, you're a smart boy. Smart enough to know that some questions are dangerous. Your father works at the general store, doesn't he? And your mother takes in laundry. It would be a terrible shame if... business dried up for them. Or if an accident happened.'",
+            next: "billy_understands"
+        },
+        
+        // Scene 36: Billy Understands
+        billy_understands: {
+            speaker: "Narrator",
+            text: "Billy's eyes widened, fear replacing suspicion. He understood. The kind schoolteacher was not what she seemed.",
+            next: "billy_silenced"
+        },
+
+        // Scene 37: Billy is Silenced
+        billy_silenced: {
+            speaker: "Billy (Suspicious Child)",
+            text: "'I... I won't say nothin', Miss Vasquez. I promise.' His voice was a hoarse whisper.",
+            next: "maria_feigned_kindness_returns"
+        },
+
+        // Scene 38: Maria's Feigned Kindness Returns
+        maria_feigned_kindness_returns: {
+            speaker: "Maria Vasquez",
+            text: "'Good boy, Billy. I knew you were smart.' She patted his head, her smile back in place, now more menacing than comforting. 'Now run along. And remember our little chat.'",
+            next: "sheriff_garrett_visits_school"
+        },
+
+        // Scene 39: Sheriff Garrett Visits the School
+        sheriff_garrett_visits_school: {
+            speaker: "Narrator",
+            text: "A few days later, Sheriff Tom Garrett paid a visit to the schoolhouse. He was a tall, imposing man, but his friendly demeanor seemed slightly off, his eyes too probing.",
+            next: "garrett_questions_maria1"
+        },
+        
+        // Scene 40: Garrett's Questions
+        garrett_questions_maria1: {
+            speaker: "Sheriff Tom Garrett",
+            text: "'Miss Vasquez, just checking in on our new schoolteacher. Heard good things. Though, it's unusual for someone with your... polish... to end up in a place like Perdition. What brings you here, truly?'",
+            next: "maria_deflects_garrett1"
+        },
+
+        // Scene 41: Maria Deflects
+        maria_deflects_garrett1: {
+            speaker: "Maria Vasquez",
+            text: "'A desire to make a difference, Sheriff. And perhaps a change of scenery.' She offered him her most demure smile. 'Perdition seemed like a town that could use a dedicated teacher.'",
+            choices: [
+                {
+                    text: "Subtly try to gather information on Garrett.",
+                    next: "maria_probes_garrett"
                 },
                 {
-                    text: "Inquire about the town's situation",
-                    next: "town_situation_inquiry"
+                    text: "Maintain a purely professional and polite facade.",
+                    next: "maria_polite_facade_garrett"
                 }
             ]
         },
 
-        // Scene 21: Elijah's Diplomatic Introduction
-        elijah_diplomatic_introduction: {
-            speaker: "Elijah Cross",
-            text: "'Not lost, friend. We're travelers seeking an honest place to settle and work. I'm Elijah Cross, and these are my companions. We heard Perdition might have opportunities for folks willing to work hard.'",
-            next: "old_man_skeptical_response"
-        },
-
-        // Scene 22: Direct Lodging Question
-        direct_lodging_question: {
+        // Scene 42: Maria Probes Garrett (Optional)
+        maria_probes_garrett: {
             speaker: "Maria Vasquez",
-            text: "'We need rooms and supplies. Is there a boarding house or inn?' Maria's approach is straightforward and practical. 'We can pay fair rates and we don't cause trouble.'",
-            next: "old_man_skeptical_response"
+            text: "'It must be difficult, Sheriff, keeping order in a town facing such... economic hardships. Do you find Mr. Pike a supportive presence in that regard?'",
+            next: "garrett_noncommittal_response"
         },
-
-        // Scene 23: Town Situation Inquiry
-        town_situation_inquiry: {
-            speaker: "Thomas Whitmore",
-            text: "'We heard on the road that Perdition has been facing some difficulties. As travelers, we're wondering what we might be walking into.' Thomas's tone is polite but direct.",
-            next: "old_man_skeptical_response"
-        },
-
-        // Scene 24: Old Man's Skeptical Response
-        old_man_skeptical_response: {
-            speaker: "Elderly Townsman",
-            text: "'Work?' The old man's laugh is bitter. 'Mister, half the businesses in this town are boarded up. The mine's played out, the cattle are dying, and we just lost our sheriff to a bullet in the back. What kind of work you think there is?'",
-            next: "learning_about_sheriff"
-        },
-
-        // Scene 25: Learning About the Sheriff
-        learning_about_sheriff: {
-            speaker: "Jacob Rivers",
-            text: "'The sheriff... we heard about that at Miller's Rest. I'm sorry for your loss. Was he... was he a good man?' Jacob's youth makes the question sound genuine rather than prying.",
-            next: "sheriff_backstory"
-        },
-
-        // Scene 26: Sheriff's Backstory
-        sheriff_backstory: {
-            speaker: "Elderly Townsman",
-            text: "'Tom Bradley? Best sheriff this town ever had. Honest as the day is long, fair to everyone. That's probably what got him killed.' The old man's voice grows dark. 'When honest men start dying, you know a place has gone to hell.'",
-            next: "asking_about_lodging"
-        },
-
-        // Scene 27: Asking About Lodging
-        asking_about_lodging: {
-            speaker: "Elijah Cross",
-            text: "'Despite the troubles, we still need a place to stay tonight. Is there anywhere in town that takes travelers?' Elijah's tone is respectful but determined.",
-            next: "lodging_options"
-        },
-
-        // Scene 28: Lodging Options
-        lodging_options: {
-            speaker: "Elderly Townsman",
-            text: "'Mrs. Henderson runs a boarding house two blocks down. Clean beds, fair prices. But...' He hesitates. 'She's particular about her guests. And with everything that's been happening, she might not be taking strangers.'",
-            next: "alternative_accommodations"
-        },
-
-        // Scene 29: Alternative Accommodations
-        alternative_accommodations: {
-            speaker: "Elderly Townsman",
-            text: "'The saloon's got rooms upstairs, but they're... well, they're saloon rooms. Not fit for decent folks. 'Course, depending on what kind of travelers you are, might suit you just fine.' His eyes study them carefully.",
-            next: "choosing_approach"
-        },
-
-        // Scene 30: Choosing Their Approach
-        choosing_approach: {
-            speaker: "Thomas Whitmore",
-            text: "'We'll try the boarding house first. If Mrs. Henderson won't have us, we'll make do elsewhere. Thank you for the information, Mr...?' Thomas extends his hand politely.",
-            next: "old_man_introduction"
-        },
-
-        // Scene 31: Old Man's Introduction
-        old_man_introduction: {
-            speaker: "Elderly Townsman",
-            text: "'Jeremiah Colt. I run what's left of the general store.' He shakes Thomas's hand cautiously. 'Word of advice? Watch yourselves. This town's got more secrets than honest folk, and they don't all appreciate newcomers asking questions.'",
-            next: "getting_directions"
-        },
-
-        // Scene 32: Getting Directions
-        getting_directions: {
-            speaker: "Jeremiah Colt",
-            text: "'Mrs. Henderson's place is the white house with green shutters on Maple Street. Can't miss it—it's the only building on that block that still looks cared for. Tell her Jeremiah sent you. Might help.'",
-            next: "walking_to_boarding_house"
-        },
-
-        // Scene 33: Walking to Boarding House
-        walking_to_boarding_house: {
+        
+        // Scene 43: Maria Maintains Polite Facade
+        maria_polite_facade_garrett: {
             speaker: "Narrator",
-            text: "They walk deeper into Perdition, their footsteps echoing off empty buildings. The town feels like a graveyard of dreams—storefronts with faded signs, houses with broken windows, and everywhere the sense of something once hopeful now gone wrong.",
-            next: "observing_decay"
+            text: "Maria kept her answers brief and her smile pleasant, volunteering no information Garrett didn't directly ask for. She sensed he was testing her.",
+            next: "garrett_noncommittal_response"
         },
 
-        // Scene 34: Observing the Decay
-        observing_decay: {
+        // Scene 44: Garrett's Noncommittal Response
+        garrett_noncommittal_response: {
+            speaker: "Sheriff Tom Garrett",
+            text: "'Mr. Pike is a businessman. He looks out for his interests, like anyone else.' Garrett's eyes didn't leave hers. 'And I look out for the town's. That includes knowing who's in it, and why.'",
+            next: "garrett_comments_on_luggage"
+        },
+
+        // Scene 45: Garrett Comments on Her Luggage
+        garrett_comments_on_luggage: {
+            speaker: "Sheriff Tom Garrett",
+            text: "'That was a mighty heavy trunk you brought in for a schoolteacher, Miss Vasquez. Full of books, I presume?' His tone was light, but the question was pointed.",
+            next: "maria_explains_luggage"
+        },
+        
+        // Scene 46: Maria's Explanation
+        maria_explains_luggage: {
             speaker: "Maria Vasquez",
-            text: "'This place died slow.' Maria's voice is matter-of-fact. 'See how some buildings are maintained while others are abandoned? People left in waves, not all at once. Something drove them out gradually.'",
-            next: "finding_boarding_house"
+            text: "'Indeed, Sheriff. A teacher can never have too many books. Some are quite old and heavy – family heirlooms, you might say.' She met his gaze evenly, not a flicker of deception in her eyes.",
+            next: "garrett_departs_suspiciously"
         },
 
-        // Scene 35: Finding the Boarding House
-        finding_boarding_house: {
-            speaker: "Narrator",
-            text: "Henderson's Boarding House stands like an oasis of care in a desert of neglect. The white paint is fresh, the green shutters straight, and flowers bloom in carefully tended boxes. It's a defiant statement of normalcy in an abnormal place.",
-            next: "approaching_front_door"
+        // Scene 47: Garrett Departs, Still Suspicious
+        garrett_departs_suspiciously: {
+            speaker: "Sheriff Tom Garrett",
+            text: "'Well, welcome to Perdition, Miss Vasquez. I hope you find it... educational.' He tipped his hat and left, but Maria knew this was not the last she'd see of Sheriff Garrett.",
+            next: "maria_reflects_on_garrett"
         },
 
-        // Scene 36: Approaching the Front Door
-        approaching_front_door: {
-            speaker: "Jacob Rivers",
-            text: "'Should we all go up together, or should one of us speak for the group?' Jacob's consideration shows his growing maturity. 'Might be less intimidating if just one person asks about rooms.'",
-            next: "group_decision"
-        },
-
-        // Scene 37: Group Decision
-        group_decision: {
-            speaker: "Elijah Cross",
-            text: "'We stay together. We're not trying to deceive anyone about who we are or how many we are. Honesty from the start.' He steps up to the door and knocks with quiet authority.",
-            next: "mrs_henderson_appears"
-        },
-
-        // Scene 38: Mrs. Henderson Appears
-        mrs_henderson_appears: {
-            speaker: "Mrs. Henderson",
-            text: "The door opens to reveal a stern-faced woman in her fifties, with graying hair pulled back severely and sharp eyes that miss nothing. 'Yes?' Her tone is polite but cautious. 'I don't recognize you folks.'",
-            next: "elijah_introduction"
-        },
-
-        // Scene 39: Elijah's Introduction
-        elijah_introduction: {
-            speaker: "Elijah Cross",
-            text: "'Mrs. Henderson? I'm Elijah Cross, and these are my traveling companions. We're looking for lodging for a few nights while we get our bearings in town. Jeremiah Colt at the general store recommended your establishment.'",
-            next: "mrs_henderson_assessment"
-        },
-
-        // Scene 40: Mrs. Henderson's Assessment
-        mrs_henderson_assessment: {
-            speaker: "Mrs. Henderson",
-            text: "Her eyes study each of them in turn—Elijah's clerical collar, Maria's practical clothes and visible gun, Thomas's worn but quality clothing, Jacob's earnest young face. 'Jeremiah sent you?' She seems to be weighing something in her mind.",
-            next: "questioning_their_purpose"
-        },
-
-        // Scene 41: Questioning Their Purpose
-        questioning_their_purpose: {
-            speaker: "Mrs. Henderson",
-            text: "'What brings four armed strangers to Perdition? This isn't exactly a destination town these days. Most folks are trying to leave, not arrive.' Her tone isn't hostile, just curious and careful.",
-            choices: [
-                {
-                    text: "Explain they're seeking a fresh start",
-                    next: "fresh_start_explanation"
-                },
-                {
-                    text: "Mention they heard the town needed help",
-                    next: "helping_town_explanation"
-                },
-                {
-                    text: "Be vague about their reasons",
-                    next: "vague_explanation"
-                }
-            ]
-        },
-
-        // Scene 42: Fresh Start Explanation
-        fresh_start_explanation: {
-            speaker: "Elijah Cross",
-            text: "'We're all seeking fresh starts, Mrs. Henderson. The West has always been a place where people can leave their past behind and build something better. We heard Perdition might have opportunities for folks willing to work.'",
-            next: "mrs_henderson_response"
-        },
-
-        // Scene 43: Helping Town Explanation
-        helping_town_explanation: {
-            speaker: "Thomas Whitmore",
-            text: "'Frankly, ma'am, we heard the town was struggling and thought our various skills might be useful. I'm a physician, and it seems a town in difficulty could use medical services.'",
-            next: "mrs_henderson_response"
-        },
-
-        // Scene 44: Vague Explanation
-        vague_explanation: {
+        // Scene 48: Maria Reflects on Garrett
+        maria_reflects_on_garrett: {
             speaker: "Maria Vasquez",
-            text: "'People travel for many reasons, señora. Ours are our own. We pay our way, mind our business, and don't cause trouble. That should be enough for anyone.'",
-            next: "mrs_henderson_response"
+            text: "(Internal) 'He's suspicious. More observant than I expected. He could be a problem. Or... perhaps, another tool, if handled correctly. He works for Pike, or is he his own man?'",
+            next: "end_of_day_maria"
         },
 
-        // Scene 45: Mrs. Henderson's Response
-        mrs_henderson_response: {
-            speaker: "Mrs. Henderson",
-            text: "'A physician?' Her stern expression softens slightly. 'Lord knows we need one. Dr. Morrison left town three weeks ago—packed up and ran like the devil was chasing him. Said this place was cursed.' She steps back from the door.",
-            next: "invitation_inside"
-        },
-
-        // Scene 46: Invitation Inside
-        invitation_inside: {
-            speaker: "Mrs. Henderson",
-            text: "'Come in, then. I've got four rooms available—haven't had guests in two weeks. Dollar a night, meals extra. House rules are simple: no drinking in the rooms, no loud noise after ten, and no bringing trouble to my door.'",
-            next: "entering_boarding_house"
-        },
-
-        // Scene 47: Entering the Boarding House
-        entering_boarding_house: {
+        // Scene 49: End of Day - Plans Solidifying
+        end_of_day_maria: {
             speaker: "Narrator",
-            text: "The interior of the boarding house is as meticulously maintained as the exterior. Clean wooden floors, fresh curtains, and the smell of soap and cooking food. It's a haven of civilization in an increasingly uncivilized place.",
-            next: "settling_arrangements"
+            text: "As night fell, Maria reviewed her mental ledger. Dalton was Pike's enforcer. Children were her eyes and ears. Billy was silenced. Sheriff Garrett was a potential complication. Her plans for Jim Dalton were taking shape, cloaked in chalk dust and innocent smiles.",
+            next: "chapter_end_scene_maria"
         },
 
-        // Scene 48: Settling Arrangements
-        settling_arrangements: {
-            speaker: "Mrs. Henderson",
-            text: "'Rooms are upstairs—two and three on the left, four and five on the right. Supper's at six sharp. And if you're truly a doctor, Dr. Whitmore, there's folks in this town who could use your help. Starting with old Pete's widow—she's been poorly since he died.'",
-            next: "accepting_responsibility"
-        },
-
-        // Scene 49: Accepting Responsibility
-        accepting_responsibility: {
-            speaker: "Thomas Whitmore",
-            text: "'I'd be honored to help, Mrs. Henderson. It's been... too long since I practiced proper medicine. Perhaps it's time to remember what it means to heal rather than harm.' His hands are steady as he accepts the room key.",
-            next: "chapter_conclusion"
-        },
-
-        // Scene 50: Chapter Conclusion
-        chapter_conclusion: {
+        // Scene 50: Chapter End
+        chapter_end_scene_maria: {
             speaker: "Narrator",
-            text: "As the four companions settle into their rooms at Henderson's Boarding House, they've taken their first steps into Perdition's troubled heart. Outside, the town holds its secrets close, but inside these walls, they've found temporary sanctuary. Tomorrow will bring new challenges, but tonight they rest as guests in a place desperate for the help they might provide.",
+            text: "Maria Vasquez, the schoolteacher, was a phantom. Maria Vasquez, the avenger, was methodically laying the groundwork for a storm of her own making in the heart of Perdition. Her revenge would be patient, precise, and devastating.",
             choices: [
                 {
                     text: "Continue to Chapter 4",

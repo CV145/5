@@ -1,371 +1,384 @@
-// Chapter 7: The Price of Victory (Linear Version)
+// Chapter 7: The Doctor's Dilemma
 storyData.chapter7 = {
     name: "Chapter 7",
-    title: "The Price of Victory",
+    title: "The Doctor's Dilemma",
     scenes: {
-        // Scene 1: Three Weeks Later
+        // Scene 1: The Mining Accident
         start: {
             speaker: "Narrator",
-            text: "Three weeks have passed since Cross's arrest. The federal marshal took him away in chains, but left behind only empty promises and mounting problems. Without Cross's money—dirty as it was—Perdition's economy has collapsed. The mines stay closed. The shops are shuttering. And the four heroes who saved the town are learning that victory can taste like ash.",
-            next: "morning_reality"
+            text: "A piercing scream echoed from the depths of Pike's North Ridge mine, followed by frantic shouts. A premature dynamite blast, or a rotten support beam giving way – accidents were common, and often fatal.",
+            onEnter: function() {
+                updateStoryVariable('currentChapter', 'Chapter 7');
+            },
+            next: "news_reaches_town"
         },
 
-        // Scene 2: Harsh Morning Reality
-        morning_reality: {
+        // Scene 2: News Reaches Town
+        news_reaches_town: {
             speaker: "Narrator",
-            text: "The boarding house dining room feels colder these days. Mrs. Henderson serves watered-down coffee and day-old bread—it's all she can afford now. Thomas stares at his trembling hands. Maria counts her remaining bullets. Jacob reads a letter from home. Elijah pretends to pray.",
-            next: "henderson_eviction_notice"
+            text: "Word quickly spread through Perdition: Jim Dalton, Pike's ruthless enforcer, was gravely injured, trapped beneath a rockfall. Hope and fear warred on the faces of the townsfolk.",
+            next: "pike_summons_doc_urgently"
         },
 
-        // Scene 3: The Eviction Notice
-        henderson_eviction_notice: {
-            speaker: "Mrs. Henderson",
-            text: "'I'm sorry, but I can't keep feeding you all for free.' Her voice cracks as she sets down a final notice from the bank. 'Cross owned the mortgage on this place. The bank's calling it in. I have two weeks before they take everything.'",
-            next: "first_crack"
-        },
-
-        // Scene 4: The First Crack
-        first_crack: {
-            speaker: "Maria Vasquez",
-            text: "'So we saved the town just so the banks could destroy it instead?' Maria's laugh is bitter. 'We should have taken Cross's money when we had the chance. At least then we'd have something to show for all this.'",
-            next: "elijah_objects"
-        },
-
-        // Scene 5: Elijah's Hollow Objection
-        elijah_objects: {
-            speaker: "Elijah Cross",
-            text: "'We did the right thing—' But even Elijah can't finish the sentence. The right thing has left children hungry and good people homeless. His collar feels like a lie around his neck.",
-            next: "thomas_bitter_truth"
-        },
-
-        // Scene 6: Thomas's Bitter Truth
-        thomas_bitter_truth: {
-            speaker: "Thomas Whitmore",
-            text: "'Another child died yesterday. Not from poison this time—from hunger. The Garrett family can't afford food or medicine.' He reaches for a flask that isn't there, his hands shaking worse. 'I couldn't help them. What good is a doctor who can't even buy bandages?'",
-            next: "jacob_family_pressure"
-        },
-
-        // Scene 7: Jacob's Family Pressure
-        jacob_family_pressure: {
-            speaker: "Jacob Rivers",
-            text: "'My uncle wants me to come back.' Jacob holds up the letter. 'Says there's work with the family business. Steady pay, respect, protection. All I have to do is forget about being a hero and become what he always wanted—a Rivers man through and through.'",
-            next: "uncomfortable_truths"
-        },
-
-        // Scene 8: Uncomfortable Truths Surface
-        uncomfortable_truths: {
+        // Scene 3: Pike Summons Doc
+        pike_summons_doc_urgently: {
             speaker: "Narrator",
-            text: "The silence that follows is heavy with unspoken accusations. They saved Perdition from Cross, but they can't save it from poverty. They're heroes with empty pockets and emptier promises. And the town is starting to notice.",
-            next: "frank_hutchins_arrives"
+            text: "Two of Pike's grim-faced men found Doc Whitmore in his newly acquired clinic, the scent of laudanum heavy in the air. 'Pike wants you at the mine. Now. Dalton's hurt bad.' Their tone left no room for refusal.",
+            next: "doc_feigns_reluctance"
         },
 
-        // Scene 9: Frank Hutchins's Proposition
-        frank_hutchins_arrives: {
-            speaker: "Frank Hutchins",
-            text: "The former saloon keeper enters without knocking. 'Got a business proposition for you folks. Some of Cross's old associates want to reopen the mines. They need... security. People who know how to handle themselves. Pays well.'",
-            next: "moral_compromise"
+        // Scene 4: Doc's Feigned Reluctance
+        doc_feigns_reluctance: {
+            speaker: "Doc Whitmore",
+            text: "'Dalton, you say?' Doc affected a thoughtful frown, hiding the sudden quickening of his pulse. An opportunity. 'A dangerous environment, the mine. My fee for such hazardous consultations is... substantial.'",
+            next: "pike_men_insist"
         },
 
-        // Scene 10: The Moral Compromise
-        moral_compromise: {
-            speaker: "Frank Hutchins",
-            text: "'Before you get all righteous, think about this—those mines employed half the town. Without them, Perdition dies. These men aren't saints, but they're not Cross either. They just want to make money. Lot of people could eat if those mines reopen.'",
-            next: "group_divides"
+        // Scene 5: Pike's Men Insist
+        pike_men_insist: {
+            speaker: "Pike's Henchman",
+            text: "'Pike says get him. He'll pay whatever. Just get Dalton breathing.' The henchman's hand rested significantly on the butt of his pistol.",
+            next: "doc_gathers_supplies_ch7"
         },
 
-        // Scene 11: The Group Divides
-        group_divides: {
-            speaker: "Maria Vasquez",
-            text: "'I'll do it.' Maria's voice is flat, practical. 'I've guarded worse men for worse reasons. At least this time, I'd be helping the town survive.'",
-            next: "elijah_protests"
-        },
-
-        // Scene 12: Elijah's Protest
-        elijah_protests: {
-            speaker: "Elijah Cross",
-            text: "'We can't work for criminals! We just spent weeks fighting against—' 'Against what?' Maria cuts him off. 'Against the only people bringing money to this town? Look around, preacher. Your principles are killing these people.'",
-            next: "thomas_sides_with_maria"
-        },
-
-        // Scene 13: Thomas Takes a Side
-        thomas_sides_with_maria: {
-            speaker: "Thomas Whitmore",
-            text: "'Maria's right. I became a doctor to save lives, not watch people starve for the sake of moral purity. If working security means I can afford medicine for the sick, then I'll do it.'",
-            next: "jacob_torn"
-        },
-
-        // Scene 14: Jacob Is Torn
-        jacob_torn: {
-            speaker: "Jacob Rivers",
-            text: "'This isn't what we fought for. We were supposed to be better than this. But...' He looks at the letter from home. 'Maybe there is no 'better.' Maybe there's just survival.'",
-            next: "argument_escalates"
-        },
-
-        // Scene 15: The Argument Escalates
-        argument_escalates: {
+        // Scene 6: Doc Gathers Supplies
+        doc_gathers_supplies_ch7: {
             speaker: "Narrator",
-            text: "What starts as a debate becomes a vicious argument. Old resentments surface. Maria calls Elijah a self-righteous fool. Elijah accuses her of being a mercenary without conscience. Thomas drinks openly now, mocking them both. Jacob watches his heroes tear each other apart.",
-            next: "maria_reveals_past"
+            text: "Doc packed his medical bag, his mind already racing. Dalton, the man Maria Vasquez wanted dead. This could be... very interesting. He made sure to include a few extra vials, not all of them for healing.",
+            next: "maria_learns_of_dalton_accident"
         },
 
-        // Scene 16: Maria's Dark Past
-        maria_reveals_past: {
+        // Scene 7: Maria Learns of the Accident
+        maria_learns_of_dalton_accident: {
+            speaker: "Narrator",
+            text: "Maria, teaching her class, heard the commotion. One of her student informants, young Samuel, whispered the news during recess: 'It's Mr. Dalton, Miss Vasquez! They say he might die!'",
+            next: "maria_internal_conflict_ch7"
+        },
+
+        // Scene 8: Maria's Internal Conflict
+        maria_internal_conflict_ch7: {
             speaker: "Maria Vasquez",
-            text: "'You want to judge me, preacher? Let me tell you who I really am. I didn't just work for the cartel—I was their best killer. Men, women, didn't matter. I did it for money, and I was good at it. The only reason I stopped was because they killed my sister by mistake.'",
-            next: "thomas_confession"
+            text: "(Internal) 'Dalton... dying? Fate offers a gift. Or is it a test?' She felt a savage joy, quickly masked. She needed to see this, to ensure her sister's murderer met his end.",
+            next: "maria_excuses_herself_to_mine"
         },
 
-        // Scene 17: Thomas's Confession
-        thomas_confession: {
-            speaker: "Thomas Whitmore",
-            text: "'We're sharing truths? Fine. I didn't come west for a fresh start. I came because I killed a patient. Operated drunk, cut an artery I shouldn't have touched. A little girl bled out on my table while I was too impaired to save her. Her parents still think it was God's will.'",
-            next: "elijah_hypocrisy"
+        // Scene 9: Maria Heads to the Mine
+        maria_excuses_herself_to_mine: {
+            speaker: "Narrator",
+            text: "Dismissing her class early with a plausible excuse about needing to see the sheriff, Maria made her way towards the North Ridge mine. Her teacher facade was firmly in place, but beneath it, the avenger stirred.",
+            next: "at_the_mine_entrance_ch7"
         },
 
-        // Scene 18: Elijah's Hypocrisy Exposed
-        elijah_hypocrisy: {
-            speaker: "Elijah Cross",
-            text: "'Stop. Just... stop.' But Maria won't let him. 'No, your turn, preacher. Tell us about the money that went missing from your church. Tell us why you really left your parish.' Elijah's face drains of color.",
-            next: "elijah_truth"
+        // Scene 10: At the Mine Entrance - Chaos
+        at_the_mine_entrance_ch7: {
+            speaker: "Narrator",
+            text: "The mine entrance was chaotic. Miners gathered, speaking in hushed, fearful tones. Pike himself stood grimly by, directing efforts to clear the collapsed tunnel where Dalton lay.",
+            next: "doc_arrives_at_mine_ch7"
         },
 
-        // Scene 19: Elijah's Truth
-        elijah_truth: {
-            speaker: "Elijah Cross",
-            text: "'I... I took it. Thousands of dollars meant for the poor. Gambled it away trying to feel something, anything. Told myself I'd win it back, make it right. But I lost everything. The church covered it up to avoid scandal, sent me west to disappear.'",
-            next: "jacob_disillusionment"
+        // Scene 11: Doc Arrives
+        doc_arrives_at_mine_ch7: {
+            speaker: "Pike",
+            text: "'Whitmore! Took you long enough! He's still alive, but fading. Get in there!' Pike gestured impatiently towards the dark tunnel.",
+            next: "maria_positions_herself"
         },
 
-        // Scene 20: Jacob's Disillusionment
-        jacob_disillusionment: {
-            speaker: "Jacob Rivers",
-            text: "'You're all frauds.' Jacob's voice is quiet, devastated. 'I looked up to you. Thought you were different. But you're just... broken people pretending to be heroes. Maybe my uncle was right. Maybe there's no such thing as good people, just people who hide their sins better.'",
+        // Scene 12: Maria Positions Herself
+        maria_positions_herself: {
+            speaker: "Narrator",
+            text: "Maria found a vantage point, appearing as a concerned schoolteacher offering support, but her eyes were fixed on the tunnel entrance, missing nothing.",
             choices: [
                 {
-                    text: "Try to salvage the group's unity",
-                    next: "salvage_attempt"
+                    text: "Recall her sister's face, fueling her resolve.",
+                    next: "maria_recalls_sister_ch7"
                 },
                 {
-                    text: "Let the group fracture completely",
-                    next: "complete_fracture"
+                    text: "Assess Pike's reaction for weaknesses.",
+                    next: "maria_assesses_pike_ch7"
                 }
             ]
         },
 
-        // Scene 21a: Attempting to Salvage Unity
-        salvage_attempt: {
-            speaker: "Elijah Cross",
-            text: "'Wait. We're all broken, yes. But we still saved this town. We still stood together when it mattered. That has to count for something.'",
-            next: "maria_rejects_unity"
-        },
-
-        // Scene 21b: Complete Fracture
-        complete_fracture: {
-            speaker: "Narrator",
-            text: "The silence that follows Jacob's words is final. Four people who once trusted each other with their lives now can't stand to be in the same room. The fellowship is dead, killed by truth.",
-            next: "decisions_made"
-        },
-
-        // Scene 22: Maria Rejects Unity
-        maria_rejects_unity: {
+        // Scene 13: Maria Recalls Sister (Optional)
+        maria_recalls_sister_ch7: {
             speaker: "Maria Vasquez",
-            text: "'Count for something? Tell that to the families going hungry. Tell that to Mrs. Henderson losing her home. We played hero and ruined lives. At least when I was a killer, I was honest about it.'",
-            next: "decisions_made"
+            text: "(Internal) 'Sofia... this is for you. He will suffer as you suffered.' The memory of her sister's laughter, then her screams, burned in Maria's mind.",
+            next: "doc_enters_collapsed_tunnel"
         },
 
-        // Scene 23: Decisions Made
-        decisions_made: {
-            speaker: "Narrator",
-            text: "By evening, the group has shattered. Maria agrees to work security for the new mine owners. Thomas will serve as their company doctor—for the pay. Jacob writes back to his uncle, accepting his offer. Only Elijah refuses, clinging to principles that feel more hollow by the hour.",
-            next: "town_reaction"
-        },
-
-        // Scene 24: The Town's Reaction
-        town_reaction: {
-            speaker: "Walter Hayes",
-            text: "Walter Hayes confronts them outside the boarding house. 'Heard you're working for the new mine bosses. The same kind of men as Cross, just with different names. We trusted you. Thought you were different.'",
-            next: "maria_harsh_response"
-        },
-
-        // Scene 25: Maria's Harsh Response
-        maria_harsh_response: {
+        // Scene 14: Maria Assesses Pike (Optional)
+        maria_assesses_pike_ch7: {
             speaker: "Maria Vasquez",
-            text: "'You trusted us to save you, and we did. Now you want us to starve for your principles? Pay us a living wage, and we'll be your heroes. Otherwise, we take the work we can get.'",
-            next: "town_divided"
+            text: "(Internal) 'Pike values Dalton. His concern is for an asset, not a man. This enforcer is important to his operations. Dalton's death could destabilize things... or create new opportunities.'",
+            next: "doc_enters_collapsed_tunnel"
         },
 
-        // Scene 26: The Town Divides
-        town_divided: {
+        // Scene 15: Doc Enters the Tunnel
+        doc_enters_collapsed_tunnel: {
             speaker: "Narrator",
-            text: "Perdition splits into factions. Some support the pragmatic choice—better to compromise than starve. Others feel betrayed, watching their heroes become mercenaries. The unity forged in fighting Cross crumbles in the face of economic reality.",
-            next: "first_day_new_job"
+            text: "Doc, guided by a nervous miner, squeezed through the hastily cleared passage. The air was thick with dust, the groans of stressed timbers a constant threat. He found Dalton pinned beneath a heavy beam, his leg grotesquely twisted.",
+            next: "dalton_conscious_in_pain"
         },
 
-        // Scene 27: First Day at the New Job
-        first_day_new_job: {
+        // Scene 16: Dalton is Conscious
+        dalton_conscious_in_pain: {
+            speaker: "Jim Dalton",
+            text: "(Gasping) 'Doc? Get... get this damn thing off me! My leg... I can't feel my leg!' Sweat and grime caked his face, his eyes wide with pain and fear.",
+            next: "doc_examines_dalton"
+        },
+
+        // Scene 17: Doc's Examination
+        doc_examines_dalton: {
+            speaker: "Doc Whitmore",
+            text: "'Easy now, Dalton. Let's see what we're dealing with.' Doc's examination was swift, professional. Crushed femur, likely arterial damage. A life-threatening injury, but survivable... if treated properly.",
+            next: "doc_sees_the_opportunity"
+        },
+
+        // Scene 18: Doc Sees the Opportunity
+        doc_sees_the_opportunity: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'Maria wants him dead. Pike wants him alive. And I... I want to profit from both.' A cruel, brilliant idea began to form in his laudanum-sharpened mind.",
+            next: "doc_calls_for_help_to_move_beam"
+        },
+
+        // Scene 19: Calling for Help
+        doc_calls_for_help_to_move_beam: {
+            speaker: "Doc Whitmore",
+            text: "'We need to lift this beam! Carefully!' He directed the other miners. 'Any sudden movement could kill him.'",
+            next: "dalton_freed_brought_out"
+        },
+
+        // Scene 20: Dalton Freed and Brought Out
+        dalton_freed_brought_out: {
             speaker: "Narrator",
-            text: "Maria and Thomas report to the mine offices. Their new employers are smooth-talking businessmen from back east—not obviously criminal, but clearly ruthless. They speak of profit margins and acceptable losses, and it's clear that 'acceptable losses' includes workers' lives.",
-            next: "moral_erosion_begins"
+            text: "After a tense struggle, Dalton was freed and carried out into the weak daylight. Pike rushed forward. Maria watched, her expression unreadable.",
+            next: "pike_orders_doc_to_save_dalton"
         },
 
-        // Scene 28: Moral Erosion Begins
-        moral_erosion_begins: {
-            speaker: "Mine Owner",
-            text: "'Sometimes workers get... uppity. Start talking about unions, safety regulations, that sort of thing. We trust you'll help them see reason. After all, a closed mine helps no one, right? And if someone needs to be made an example of, well... that's why we hired professionals.'",
-            next: "thomas_medical_compromise"
+        // Scene 21: Pike's Order
+        pike_orders_doc_to_save_dalton: {
+            speaker: "Pike",
+            text: "'Save him, Whitmore! I don't care what it costs!' Pike's desperation was evident.",
+            next: "doc_prepares_for_surgery"
         },
 
-        // Scene 29: Thomas's Medical Compromise
-        thomas_medical_compromise: {
-            speaker: "Thomas Whitmore",
-            text: "Thomas is shown the company medical supplies—more than he's seen in months. But there's a catch: 'Workers who cause trouble don't get treatment. Company policy. Can't waste resources on malcontents.' His hands shake as he nods agreement.",
-            next: "jacob_family_business"
+        // Scene 22: Doc Prepares for "Surgery"
+        doc_prepares_for_surgery: {
+            speaker: "Doc Whitmore",
+            text: "'I'll need a clean space, boiling water, my full kit. And privacy. No distractions.' He looked pointedly at Pike, then his gaze flickered towards Maria.",
+            next: "makeshift_operating_room"
         },
 
-        // Scene 30: Jacob Joins the Family Business
-        jacob_family_business: {
-            speaker: "Samuel Rivers",
-            text: "'Good to have you back, nephew.' Samuel Rivers hands Jacob a gun. 'Your friends made quite a mess here. Cost us considerable business. But family is family. You'll help us rebuild our operations. Start by collecting some debts. Show them you're a Rivers now.'",
-            next: "elijah_isolation"
-        },
-
-        // Scene 31: Elijah's Isolation
-        elijah_isolation: {
+        // Scene 23: Makeshift Operating Room
+        makeshift_operating_room: {
             speaker: "Narrator",
-            text: "Elijah sits alone in the burned church ruins. No one comes to his sermons anymore. The hero preacher has become a reminder of failed promises. He clutches his Bible, but the words offer no comfort. He's kept his principles, but at what cost?",
-            next: "first_violence"
+            text: "A nearby foreman's shack was quickly converted. Dalton was laid on a crude table. Doc began to lay out his instruments. Maria managed to position herself where she could observe, ostensibly offering to assist as a 'concerned teacher'.",
+            next: "maria_watches_intently"
         },
 
-        // Scene 32: The First Violence
-        first_violence: {
+        // Scene 24: Maria Watches
+        maria_watches_intently: {
             speaker: "Narrator",
-            text: "A mine worker named Peterson—Martha's cousin—organizes a meeting about unsafe conditions. Maria is ordered to break it up. She does so efficiently, professionally. When Peterson resists, she breaks his arm. Just enough violence to send a message. She feels nothing.",
-            next: "thomas_denies_treatment"
+            text: "Maria watched Doc's hands, her own fists clenched. Would he save her sister's killer? Could she intervene if he did, without exposing herself?",
+            next: "doc_begins_the_procedure"
         },
 
-        // Scene 33: Thomas Denies Treatment
-        thomas_denies_treatment: {
-            speaker: "Thomas Whitmore",
-            text: "'Sorry, Peterson. Company policy. Troublemakers don't get treatment.' Thomas's words are slurred—he's drinking heavily again. He watches the man leave in pain, tells himself it's not his fault. The company has rules. He just follows them.",
-            next: "jacob_debt_collection"
+        // Scene 25: The "Surgery" Begins
+        doc_begins_the_procedure: {
+            speaker: "Doc Whitmore",
+            text: "'Laudanum for the pain, though he'll need to be held down.' Doc administered a heavy dose. As Dalton's eyes glazed over, Doc met Maria's gaze across the room. A silent question, a subtle invitation.",
+            next: "doc_the_botched_job_plan"
         },
 
-        // Scene 34: Jacob's Violent Education
-        jacob_debt_collection: {
-            speaker: "Narrator",
-            text: "Jacob stands outside a farmhouse with two Rivers men. The family owes gambling debts they can't pay. 'Sometimes you got to hurt people to help them understand,' his companion says. 'Your uncle wants to see if you've got the stomach for real work.' Jacob's hand tightens on his gun.",
-            next: "moral_event_horizon"
+        // Scene 26: Doc's Internal Plan
+        doc_the_botched_job_plan: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'Stop the external bleeding, yes. Set the bone... poorly. Introduce a subtle infection. Nick a minor vessel that will seep slowly. Make it look like a valiant effort against overwhelming trauma. He'll die, but not too quickly. Painfully. Maria will appreciate that.'",
+            next: "maria_understands_silent_offer"
         },
-
-        // Scene 35: Crossing Lines
-        moral_event_horizon: {
-            speaker: "Narrator",
-            text: "The farmer begs, shows them his children watching from the window. Jacob remembers wanting to be a hero. But heroes don't eat. Heroes don't survive. He nods to his companions. The beating is brutal but measured. Business, not personal. The children cry.",
-            next: "elijah_witnesses"
-        },
-
-        // Scene 36: Elijah Witnesses
-        elijah_witnesses: {
-            speaker: "Elijah Cross",
-            text: "Elijah finds the beaten farmer, tries to help. 'It was the Rivers boy,' the man gasps. 'The one who helped save the town. He just watched while they...' Elijah's faith, already fragile, cracks a little more.",
-            next: "confrontation_brewing"
-        },
-
-        // Scene 37: The Confrontation Builds
-        confrontation_brewing: {
-            speaker: "Narrator",
-            text: "Word spreads quickly. The heroes who saved Perdition have become its new oppressors. Maria breaks strikes. Thomas denies medicine. Jacob collects debts with violence. Only Elijah remains 'pure'—and useless. The town's resentment builds toward a boiling point.",
-            next: "workers_organize"
-        },
-
-        // Scene 38: Workers Organize
-        workers_organize: {
-            speaker: "Sarah Mitchell",
-            text: "Sarah Mitchell, who once stood with them against Cross, now leads the opposition. 'They're no different than Cross. Worse, even—at least Cross was honest about what he was. These four pretended to be our saviors.'",
-            next: "maria_warning"
-        },
-
-        // Scene 39: Maria's Warning
-        maria_warning: {
+        
+        // Scene 27: Maria Understands
+        maria_understands_silent_offer: {
             speaker: "Maria Vasquez",
-            text: "Maria finds Sarah one night. 'Stop the organizing. This is your only warning. I don't want to hurt you, but I will. This is just business.' Sarah spits at her feet. 'We trusted you. I defended you to Cross.' Maria's face remains stone. 'That was your mistake.'",
-            next: "thomas_breaking_point"
+            text: "(Internal) 'He's offering me Dalton's suffering... for a price, no doubt. The man's a vulture. But... a slow, painful death for Dalton? Sofia would approve.'",
+            choices: [
+                {
+                    text: "Give a subtle nod of agreement to Doc.",
+                    next: "maria_agrees_to_deal"
+                },
+                {
+                    text: "Remain impassive, letting Doc proceed as he will.",
+                    next: "maria_remains_impassive"
+                }
+            ]
         },
 
-        // Scene 40: Thomas Reaches His Limit
-        thomas_breaking_point: {
+        // Scene 28: Maria Agrees (Optional but implied by plot)
+        maria_agrees_to_deal: {
             speaker: "Narrator",
-            text: "A child dies in the mine—preventable if safety measures had been in place. Thomas is ordered to write it up as an accident. He's drunk when he signs the paper, but sober enough to know what he's doing. Another small death on his conscience.",
-            next: "jacob_questions"
+            text: "Maria gave the slightest, almost imperceptible nod. The pact was sealed in silence, over the broken body of her enemy.",
+            next: "doc_proceeds_with_plan"
         },
 
-        // Scene 41: Jacob's Doubts
-        jacob_questions: {
-            speaker: "Jacob Rivers",
-            text: "'This isn't what I wanted,' Jacob tells his uncle. Samuel laughs. 'Nobody wants this, boy. But this is what the world is. You can be the one holding the gun or the one it's pointed at. Your heroic friends figured that out quick enough.'",
-            next: "elijah_final_sermon"
-        },
-
-        // Scene 42: Elijah's Last Sermon
-        elijah_final_sermon: {
-            speaker: "Elijah Cross",
-            text: "Elijah preaches to an empty church about redemption and justice. His words echo off broken walls. Outside, he can hear Maria's men breaking up another workers' meeting. He keeps preaching, desperate to believe his own words.",
-            next: "henderson_evicted"
-        },
-
-        // Scene 43: Mrs. Henderson Loses Everything
-        henderson_evicted: {
+        // Scene 29: Maria Remains Impassive (Alternative leading to same outcome if plot demands agreement)
+        maria_remains_impassive: {
             speaker: "Narrator",
-            text: "The bank takes the boarding house. Mrs. Henderson, who showed them kindness, is thrown into the street. Maria is there, working security for the bank. She doesn't meet the old woman's eyes. Just following orders. Just doing her job.",
-            next: "complete_transformation"
+            text: "Maria kept her face a mask, but Doc, a connoisseur of desperation and dark desires, read her intent. He knew what she wanted.",
+            next: "doc_proceeds_with_plan"
         },
 
-        // Scene 44: Complete Transformation
-        complete_transformation: {
+        // Scene 30: Doc Proceeds with His Plan
+        doc_proceeds_with_plan: {
             speaker: "Narrator",
-            text: "Six weeks after Cross's defeat, the transformation is complete. The four heroes who saved Perdition have become everything they fought against. Maria, the enforcer. Thomas, the complicit doctor. Jacob, the violent debt collector. And Elijah, the useless saint.",
-            next: "frank_observation"
+            text: "Doc worked with an outward show of intense concentration. He cleaned, he sutured, he set. But his skilled hands also made tiny, almost invisible errors – a ligature not quite tight enough, a bone fragment left to irritate, an antiseptic solution deliberately weakened.",
+            next: "surgery_conclusion_apparent_success"
         },
 
-        // Scene 45: Frank's Observation
-        frank_observation: {
-            speaker: "Frank Hutchins",
-            text: "'Funny how that works,' Frank observes to whoever will listen. 'They got rid of Cross, but they became him. Maybe worse. At least Cross built things before he destroyed them. These four just learned that being good doesn't pay the bills.'",
-            next: "final_meeting"
+        // Scene 31: "Successful" Surgery Concludes
+        surgery_conclusion_apparent_success: {
+            speaker: "Doc Whitmore",
+            text: "'He's stable... for now.' Doc announced, wiping sweat from his brow. 'The leg is saved, though he'll have a long recovery. The internal injuries were severe. He'll need constant care.'",
+            next: "pike_relieved_grateful"
         },
 
-        // Scene 46: Final Meeting
-        final_meeting: {
+        // Scene 32: Pike's Relief
+        pike_relieved_grateful: {
+            speaker: "Pike",
+            text: "'You did it, Whitmore! I knew you were the man for the job! Name your price!' Pike was visibly relieved, already seeing his enforcer back in action.",
+            next: "doc_defers_payment_from_pike"
+        },
+
+        // Scene 33: Doc Defers Pike's Payment
+        doc_defers_payment_from_pike: {
+            speaker: "Doc Whitmore",
+            text: "'We can discuss my fee later, Mr. Pike. For now, Mr. Dalton needs rest. And I... need a drink.' His eyes found Maria again.",
+            next: "maria_and_doc_private_conversation"
+        },
+
+        // Scene 34: Maria and Doc Speak Privately
+        maria_and_doc_private_conversation: {
             speaker: "Narrator",
-            text: "The four meet one last time at the abandoned boarding house. They avoid eye contact, each carrying the weight of their choices. The silence is heavy with mutual disgust and self-loathing.",
-            next: "maria_pragmatism"
+            text: "Later, as Dalton was being moved to a slightly cleaner bunkhouse under Pike's orders, Maria found Doc cleaning his instruments.",
+            next: "doc_demands_payment_from_maria"
         },
 
-        // Scene 47: Maria's Cold Pragmatism
-        maria_pragmatism: {
+        // Scene 35: Doc's Demand
+        doc_demands_payment_from_maria: {
+            speaker: "Doc Whitmore",
+            text: "'A complicated procedure, Miss Vasquez. Ensuring a... specific outcome takes skill. My services for such specialized work are not cheap.'",
+            next: "maria_acknowledges_debt"
+        },
+
+        // Scene 36: Maria Acknowledges the "Debt"
+        maria_acknowledges_debt: {
             speaker: "Maria Vasquez",
-            text: "'Don't look at me like that. We're surviving. That's more than most can say. The town's eating again, even if they hate us for it. Sometimes that's the best you can do.'",
-            next: "thomas_justification"
+            text: "'He will suffer? And he will die?' Her voice was low and intense.",
+            next: "doc_confirms_daltons_fate"
         },
 
-        // Scene 48: Thomas's Weak Justification
-        thomas_justification: {
-            speaker: "Thomas Whitmore",
-            text: "'I've saved more lives with company medicine than I ever could have as a principled pauper. So what if I have to look the other way sometimes? The greater good, right?' He laughs bitterly, takes another drink.",
-            next: "jacob_resignation"
+        // Scene 37: Doc Confirms Dalton's Fate
+        doc_confirms_daltons_fate: {
+            speaker: "Doc Whitmore",
+            text: "'Oh, he'll suffer. Infection, internal bleeding... it will be slow. Agonizing. By the time anyone realizes it's not a natural complication, it will be far too late. He'll be dead within a month, perhaps two. My price for this... personalized care?'",
+            next: "maria_agrees_to_pay_price"
+        },
+        
+        // Scene 38: Maria Agrees to Pay
+        maria_agrees_to_pay_price: {
+            speaker: "Maria Vasquez",
+            text: "'Name it. Information? Coin? You'll have it.' The transactional relationship was forged. Two predators recognizing each other.",
+            next: "doc_names_his_initial_price"
         },
 
-        // Scene 49: Jacob's Resignation
-        jacob_resignation: {
-            speaker: "Jacob Rivers",
-            text: "'We're not heroes. Never were. Just people who got lucky once and thought it meant something. Now we know better. The world doesn't want heroes. It wants survivors who don't ask questions.'",
-            next: "chapter_conclusion"
+        doc_names_his_initial_price: {
+            speaker: "Doc Whitmore",
+            text: "'For now... a steady supply of your finest laudanum, should my own run short. And information. You seem to know this town's underbelly. I like to be informed.'",
+            next: "pike_rewards_doc_with_access"
         },
 
-        // Scene 50: Chapter Conclusion
-        chapter_conclusion: {
+        // Scene 40: Pike Rewards Doc with Access
+        pike_rewards_doc_with_access: {
             speaker: "Narrator",
-            text: "They part without goodbyes, each walking back to their new lives. Perdition still stands, but the cost of its survival has been the souls of its saviors. In trying to be better than Cross, they've become him—or perhaps something worse. They saved the town's body but poisoned its spirit, and their own. The hero's journey ends not in triumph, but in the bitter recognition that sometimes, everyone becomes what they hate, given enough hunger and desperation. The only choice is whether to admit it or keep pretending.",
+            text: "True to his word, Pike was generous. Not only did he pay Doc handsomely, but he also granted him unrestricted access to the mine's small, grim medical facility and its records. 'Keep my men healthy, Whitmore, and you'll want for nothing.'",
+            next: "doc_explores_mine_medical_facility"
+        },
+
+        // Scene 41: Doc Explores the Medical Facility
+        doc_explores_mine_medical_facility: {
+            speaker: "Narrator",
+            text: "Alone in the poorly lit facility, Doc began his own investigation. The records were sparse, but patterns emerged: miners, particularly younger ones, suffering from tremors, confusion, organ failure. Symptoms he recognized.",
+            next: "doc_finds_evidence_of_poisoning"
+        },
+
+        // Scene 42: Evidence of Mercury Poisoning
+        doc_finds_evidence_of_poisoning: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'Mercury. Just like Jed the miner whispered. But these records... they're not just cases of accidental exposure. There are notes here... dosages... observations...'",
+            next: "discovery_of_experiment_notes"
+        },
+
+        // Scene 43: Discovery of Experiment Notes
+        discovery_of_experiment_notes: {
+            speaker: "Narrator",
+            text: "He found a locked cabinet. A quick application of a purloined hairpin, a skill acquired in less reputable days, and it sprang open. Inside: detailed notes, sketches, and even daguerreotypes of children. Native American children, like those Samuel Crane had buried, exhibiting advanced stages of mercury poisoning.",
+            next: "doc_horrifying_realization_ch7"
+        },
+
+        // Scene 44: The Horrifying Realization
+        doc_horrifying_realization_ch7: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'My God... these aren't just records of illness. These are experiments. Pike isn't just mining silver... he's testing the effects of mercury on these children. For what purpose?'",
+            choices: [
+                {
+                    text: "Speculate on Pike's motives for the experiments.",
+                    next: "speculate_pike_motives_ch7"
+                },
+                {
+                    text: "Focus on the value of this evidence.",
+                    next: "focus_evidence_value_ch7"
+                }
+            ]
+        },
+
+        // Scene 45: Speculate on Pike's Motives (Optional)
+        speculate_pike_motives_ch7: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'Is it for some government contract? \"Medical research\" like Crane mentioned from the prologue? Or just Pike's own sadistic curiosity? Either way, this is explosive.'",
+            next: "doc_photographs_evidence"
+        },
+
+        // Scene 46: Focus on Evidence Value (Optional)
+        focus_evidence_value_ch7: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'This... this is a goldmine of a different sort. Evidence that could destroy Pike, or make me a very wealthy man. Or both.'",
+            next: "doc_photographs_evidence"
+        },
+
+        // Scene 47: Doc Photographs Everything
+        doc_photographs_evidence: {
+            speaker: "Narrator",
+            text: "Using a small, concealable camera he'd acquired, Doc meticulously photographed every damning page, every horrifying image. His hands were surprisingly steady. This was not about morality; it was about leverage.",
+            next: "doc_plans_to_sell_info"
+        },
+
+        // Scene 48: Planning to Sell the Information
+        doc_plans_to_sell_info: {
+            speaker: "Doc Whitmore",
+            text: "(Internal) 'The government might pay for this, to cover up their involvement or prosecute a rogue agent. Pike's competitors would pay a king's ransom. Even a crusading journalist from back East...' His mind whirled with possibilities.",
+            next: "a_dangerous_game_ch7"
+        },
+
+        // Scene 49: A Dangerous Game
+        a_dangerous_game_ch7: {
+            speaker: "Narrator",
+            text: "Doc Whitmore now held secrets that could ignite a firestorm. He had Pike's trust, Maria's begrudging alliance, and evidence that could bring down powerful men. He smiled, a genuine, predatory smile this time. Perdition was proving to be very profitable indeed.",
+            next: "chapter_end_scene_ch7"
+        },
+
+        // Scene 50: Chapter End
+        chapter_end_scene_ch7: {
+            speaker: "Narrator",
+            text: "As Doc secured his damning photographs, he knew he was playing a game with deadly stakes. But for a man who had already danced with murder and addiction, danger was just another stimulant. And the potential rewards were intoxicating.",
             choices: [
                 {
                     text: "Continue to Chapter 8",
