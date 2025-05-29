@@ -245,3 +245,175 @@
     background: radial-gradient(circle, rgba(255, 140, 0, 0.6) 0%, transparent 70%);
     animation: fireFlicker 2s ease-in-out infinite;
 }
+
+/* New animations for linear prologue */
+.fade-in-slow {
+    animation: fadeIn 3s ease-in;
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+.fade-in-fast {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.fade-in-word {
+    animation: fadeIn 2s ease-in;
+}
+
+.fade-in-dramatic {
+    animation: fadeInDramatic 2s ease-in;
+}
+
+.fade-in-final {
+    animation: fadeIn 4s ease-in;
+}
+
+.slide-in-left {
+    animation: slideInLeft 1s ease-out;
+}
+
+.slide-in-right {
+    animation: slideInRight 1s ease-out;
+}
+
+.shake-subtle {
+    animation: shakeSubtle 0.5s;
+}
+
+.shake-text {
+    animation: shakeText 0.3s infinite;
+}
+
+.shake-violent {
+    animation: shakeViolent 0.2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDramatic {
+    0% { opacity: 0; transform: scale(0.95); }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes shakeSubtle {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
+@keyframes shakeText {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-1px); }
+    75% { transform: translateX(1px); }
+}
+
+@keyframes shakeViolent {
+    0%, 100% { transform: translate(0); }
+    10% { transform: translate(-2px, -2px); }
+    20% { transform: translate(2px, -2px); }
+    30% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, 2px); }
+    50% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, -2px); }
+    70% { transform: translate(-2px, 2px); }
+    80% { transform: translate(2px, 2px); }
+    90% { transform: translate(-2px, -2px); }
+}
+
+/* Screen Effects */
+.dust-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(139, 69, 19, 0.3);
+    animation: dustSwirl 10s infinite;
+    pointer-events: none;
+}
+
+.red-alert-pulse {
+    animation: redPulse 1s infinite;
+}
+
+.flash-white {
+    animation: whiteFlash 0.3s;
+}
+
+.vignette-fade::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+    pointer-events: none;
+}
+
+.fade-to-black-slow {
+    animation: fadeToBlack 4s forwards;
+}
+
+@keyframes dustSwirl {
+    0% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(20px) translateY(-10px); }
+    50% { transform: translateX(-10px) translateY(20px); }
+    75% { transform: translateX(30px) translateY(10px); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes redPulse {
+    0%, 100% { background-color: rgba(139, 0, 0, 0); }
+    50% { background-color: rgba(139, 0, 0, 0.3); }
+}
+
+@keyframes whiteFlash {
+    0%, 100% { background-color: rgba(255, 255, 255, 0); }
+    50% { background-color: rgba(255, 255, 255, 0.8); }
+}
+
+@keyframes fadeToBlack {
+    from { background-color: transparent; }
+    to { background-color: rgba(0, 0, 0, 0.9); }
+}
+
+/* Character spotlight effects */
+.portrait.spotlight {
+    box-shadow: 0 0 20px rgba(255, 223, 0, 0.8);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.portrait.dimmed {
+    opacity: 0.5;
+    filter: grayscale(50%);
+    transition: all 0.3s ease;
+}
+
+/* Lighting Effects */
+[data-lighting="dim-interior"] {
+    filter: brightness(0.7) contrast(1.2);
+}
+
+[data-lighting="shadow-corner"] {
+    filter: brightness(0.6) contrast(1.3);
+}

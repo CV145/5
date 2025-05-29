@@ -333,14 +333,27 @@ class GameEngine {
             
             <div style="margin-bottom: 15px;">
                 <strong>Chapter Navigation:</strong><br>
-                <button id="debug-prologue" style="margin: 2px;">Prologue</button>
-                <button id="debug-chapter1" style="margin: 2px;">Chapter 1</button>
-                <button id="debug-chapter2" style="margin: 2px;">Chapter 2</button>
-                <button id="debug-chapter3" style="margin: 2px;">Chapter 3</button>
-                <button id="debug-chapter4" style="margin: 2px;">Chapter 4</button>
-                <button id="debug-chapter5" style="margin: 2px;">Chapter 5</button>
-                <button id="debug-chapter6" style="margin: 2px;">Chapter 6</button>
-                <button id="debug-chapter7" style="margin: 2px;">Chapter 7</button>
+                <button id="debug-prologue" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Prologue</button>
+                <button id="debug-chapter1" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 1</button>
+                <button id="debug-chapter2" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 2</button>
+                <button id="debug-chapter3" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 3</button>
+                <button id="debug-chapter4" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 4</button>
+                <button id="debug-chapter5" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 5</button><br>
+                <button id="debug-chapter6" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 6</button>
+                <button id="debug-chapter7" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 7</button>
+                <button id="debug-chapter8" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 8</button>
+                <button id="debug-chapter9" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 9</button>
+                <button id="debug-chapter10" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 10</button>
+                <button id="debug-chapter11" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 11</button><br>
+                <button id="debug-chapter12" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 12</button>
+                <button id="debug-chapter13" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 13</button>
+                <button id="debug-chapter14" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 14</button>
+                <button id="debug-chapter15" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 15</button>
+                <button id="debug-chapter16" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 16</button>
+                <button id="debug-chapter17" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 17</button><br>
+                <button id="debug-chapter18" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 18</button>
+                <button id="debug-chapter19" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 19</button>
+                <button id="debug-chapter20" style="margin: 2px; padding: 3px 6px; font-size: 10px;">Ch 20</button>
             </div>
             
             <div style="margin-bottom: 15px;">
@@ -378,9 +391,22 @@ class GameEngine {
         document.getElementById('debug-chapter2').onclick = () => this.debugJumpTo('chapter2', 'start');
         document.getElementById('debug-chapter3').onclick = () => this.debugJumpTo('chapter3', 'start');
         document.getElementById('debug-chapter4').onclick = () => this.debugJumpTo('chapter4', 'start');
-        document.getElementById('debug-chapter5').onclick = () => this.debugJumpTo('chapter5', 'ritual_trap');
+        document.getElementById('debug-chapter5').onclick = () => this.debugJumpTo('chapter5', 'start');
         document.getElementById('debug-chapter6').onclick = () => this.debugJumpTo('chapter6', 'start');
         document.getElementById('debug-chapter7').onclick = () => this.debugJumpTo('chapter7', 'start');
+        document.getElementById('debug-chapter8').onclick = () => this.debugJumpTo('chapter8', 'start');
+        document.getElementById('debug-chapter9').onclick = () => this.debugJumpTo('chapter9', 'start');
+        document.getElementById('debug-chapter10').onclick = () => this.debugJumpTo('chapter10', 'start');
+        document.getElementById('debug-chapter11').onclick = () => this.debugJumpTo('chapter11', 'start');
+        document.getElementById('debug-chapter12').onclick = () => this.debugJumpTo('chapter12', 'start');
+        document.getElementById('debug-chapter13').onclick = () => this.debugJumpTo('chapter13', 'start');
+        document.getElementById('debug-chapter14').onclick = () => this.debugJumpTo('chapter14', 'start');
+        document.getElementById('debug-chapter15').onclick = () => this.debugJumpTo('chapter15', 'start');
+        document.getElementById('debug-chapter16').onclick = () => this.debugJumpTo('chapter16', 'start');
+        document.getElementById('debug-chapter17').onclick = () => this.debugJumpTo('chapter17', 'start');
+        document.getElementById('debug-chapter18').onclick = () => this.debugJumpTo('chapter18', 'start');
+        document.getElementById('debug-chapter19').onclick = () => this.debugJumpTo('chapter19', 'start');
+        document.getElementById('debug-chapter20').onclick = () => this.debugJumpTo('chapter20', 'start');
         document.getElementById('debug-close').onclick = () => this.hideDebugPanel();
         document.getElementById('debug-export').onclick = () => this.exportGameState();
     }

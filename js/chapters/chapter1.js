@@ -1,852 +1,414 @@
-// Chapter 1: Baptism by Fire
+// Chapter 1: Baptism by Fire (Linear Version)
 storyData.chapter1 = {
     name: "Chapter 1",
     title: "Baptism by Fire",
     scenes: {
+        // Scene 1: The Confrontation Begins
         start: {
             speaker: "Narrator",
-            text: "The riders circle the stagecoach like vultures, their faces hidden behind bandanas. The lead rider, a mountain of a man with cold eyes, raises his hand. The others stop, weapons drawn but not yet aimed.",
-            next: "bandit_speaks_start"
-        },
-        
-        bandit_speaks_start: {
-            speaker: "Bandit Leader",
-            text: "\"Well, well. Stagecoach to Perdition. You folks picked a bad day to travel. See, this here's a toll road, and the toll just went up.\"",
-            choices: [
-                {
-                    text: "Try to negotiate peacefully",
-                    next: "negotiate_attempt",
-                    onChoose: function() {
-                        updateStoryVariable('flags.tried_negotiation', true);
-                    }
-                },
-                {
-                    text: "Prepare for a fight",
-                    next: "prepare_fight_start",
-                    onChoose: function() {
-                        updateStoryVariable('flags.prepared_immediately', true);
-                    }
-                },
-                {
-                    text: "Let someone else take the lead",
-                    next: "wait_and_see_start",
-                    onChoose: function() {
-                        updateStoryVariable('flags.deferred_leadership', true);
-                    }
-                }
-            ],
-            onEnter: {
-                setBackground: "desert",
-                showCharacters: ["elijah", "maria", "thomas", "jacob"]
-            }
-        },
-        
-        negotiate_attempt: {
-            speaker: "Elijah Cross",
-            text: "\"We're just travelers seeking passage to Perdition. We have little of value, save our lives. Surely men such as yourselves have no need for more blood on your hands.\"",
-            next: "negotiate_continues"
-        },
-        
-        negotiate_continues: {
-            speaker: "Narrator",
-            text: "Your calm words seem to give the bandit leader pause. For a moment, you see him weighing his options.",
-            next: "bandit_laughs"
-        },
-        
-        prepare_fight_start: {
-            speaker: "Narrator",
-            text: "Without waiting for more talk, you gesture to your companions. Maria's hand immediately goes to her weapon, understanding the signal. Thomas reaches for his medical bag where his derringer waits. Even young Jacob, though nervous, readies himself.",
-            next: "maria_ready"
-        },
-        
-        maria_ready: {
-            speaker: "Maria Vasquez",
-            text: "\"Smart move, Preacher. Better to be ready than caught flat-footed.\"",
-            next: "bandits_notice"
-        },
-        
-        bandits_notice: {
-            speaker: "Narrator",
-            text: "The bandits notice the subtle shift in your group's posture. The leader's eyes narrow as he realizes you're not going to be easy prey.",
-            next: "bandit_notices_preparation"
-        },
-        
-        wait_and_see_start: {
-            speaker: "Narrator",
-            text: "You hold back, watching the others for cues. This isn't your fight to start—not yet. Sometimes wisdom means knowing when not to act.",
-            next: "thomas_nervous"
-        },
-        
-        thomas_nervous: {
-            speaker: "Thomas Whitmore",
-            text: "\"Wonderful. Six armed men and we're playing cards with our lives.\" He takes a nervous sip from his bottle.",
-            next: "jacob_worried"
-        },
-        
-        jacob_worried: {
-            speaker: "Jacob Rivers",
-            text: "\"What... what do we do?\" The boy's voice trembles as he looks between the adults.",
-            next: "narrator_hesitation"
-        },
-        
-        narrator_hesitation: {
-            speaker: "Narrator",
-            text: "Your hesitation creates an opening for the bandits to press their advantage.",
-            next: "bandit_gains_confidence"
-        },
-        
-        prepare_fight: {
-            speaker: "Narrator",
-            text: "Maria's already moving, positioning herself by the window. Thomas fumbles for a small derringer hidden in his medical bag. Young Jacob's hand shakes as he grips his too-clean revolver.",
-            next: "maria_prepared"
-        },
-        
-        maria_prepared: {
-            speaker: "Maria Vasquez",
-            text: "\"Smart. Better to be ready than sorry.\" She checks her cylinder. \"If shooting starts, keep low and aim true.\"",
-            choices: [
-                {
-                    text: "\"I've seen enough violence for one lifetime.\"",
-                    next: "reluctant_fighter",
-                    onChoose: function() {
-                        updateStoryVariable('flags.elijah_reluctant_violence', true);
-                        updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') + 5);
-                    }
-                },
-                {
-                    text: "\"Sometimes violence is the only language they understand.\"",
-                    next: "accept_violence",
-                    onChoose: function() {
-                        updateStoryVariable('flags.elijah_accepts_violence', true);
-                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 10);
-                    }
-                }
-            ]
-        },
-        
-        wait_and_see: {
-            speaker: "Narrator",
-            text: "The tension stretches like a bowstring. Each passenger waits for someone else to make the first move, while outside, the bandits grow restless.",
-            next: "thomas_speaks_wait"
-        },
-        
-        thomas_speaks_wait: {
-            speaker: "Thomas Whitmore",
-            text: "\"Well, this is a fine mess. Six armed men and we're playing statue.\" He takes a nervous sip from his bottle.",
-            next: "jacob_speaks_wait"
-        },
-        
-        jacob_speaks_wait: {
-            speaker: "Jacob Rivers", 
-            text: "\"Maybe... maybe they'll just take what they want and leave?\" His voice wavers with desperate hope.",
-            choices: [
-                {
-                    text: "\"Sometimes the best action is no action.\"",
-                    next: "passive_approach",
-                    onChoose: function() {
-                        updateStoryVariable('flags.chose_passivity', true);
-                    }
-                },
-                {
-                    text: "\"We can't just sit here forever.\"",
-                    next: "forced_action",
-                    onChoose: function() {
-                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 5);
-                    }
-                }
-            ]
-        },
-        
-        bandit_laughs: {
-            speaker: "Bandit Leader",
-            text: "\"A preacher! Boys, we got ourselves a preacher!\" His laugh is like gravel. \"Tell me, Preacher, your God watching right now? 'Cause He's about to see some of His children come home early.\"",
-            choices: [
-                {
-                    text: "\"He's always watching. The question is, are you ready to meet Him?\"",
-                    next: "bandit_threatened",
-                    onChoose: function() {
-                        updateStoryVariable('flags.stood_up_to_bandits', true);
-                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 10);
-                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 15);
-                    }
-                },
-                {
-                    text: "\"Take what you want. No one needs to die today.\"",
-                    next: "bandit_greedy",
-                    onChoose: function() {
-                        updateStoryVariable('flags.tried_peaceful', true);
-                    }
-                }
-            ]
-        },
-        
-        bandit_notices: {
-            speaker: "Bandit Leader",
-            text: "\"Looks like the lady's got some fight in her. And the drunk's reaching for something. You folks sure you want to dance? We got you six to four, and that's assuming the boy there knows which end of that gun to point.\"",
-            next: "maria_speaks"
-        },
-        
-        bandit_notices_preparation: {
-            speaker: "Bandit Leader",
-            text: "\"Well now, looks like we got ourselves some fighters here, boys.\" His voice hardens. \"I appreciate folks who know which way the wind blows. Makes things... interesting.\"",
-            next: "bandit_notices_prep_narration"
-        },
-        
-        bandit_notices_prep_narration: {
-            speaker: "Narrator",
-            text: "Your quick thinking to prepare for violence has shifted the dynamic. The bandits are warier now, but also more aggressive.",
-            choices: [
-                {
-                    text: "\"We're ready for whatever comes.\"",
-                    next: "standoff_prepared",
-                    onChoose: function() {
-                        updateStoryVariable('flags.showed_strength', true);
-                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 15);
-                    }
-                },
-                {
-                    text: "\"We don't want trouble, but we're not defenseless.\"",
-                    next: "measured_response",
-                    onChoose: function() {
-                        updateStoryVariable('flags.diplomatic_but_firm', true);
-                    }
-                }
-            ]
-        },
-        
-        bandit_gains_confidence: {
-            speaker: "Bandit Leader",
-            text: "\"See that, boys? These pilgrims don't even know if they want to fight or pray.\" He laughs coldly. \"Makes our job easier.\"",
-            next: "bandit_confidence_narration"
-        },
-        
-        bandit_confidence_narration: {
-            speaker: "Narrator",
-            text: "Your hesitation has emboldened the bandits. They sense weakness and are moving to exploit it.",
-            choices: [
-                {
-                    text: "\"Enough games. What do you want?\"",
-                    next: "assert_control_late",
-                    onChoose: function() {
-                        updateStoryVariable('flags.late_assertion', true);
-                    }
-                },
-                {
-                    text: "Continue to wait and see",
-                    next: "full_passivity",
-                    onChoose: function() {
-                        updateStoryVariable('flags.completely_passive', true);
-                        updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') + 10);
-                    }
-                }
-            ]
-        },
-        
-        reluctant_fighter: {
-            speaker: "Maria Vasquez",
-            text: "\"Violence finds you whether you want it or not, Preacher. Better to be ready.\" Her tone is understanding but firm.",
-            next: "violence_arrives"
-        },
-        
-        violence_arrives: {
-            speaker: "Narrator",
-            text: "Outside, the bandit leader's voice booms: \"Alright, pilgrims! Time to pay the toll!\"",
-            next: "bandit_demands"
-        },
-        
-        accept_violence: {
-            speaker: "Maria Vasquez", 
-            text: "\"Now you're talking sense. These men respect only strength.\" She positions her gun. \"Let's give them something to respect.\"",
-            next: "violence_prepared"
-        },
-        
-        violence_prepared: {
-            speaker: "Narrator",
-            text: "The moment of preparation proves crucial as the bandit leader shouts his demands.",
-            next: "bandit_demands",
-            onLeave: function() {
-                updateStoryVariable('flags.prepared_for_violence', true);
-            }
-        },
-        
-        passive_approach: {
-            speaker: "Narrator",
-            text: "Your words seem to calm Jacob slightly, but Maria shoots you a look that could cut glass. Thomas just takes another drink.",
-            next: "maria_frustrated"
-        },
-        
-        maria_frustrated: {
-            speaker: "Maria Vasquez",
-            text: "\"Patience is a virtue, Preacher, but sometimes it gets you killed.\" She keeps her hand near her gun despite your counsel.",
-            next: "bandit_loses_patience"
-        },
-        
-        forced_action: {
-            speaker: "Jacob Rivers",
-            text: "\"You're right. My pa always said waiting for trouble just makes it worse.\" The boy's hand steadies slightly on his gun.",
-            next: "jacob_encouraged"
-        },
-        
-        jacob_encouraged: {
-            speaker: "Narrator",
-            text: "Your words of encouragement seem to bolster the young man's courage, though his inexperience still shows.",
-            next: "bandit_demands"
-        },
-        
-        bandit_demands: {
-            speaker: "Bandit Leader",
-            text: "\"Passengers! Out of the coach, nice and slow. Leave your weapons and valuables inside. We're reasonable men—cooperate and you'll live to see sunset.\"",
-            next: "maria_speaks"
-        },
-        
-        bandit_loses_patience: {
-            speaker: "Bandit Leader", 
-            text: "\"Time's up! My boys are getting trigger happy, and I can't control them much longer. Everyone out NOW!\"",
-            next: "patience_lost_narration"
-        },
-        
-        patience_lost_narration: {
-            speaker: "Narrator",
-            text: "Your passive approach has cost valuable time. The bandits are more agitated now, making the situation more dangerous.",
-            next: "maria_forced_response",
-            onLeave: function() {
-                updateStoryVariable('flags.bandits_agitated', true);
-            }
-        },
-        
-        maria_forced_response: {
-            speaker: "Maria Vasquez",
-            text: "\"So much for patience.\" Her gun is already half-drawn. \"Now we do this the hard way.\"",
-            next: "fight_begins"
-        },
-        
-        standoff_prepared: {
-            speaker: "Maria Vasquez",
-            text: "\"You heard the man. We're ready.\" Her gun is steady in her hand. \"Question is, are you?\"",
-            next: "standoff_narration"
-        },
-        
-        standoff_narration: {
-            speaker: "Narrator",
-            text: "The tension is thick as both sides size each other up. Your show of strength has impressed your companions and made the bandits more cautious.",
-            next: "maria_speaks"
-        },
-        
-        measured_response: {
-            speaker: "Bandit Leader", 
-            text: "\"Diplomatic but armed. I can respect that.\" He tips his hat mockingly. \"Shame you won't live long enough to negotiate properly.\"",
-            next: "measured_narration"
-        },
-        
-        measured_narration: {
-            speaker: "Narrator",
-            text: "Your balanced approach has bought some time, but the threat remains. The bandits are still confident in their numbers.",
-            next: "maria_speaks"
-        },
-        
-        assert_control_late: {
-            speaker: "Bandit Leader",
-            text: "\"NOW you want to talk? After letting us see how scared you are?\" He laughs. \"Too late for that, pilgrim. Price just went up.\"",
-            next: "control_late_narration"
-        },
-        
-        control_late_narration: {
-            speaker: "Narrator",
-            text: "Your late attempt to take control has only made things worse. The bandits smell fear and are pressing their advantage.",
-            next: "desperate_situation"
-        },
-        
-        full_passivity: {
-            speaker: "Narrator",
-            text: "Your continued silence speaks volumes. The bandits exchange glances, grinning. They've found easy prey.",
-            next: "maria_takes_charge"
-        },
-        
-        maria_takes_charge: {
-            speaker: "Maria Vasquez",
-            text: "\"Jesus Christ, Preacher, say something!\" Her frustration is evident as she realizes you're not taking charge.",
-            next: "desperate_situation"
-        },
-        
-        desperate_situation: {
-            speaker: "Bandit Leader",
-            text: "\"Alright, boys. These sheep are ready for shearing. Everyone out of the coach. NOW!\"",
-            next: "desperate_narration"
-        },
-        
-        desperate_narration: {
-            speaker: "Narrator",
-            text: "Your passive approach has put everyone in greater danger. The bandits are now fully aggressive and confident.",
-            next: "forced_compliance"
-        },
-        
-        forced_compliance: {
-            speaker: "Narrator",
-            text: "With little choice left, your group begins to comply. But Maria has other ideas.",
-            next: "maria_rebels"
-        },
-        
-        maria_rebels: {
-            speaker: "Maria Vasquez",
-            text: "\"Like hell.\" Her gun comes up fast. \"Preacher may be useless, but I'm not going down without a fight.\"",
-            next: "fight_begins",
-            onLeave: function() {
-                updateStoryVariable('flags.maria_forced_to_lead', true);
-                updateStoryVariable('relationships.elijah.maria.tension', getStoryVariable('relationships.elijah.maria.tension') + 20);
-            }
+            text: "The bandit leader steps fully into view, his weathered face bearing scars that speak of a violent life. Behind him, five more riders dismount with practiced ease, rifles and pistols glinting in the afternoon sun. The stagecoach driver raises his hands slowly, fear evident in every movement.",
+            next: "bandit_leader_speaks"
         },
 
-        bandit_threatened: {
-            speaker: "Narrator",
-            text: "The leader's eyes narrow. For a moment, something flickers there—uncertainty, perhaps even fear. Then it's gone, replaced by rage.",
-            next: "bandit_angry"
-        },
-        
-        bandit_angry: {
+        // Scene 2: Bandit Leader's Demands
+        bandit_leader_speaks: {
             speaker: "Bandit Leader",
-            text: "\"You got sand, Preacher. Let's see if it's enough to stop a bullet.\"",
-            next: "fight_begins"
+            text: "'Name's Valdez. You folks are gonna step out real gentle-like, and we're gonna have ourselves a conversation about what's in those bags.' His eyes scan the coach interior. 'Especially you, Preacher. God's work pays better than most folks think.'",
+            next: "passengers_react"
         },
-        
-        bandit_greedy: {
-            speaker: "Bandit Leader",
-            text: "\"Smart man. Alright, everyone out. Slow and easy. Any sudden moves and my boys get twitchy.\"",
-            next: "maria_objects"
-        },
-        
-        maria_speaks: {
-            speaker: "Maria Vasquez",
-            text: "\"Six to four? I count different.\" Her voice is calm, almost amused. \"See, you're counting the boy and the drunk. But you're not counting the two rifles aimed at your back from those rocks.\"",
-            next: "bluff_narration"
-        },
-        
-        bluff_narration: {
+
+        // Scene 3: Passengers React
+        passengers_react: {
             speaker: "Narrator",
-            text: "The bandits turn slightly, uncertain. There's nothing there, but the doubt is enough.",
-            choices: [
-                {
-                    text: "Play along with her bluff",
-                    next: "support_bluff",
-                    onChoose: function() {
-                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 15);
-                        updateStoryVariable('relationships.maria.thomas.trust', getStoryVariable('relationships.maria.thomas.trust') + 10);
-                    }
-                },
-                {
-                    text: "Stay silent and ready",
-                    next: "tense_moment"
-                }
-            ]
+            text: "The four passengers sit frozen for a moment. Maria's hand hovers near her weapon, Elijah clutches his Bible tighter, Thomas swallows hard, and Jacob looks like he might be sick. The weight of decision hangs heavy in the dusty air.",
+            next: "elijah_first_response"
         },
-        
-        maria_objects: {
-            speaker: "Maria Vasquez",
-            text: "\"I don't think so.\" Her pistol is already half-drawn. \"See, I've got business in Perdition, and it doesn't include being robbed by amateur highwaymen.\"",
-            next: "fight_begins"
-        },
-        
-        support_bluff: {
+
+        // Scene 4: Elijah's First Response
+        elijah_first_response: {
             speaker: "Elijah Cross",
-            text: "\"The lady speaks truth. Did you think we'd travel this road unprotected? Lower your weapons, and everyone lives to see another sunset.\"",
-            next: "thomas_supports"
-        },
-        
-        thomas_supports: {
-            speaker: "Narrator",
-            text: "Thomas, catching on, adds his voice: \"I've got wounded to tend to in Perdition. I'd rather not add to their number here.\"",
-            next: "bluff_works"
-        },
-        
-        tense_moment: {
-            speaker: "Narrator",
-            text: "The moment stretches. Sweat beads on foreheads. Fingers twitch near triggers. Even the wind seems to hold its breath.",
-            next: "jacob_panics"
-        },
-        
-        bluff_works: {
-            speaker: "Narrator",
-            text: "The bandit leader's eyes dart to the rocks, then back. Doubt has taken root. His men shift nervously, no longer sure of their advantage.",
-            next: "bandit_doubts"
-        },
-        
-        bandit_doubts: {
-            speaker: "Bandit Leader",
-            text: "\"You're lying.\" But his voice lacks conviction.",
-            next: "maria_presses"
-        },
-        
-        maria_presses: {
-            speaker: "Maria Vasquez",
-            text: "\"Only one way to find out. But once the shooting starts, there's no taking it back. Your call.\"",
+            text: "'There's no need for violence, friend.' Elijah's voice carries the practiced calm of years of sermons. 'We're simple travelers with little of value. Perhaps we can come to an understanding.'",
             choices: [
                 {
-                    text: "Press the advantage",
-                    next: "bandits_retreat"
+                    text: "Focus on the bandits' reaction",
+                    next: "bandits_laugh"
                 },
                 {
-                    text: "Offer them a way out",
-                    next: "peaceful_resolution"
+                    text: "Observe Maria's preparation",
+                    next: "maria_readies_herself"
+                },
+                {
+                    text: "Watch Thomas and Jacob",
+                    next: "fear_and_resolve"
                 }
             ]
         },
-        
-        jacob_panics: {
+
+        // Scene 5: Bandits Laugh
+        bandits_laugh: {
             speaker: "Narrator",
-            text: "The pressure breaks young Jacob. His nerve fails, and his gun goes off—whether by accident or panic, no one can say. The bullet goes wide, but the damage is done.",
-            next: "jacob_apologizes"
+            text: "Valdez throws back his head and laughs, a harsh sound like grinding stone. His men join in, but their eyes never stop watching for trouble. 'Understanding? Oh, Preacher, I understand plenty. I understand you got coin, and I want it.'",
+            next: "maria_readies_herself"
         },
-        
-        jacob_apologizes: {
+
+        // Scene 6: Maria Readies Herself
+        maria_readies_herself: {
+            speaker: "Narrator",
+            text: "Maria shifts almost imperceptibly, her body coiling like a spring. Her dark eyes calculate distances, count weapons, assess threats. She's done this before, and her experience shows in the subtle preparation of a predator about to strike.",
+            next: "fear_and_resolve"
+        },
+
+        // Scene 7: Fear and Resolve
+        fear_and_resolve: {
+            speaker: "Narrator",
+            text: "Thomas's hands shake as he fumbles for his medical bag, where his derringer waits. Jacob's fear is naked on his young face, but beneath it, something harder emerges. The boy is becoming a man in this crucible of violence.",
+            next: "valdez_growing_impatient"
+        },
+
+        // Scene 8: Valdez Growing Impatient
+        valdez_growing_impatient: {
+            speaker: "Valdez",
+            text: "'Enough talking!' He raises his rifle. 'Out of the coach, now! Anyone tries anything clever, and the boy dies first!' The barrel swings toward Jacob, who goes pale as death.",
+            next: "moment_of_truth"
+        },
+
+        // Scene 9: Moment of Truth
+        moment_of_truth: {
+            speaker: "Narrator",
+            text: "This is the moment that will define them all. In the space of a heartbeat, choices must be made that will echo through their lives. The desert wind stills, as if nature itself holds its breath.",
+            next: "maria_moves_first"
+        },
+
+        // Scene 10: Maria Moves First
+        maria_moves_first: {
+            speaker: "Narrator",
+            text: "Maria explodes into motion with deadly grace. Her Colt clears leather faster than thought, the weapon barking flame and lead. The nearest bandit spins and falls, clutching his shoulder, his own rifle firing harmlessly into the sky.",
+            next: "chaos_erupts"
+        },
+
+        // Scene 11: Chaos Erupts
+        chaos_erupts: {
+            speaker: "Narrator",
+            text: "The world dissolves into gunfire and shouting. Valdez curses and swings his rifle toward Maria. The coach horses rear and scream. The driver tumbles from his seat, whether from fear or a bullet unclear.",
+            next: "elijah_joins_fight"
+        },
+
+        // Scene 12: Elijah Joins the Fight
+        elijah_joins_fight: {
+            speaker: "Narrator",
+            text: "Elijah's Army Colt appears in his hand as if summoned by prayer. The weapon feels familiar despite the years, muscle memory overriding moral reservation. His first shot takes a bandit in the leg, sending him sprawling.",
+            next: "thomas_surprising_action"
+        },
+
+        // Scene 13: Thomas's Surprising Action
+        thomas_surprising_action: {
+            speaker: "Narrator",
+            text: "Thomas moves with unexpected coordination, his medical training serving him well. He produces his derringer and fires with surgeon's precision, the small bullet finding its mark in a bandit's gun hand, disarming him instantly.",
+            next: "jacob_freezes"
+        },
+
+        // Scene 14: Jacob Freezes
+        jacob_freezes: {
+            speaker: "Narrator",
+            text: "Jacob sits paralyzed, his untested courage crumbling under the reality of violence. He clutches his satchel like a shield, eyes wide with terror as bullets fly around him. The boy's initiation into the harsh realities of the West has begun.",
+            next: "valdez_rallies_men"
+        },
+
+        // Scene 15: Valdez Rallies His Men
+        valdez_rallies_men: {
+            speaker: "Valdez",
+            text: "'Take cover behind the rocks! These ain't sheep for the slaughter!' He fires at Maria, the bullet splintering wood near her head. 'Kill the men, but keep the woman and boy alive! They might be worth something!'",
+            next: "first_blood_drawn"
+        },
+
+        // Scene 16: First Blood Drawn
+        first_blood_drawn: {
+            speaker: "Narrator",
+            text: "A bandit's bullet catches Elijah in the arm, spinning him around. Blood seeps through his dark coat, but he maintains his grip on his weapon. The wound is painful but not serious—he's suffered worse in the war.",
+            next: "maria_tactical_thinking"
+        },
+
+        // Scene 17: Maria's Tactical Thinking
+        maria_tactical_thinking: {
+            speaker: "Narrator",
+            text: "Maria assesses their position with cold professionalism. The coach provides some cover, but they're outnumbered and outgunned. She needs to even the odds quickly, or they'll all be dead or worse within minutes.",
+            choices: [
+                {
+                    text: "Focus on Maria's next move",
+                    next: "maria_flanking_maneuver"
+                },
+                {
+                    text: "Check on the wounded Elijah",
+                    next: "elijah_pushes_through_pain"
+                },
+                {
+                    text: "See how Thomas is coping",
+                    next: "thomas_under_fire"
+                }
+            ]
+        },
+
+        // Scene 18: Maria's Flanking Maneuver
+        maria_flanking_maneuver: {
+            speaker: "Narrator",
+            text: "With feline grace, Maria rolls from the coach to a nearby boulder, drawing fire away from the others. Her movement is poetry written in gunpowder, each step calculated to maximize cover while maintaining offensive capability.",
+            next: "elijah_pushes_through_pain"
+        },
+
+        // Scene 19: Elijah Pushes Through Pain
+        elijah_pushes_through_pain: {
+            speaker: "Narrator",
+            text: "Elijah grits his teeth against the burning in his arm and returns fire. His military training surfaces through years of peaceful ministry, muscle memory guiding his aim. Another bandit cries out and staggers back.",
+            next: "thomas_under_fire"
+        },
+
+        // Scene 20: Thomas Under Fire
+        thomas_under_fire: {
+            speaker: "Narrator",
+            text: "Thomas discovers that his hands, so unsteady with drink, become rock-solid under fire. The surgeon's precision that once saved lives now serves to preserve them. His derringer barks again, finding its mark.",
+            next: "jacob_finds_voice"
+        },
+
+        // Scene 21: Jacob Finds His Voice
+        jacob_finds_voice: {
             speaker: "Jacob Rivers",
-            text: "\"I—I didn't mean—\"",
-            next: "fight_begins"
+            text: "'Behind you!' Jacob's voice cracks as he shouts a warning to Maria. A bandit had circled around the rocks, but the boy's sharp eyes caught the movement. It's his first contribution to the fight, and it saves Maria's life.",
+            next: "maria_acknowledges_jacob"
         },
-        
-        bandits_retreat: {
-            speaker: "Elijah Cross",
-            text: "\"The Lord offers mercy to those who seek it. But make no mistake—we are prepared to send you to judgment if you force our hand. Choose wisely.\"",
-            next: "retreat_narration"
+
+        // Scene 22: Maria Acknowledges Jacob
+        maria_acknowledges_jacob: {
+            speaker: "Maria Vasquez",
+            text: "'Good eyes, boy!' Maria spins and fires in one fluid motion, her bullet catching the flanking bandit center mass. He drops like a stone, his rifle clattering on the rocks. Three bandits down, three to go.",
+            next: "valdez_desperate_gambit"
         },
-        
-        retreat_narration: {
+
+        // Scene 23: Valdez's Desperate Gambit
+        valdez_desperate_gambit: {
+            speaker: "Valdez",
+            text: "'Enough of this!' Valdez breaks from cover, charging toward the coach with wild fury. 'If I'm gonna die, I'm taking some of you with me!' His rifle blazes as he advances, death in his eyes.",
+            next: "final_confrontation_begins"
+        },
+
+        // Scene 24: Final Confrontation Begins
+        final_confrontation_begins: {
             speaker: "Narrator",
-            text: "The combination of Maria's steel, Elijah's conviction, and the seed of doubt proves too much. The bandit leader spits in the dust.",
-            next: "bandit_threatens"
+            text: "Time seems to slow as Valdez rushes forward, his remaining men laying down covering fire. This is the moment of ultimate decision—fight or flight, live or die. The choice will define who they become.",
+            next: "elijah_stands_firm"
         },
-        
-        bandit_threatens: {
-            speaker: "Bandit Leader",
-            text: "\"This ain't over. Perdition's a small town, and we got long memories.\"",
-            next: "bandits_leave"
-        },
-        
-        bandits_leave: {
+
+        // Scene 25: Elijah Stands Firm
+        elijah_stands_firm: {
             speaker: "Narrator",
-            text: "With that threat hanging in the air like smoke, the bandits wheel their horses and ride off, leaving only dust and the promise of future trouble.",
-            next: "aftermath_peaceful",
-            onLeave: function() {
-                updateStoryVariable('flags.bandits_retreated', true);
-                updateStoryVariable('flags.made_enemies', true);
-            }
+            text: "Elijah rises from cover, his wounded arm forgotten. The preacher and the soldier within him unite for one terrible moment. His Colt speaks with divine authority, and Valdez stumbles, blood blooming across his chest.",
+            next: "valdez_final_words"
         },
-        
-        peaceful_resolution: {
-            speaker: "Elijah Cross",
-            text: "\"No blood needs to be spilled today. Ride on, and we'll forget this meeting ever happened.\"",
-            next: "bandit_considers"
+
+        // Scene 26: Valdez's Final Words
+        valdez_final_words: {
+            speaker: "Valdez",
+            text: "(Gasping, falling to his knees) 'You... you think this is over? There's worse than me out there, Preacher. Much worse. Perdition... Perdition will eat you alive...' He collapses, his rifle falling silent.",
+            next: "remaining_bandits_flee"
         },
-        
-        bandit_considers: {
-            speaker: "Bandit Leader",
-            text: "\"Forget? Mister, I don't forget nothing. But maybe you're right. Maybe today ain't the day.\" He tips his hat mockingly. \"Welcome to Perdition, pilgrims. Hope you survive it.\"",
-            next: "bandits_laugh_leave"
-        },
-        
-        bandits_laugh_leave: {
+
+        // Scene 27: Remaining Bandits Flee
+        remaining_bandits_flee: {
             speaker: "Narrator",
-            text: "The bandits leave, but their laughter carries on the wind—a promise that this isn't over.",
-            next: "aftermath_peaceful",
-            onLeave: function() {
-                updateStoryVariable('flags.bandits_warned', true);
-            }
+            text: "With their leader dead, the surviving bandits break and run, spurring their horses toward the horizon. They disappear into the desert like mirages, leaving only dust and silence in their wake.",
+            next: "aftermath_silence"
         },
-        
-        fight_begins: {
+
+        // Scene 28: Aftermath Silence
+        aftermath_silence: {
             speaker: "Narrator",
-            text: "The world explodes into chaos. Maria's gun clears leather faster than thought, and her first shot takes a bandit from his saddle. Thomas, despite his shaking hands, manages to fire his derringer. Even Jacob, terrified as he is, starts shooting.",
-            next: "elijah_choice"
+            text: "The silence that follows is deafening after the thunderous gunfire. Smoke drifts from the barrels of weapons, and the acrid smell of gunpowder fills the air. The four survivors look at each other with new eyes.",
+            next: "checking_for_wounded"
         },
-        
-        elijah_choice: {
-            speaker: "Narrator",
-            text: "In the midst of the gunfight, Elijah faces a choice that will define him. A bandit has Thomas in his sights, about to fire.",
-            choices: [
-                {
-                    text: "Shoot to save Thomas",
-                    next: "elijah_shoots",
-                    onChoose: function() {
-                        updateStoryVariable('flags.elijah_killed_in_chapter1', true);
-                        updateStoryVariable('relationships.elijah.thomas.trust', getStoryVariable('relationships.elijah.thomas.trust') + 25);
-                    }
-                },
-                {
-                    text: "Try to tackle the bandit",
-                    next: "elijah_tackles",
-                    onChoose: function() {
-                        updateStoryVariable('flags.elijah_pacifist_in_chapter1', true);
-                    }
-                },
-                {
-                    text: "Shout a warning",
-                    next: "elijah_warns",
-                    onChoose: function() {
-                        updateStoryVariable('relationships.elijah.thomas.trust', getStoryVariable('relationships.elijah.thomas.trust') + 10);
-                    }
-                }
-            ]
-        },
-        
-        elijah_shoots: {
-            speaker: "Narrator",
-            text: "Time slows. Elijah's hand finds the old Navy Colt he swore he'd never touch again. The weight is familiar, damning. He fires, and the bandit falls. Thomas lives, but something dies in Elijah's eyes.",
-            next: "elijah_shoots_speaks"
-        },
-        
-        elijah_shoots_speaks: {
-            speaker: "Elijah Cross",
-            text: "\"Forgive me.\" Whether he's talking to God or himself is unclear.",
-            next: "fight_ends"
-        },
-        
-        elijah_tackles: {
-            speaker: "Narrator",
-            text: "Elijah throws himself at the bandit, bowling him over. They struggle in the dust. The bandit's gun goes off, but the shot goes wild. Thomas, given time, places a precise shot that ends the threat.",
-            next: "thomas_grateful"
-        },
-        
-        thomas_grateful: {
+
+        // Scene 29: Checking for Wounded
+        checking_for_wounded: {
             speaker: "Thomas Whitmore",
-            text: "\"Preacher! You damn fool, you could have been killed!\"",
-            next: "elijah_responds_tackle"
+            text: "'Is anyone seriously hurt?' Thomas's medical training takes over, his hands already reaching for his bag. 'Elijah, let me look at that arm. The rest of you, check yourselves for wounds you might not have noticed.'",
+            next: "elijah_tends_to_wound"
         },
-        
-        elijah_responds_tackle: {
-            speaker: "Elijah Cross",
-            text: "\"Better that than adding to my tally of souls.\"",
-            next: "fight_ends"
-        },
-        
-        elijah_warns: {
+
+        // Scene 30: Elijah Tends to His Wound
+        elijah_tends_to_wound: {
             speaker: "Narrator",
-            text: "\"Thomas! Down!\" Elijah's shout comes just in time. Thomas ducks, and Maria's shot takes the bandit down instead. But another bandit, seeing Elijah distracted, takes aim at him.",
-            next: "jacob_saves"
+            text: "Elijah allows Thomas to examine his arm, wincing as the doctor probes the wound. 'Clean through,' Thomas pronounces. 'You'll live, but it needs proper bandaging.' The bullet had missed bone and major vessels.",
+            next: "maria_surveys_battlefield"
         },
-        
-        jacob_saves: {
+
+        // Scene 31: Maria Surveys the Battlefield
+        maria_surveys_battlefield: {
             speaker: "Narrator",
-            text: "Jacob, surprising everyone including himself, saves Elijah with a lucky shot.",
-            next: "jacob_shocked"
+            text: "Maria moves among the fallen bandits with professional thoroughness, checking for survivors and collecting weapons. Her movements are efficient, practiced. This is not her first time walking a battlefield.",
+            choices: [
+                {
+                    text: "Learn about Maria's past experience",
+                    next: "maria_backstory_hint"
+                },
+                {
+                    text: "Focus on Jacob's reaction",
+                    next: "jacob_processing_violence"
+                },
+                {
+                    text: "Check on the stagecoach driver",
+                    next: "driver_status_check"
+                }
+            ]
         },
-        
-        jacob_shocked: {
-            speaker: "Jacob Rivers",
-            text: "\"I... I got him! I actually got him!\"",
-            next: "fight_ends",
-            onLeave: function() {
-                updateStoryVariable('flags.jacob_saved_elijah_chapter1', true);
-                updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 20);
-            }
-        },
-        
-        fight_ends: {
+
+        // Scene 32: Maria's Backstory Hint
+        maria_backstory_hint: {
             speaker: "Narrator",
-            text: "When the smoke clears, three bandits lie dead. The others have fled, including their leader. The stagecoach is riddled with bullets, but miraculously, all four passengers still breathe.",
-            next: "aftermath_violent"
+            text: "As Maria works, flashes of memory surface—other battles, other corpses, other times when survival meant embracing violence. The Mexican Revolution taught harsh lessons, and she learned them all too well.",
+            next: "jacob_processing_violence"
         },
-        
-        aftermath_peaceful: {
+
+        // Scene 33: Jacob Processing Violence
+        jacob_processing_violence: {
             speaker: "Narrator",
-            text: "As the dust settles, the four strangers look at each other with new eyes. They faced danger together and came through without bloodshed—a minor miracle in this harsh land.",
-            next: "driver_amazed"
+            text: "Jacob stares at the bodies with wide eyes, his face pale. The reality of death, violent and sudden, crashes over him like a cold wave. The boy who left home this morning is gone forever, replaced by someone harder.",
+            next: "driver_status_check"
         },
-        
-        driver_amazed: {
+
+        // Scene 34: Driver Status Check
+        driver_status_check: {
+            speaker: "Narrator",
+            text: "The stagecoach driver emerges from behind the coach, shaken but unharmed. 'Thought I was a dead man for sure,' he gasps. 'You folks... you saved all our lives. Never seen anything like it.' His respect is evident.",
+            next: "thomas_medical_assessment"
+        },
+
+        // Scene 35: Thomas's Medical Assessment
+        thomas_medical_assessment: {
+            speaker: "Thomas Whitmore",
+            text: "'We were fortunate. Very fortunate.' Thomas's hands remain steady as he bandages Elijah's arm. 'A few inches either way, and we'd be planning a funeral instead of continuing our journey.'",
+            next: "elijah_moral_struggle"
+        },
+
+        // Scene 36: Elijah's Moral Struggle
+        elijah_moral_struggle: {
+            speaker: "Narrator",
+            text: "Elijah stares at his bloodied hands, the weight of what he's done settling on his soul. The commandment 'Thou shalt not kill' wars with the necessity of survival. His faith feels both shaken and somehow strengthened.",
+            next: "maria_practical_concerns"
+        },
+
+        // Scene 37: Maria's Practical Concerns
+        maria_practical_concerns: {
+            speaker: "Maria Vasquez",
+            text: "'We need to move. Soon.' Maria's voice cuts through the moment of reflection. 'Gunfire carries far in the desert. If these men have friends, they'll come looking. And Valdez mentioned something about Perdition.'",
+            next: "valdez_warning_remembered"
+        },
+
+        // Scene 38: Valdez's Warning Remembered
+        valdez_warning_remembered: {
+            speaker: "Narrator",
+            text: "Valdez's dying words echo in their minds: 'There's worse than me out there.' The warning feels prophetic, a glimpse of darker trials ahead. Perdition suddenly seems less like a destination and more like a promise.",
+            next: "driver_suggests_route"
+        },
+
+        // Scene 39: Driver Suggests Route
+        driver_suggests_route: {
             speaker: "Stagecoach Driver",
-            text: "\"Well, I'll be damned. Thirty years driving this route, and that's the first time I've seen bandits back down. You folks got the devil's own luck.\"",
-            next: "arrival_perdition"
+            text: "'There's a way station about ten miles ahead. We can rest the horses, get proper medical attention for your arm, Preacher. But after that...' He looks toward the horizon. 'Perdition's still a day's ride.'",
+            next: "group_discussion_begins"
         },
-        
-        aftermath_violent: {
+
+        // Scene 40: Group Discussion Begins
+        group_discussion_begins: {
             speaker: "Narrator",
-            text: "The aftermath of violence hangs heavy. Blood soaks into the thirsty ground. The survivors breathe hard, each processing what just happened in their own way.",
-            next: "maria_checks"
+            text: "The four passengers gather near the coach, bound now by shared violence and survival. The easy anonymity of strangers has been burned away by gunfire, leaving something rawer and more honest in its place.",
+            next: "jacob_speaks_up"
         },
-        
-        maria_checks: {
+
+        // Scene 41: Jacob Speaks Up
+        jacob_speaks_up: {
+            speaker: "Jacob Rivers",
+            text: "'I... I've never seen men die before.' His voice is quiet but steady. 'Thank you. All of you. If you hadn't... if we hadn't fought...' He can't finish, but the gratitude is clear.",
+            next: "maria_harsh_truth"
+        },
+
+        // Scene 42: Maria's Harsh Truth
+        maria_harsh_truth: {
             speaker: "Maria Vasquez",
-            text: "\"Everyone alright? No one's hurt?\" She's already checking her weapon, professional even in the aftermath.",
-            next: "thomas_responds"
+            text: "'Don't thank us yet, boy. This was just the beginning.' Her dark eyes are hard as flint. 'Out here, you kill or you die. Sometimes both. Better learn that now, before Perdition teaches you the hard way.'",
+            next: "elijah_offers_comfort"
         },
-        
-        thomas_responds: {
+
+        // Scene 43: Elijah Offers Comfort
+        elijah_offers_comfort: {
+            speaker: "Elijah Cross",
+            text: "'She's right about the danger, but wrong about hope.' Elijah's voice carries hard-won wisdom. 'We faced death together and lived. That counts for something. We're not the same people who boarded this coach.'",
+            next: "thomas_philosophical_moment"
+        },
+
+        // Scene 44: Thomas's Philosophical Moment
+        thomas_philosophical_moment: {
             speaker: "Thomas Whitmore",
-            text: "\"Define 'alright.'\" He takes a long pull from his bottle. \"But I'm breathing, which is more than those poor bastards can say.\"",
+            text: "'Funny thing about violence—it clarifies priorities wonderfully.' Thomas's voice is steadier than it's been in months. 'Perhaps this old drunk still has some life left in him after all.'",
             choices: [
                 {
-                    text: "Check on young Jacob",
-                    next: "comfort_jacob"
+                    text: "Explore Thomas's newfound resolve",
+                    next: "thomas_renewed_purpose"
                 },
                 {
-                    text: "Say words over the dead",
-                    next: "pray_for_dead"
+                    text: "Focus on the group's growing bond",
+                    next: "unlikely_fellowship"
+                },
+                {
+                    text: "Return to practical concerns",
+                    next: "preparing_to_leave"
                 }
             ]
         },
-        
-        comfort_jacob: {
+
+        // Scene 45: Thomas's Renewed Purpose
+        thomas_renewed_purpose: {
             speaker: "Narrator",
-            text: "Jacob stands frozen, staring at the man he shot. His face is pale, his hands shaking.",
-            next: "elijah_comforts"
+            text: "Something has awakened in Thomas—a spark of the man he was before drink and despair claimed him. His hands no longer shake, and his eyes hold a clarity that speaks of second chances and renewed purpose.",
+            next: "unlikely_fellowship"
         },
-        
-        elijah_comforts: {
-            speaker: "Elijah Cross",
-            text: "\"First time is always the hardest, son. It's supposed to be hard. The day it gets easy is the day you lose yourself.\"",
-            next: "jacob_responds"
-        },
-        
-        jacob_responds: {
-            speaker: "Jacob Rivers",
-            text: "\"I... I killed a man. My brothers always said it would feel different. Powerful. But I just feel... empty.\"",
-            next: "elijah_wisdom"
-        },
-        
-        elijah_wisdom: {
-            speaker: "Elijah Cross",
-            text: "\"That emptiness? That's your soul trying to hold on. Don't let go of it.\"",
-            next: "arrival_perdition",
-            onLeave: function() {
-                updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 15);
-            }
-        },
-        
-        pray_for_dead: {
+
+        // Scene 46: Unlikely Fellowship
+        unlikely_fellowship: {
             speaker: "Narrator",
-            text: "Elijah kneels beside the fallen bandits, his voice carrying the old words he thought he'd left behind.",
-            next: "elijah_prays"
+            text: "They are an unlikely group—a fallen preacher, a mysterious woman with a gun, a broken doctor finding himself, and a boy growing into manhood. But blood shared and lives saved have forged bonds stronger than friendship.",
+            next: "preparing_to_leave"
         },
-        
-        elijah_prays: {
-            speaker: "Elijah Cross",
-            text: "\"Lord, we commend these souls to your judgment. They chose their path, and we chose ours. Grant them the mercy we could not.\"",
-            next: "maria_questions"
-        },
-        
-        maria_questions: {
-            speaker: "Maria Vasquez",
-            text: "\"You pray for men who tried to kill us?\"",
-            next: "elijah_explains"
-        },
-        
-        elijah_explains: {
-            speaker: "Elijah Cross",
-            text: "\"Especially for them. The righteous don't need our prayers.\"",
-            next: "arrival_perdition",
-            onLeave: function() {
-                updateStoryVariable('flags.elijah_prayed_for_bandits_c1', true);
-            }
-        },
-        
-        arrival_perdition: {
+
+        // Scene 47: Preparing to Leave
+        preparing_to_leave: {
             speaker: "Narrator",
-            text: "The stagecoach limps into Perdition as the sun bleeds red across the horizon. The town is smaller than expected—a main street, a few buildings fighting a losing battle against the desert, and more ghosts than living souls.",
-            next: "driver_warns"
+            text: "They gather their belongings and help the driver check the coach for damage. A few bullet holes in the canvas, but the wheels and axles are sound. The horses, though spooked, are unharmed and ready to continue.",
+            next: "final_look_back"
         },
-        
-        driver_warns: {
-            speaker: "Stagecoach Driver",
-            text: "\"Perdition, folks. Such as it is. Watch yourselves—this town's got a way of testing people. Those bandits? They were just the welcome committee.\"",
-            next: "entering_town"
-        },
-        
-        entering_town: {
+
+        // Scene 48: Final Look Back
+        final_look_back: {
             speaker: "Narrator",
-            text: "The four passengers gather their belongings, each lost in thought. The attack has forged something between them—not quite trust, not yet friendship, but a recognition that in this place, they might need each other.",
-            next: "thomas_offers"
+            text: "As they prepare to leave, each takes a final look at the scene of their baptism by fire. The bodies will be food for vultures and coyotes, but the memory of this moment will stay with them forever.",
+            next: "coach_rolls_on"
         },
-        
-        thomas_offers: {
-            speaker: "Thomas Whitmore",
-            text: "\"Well, I for one need a drink. A real drink, not this medicinal swill. Anyone care to join me? First round's on the doctor who's still breathing thanks to you all.\"",
-            choices: [
-                {
-                    text: "\"A drink sounds good. We should stick together.\"",
-                    next: "agree_drinks",
-                    onChoose: function() {
-                        updateStoryVariable('flags.group_drinks_c1', true);
-                        updateStoryVariable('relationships.elijah.thomas.trust', getStoryVariable('relationships.elijah.thomas.trust') + 10);
-                        updateStoryVariable('relationships.elijah.maria.trust', getStoryVariable('relationships.elijah.maria.trust') + 5);
-                        updateStoryVariable('relationships.elijah.jacob.trust', getStoryVariable('relationships.elijah.jacob.trust') + 5);
-                    }
-                },
-                {
-                    text: "\"I need to find lodging first. But perhaps later.\"",
-                    next: "practical_choice"
-                },
-                {
-                    text: "\"I don't drink. But I'll walk with you.\"",
-                    next: "temperance_choice"
-                }
-            ]
-        },
-        
-        agree_drinks: {
-            speaker: "Maria Vasquez",
-            text: "\"After what just happened, I could use a drink myself. Besides, in a town like this, probably safer to watch each other's backs.\"",
-            next: "jacob_agrees"
-        },
-        
-        jacob_agrees: {
-            speaker: "Jacob Rivers",
-            text: "\"I... I'll come too. If that's alright. I don't much want to be alone right now.\"",
-            next: "group_united"
-        },
-        
-        group_united: {
+
+        // Scene 49: Coach Rolls On
+        coach_rolls_on: {
             speaker: "Narrator",
-            text: "The unlikely group heads toward the saloon, their shadows long in the dying light. Whatever brought them to Perdition, they're bound together now by lead and blood.",
-            next: "chapter1_end"
+            text: "The stagecoach lurches into motion, wheels creaking as they roll away from the battlefield. Behind them lies their old lives; ahead waits Perdition and whatever trials it might bring. They are changed, all of them.",
+            next: "chapter_end"
         },
-        
-        practical_choice: {
-            speaker: "Maria Vasquez",
-            text: "\"Smart. This town doesn't look like it has many safe places to sleep. I'll come with you—safety in numbers.\"",
-            next: "practical_narration"
-        },
-        
-        practical_narration: {
+
+        // Scene 50: Chapter End
+        chapter_end: {
             speaker: "Narrator",
-            text: "Thomas shrugs and heads to the saloon alone, while Jacob hesitates, unsure who to follow.",
-            next: "chapter1_end"
-        },
-        
-        temperance_choice: {
-            speaker: "Thomas Whitmore",
-            text: "\"A preacher who won't drink with the man whose life he saved? Your loss, padre. But I appreciate the company.\"",
-            next: "temperance_narration"
-        },
-        
-        temperance_narration: {
-            speaker: "Narrator",
-            text: "As they walk down Perdition's dusty main street, each wonders what they've gotten themselves into.",
-            next: "chapter1_end"
-        },
-        
-        chapter1_end: {
-            speaker: "Narrator",
-            text: "Night falls on Perdition like a shroud. In the saloon, Thomas finds his bottle. In the hotel, Maria checks the exits. In the church—abandoned but still standing—Elijah kneels before a broken altar. And somewhere in the shadows, Jacob tries to wash blood from his hands that isn't there.",
-            next: "chapter1_reflection"
-        },
-        
-        chapter1_reflection: {
-            speaker: "Narrator",
-            text: "They've survived their first test, but Perdition has more in store. The bandit leader's words echo: 'This ain't over.'",
-            next: "chapter1_final"
-        },
-        
-        chapter1_final: {
-            speaker: "Narrator",
-            text: "In this town where the wind goes to die, four strangers have found each other. Whether that's salvation or damnation remains to be seen.",
+            text: "The desert wind erases their tracks, but not their memories. Four strangers became comrades in the crucible of violence. Whatever Perdition holds for them, they will face it together. The real journey is just beginning.",
             choices: [
                 {
                     text: "Continue to Chapter 2",
                     next: null,
                     nextChapter: "chapter2"
                 }
-            ],
-            onEnter: {
-                setBackground: "night"
-            }
+            ]
         }
     }
 };

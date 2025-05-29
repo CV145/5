@@ -36,7 +36,16 @@ class SceneManager {
 
             // Apply scene effects
             if (scene.onEnter) {
-                this.executeSceneEffects(scene.onEnter);
+                if (typeof scene.onEnter === 'function') {
+                    scene.onEnter();
+                } else {
+                    this.executeSceneEffects(scene.onEnter);
+                }
+            }
+            
+            // Apply new effects structure
+            if (scene.effects) {
+                this.applySceneEffects(scene.effects);
             }
 
             // Check for automatic progression
@@ -136,6 +145,46 @@ class SceneManager {
         
         if (effects.weather) {
             this.setWeatherEffect(effects.weather);
+        }
+    }
+    
+    applySceneEffects(effects) {
+        // Text animations
+        if (effects.textAnimation) {
+            this.applyTextAnimation(effects.textAnimation);
+        }
+        
+        // Background image
+        if (effects.backgroundImage) {
+            this.setBackgroundImage(effects.backgroundImage);
+        }
+        
+        // Sound effects
+        if (effects.soundEffect) {
+            // this.playSoundEffect(effects.soundEffect);
+        }
+        
+        if (effects.ambientSound) {
+            // this.playAmbientSound(effects.ambientSound);
+        }
+        
+        // Screen effects
+        if (effects.screenEffect) {
+            this.applyScreenEffect(effects.screenEffect);
+        }
+        
+        // Character effects
+        if (effects.characterSpotlight) {
+            this.spotlightCharacter(effects.characterSpotlight);
+        }
+        
+        if (effects.characterAnimation) {
+            this.animateCharacter(effects.characterAnimation);
+        }
+        
+        // Lighting
+        if (effects.lighting) {
+            this.setLighting(effects.lighting);
         }
     }
 
@@ -240,5 +289,53 @@ class SceneManager {
             </div>
         `;
         document.getElementById('game-container').appendChild(endScreen);
+    }
+    
+    applyTextAnimation(animationType) {
+        const textElement = document.getElementById('story-text');
+        textElement.className = 'story-text ' + animationType;
+    }
+    
+    setBackgroundImage(imageName) {
+        const backgroundLayer = document.querySelector('.background-layer');
+        // For now, use placeholder gradients
+        const images = {
+            'desert-horizon.jpg': 'linear-gradient(to bottom, #87CEEB 0%, #DEB887 60%, #CD853F 100%)'
+        };
+        if (images[imageName]) {
+            backgroundLayer.style.background = images[imageName];
+        }
+    }
+    
+    applyScreenEffect(effectType) {
+        const gameScreen = document.getElementById('game-screen');
+        gameScreen.className = 'screen active ' + effectType;
+        
+        // Remove effect after duration
+        if (effectType.includes('flash') || effectType.includes('shake')) {
+            setTimeout(() => {
+                gameScreen.className = 'screen active';
+            }, 1000);
+        }
+    }
+    
+    spotlightCharacter(characterName) {
+        const portraits = document.querySelectorAll('.portrait');
+        portraits.forEach(p => {
+            if (p.dataset.character === characterName) {
+                p.classList.add('spotlight');
+            } else {
+                p.classList.add('dimmed');
+            }
+        });
+    }
+    
+    animateCharacter(animation) {
+        // Implement character animations
+    }
+    
+    setLighting(lightingType) {
+        const gameScreen = document.getElementById('game-screen');
+        gameScreen.dataset.lighting = lightingType;
     }
 }
