@@ -28,7 +28,7 @@ storyData.chapter16 = {
         },
 
         // Scene 4: Silas Lays Down Rules
-        silas_rivers_lays_down_rules: {
+        silas_lays_down_rules: {
             speaker: "Silas Rivers",
             text: "'You four are here because Pike wants you dead as much as he wants me. That makes us... temporary bedfellows. You pull your weight, you follow my rules, maybe you live. Cause trouble...' He let the threat hang.",
             next: "elijah_moral_discomfort_intro"
