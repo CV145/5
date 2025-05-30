@@ -172,7 +172,7 @@ storyData.chapter19 = {
             text: "A lone rider approached from the east. As he drew closer, his uniform became clear: a General's insignia. It was Colonel Morrison from the Prologue, older, harder, and clearly in a position of immense power.",
             next: "morrison_greets_pike_coldly"
         },
-        general_morrison_greets_pike_coldly: {
+        morrison_greets_pike_coldly: {
             speaker: "General Morrison",
             text: "'Pike. You've made a considerable mess. The documents, if you please. Washington is... displeased with this public spectacle.'",
             next: "pike_hands_over_documents_fearfully"
